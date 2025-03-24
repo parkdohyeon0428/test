@@ -7,18 +7,20 @@ module top_stopwatch (
     input btn_clear_start,
     input btn_sec,
     input btn_min,
+    input [7:0] command,
+    input data,
     input [1:0] sw_mode,
     output [3:0] fnd_comm,
     output [7:0] fnd_font,
     output [3:0] led
 );
     wire w_run, w_clear, w_hour, w_min, w_sec, w_start, run, clear;
+    wire w_com_run, w_com_clear, w_com_hour, w_com_min, w_com_sec, W_com_start;
     wire [6:0] msec, sec, min, hour;
     wire [6:0] w_watch_msec, w_stop_msec;
     wire [5:0] w_watch_sec, w_stop_sec;
     wire [5:0] w_watch_min, w_stop_min;
     wire [4:0] w_watch_hour, w_stop_hour;
-
 
 
     // 1bit wire는 선언안해도 자동 1bit 로 연결됨
@@ -59,11 +61,23 @@ module top_stopwatch (
         .i_btn(btn_sec),
         .o_btn(w_sec)
     );
+    uart_cu U_Uart_Cu(
+        .clk(clk),
+        .reset(reset),
+        .data(data),
+        .command(command),
+        .com_run(w_com_run),
+        .com_clear(w_com_clear),
+        .com_sec(w_com_sec),
+        .com_min(w_com_min),
+        .com_hour(w_com_hour),
+        .com_start(W_com_start)
+    );
     stopwatch_cu U_Stopwatch (
         .clk(clk),
         .reset(reset),
-        .i_btn_run(w_run),
-        .i_btn_clear(w_clear),
+        .i_btn_run(w_run | w_com_run),
+        .i_btn_clear(w_clear | w_com_clear),
         .o_run(run),
         .o_clear(clear)
     );
@@ -91,10 +105,10 @@ module top_stopwatch (
     clock_dp U_clock_dp (
         .clk(clk),
         .reset(reset),
-        .i_btn_sec(w_sec),
-        .i_btn_min(w_min),
-        .i_btn_hour(w_hour),
-        .i_start(w_start),
+        .i_btn_sec(w_sec | w_com_sec),
+        .i_btn_min(w_min | w_com_min),
+        .i_btn_hour(w_hour | w_com_hour),
+        .i_start(w_start | W_com_start),
         .sw(sw_mode),
         .msec(w_watch_msec),
         .sec(w_watch_sec),

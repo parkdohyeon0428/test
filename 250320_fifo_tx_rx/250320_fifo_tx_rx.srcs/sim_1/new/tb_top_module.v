@@ -2,42 +2,55 @@
 
 module tb_uart_fifo();
     reg clk;
-    reg rst;
+    reg reset;
     reg rx;
+    reg [1:0] sw;
+    reg btn_run_hour;
+    reg btn_clear_start;
+    reg btn_sec;
+    reg btn_min;
     wire tx;
+    wire [3:0] fnd_comm;
+    wire [7:0] fnd_font;
+    wire [1:0] led;
 
-    Top_module U_top_module(
+    Real_Top U_real (
         .clk(clk),
-        .reset(rst),
+        .reset(reset),
+        .tx(tx),
+        .sw(sw),
+        .btn_run_hour(btn_run_hour),
+        .btn_clear_start(btn_clear_start),
+        .btn_sec(btn_sec),
+        .btn_min(btn_min),
         .rx(rx),
-        .tx(tx)
+        .fnd_comm(fnd_comm),
+        .fnd_font(fnd_font),
+        .led(led)
     );
-
-    // uart_tx_done = w_tx_done
-    // uart_rx_done = w_rx_done
-    // fifo_tx_rdata = w_tx_data
-    // fifo_rx_rdata = w_rx_data
-    /////////////////
     always #5 clk = ~clk;
 
         initial begin
             clk = 0;
-            rst = 1;
+            reset= 1;
             rx = 1;
+            sw = 2'b00;
+            btn_run_hour = 0;
+            btn_clear_start = 0;
+            btn_min = 0;
+            btn_sec = 0;
 
-            #50 rst = 0;
-            #10000;
+            #50 reset = 0;
+            #1;
 
-            send_data(8'h72);
-            send_data(8'h73);
-            send_data(8'h74);
-            send_data(8'h75);
-            //wait_for_rx();
+            send_data(8'h52); // "R" run
+            send_data(8'h43); // "C" clear
+            sw = 2'b10;       // 시계 모드
+            send_data(8'h42); // "B" start
+            send_data(8'h53); // "S" sec 증가
+            send_data(8'h4D); // "M" min 증가
+            send_data(8'h48); // "H" hour 증가
 
-            #100000;
-
-            //wait(uart_tx_done); //w_tx_done
-            //wait(!uart_tx_done);  
         end
 
 
