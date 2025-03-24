@@ -1,6 +1,6 @@
 `timescale 1ns / 1ps
 
-        module clock_dp (
+module clock_dp (
     input clk,
     input reset,
     input [1:0] sw,
