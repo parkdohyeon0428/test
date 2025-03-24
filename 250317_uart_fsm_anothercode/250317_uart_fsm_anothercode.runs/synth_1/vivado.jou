@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2020.2 (64-bit)
+# SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
+# IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+# Start of session at: Wed Mar 19 09:28:03 2025
+# Process ID: 15008
+# Current directory: D:/test/250317_uart_fsm_anothercode/250317_uart_fsm_anothercode.runs/synth_1
+# Command line: vivado.exe -log TOP_UART.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source TOP_UART.tcl
+# Log file: D:/test/250317_uart_fsm_anothercode/250317_uart_fsm_anothercode.runs/synth_1/TOP_UART.vds
+# Journal file: D:/test/250317_uart_fsm_anothercode/250317_uart_fsm_anothercode.runs/synth_1\vivado.jou
+#-----------------------------------------------------------
+source TOP_UART.tcl -notrace

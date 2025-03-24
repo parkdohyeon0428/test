@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2020.2 (64-bit)
+# SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
+# IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+# Start of session at: Wed Mar  5 17:06:54 2025
+# Process ID: 23896
+# Current directory: D:/test/250305_fsm_exam/250305_fsm_exam.runs/synth_1
+# Command line: vivado.exe -log fsm_5.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source fsm_5.tcl
+# Log file: D:/test/250305_fsm_exam/250305_fsm_exam.runs/synth_1/fsm_5.vds
+# Journal file: D:/test/250305_fsm_exam/250305_fsm_exam.runs/synth_1\vivado.jou
+#-----------------------------------------------------------
+source fsm_5.tcl -notrace
