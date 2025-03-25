@@ -30,8 +30,8 @@ module tb_trigger_step_generate_ ();
         .btn_start(btn),
         .clk(clk),
         .reset(rst),
-        .data(echo_pulse),
-        .start_tick(trigger_step)
+        .echo(echo_pulse),
+        .trig(trigger_step)
     );
 
     always #5 clk = ~clk;
@@ -40,11 +40,16 @@ module tb_trigger_step_generate_ ();
         rst = 1;
         #1000;                                                
         rst =0;
+        // echo_pulse = 1;
+        // #10000
+        // echo_pulse = 0;
         btn =1;
         wait(uut.start_tick);
         btn = 0;
         wait(!uut.start_tick);
         #100000;
+
+
         $finish;
     end
 endmodule

@@ -1,0 +1,32 @@
+#-----------------------------------------------------------
+# Vivado v2020.2 (64-bit)
+# SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
+# IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+# Start of session at: Tue Mar 25 19:42:57 2025
+# Process ID: 8892
+# Current directory: C:/Users/user/Desktop/test/250325_HC _ SR04
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent8712 C:\Users\user\Desktop\test\250325_HC _ SR04\250325_HC _ SR04.xpr
+# Log file: C:/Users/user/Desktop/test/250325_HC _ SR04/vivado.log
+# Journal file: C:/Users/user/Desktop/test/250325_HC _ SR04\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project {C:/Users/user/Desktop/test/250325_HC _ SR04/250325_HC _ SR04.xpr}
+update_compile_order -fileset sources_1
+launch_simulation
+source tb_trigger_step_generate_.tcl
+run all
+run all
+run all
+relaunch_sim
+run all
+run all
+relaunch_sim
+relaunch_sim
+run all
+run all
+reset_run ila_0_synth_1
+launch_runs ila_0_synth_1
+wait_on_run ila_0_synth_1
+wait_on_run ila_0_synth_1
+reset_run ila_0_synth_1
+close_sim
