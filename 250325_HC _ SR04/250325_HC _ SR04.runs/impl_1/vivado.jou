@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2020.2 (64-bit)
+# SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
+# IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+# Start of session at: Tue Mar 25 17:14:55 2025
+# Process ID: 1700
+# Current directory: D:/test/250325_HC _ SR04/250325_HC _ SR04.runs/impl_1
+# Command line: vivado.exe -log hc_top_module.vdi -applog -product Vivado -messageDb vivado.pb -mode batch -source hc_top_module.tcl -notrace
+# Log file: D:/test/250325_HC _ SR04/250325_HC _ SR04.runs/impl_1/hc_top_module.vdi
+# Journal file: D:/test/250325_HC _ SR04/250325_HC _ SR04.runs/impl_1\vivado.jou
+#-----------------------------------------------------------
+source hc_top_module.tcl -notrace
