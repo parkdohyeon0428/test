@@ -1,14 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <GenRun Id="synth_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1742890461">
   <File Type="PA-TCL" Name="hc_top_module.tcl"/>
-  <File Type="RDS-PROPCONSTRS" Name="hc_top_module_drc_synth.rpt"/>
   <File Type="REPORTS-TCL" Name="hc_top_module_reports.tcl"/>
   <File Type="RDS-RDS" Name="hc_top_module.vds"/>
-  <File Type="RDS-UTIL" Name="hc_top_module_utilization_synth.rpt"/>
-  <File Type="RDS-UTIL-PB" Name="hc_top_module_utilization_synth.pb"/>
   <File Type="RDS-DCP" Name="hc_top_module.dcp"/>
-  <File Type="VDS-TIMINGSUMMARY" Name="hc_top_module_timing_summary_synth.rpt"/>
-  <File Type="VDS-TIMING-PB" Name="hc_top_module_timing_summary_synth.pb"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1" RelGenDir="$PGENDIR/sources_1">
     <Filter Type="Srcs"/>
     <File Path="$PSRCDIR/sources_1/imports/250310_stopwatch_fsm/btn_debounce.v">

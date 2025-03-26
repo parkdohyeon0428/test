@@ -1,1 +1,1 @@
--wto "49a6c84dcd15424cba5398cb06fdd2d2" --incr --debug "typical" --relax --mt "2" -L "xil_defaultlib" -L "unisims_ver" -L "unimacro_ver" -L "secureip" --snapshot "tb_trigger_step_generate__behav" "xil_defaultlib.tb_trigger_step_generate_" "xil_defaultlib.glbl" -log "elaborate.log" 
+-wto "49a6c84dcd15424cba5398cb06fdd2d2" --incr --debug "typical" --relax --mt "2" -L "xil_defaultlib" -L "unisims_ver" -L "unimacro_ver" -L "secureip" -L "xpm" --snapshot "tb_trigger_step_generate__behav" "xil_defaultlib.tb_trigger_step_generate_" "xil_defaultlib.glbl" -log "elaborate.log" 

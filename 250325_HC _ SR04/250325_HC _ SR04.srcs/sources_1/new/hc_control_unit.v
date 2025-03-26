@@ -4,14 +4,14 @@ module hc_top_module (
     input clk,
     input reset,
     input btn_start,
-    input data,
-    output start_tick,
+    input echo,
+    output trig,
     output [3:0] fnd_comm,
     output [7:0] fnd_font
 );
     ila_0 ILA (
         .clk(clk),
-        .probe0(data)
+        .probe0(echo)
     );
     wire w_tick_gen, w_start_trigger;
     wire [15:0] w_o_tick;
@@ -36,10 +36,10 @@ module hc_top_module (
         .clk(clk),
         .reset(reset),
         .btn_start(w_start_trigger),
-        .data(data),
+        .echo(echo),
         .tick_gen(w_tick_gen),
         .o_tick(w_o_tick),
-        .start_tick(start_tick)
+        .start_trigger(trig)
     );
     fnd_controller U_FND_Cntl (
         .clk(clk),
@@ -56,7 +56,7 @@ endmodule
 //     input reset,
 //     output tick_gen
 // );
-//     parameter FCOUNT = 1000;
+//     parameter FCOUNT = 100;
 //     reg [$clog2(FCOUNT)-1:0] clk_reg;
 //     reg tick_reg;
 
@@ -81,22 +81,22 @@ endmodule
 module hc_data_path (
     input clk,
     input reset,
-    input tick_gen,
+    input tick_gen,  //1us trig
     input btn_start,
-    input data,
+    input echo,   //hc06에서 동작하면 echo가 high로 들어온다
     output [15:0] o_tick,
-    output start_tick
+    output start_trigger // hc06으로 보내는 10us
     //output [1:0] led
 );
     parameter IDLE = 2'b00, START = 2'b01, WAIT = 2'b10, DATA = 2'b11;
 
     reg [1:0] state, next;
     reg [15:0] data_reg, data_next;
-    reg [6:0] tick_reg, tick_next;
+    reg [6:0] tick_reg, tick_next;   
     reg start_tick_reg, start_tick_next;
     //reg done_reg, done_next;
-    assign o_tick = data_reg / 58;
-    assign start_tick = start_tick_reg;
+    assign o_tick = data_reg / 58;    // 거리 계산
+    assign start_trigger = start_tick_reg;
 
     always @(posedge clk, posedge reset) begin
         if (reset) begin
@@ -120,7 +120,8 @@ module hc_data_path (
         start_tick_next = start_tick_reg;
         case (state)
             IDLE: begin
-                if (btn_start == 1) next = START;
+                if (btn_start == 1) 
+                    next = START;
             end
             START: begin
                 if (tick_gen == 1'b1) begin
@@ -135,18 +136,18 @@ module hc_data_path (
                 end
             end
             WAIT: begin
-                if (data == 1) begin
+                if (echo == 1) begin
                     next = DATA;
                 end else begin
                     next = state;
                 end
             end
             DATA: begin
-                if (data == 1) begin
+                if (echo == 1) begin
                     if (tick_gen == 1) begin
                         data_next = data_reg + 1;
                     end
-                end else if (data == 0) begin
+                end else if (echo == 0) begin
                     next = IDLE;
                 end
             end
@@ -154,7 +155,7 @@ module hc_data_path (
     end
 endmodule
 
-// Baud Rate Tick 생성기 모듈 (DP)
+//Baud Rate Tick 생성기 모듈 (DP)
 module tick_gen_1us (
     input  clk,       // 시스템 클럭
     input  rst,       // 비동기 리셋
