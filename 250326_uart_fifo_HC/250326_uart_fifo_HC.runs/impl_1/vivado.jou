@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2020.2 (64-bit)
+# SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
+# IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+# Start of session at: Wed Mar 26 10:04:33 2025
+# Process ID: 16832
+# Current directory: D:/test/250326_uart_fifo_HC/250326_uart_fifo_HC.runs/impl_1
+# Command line: vivado.exe -log Top_module.vdi -applog -product Vivado -messageDb vivado.pb -mode batch -source Top_module.tcl -notrace
+# Log file: D:/test/250326_uart_fifo_HC/250326_uart_fifo_HC.runs/impl_1/Top_module.vdi
+# Journal file: D:/test/250326_uart_fifo_HC/250326_uart_fifo_HC.runs/impl_1\vivado.jou
+#-----------------------------------------------------------
+source Top_module.tcl -notrace

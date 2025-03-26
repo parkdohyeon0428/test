@@ -1,0 +1,13 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  \
+"../../../../250326_uart_fifo_HC.srcs/sources_1/imports/test/250321_fifo_uart/250321_fifo_uart.srcs/sources_1/imports/new/Top_module.v" \
+"../../../../250326_uart_fifo_HC.srcs/sources_1/imports/test/250321_fifo_uart/250321_fifo_uart.srcs/sources_1/imports/new/fifo.v" \
+"../../../../250326_uart_fifo_HC.srcs/sources_1/imports/test/250321_fifo_uart/250321_fifo_uart.srcs/sources_1/imports/new/fifo_rx.v" \
+"../../../../250326_uart_fifo_HC.srcs/sources_1/imports/new/uart_fsm.v" \
+"../../../../250326_uart_fifo_HC.srcs/sim_1/new/tb_loop.v" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort
