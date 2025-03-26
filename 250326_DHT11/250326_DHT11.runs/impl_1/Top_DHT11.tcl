@@ -17,7 +17,7 @@ proc create_report { reportName command } {
   }
 }
 namespace eval ::optrace {
-  variable script "D:/test/250326_DHT11/250326_DHT11.runs/impl_1/Top_DHT11.tcl"
+  variable script "C:/Users/user/Desktop/test/250326_DHT11/250326_DHT11.runs/impl_1/Top_DHT11.tcl"
   variable category "vivado_impl"
 }
 
@@ -124,26 +124,25 @@ start_step init_design
 set ACTIVE_STEP init_design
 set rc [catch {
   create_msg_db init_design.pb
-  set_param chipscope.maxJobs 4
-  set_param synth.incrementalSynthesisCache C:/Users/kccistc/AppData/Roaming/Xilinx/Vivado/.Xil/Vivado-4956-DESKTOP-7CFQ9ND/incrSyn
-  set_param xicom.use_bs_reader 1
+  set_param chipscope.maxJobs 2
+  set_param synth.incrementalSynthesisCache C:/Users/user/AppData/Roaming/Xilinx/Vivado/.Xil/Vivado-9044-DESKTOP-5KDKKP9/incrSyn
 OPTRACE "create in-memory project" START { }
   create_project -in_memory -part xc7a35tcpg236-1
-  set_property board_part_repo_paths {C:/Users/kccistc/AppData/Roaming/Xilinx/Vivado/2020.2/xhub/board_store/xilinx_board_store} [current_project]
+  set_property board_part_repo_paths {C:/Users/user/AppData/Roaming/Xilinx/Vivado/2020.2/xhub/board_store/xilinx_board_store} [current_project]
   set_property board_part digilentinc.com:basys3:part0:1.1 [current_project]
   set_property design_mode GateLvl [current_fileset]
   set_param project.singleFileAddWarning.threshold 0
 OPTRACE "create in-memory project" END { }
 OPTRACE "set parameters" START { }
-  set_property webtalk.parent_dir D:/test/250326_DHT11/250326_DHT11.cache/wt [current_project]
-  set_property parent.project_path D:/test/250326_DHT11/250326_DHT11.xpr [current_project]
-  set_property ip_output_repo D:/test/250326_DHT11/250326_DHT11.cache/ip [current_project]
+  set_property webtalk.parent_dir C:/Users/user/Desktop/test/250326_DHT11/250326_DHT11.cache/wt [current_project]
+  set_property parent.project_path C:/Users/user/Desktop/test/250326_DHT11/250326_DHT11.xpr [current_project]
+  set_property ip_output_repo C:/Users/user/Desktop/test/250326_DHT11/250326_DHT11.cache/ip [current_project]
   set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "set parameters" END { }
 OPTRACE "add files" START { }
-  add_files -quiet D:/test/250326_DHT11/250326_DHT11.runs/synth_1/Top_DHT11.dcp
+  add_files -quiet C:/Users/user/Desktop/test/250326_DHT11/250326_DHT11.runs/synth_1/Top_DHT11.dcp
 OPTRACE "read constraints: implementation" START { }
-  read_xdc D:/test/250326_DHT11/250326_DHT11.srcs/constrs_1/imports/test/Basys-3-Master.xdc
+  read_xdc C:/Users/user/Desktop/test/250326_DHT11/250326_DHT11.srcs/constrs_1/imports/test/Basys-3-Master.xdc
 OPTRACE "read constraints: implementation" END { }
 OPTRACE "add files" END { }
 OPTRACE "link_design" START { }

@@ -2,12 +2,12 @@
 # Vivado v2020.2 (64-bit)
 # SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
 # IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
-# Start of session at: Wed Mar 26 14:25:07 2025
-# Process ID: 18004
-# Current directory: D:/test/250326_DHT11/250326_DHT11.runs/synth_1
+# Start of session at: Wed Mar 26 22:36:20 2025
+# Process ID: 10428
+# Current directory: C:/Users/user/Desktop/test/250326_DHT11/250326_DHT11.runs/synth_1
 # Command line: vivado.exe -log Top_DHT11.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source Top_DHT11.tcl
-# Log file: D:/test/250326_DHT11/250326_DHT11.runs/synth_1/Top_DHT11.vds
-# Journal file: D:/test/250326_DHT11/250326_DHT11.runs/synth_1\vivado.jou
+# Log file: C:/Users/user/Desktop/test/250326_DHT11/250326_DHT11.runs/synth_1/Top_DHT11.vds
+# Journal file: C:/Users/user/Desktop/test/250326_DHT11/250326_DHT11.runs/synth_1\vivado.jou
 #-----------------------------------------------------------
 source Top_DHT11.tcl -notrace
 Command: synth_design -top Top_DHT11 -part xc7a35tcpg236-1
@@ -17,94 +17,147 @@ INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a35t
 INFO: [Device 21-403] Loading part xc7a35tcpg236-1
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 8096
+INFO: [Synth 8-7075] Helper process launched with PID 18312
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:02 ; elapsed = 00:00:03 . Memory (MB): peak = 1105.980 ; gain = 0.000
+Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 1109.699 ; gain = 0.000
 ---------------------------------------------------------------------------------
-INFO: [Synth 8-6157] synthesizing module 'Top_DHT11' [D:/test/250326_DHT11/250326_DHT11.srcs/sources_1/new/Top_DHT11.v:4]
-INFO: [Synth 8-6157] synthesizing module 'tick_gen_1us' [D:/test/250326_DHT11/250326_DHT11.srcs/sources_1/new/Top_DHT11.v:140]
-	Parameter BAUD_COUNT bound to: 100 - type: integer 
-INFO: [Synth 8-6155] done synthesizing module 'tick_gen_1us' (1#1) [D:/test/250326_DHT11/250326_DHT11.srcs/sources_1/new/Top_DHT11.v:140]
-INFO: [Synth 8-6157] synthesizing module 'dnt11_controller' [D:/test/250326_DHT11/250326_DHT11.srcs/sources_1/new/Top_DHT11.v:32]
-	Parameter IDLE bound to: 2'b00 
-	Parameter START bound to: 2'b01 
-	Parameter WAIT bound to: 2'b10 
-	Parameter READ bound to: 2'b11 
-INFO: [Synth 8-6155] done synthesizing module 'dnt11_controller' (2#1) [D:/test/250326_DHT11/250326_DHT11.srcs/sources_1/new/Top_DHT11.v:32]
-INFO: [Synth 8-6155] done synthesizing module 'Top_DHT11' (3#1) [D:/test/250326_DHT11/250326_DHT11.srcs/sources_1/new/Top_DHT11.v:4]
+INFO: [Synth 8-6157] synthesizing module 'Top_DHT11' [C:/Users/user/Desktop/test/250326_DHT11/250326_DHT11.srcs/sources_1/new/Top_DHT11.v:3]
+INFO: [Synth 8-6157] synthesizing module 'tick_gen_1us' [C:/Users/user/Desktop/test/250326_DHT11/250326_DHT11.srcs/sources_1/new/Top_DHT11.v:178]
+	Parameter BAUD_COUNT bound to: 1000 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'tick_gen_1us' (1#1) [C:/Users/user/Desktop/test/250326_DHT11/250326_DHT11.srcs/sources_1/new/Top_DHT11.v:178]
+INFO: [Synth 8-6157] synthesizing module 'btn_debounce' [C:/Users/user/Desktop/test/250326_DHT11/250326_DHT11.srcs/sources_1/imports/250310_stopwatch_fsm/btn_debounce.v:3]
+WARNING: [Synth 8-567] referenced signal 'q_reg' should be on the sensitivity list [C:/Users/user/Desktop/test/250326_DHT11/250326_DHT11.srcs/sources_1/imports/250310_stopwatch_fsm/btn_debounce.v:46]
+INFO: [Synth 8-6155] done synthesizing module 'btn_debounce' (2#1) [C:/Users/user/Desktop/test/250326_DHT11/250326_DHT11.srcs/sources_1/imports/250310_stopwatch_fsm/btn_debounce.v:3]
+INFO: [Synth 8-6157] synthesizing module 'dnt11_controller' [C:/Users/user/Desktop/test/250326_DHT11/250326_DHT11.srcs/sources_1/new/Top_DHT11.v:47]
+	Parameter START_CNT bound to: 1800 - type: integer 
+	Parameter WAIT_CNT bound to: 3 - type: integer 
+	Parameter SYNC_CNT bound to: 8 - type: integer 
+	Parameter DATASYNC bound to: 5 - type: integer 
+	Parameter DATA_01 bound to: 4 - type: integer 
+	Parameter STOP_CNT bound to: 5 - type: integer 
+	Parameter TIME_OUT bound to: 2000 - type: integer 
+	Parameter IDLE bound to: 4'b0000 
+	Parameter START bound to: 4'b0001 
+	Parameter WAIT bound to: 4'b0010 
+	Parameter SYNC_HIGH bound to: 4'b0100 
+	Parameter SYNC_LOW bound to: 4'b1000 
+	Parameter DATA_DC bound to: 4'b0011 
+	Parameter STOP bound to: 4'b1100 
+	Parameter TIME bound to: 4'b0111 
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/user/Desktop/test/250326_DHT11/250326_DHT11.srcs/sources_1/new/Top_DHT11.v:103]
+INFO: [Synth 8-6155] done synthesizing module 'dnt11_controller' (3#1) [C:/Users/user/Desktop/test/250326_DHT11/250326_DHT11.srcs/sources_1/new/Top_DHT11.v:47]
+INFO: [Synth 8-6157] synthesizing module 'fnd_controller' [C:/Users/user/Desktop/test/250326_DHT11/250326_DHT11.srcs/sources_1/imports/250310_stopwatch_fsm/fnd_controller.v:3]
+INFO: [Synth 8-6157] synthesizing module 'clk_divider' [C:/Users/user/Desktop/test/250326_DHT11/250326_DHT11.srcs/sources_1/imports/250310_stopwatch_fsm/fnd_controller.v:63]
+	Parameter FCOUNT bound to: 200000 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'clk_divider' (4#1) [C:/Users/user/Desktop/test/250326_DHT11/250326_DHT11.srcs/sources_1/imports/250310_stopwatch_fsm/fnd_controller.v:63]
+INFO: [Synth 8-6157] synthesizing module 'counter_4' [C:/Users/user/Desktop/test/250326_DHT11/250326_DHT11.srcs/sources_1/imports/250310_stopwatch_fsm/fnd_controller.v:93]
+INFO: [Synth 8-6155] done synthesizing module 'counter_4' (5#1) [C:/Users/user/Desktop/test/250326_DHT11/250326_DHT11.srcs/sources_1/imports/250310_stopwatch_fsm/fnd_controller.v:93]
+INFO: [Synth 8-6157] synthesizing module 'docoder_2x4' [C:/Users/user/Desktop/test/250326_DHT11/250326_DHT11.srcs/sources_1/imports/250310_stopwatch_fsm/fnd_controller.v:112]
+INFO: [Synth 8-226] default block is never used [C:/Users/user/Desktop/test/250326_DHT11/250326_DHT11.srcs/sources_1/imports/250310_stopwatch_fsm/fnd_controller.v:119]
+INFO: [Synth 8-6155] done synthesizing module 'docoder_2x4' (6#1) [C:/Users/user/Desktop/test/250326_DHT11/250326_DHT11.srcs/sources_1/imports/250310_stopwatch_fsm/fnd_controller.v:112]
+INFO: [Synth 8-6157] synthesizing module 'digit_splitter' [C:/Users/user/Desktop/test/250326_DHT11/250326_DHT11.srcs/sources_1/imports/250310_stopwatch_fsm/fnd_controller.v:130]
+INFO: [Synth 8-6155] done synthesizing module 'digit_splitter' (7#1) [C:/Users/user/Desktop/test/250326_DHT11/250326_DHT11.srcs/sources_1/imports/250310_stopwatch_fsm/fnd_controller.v:130]
+WARNING: [Synth 8-689] width (16) of port connection 'bcd' does not match port width (14) of module 'digit_splitter' [C:/Users/user/Desktop/test/250326_DHT11/250326_DHT11.srcs/sources_1/imports/250310_stopwatch_fsm/fnd_controller.v:41]
+INFO: [Synth 8-6157] synthesizing module 'mux_4x1' [C:/Users/user/Desktop/test/250326_DHT11/250326_DHT11.srcs/sources_1/imports/250310_stopwatch_fsm/fnd_controller.v:144]
+INFO: [Synth 8-226] default block is never used [C:/Users/user/Desktop/test/250326_DHT11/250326_DHT11.srcs/sources_1/imports/250310_stopwatch_fsm/fnd_controller.v:157]
+INFO: [Synth 8-6155] done synthesizing module 'mux_4x1' (8#1) [C:/Users/user/Desktop/test/250326_DHT11/250326_DHT11.srcs/sources_1/imports/250310_stopwatch_fsm/fnd_controller.v:144]
+INFO: [Synth 8-6157] synthesizing module 'bcdtoseg' [C:/Users/user/Desktop/test/250326_DHT11/250326_DHT11.srcs/sources_1/imports/250310_stopwatch_fsm/fnd_controller.v:168]
+INFO: [Synth 8-226] default block is never used [C:/Users/user/Desktop/test/250326_DHT11/250326_DHT11.srcs/sources_1/imports/250310_stopwatch_fsm/fnd_controller.v:175]
+INFO: [Synth 8-6155] done synthesizing module 'bcdtoseg' (9#1) [C:/Users/user/Desktop/test/250326_DHT11/250326_DHT11.srcs/sources_1/imports/250310_stopwatch_fsm/fnd_controller.v:168]
+INFO: [Synth 8-6155] done synthesizing module 'fnd_controller' (10#1) [C:/Users/user/Desktop/test/250326_DHT11/250326_DHT11.srcs/sources_1/imports/250310_stopwatch_fsm/fnd_controller.v:3]
+INFO: [Synth 8-6155] done synthesizing module 'Top_DHT11' (11#1) [C:/Users/user/Desktop/test/250326_DHT11/250326_DHT11.srcs/sources_1/new/Top_DHT11.v:3]
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 1105.980 ; gain = 0.000
+Finished RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 1152.992 ; gain = 43.293
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 1105.980 ; gain = 0.000
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 1152.992 ; gain = 43.293
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 1105.980 ; gain = 0.000
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 1152.992 ; gain = 43.293
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1105.980 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.004 . Memory (MB): peak = 1152.992 ; gain = 0.000
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
 Initializing timing engine
-Parsing XDC File [D:/test/250326_DHT11/250326_DHT11.srcs/constrs_1/imports/test/Basys-3-Master.xdc]
-Finished Parsing XDC File [D:/test/250326_DHT11/250326_DHT11.srcs/constrs_1/imports/test/Basys-3-Master.xdc]
-INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [D:/test/250326_DHT11/250326_DHT11.srcs/constrs_1/imports/test/Basys-3-Master.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/Top_DHT11_propImpl.xdc].
+Parsing XDC File [C:/Users/user/Desktop/test/250326_DHT11/250326_DHT11.srcs/constrs_1/imports/test/Basys-3-Master.xdc]
+Finished Parsing XDC File [C:/Users/user/Desktop/test/250326_DHT11/250326_DHT11.srcs/constrs_1/imports/test/Basys-3-Master.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/Users/user/Desktop/test/250326_DHT11/250326_DHT11.srcs/constrs_1/imports/test/Basys-3-Master.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/Top_DHT11_propImpl.xdc].
 Resolution: To avoid this warning, move constraints listed in [.Xil/Top_DHT11_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1167.695 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1257.449 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1167.695 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 1257.449 ; gain = 0.000
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 1167.695 ; gain = 61.715
+Finished Constraint Validation : Time (s): cpu = 00:00:09 ; elapsed = 00:00:09 . Memory (MB): peak = 1257.449 ; gain = 147.750
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a35tcpg236-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 1167.695 ; gain = 61.715
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:09 ; elapsed = 00:00:09 . Memory (MB): peak = 1257.449 ; gain = 147.750
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 1167.695 ; gain = 61.715
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:09 ; elapsed = 00:00:09 . Memory (MB): peak = 1257.449 ; gain = 147.750
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'dnt11_controller'
 ---------------------------------------------------------------------------------------------------
                    State |                     New Encoding |                Previous Encoding 
 ---------------------------------------------------------------------------------------------------
-                    IDLE |                                0 |                               00
-                   START |                                1 |                               01
+                    IDLE |                              000 |                             0000
+                   START |                              001 |                             0001
+                    WAIT |                              010 |                             0010
+                SYNC_LOW |                              011 |                             1000
+               SYNC_HIGH |                              100 |                             0100
+                 DATA_DC |                              101 |                             0011
+                    STOP |                              110 |                             1100
 ---------------------------------------------------------------------------------------------------
 INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'sequential' in module 'dnt11_controller'
+WARNING: [Synth 8-327] inferring latch for variable 'humi_reg' [C:/Users/user/Desktop/test/250326_DHT11/250326_DHT11.srcs/sources_1/new/Top_DHT11.v:161]
+WARNING: [Synth 8-327] inferring latch for variable 'temp_reg' [C:/Users/user/Desktop/test/250326_DHT11/250326_DHT11.srcs/sources_1/new/Top_DHT11.v:162]
+WARNING: [Synth 8-327] inferring latch for variable 'data_reg_reg' [C:/Users/user/Desktop/test/250326_DHT11/250326_DHT11.srcs/sources_1/new/Top_DHT11.v:149]
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 1167.695 ; gain = 61.715
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 1257.449 ; gain = 147.750
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
 ---------------------------------------------------------------------------------
 Detailed RTL Component Info : 
 +---Adders : 
-	   2 Input    7 Bit       Adders := 1     
-	   2 Input    5 Bit       Adders := 1     
+	   2 Input   18 Bit       Adders := 1     
+	   2 Input   17 Bit       Adders := 1     
+	   2 Input   12 Bit       Adders := 1     
+	   2 Input   10 Bit       Adders := 1     
+	   2 Input    2 Bit       Adders := 1     
 +---Registers : 
-	               40 Bit    Registers := 1     
-	                7 Bit    Registers := 1     
-	                5 Bit    Registers := 1     
+	               18 Bit    Registers := 1     
+	               17 Bit    Registers := 1     
+	               12 Bit    Registers := 1     
+	               10 Bit    Registers := 1     
+	                8 Bit    Registers := 1     
+	                4 Bit    Registers := 1     
 	                2 Bit    Registers := 1     
-	                1 Bit    Registers := 4     
+	                1 Bit    Registers := 7     
 +---Muxes : 
-	   2 Input    5 Bit        Muxes := 2     
-	   4 Input    2 Bit        Muxes := 1     
-	   2 Input    2 Bit        Muxes := 1     
-	   2 Input    1 Bit        Muxes := 10    
+	   2 Input   18 Bit        Muxes := 1     
+	   2 Input   17 Bit        Muxes := 1     
+	   2 Input   12 Bit        Muxes := 3     
+	   7 Input   12 Bit        Muxes := 1     
+	   9 Input    4 Bit        Muxes := 1     
+	   4 Input    4 Bit        Muxes := 2     
+	   7 Input    3 Bit        Muxes := 1     
+	   2 Input    3 Bit        Muxes := 1     
+	   7 Input    1 Bit        Muxes := 8     
 ---------------------------------------------------------------------------------
 Finished RTL Component Statistics 
 ---------------------------------------------------------------------------------
@@ -121,25 +174,25 @@ Finished Part Resource Summary
 Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 1167.695 ; gain = 61.715
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 1257.449 ; gain = 147.750
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:12 ; elapsed = 00:00:13 . Memory (MB): peak = 1167.695 ; gain = 61.715
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:15 ; elapsed = 00:00:16 . Memory (MB): peak = 1257.449 ; gain = 147.750
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:12 ; elapsed = 00:00:13 . Memory (MB): peak = 1171.645 ; gain = 65.664
+Finished Timing Optimization : Time (s): cpu = 00:00:15 ; elapsed = 00:00:16 . Memory (MB): peak = 1266.484 ; gain = 156.785
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:12 ; elapsed = 00:00:13 . Memory (MB): peak = 1172.422 ; gain = 66.441
+Finished Technology Mapping : Time (s): cpu = 00:00:15 ; elapsed = 00:00:16 . Memory (MB): peak = 1267.277 ; gain = 157.578
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -157,37 +210,37 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:14 ; elapsed = 00:00:15 . Memory (MB): peak = 1179.242 ; gain = 73.262
+Finished IO Insertion : Time (s): cpu = 00:00:18 ; elapsed = 00:00:19 . Memory (MB): peak = 1274.098 ; gain = 164.398
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:14 ; elapsed = 00:00:15 . Memory (MB): peak = 1179.242 ; gain = 73.262
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:18 ; elapsed = 00:00:19 . Memory (MB): peak = 1274.098 ; gain = 164.398
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:14 ; elapsed = 00:00:15 . Memory (MB): peak = 1179.242 ; gain = 73.262
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:18 ; elapsed = 00:00:19 . Memory (MB): peak = 1274.098 ; gain = 164.398
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:14 ; elapsed = 00:00:15 . Memory (MB): peak = 1179.242 ; gain = 73.262
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:18 ; elapsed = 00:00:19 . Memory (MB): peak = 1274.098 ; gain = 164.398
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:14 ; elapsed = 00:00:15 . Memory (MB): peak = 1179.242 ; gain = 73.262
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:18 ; elapsed = 00:00:19 . Memory (MB): peak = 1274.098 ; gain = 164.398
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:14 ; elapsed = 00:00:15 . Memory (MB): peak = 1179.242 ; gain = 73.262
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:18 ; elapsed = 00:00:19 . Memory (MB): peak = 1274.098 ; gain = 164.398
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -200,40 +253,44 @@ Report BlackBoxes:
 +-+--------------+----------+
 
 Report Cell Usage: 
-+------+------+------+
-|      |Cell  |Count |
-+------+------+------+
-|1     |BUFG  |     1|
-|2     |LUT1  |     3|
-|3     |LUT2  |     4|
-|4     |LUT3  |     2|
-|5     |LUT4  |     1|
-|6     |LUT5  |     1|
-|7     |LUT6  |     4|
-|8     |FDCE  |    10|
-|9     |FDPE  |     2|
-|10    |IBUF  |     3|
-|11    |OBUF  |     4|
-|12    |OBUFT |     1|
-+------+------+------+
++------+-------+------+
+|      |Cell   |Count |
++------+-------+------+
+|1     |BUFG   |     1|
+|2     |CARRY4 |    12|
+|3     |LUT1   |     6|
+|4     |LUT2   |    10|
+|5     |LUT3   |     7|
+|6     |LUT4   |    24|
+|7     |LUT5   |    47|
+|8     |LUT6   |    23|
+|9     |FDCE   |    78|
+|10    |FDPE   |     2|
+|11    |IBUF   |     3|
+|12    |IOBUF  |     1|
+|13    |OBUF   |    16|
++------+-------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:14 ; elapsed = 00:00:15 . Memory (MB): peak = 1179.242 ; gain = 73.262
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:18 ; elapsed = 00:00:19 . Memory (MB): peak = 1274.098 ; gain = 164.398
 ---------------------------------------------------------------------------------
-Synthesis finished with 0 errors, 0 critical warnings and 0 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:09 ; elapsed = 00:00:13 . Memory (MB): peak = 1179.242 ; gain = 11.547
-Synthesis Optimization Complete : Time (s): cpu = 00:00:14 ; elapsed = 00:00:15 . Memory (MB): peak = 1179.242 ; gain = 73.262
+Synthesis finished with 0 errors, 0 critical warnings and 3 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:12 ; elapsed = 00:00:17 . Memory (MB): peak = 1274.098 ; gain = 59.941
+Synthesis Optimization Complete : Time (s): cpu = 00:00:18 ; elapsed = 00:00:19 . Memory (MB): peak = 1274.098 ; gain = 164.398
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1190.289 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1286.156 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 13 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1196.395 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1289.812 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
-No Unisim elements were transformed.
+  A total of 1 instances were transformed.
+  IOBUF => IOBUF (IBUF, OBUFT): 1 instance 
 
 INFO: [Common 17-83] Releasing license: Synthesis
-21 Infos, 0 Warnings, 0 Critical Warnings and 0 Errors encountered.
+43 Infos, 5 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:17 ; elapsed = 00:00:19 . Memory (MB): peak = 1196.395 ; gain = 90.414
-INFO: [Common 17-1381] The checkpoint 'D:/test/250326_DHT11/250326_DHT11.runs/synth_1/Top_DHT11.dcp' has been generated.
+synth_design: Time (s): cpu = 00:00:22 ; elapsed = 00:00:24 . Memory (MB): peak = 1289.812 ; gain = 180.113
+INFO: [Common 17-1381] The checkpoint 'C:/Users/user/Desktop/test/250326_DHT11/250326_DHT11.runs/synth_1/Top_DHT11.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file Top_DHT11_utilization_synth.rpt -pb Top_DHT11_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Wed Mar 26 14:25:29 2025...
+INFO: [Common 17-206] Exiting Vivado at Wed Mar 26 22:36:49 2025...

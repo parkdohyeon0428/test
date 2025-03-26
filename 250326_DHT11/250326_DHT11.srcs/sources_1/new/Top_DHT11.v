@@ -5,26 +5,42 @@ module Top_DHT11 (
     input reset,
     input btn_start,
     inout dht_io,
-    output [3:0] led
+    output [3:0] led,
+    output [7:0] seg,
+    output [3:0] seg_comm
     //output [3:0] fsm_state,
     //output dht_response
 );
-    wire w_tick_1us;
+    wire w_tick_1us, w_btn_start;
+    wire [15:0] w_humi, w_temp;
 
     tick_gen_1us U_TICk_GEN (
         .clk(clk),
         .rst(reset),
         .baud_tick(w_tick_1us)
     );
+    btn_debounce U_btn(
+        .clk(clk),
+        .reset(reset),
+        .i_btn(btn_start),
+        .o_btn(w_btn_start)
+    );
     dnt11_controller U_DNT_CTRL(
         .clk(clk),
         .reset(reset),
         .tick_gen_1us(w_tick_1us),
-        .btn_start(btn_start),
+        .btn_start(w_btn_start),
         .dht_io(dht_io),
         .led(led),
-        .humi(),
-        .temp()
+        .humi(w_humi),
+        .temp(w_temp)
+    );
+    fnd_controller U_FND(
+        .clk(clk),
+        .reset(reset),
+        .bcd(w_humi),
+        .seg(seg),
+        .seg_comm(seg_comm)
     );
 endmodule
 
@@ -48,7 +64,7 @@ module dnt11_controller (
     reg [$clog2(TIME_OUT-1):0] tick_count_reg, tick_count_next;
     reg io_oe_reg, io_oe_next;
     reg dht_io_reg, dht_io_next;
-    reg o_data_reg, o_data_next;
+    //reg o_data_reg, o_data_next;
     reg [39:0] data_reg, date_next;
     reg led_reg, led_next;
 
@@ -62,14 +78,14 @@ module dnt11_controller (
         if (reset) begin
             state <= 0;
             tick_count_reg <= 0;
-            o_data_reg <= 0;
+            //o_data_reg <= 0;
             io_oe_reg <= 0;
             led_reg <= 0;
             dht_io_reg <= 1;   // idle일때 high
         end else begin
             state <= next;
             tick_count_reg <= tick_count_next;
-            o_data_reg <= o_data_next;
+            //o_data_reg <= o_data_next;
             led_reg <= led_next;
             io_oe_reg <= io_oe_next;
             dht_io_reg <= dht_io_next;
@@ -80,7 +96,7 @@ module dnt11_controller (
     always @(*) begin
         next = state;
         tick_count_next = tick_count_reg;
-        o_data_next = o_data_reg;
+        //o_data_next = o_data_reg;
         led_next = led_reg;
         dht_io_next = dht_io_reg;
         io_oe_next = io_oe_reg;
@@ -142,13 +158,13 @@ module dnt11_controller (
             end
             STOP: begin
             if (tick_count_reg == 10) begin
-                humi = data_reg[39:24];  // 예시: 습도 (상위 16비트)
-                temp = data_reg[23:8];    // 예시: 온도 (하위 16비트)
-                next = IDLE;  // IDLE 상태로 돌아가서 대기
-                tick_count_next = 0;  // 타이머 리셋
+                humi = data_reg[39:24]; 
+                temp = data_reg[23:8];   
+                next = IDLE;  
+                tick_count_next = 0;  
             end else begin
                 tick_count_next = tick_count_reg + 1;
-                next = STOP;  // 계속 STOP 상태를 유지
+                next = STOP; 
             end
         end
         endcase
