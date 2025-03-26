@@ -1,6 +1,5 @@
 `timescale 1ns / 1ps
 
-
 module Top_DHT11 (
     input clk,
     input reset,
@@ -24,33 +23,33 @@ module Top_DHT11 (
         .btn_start(btn_start),
         .dht_io(dht_io),
         .led(led),
-        .cur_state(),
-        .data()
+        .humi(),
+        .temp()
     );
 endmodule
 
 module dnt11_controller (
     input clk,
     input reset,
-    input tick_gen_1us,
-    input btn_start,
-    inout dht_io,
-    output [3:0] led,
-    output [15:0] humi,
-    output [15:0] temp
+    input tick_gen_1us, // tick 발생기
+    input btn_start,    // 버튼 
+    inout dht_io,       // 센서 inout data
+    output [3:0] led,  
+    output reg [15:0] humi,  // 습도
+    output reg [15:0] temp   // 온도
 );
     parameter START_CNT = 1800, WAIT_CNT = 3, SYNC_CNT = 8, DATASYNC = 5, 
                 DATA_01 = 4, STOP_CNT = 5, TIME_OUT = 2000;
-    localparam IDLE = 4'b0000, START = 4'b0001, WAIT = 4'b0010, SYNC_HIGH = 4'b0100, DATA_SYNC = 4'b1001,
+    localparam IDLE = 4'b0000, START = 4'b0001, WAIT = 4'b0010, SYNC_HIGH = 4'b0100,
                SYNC_LOW = 4'b1000, DATA_DC = 4'b0011, STOP = 4'b1100, TIME = 4'b0111;
 
 
     reg [3:0] state, next;
-    reg [39:0] data_reg, data_next;
-    reg o_data_reg, o_data_next;
     reg [$clog2(TIME_OUT-1):0] tick_count_reg, tick_count_next;
     reg io_oe_reg, io_oe_next;
     reg dht_io_reg, dht_io_next;
+    reg o_data_reg, o_data_next;
+    reg [39:0] data_reg, date_next;
     reg led_reg, led_next;
 
     assign led  = {state, led_reg};
@@ -62,15 +61,15 @@ module dnt11_controller (
     always @(posedge clk, posedge reset) begin
         if (reset) begin
             state <= 0;
-            data_reg <= 0;
             tick_count_reg <= 0;
+            o_data_reg <= 0;
             io_oe_reg <= 0;
             led_reg <= 0;
             dht_io_reg <= 1;   // idle일때 high
         end else begin
             state <= next;
-            data_reg <= data_next;
             tick_count_reg <= tick_count_next;
+            o_data_reg <= o_data_next;
             led_reg <= led_next;
             io_oe_reg <= io_oe_next;
             dht_io_reg <= dht_io_next;
@@ -80,8 +79,8 @@ module dnt11_controller (
     //next logic
     always @(*) begin
         next = state;
-        data_next = data_reg;
         tick_count_next = tick_count_reg;
+        o_data_next = o_data_reg;
         led_next = led_reg;
         dht_io_next = dht_io_reg;
         io_oe_next = io_oe_reg;
@@ -116,30 +115,42 @@ module dnt11_controller (
                 end
             end
             SYNC_LOW: begin
+                io_oe_next = 1'b0;
                 //io oe change , output open, high Z
-                if (dht_io_next == 1) begin
+                if (dht_io == 1) begin
                     next = SYNC_HIGH;
                     end
             end
             SYNC_HIGH: begin
-                if (dht_io_next == 0) begin
-                    next = DATA_SYNC;
+                if (dht_io == 0) begin
+                    next = DATA_DC;
                     end
             end
-            DATA_SYNC: begin
-                if (dht_io_next == 1)
-                    next = DATA_DC
-            end
-            DATA_DC: begin         //판별별
-                io_oe_next = 1'b1;
-                if (data_reg < 40) begin
-                    o_data_next [data_next] = 1'b0;
-                    next = DATA_SYNC;
-                    data_next = {data_reg[39:1], 1'b0};
-                else
-                o_data_next [data_next] = 1'b1;
+            DATA_DC: begin 
+                if (dht_io == 1) begin       //판별별
+                    if (tick_gen_1us < 40) begin
+                        //o_data_next [data_next] = 1'b0;
+                        data_reg = {data_reg[39:1], 1'b0};
+                        next = STOP;
+                    end
+                    else begin
+                        data_reg = {data_reg[39:1], 1'b1};
+                        next = STOP;
+                        //o_data_next [data_next] = 1'b1;
+                    end
                 end
             end
+            STOP: begin
+            if (tick_count_reg == 10) begin
+                humi = data_reg[39:24];  // 예시: 습도 (상위 16비트)
+                temp = data_reg[23:8];    // 예시: 온도 (하위 16비트)
+                next = IDLE;  // IDLE 상태로 돌아가서 대기
+                tick_count_next = 0;  // 타이머 리셋
+            end else begin
+                tick_count_next = tick_count_reg + 1;
+                next = STOP;  // 계속 STOP 상태를 유지
+            end
+        end
         endcase
     end
 endmodule
@@ -154,7 +165,7 @@ module tick_gen_1us (
     output baud_tick  // Baud rate tick 신호 출력
 );
     //parameter BAUD_RATE = 9600;  // 전송 속도 (9600bps) //BAUD_RATE_19200 = 19200;
-    localparam BAUD_COUNT = 100;  // Baud rate 계산 (100MHz 기준)
+    localparam BAUD_COUNT = 1000;  // Baud rate 계산 (100MHz 기준)
     reg [$clog2(BAUD_COUNT)-1:0]
         count_reg, count_next;  // 카운터 레지스터
     reg tick_reg, tick_next;  // Tick 신호 레지스터
