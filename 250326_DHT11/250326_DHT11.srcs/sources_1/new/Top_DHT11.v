@@ -124,13 +124,13 @@ module dnt11_controller (
                     if (tick_count_reg == START_CNT) begin
                         next = WAIT;
                         tick_count_next = 0;
+                        dht_io_next = 1;
                     end else begin
                         tick_count_next = tick_count_reg + 1;
                     end
                 end
             end
             WAIT: begin
-                dht_io_next = 1;
                 if (tick_gen_1us == 1) begin
                     if (tick_count_reg == WAIT_CNT) begin
                         io_oe_next = 1'b0;
@@ -155,9 +155,10 @@ module dnt11_controller (
             end
             DATA_SYNC: begin
                 if (data_count_reg == 40) begin
+                    data_count_next = 0;
+                    io_oe_next = 1'b1;
                     next = STOP;
-                end
-                if (dht_io == 1) begin
+                end else if (dht_io == 1) begin
                     next = DATA_DC;
                 end
             end
@@ -167,39 +168,34 @@ module dnt11_controller (
                 end
                 if (dht_io == 0) begin
                     if (tick_count_reg < 45) begin
-                        //o_data_next [data_next] = 1'b0;
-                        data_next = {data_reg[38:0], 1'b0};
+                        data_next [39-data_count_next] = 1'b0;
+                        //data_next = {data_reg[38:0], 1'b0};
                         data_count_next = data_count_reg + 1;
                         tick_count_next = 0;
                         next = DATA_SYNC;
                     end else begin
-                        data_next = {data_reg[38:0], 1'b1};
+                        data_next [39-data_count_next] = 1'b1;
+                        //data_next = {data_reg[38:0], 1'b1};
                         data_count_next = data_count_reg + 1;
                         tick_count_next = 0;
                         next = DATA_SYNC;
-                        //o_data_next [data_next] = 1'b1;
                     end
                 end
             end
             STOP: begin
-                if (data_reg[39:32] + data_reg[31:24] + data_reg[23:16] + data_reg[15:8] != data_reg[7:0]) begin
+                io_oe_next = 1;
+                if (tick_gen_1us == 1) begin
+                    tick_count_next = tick_count_reg + 1;
+                end
+                if (tick_count_next == 50) begin
+                    if (data_reg[39:32] + data_reg[31:24] + data_reg[23:16] + data_reg[15:8] != data_reg[7:0]) begin
                     led_next = 1;
+                    end
                 end
                     humi_next = data_reg[39:32];
                     temp_next = data_reg[23:16];
+                    tick_count_next = 0;
                     next = IDLE;
-
-            end
-            STOP: begin
-            if (tick_count_reg == 10) begin
-                humi = data_reg[39:24]; 
-                temp = data_reg[23:8];   
-                next = IDLE;  
-                tick_count_next = 0;  
-            end else begin
-                tick_count_next = tick_count_reg + 1;
-                next = STOP; 
-            end
         end
         endcase
     end
