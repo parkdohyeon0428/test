@@ -1,8 +1,13 @@
 Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------
 | Tool Version              : Vivado v.2020.2 (win64) Build 3064766 Wed Nov 18 09:12:45 MST 2020
+<<<<<<< HEAD
+| Date                      : Thu Mar 27 15:24:01 2025
+| Host                      : DESKTOP-7CFQ9ND running 64-bit major release  (build 9200)
+=======
 | Date                      : Wed Mar 26 22:37:21 2025
 | Host                      : DESKTOP-5KDKKP9 running 64-bit major release  (build 9200)
+>>>>>>> 2654ea6fb5fde984a5fccdd9b31d0c543b7a99fb
 | Command                   : report_io -file Top_DHT11_io_placed.rpt
 | Design                    : Top_DHT11
 | Device                    : xc7a35t
@@ -25,7 +30,11 @@ Table of Contents
 +---------------+
 | Total User IO |
 +---------------+
+<<<<<<< HEAD
+|            21 |
+=======
 |            20 |
+>>>>>>> 2654ea6fb5fde984a5fccdd9b31d0c543b7a99fb
 +---------------+
 
 
@@ -271,7 +280,7 @@ Table of Contents
 | W15        |             | High Range | IO_L21N_T3_DQS_A06_D22_14    | User IO       |             |      14 |            |      |                     |                      |         |            |           |          |      |                  |              |                   |              |
 | W16        |             | High Range | IO_L20P_T3_A08_D24_14        | User IO       |             |      14 |            |      |                     |                      |         |            |           |          |      |                  |              |                   |              |
 | W17        |             | High Range | IO_L20N_T3_A07_D23_14        | User IO       |             |      14 |            |      |                     |                      |         |            |           |          |      |                  |              |                   |              |
-| W18        |             | High Range | IO_L16P_T2_CSI_B_14          | User IO       |             |      14 |            |      |                     |                      |         |            |           |          |      |                  |              |                   |              |
+| W18        | led[4]      | High Range | IO_L16P_T2_CSI_B_14          | OUTPUT        | LVCMOS33    |      14 |         12 | SLOW |                     |            FP_VTT_50 |         | FIXED      |           |          |      | NONE             |              |                   |              |
 | W19        | reset       | High Range | IO_L16N_T2_A15_D31_14        | INPUT         | LVCMOS33    |      14 |            |      |                     |                 NONE |         | FIXED      |           |          |      | NONE             |              |                   |              |
 +------------+-------------+------------+------------------------------+---------------+-------------+---------+------------+------+---------------------+----------------------+---------+------------+-----------+----------+------+------------------+--------------+-------------------+--------------+
 * Default value

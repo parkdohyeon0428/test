@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< HEAD
+<GenRun Id="impl_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1743056590">
+=======
 <GenRun Id="impl_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1742996178">
+>>>>>>> 2654ea6fb5fde984a5fccdd9b31d0c543b7a99fb
   <File Type="BITSTR-BMM" Name="Top_DHT11_bd.bmm"/>
   <File Type="OPT-METHODOLOGY-DRC" Name="Top_DHT11_methodology_drc_opted.rpt"/>
   <File Type="INIT-TIMING" Name="Top_DHT11_timing_summary_init.rpt"/>
@@ -80,16 +84,25 @@
     <File Path="$PSRCDIR/sources_1/imports/250310_stopwatch_fsm/btn_debounce.v">
       <FileInfo>
         <Attr Name="ImportPath" Val="$PPRDIR/../250325_HC _ SR04/250325_HC _ SR04.srcs/sources_1/imports/250310_stopwatch_fsm/btn_debounce.v"/>
+<<<<<<< HEAD
+        <Attr Name="ImportTime" Val="1741328443"/>
+=======
         <Attr Name="ImportTime" Val="1742897588"/>
+>>>>>>> 2654ea6fb5fde984a5fccdd9b31d0c543b7a99fb
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
+<<<<<<< HEAD
+    <File Path="$PSRCDIR/sources_1/new/fnd_ctrl.v">
+      <FileInfo>
+=======
     <File Path="$PSRCDIR/sources_1/imports/250310_stopwatch_fsm/fnd_controller.v">
       <FileInfo>
         <Attr Name="ImportPath" Val="$PPRDIR/../250325_HC _ SR04/250325_HC _ SR04.srcs/sources_1/imports/250310_stopwatch_fsm/fnd_controller.v"/>
         <Attr Name="ImportTime" Val="1742897588"/>
+>>>>>>> 2654ea6fb5fde984a5fccdd9b31d0c543b7a99fb
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
         <Attr Name="UsedIn" Val="simulation"/>

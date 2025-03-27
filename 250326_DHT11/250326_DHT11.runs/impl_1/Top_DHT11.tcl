@@ -119,6 +119,8 @@ set_msg_config -id {Synth 8-256} -limit 10000
 set_msg_config -id {Synth 8-638} -limit 10000
 
 OPTRACE "impl_1" START { ROLLUP_1 }
+<<<<<<< HEAD
+=======
 OPTRACE "Phase: Init Design" START { ROLLUP_AUTO }
 start_step init_design
 set ACTIVE_STEP init_design
@@ -299,12 +301,19 @@ if {$rc} {
 
 OPTRACE "route_design misc" END { }
 OPTRACE "Phase: Route Design" END { }
+>>>>>>> 2654ea6fb5fde984a5fccdd9b31d0c543b7a99fb
 OPTRACE "Phase: Write Bitstream" START { ROLLUP_AUTO }
 OPTRACE "write_bitstream setup" START { }
 start_step write_bitstream
 set ACTIVE_STEP write_bitstream
 set rc [catch {
   create_msg_db write_bitstream.pb
+  set_param chipscope.maxJobs 4
+  set_param synth.incrementalSynthesisCache C:/Users/kccistc/AppData/Roaming/Xilinx/Vivado/.Xil/Vivado-9672-DESKTOP-7CFQ9ND/incrSyn
+  set_param xicom.use_bs_reader 1
+  open_checkpoint Top_DHT11_routed.dcp
+  set_property webtalk.parent_dir D:/test/250326_DHT11/250326_DHT11.cache/wt [current_project]
+set_property TOP Top_DHT11 [current_fileset]
 OPTRACE "read constraints: write_bitstream" START { }
 OPTRACE "read constraints: write_bitstream" END { }
   catch { write_mem_info -force -no_partial_mmi Top_DHT11.mmi }

@@ -70,8 +70,14 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
+<<<<<<< HEAD
+set_param chipscope.maxJobs 4
+set_param synth.incrementalSynthesisCache C:/Users/kccistc/AppData/Roaming/Xilinx/Vivado/.Xil/Vivado-9672-DESKTOP-7CFQ9ND/incrSyn
+set_param xicom.use_bs_reader 1
+=======
 set_param chipscope.maxJobs 2
 set_param synth.incrementalSynthesisCache C:/Users/user/AppData/Roaming/Xilinx/Vivado/.Xil/Vivado-9044-DESKTOP-5KDKKP9/incrSyn
+>>>>>>> 2654ea6fb5fde984a5fccdd9b31d0c543b7a99fb
 set_msg_config -id {Synth 8-256} -limit 10000
 set_msg_config -id {Synth 8-638} -limit 10000
 OPTRACE "Creating in-memory project" START { }
@@ -91,9 +97,15 @@ set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
 read_verilog -library xil_defaultlib {
+<<<<<<< HEAD
+  D:/test/250326_DHT11/250326_DHT11.srcs/sources_1/imports/250310_stopwatch_fsm/btn_debounce.v
+  D:/test/250326_DHT11/250326_DHT11.srcs/sources_1/new/fnd_ctrl.v
+  D:/test/250326_DHT11/250326_DHT11.srcs/sources_1/new/Top_DHT11.v
+=======
   C:/Users/user/Desktop/test/250326_DHT11/250326_DHT11.srcs/sources_1/imports/250310_stopwatch_fsm/btn_debounce.v
   C:/Users/user/Desktop/test/250326_DHT11/250326_DHT11.srcs/sources_1/imports/250310_stopwatch_fsm/fnd_controller.v
   C:/Users/user/Desktop/test/250326_DHT11/250326_DHT11.srcs/sources_1/new/Top_DHT11.v
+>>>>>>> 2654ea6fb5fde984a5fccdd9b31d0c543b7a99fb
 }
 OPTRACE "Adding files" END { }
 # Mark all dcp files as not used in implementation to prevent them from being

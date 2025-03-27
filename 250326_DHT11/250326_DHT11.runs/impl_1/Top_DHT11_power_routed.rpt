@@ -1,8 +1,13 @@
 Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2020.2 (win64) Build 3064766 Wed Nov 18 09:12:45 MST 2020
+<<<<<<< HEAD
+| Date             : Thu Mar 27 15:24:13 2025
+| Host             : DESKTOP-7CFQ9ND running 64-bit major release  (build 9200)
+=======
 | Date             : Wed Mar 26 22:37:36 2025
 | Host             : DESKTOP-5KDKKP9 running 64-bit major release  (build 9200)
+>>>>>>> 2654ea6fb5fde984a5fccdd9b31d0c543b7a99fb
 | Command          : report_power -file Top_DHT11_power_routed.rpt -pb Top_DHT11_power_summary_routed.pb -rpx Top_DHT11_power_routed.rpx
 | Design           : Top_DHT11
 | Device           : xc7a35tcpg236-1
@@ -30,14 +35,21 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
+<<<<<<< HEAD
+| Total On-Chip Power (W)  | 0.107        |
+| Design Power Budget (W)  | Unspecified* |
+| Power Budget Margin (W)  | NA           |
+| Dynamic (W)              | 0.035        |
+=======
 | Total On-Chip Power (W)  | 0.089        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
 | Dynamic (W)              | 0.017        |
+>>>>>>> 2654ea6fb5fde984a5fccdd9b31d0c543b7a99fb
 | Device Static (W)        | 0.072        |
 | Effective TJA (C/W)      | 5.0          |
-| Max Ambient (C)          | 84.6         |
-| Junction Temperature (C) | 25.4         |
+| Max Ambient (C)          | 84.5         |
+| Junction Temperature (C) | 25.5         |
 | Confidence Level         | Medium       |
 | Setting File             | ---          |
 | Simulation Activity File | ---          |
@@ -53,6 +65,17 @@ Table of Contents
 | On-Chip        | Power (W) | Used     | Available | Utilization (%) |
 +----------------+-----------+----------+-----------+-----------------+
 | Clocks         |     0.001 |        3 |       --- |             --- |
+<<<<<<< HEAD
+| Slice Logic    |    <0.001 |      348 |       --- |             --- |
+|   LUT as Logic |    <0.001 |      132 |     20800 |            0.63 |
+|   Register     |    <0.001 |      143 |     41600 |            0.34 |
+|   CARRY4       |    <0.001 |       15 |      8150 |            0.18 |
+|   Others       |     0.000 |        9 |       --- |             --- |
+| Signals        |     0.002 |      311 |       --- |             --- |
+| I/O            |     0.032 |       21 |       106 |           19.81 |
+| Static Power   |     0.072 |          |           |                 |
+| Total          |     0.107 |          |           |                 |
+=======
 | Slice Logic    |    <0.001 |      217 |       --- |             --- |
 |   LUT as Logic |    <0.001 |       93 |     20800 |            0.45 |
 |   Register     |    <0.001 |       80 |     41600 |            0.19 |
@@ -62,6 +85,7 @@ Table of Contents
 | I/O            |     0.015 |       20 |       106 |           18.87 |
 | Static Power   |     0.072 |          |           |                 |
 | Total          |     0.089 |          |           |                 |
+>>>>>>> 2654ea6fb5fde984a5fccdd9b31d0c543b7a99fb
 +----------------+-----------+----------+-----------+-----------------+
 
 
@@ -71,9 +95,15 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) | Powerup (A) | Budget (A)  | Margin (A) |
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
+<<<<<<< HEAD
+| Vccint    |       1.000 |     0.013 |       0.004 |      0.010 |       NA    | Unspecified | NA         |
+| Vccaux    |       1.800 |     0.014 |       0.001 |      0.013 |       NA    | Unspecified | NA         |
+| Vcco33    |       3.300 |     0.010 |       0.009 |      0.001 |       NA    | Unspecified | NA         |
+=======
 | Vccint    |       1.000 |     0.012 |       0.003 |      0.010 |       NA    | Unspecified | NA         |
 | Vccaux    |       1.800 |     0.013 |       0.001 |      0.013 |       NA    | Unspecified | NA         |
 | Vcco33    |       3.300 |     0.005 |       0.004 |      0.001 |       NA    | Unspecified | NA         |
+>>>>>>> 2654ea6fb5fde984a5fccdd9b31d0c543b7a99fb
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco18    |       1.800 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco15    |       1.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
@@ -137,10 +167,19 @@ Table of Contents
 3.1 By Hierarchy
 ----------------
 
+<<<<<<< HEAD
++--------------+-----------+
+| Name         | Power (W) |
++--------------+-----------+
+| Top_DHT11    |     0.035 |
+|   U_DNT_CTRL |     0.002 |
++--------------+-----------+
+=======
 +-----------+-----------+
 | Name      | Power (W) |
 +-----------+-----------+
 | Top_DHT11 |     0.017 |
 +-----------+-----------+
+>>>>>>> 2654ea6fb5fde984a5fccdd9b31d0c543b7a99fb
 
 

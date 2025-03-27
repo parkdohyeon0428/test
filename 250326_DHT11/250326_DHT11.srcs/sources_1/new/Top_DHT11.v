@@ -5,27 +5,44 @@ module Top_DHT11 (
     input reset,
     input btn_start,
     inout dht_io,
+<<<<<<< HEAD
+    output [4:0] led,
+=======
     output [3:0] led,
+>>>>>>> 2654ea6fb5fde984a5fccdd9b31d0c543b7a99fb
     output [7:0] seg,
     output [3:0] seg_comm
     //output [3:0] fsm_state,
     //output dht_response
 );
     wire w_tick_1us, w_btn_start;
+<<<<<<< HEAD
+    wire [7:0] w_humi, w_temp;
+=======
     wire [15:0] w_humi, w_temp;
+>>>>>>> 2654ea6fb5fde984a5fccdd9b31d0c543b7a99fb
 
     tick_gen_1us U_TICk_GEN (
         .clk(clk),
         .rst(reset),
         .baud_tick(w_tick_1us)
     );
+<<<<<<< HEAD
+    btn_debounce U_btn (
+        .clk  (clk),
+=======
     btn_debounce U_btn(
         .clk(clk),
+>>>>>>> 2654ea6fb5fde984a5fccdd9b31d0c543b7a99fb
         .reset(reset),
         .i_btn(btn_start),
         .o_btn(w_btn_start)
     );
+<<<<<<< HEAD
+    dnt11_controller U_DNT_CTRL (
+=======
     dnt11_controller U_DNT_CTRL(
+>>>>>>> 2654ea6fb5fde984a5fccdd9b31d0c543b7a99fb
         .clk(clk),
         .reset(reset),
         .tick_gen_1us(w_tick_1us),
@@ -35,16 +52,48 @@ module Top_DHT11 (
         .humi(w_humi),
         .temp(w_temp)
     );
+<<<<<<< HEAD
+    fnd_controller U_FND (
+        .clk(clk),
+        .reset(reset),
+        .bcd({w_humi, w_temp}),
+=======
     fnd_controller U_FND(
         .clk(clk),
         .reset(reset),
         .bcd(w_humi),
+>>>>>>> 2654ea6fb5fde984a5fccdd9b31d0c543b7a99fb
         .seg(seg),
         .seg_comm(seg_comm)
     );
 endmodule
 
 module dnt11_controller (
+<<<<<<< HEAD
+    input            clk,
+    input            reset,
+    input            tick_gen_1us,  // tick 발생기
+    input            btn_start,     // 버튼 
+    inout            dht_io,        // 센서 inout data
+    output     [4:0] led,
+    output reg [7:0] humi,          // 습도
+    output reg [7:0] temp           // 온도
+);
+    parameter START_CNT = 18000, WAIT_CNT = 30; //SYNC_CNT = 8, //DATASYNC = 5, 
+                //DATA_01 = 4, S//TOP_CNT = 5, //TIME_OUT = 2000;
+    localparam IDLE = 4'b0000, START = 4'b0001, WAIT = 4'b0010, SYNC_HIGH = 4'b1000, DATA_SYNC = 4'b0011,
+               SYNC_LOW = 4'b0100, DATA_DC = 4'b0111, STOP = 4'b1111;
+
+
+    reg [3:0] state, next;
+    reg [14:0]
+        tick_count_reg, tick_count_next;  // tick 카운터터
+    reg io_oe_reg, io_oe_next;  // 입출력 모드 변환
+    reg dht_io_reg, dht_io_next;  // 출력 모드 tick
+    reg [5:0] data_count_reg, data_count_next;
+    reg [39:0] data_reg, data_next;  // 40비트 데이터터
+    reg [7:0] humi_next, temp_next;
+=======
     input clk,
     input reset,
     input tick_gen_1us, // tick 발생기
@@ -66,29 +115,44 @@ module dnt11_controller (
     reg dht_io_reg, dht_io_next;
     //reg o_data_reg, o_data_next;
     reg [39:0] data_reg, date_next;
+>>>>>>> 2654ea6fb5fde984a5fccdd9b31d0c543b7a99fb
     reg led_reg, led_next;
 
-    assign led  = {state, led_reg};
-    
+    assign led = {state, led_reg};
+
     // out 3state on/off
-    assign dht_io = (io_oe_reg) ? dht_io_reg:1'bz;
+    assign dht_io = (io_oe_reg) ? dht_io_reg : 1'bz;
 
 
     always @(posedge clk, posedge reset) begin
         if (reset) begin
             state <= 0;
             tick_count_reg <= 0;
+<<<<<<< HEAD
+            data_reg <= 0;
+            data_count_reg <= 0;
+=======
             //o_data_reg <= 0;
+>>>>>>> 2654ea6fb5fde984a5fccdd9b31d0c543b7a99fb
             io_oe_reg <= 0;
+            humi <= 0;
+            temp <= 0;
             led_reg <= 0;
-            dht_io_reg <= 1;   // idle일때 high
+            dht_io_reg <= 1;  // idle일때 high
         end else begin
             state <= next;
             tick_count_reg <= tick_count_next;
+<<<<<<< HEAD
+            data_reg <= data_next;
+            data_count_reg <= data_count_next;
+=======
             //o_data_reg <= o_data_next;
+>>>>>>> 2654ea6fb5fde984a5fccdd9b31d0c543b7a99fb
             led_reg <= led_next;
             io_oe_reg <= io_oe_next;
             dht_io_reg <= dht_io_next;
+            humi <= humi_next;
+            temp <= temp_next;
         end
     end
 
@@ -96,17 +160,23 @@ module dnt11_controller (
     always @(*) begin
         next = state;
         tick_count_next = tick_count_reg;
+<<<<<<< HEAD
+        data_next = data_reg;
+        data_count_next = data_count_reg;
+=======
         //o_data_next = o_data_reg;
+>>>>>>> 2654ea6fb5fde984a5fccdd9b31d0c543b7a99fb
         led_next = led_reg;
         dht_io_next = dht_io_reg;
         io_oe_next = io_oe_reg;
+        humi_next = humi;
+        temp_next = temp;
         case (state)
             IDLE: begin
                 dht_io_next = 1'b1;
-                io_oe_next = 1'b1;
-                if (btn_start == 1) 
-                    next = START;
-                    tick_count_next = 0;
+                io_oe_next  = 1'b1;
+                if (btn_start == 1) next = START;
+                tick_count_next = 0;
             end
             START: begin
                 dht_io_next = 0;
@@ -123,22 +193,31 @@ module dnt11_controller (
                 dht_io_next = 1;
                 if (tick_gen_1us == 1) begin
                     if (tick_count_reg == WAIT_CNT) begin
-                        next = SYNC_LOW;
+                        io_oe_next = 1'b0;
                         tick_count_next = 0;
+                        next = SYNC_LOW;
                     end else begin
                         tick_count_next = tick_count_reg + 1;
                     end
-                end
+                end 
             end
             SYNC_LOW: begin
                 io_oe_next = 1'b0;
                 //io oe change , output open, high Z
                 if (dht_io == 1) begin
                     next = SYNC_HIGH;
-                    end
+                end
             end
             SYNC_HIGH: begin
                 if (dht_io == 0) begin
+<<<<<<< HEAD
+                    next = DATA_SYNC;
+                end
+            end
+            DATA_SYNC: begin
+                if (data_count_reg == 40) begin
+                    next = STOP;
+=======
                     next = DATA_DC;
                     end
             end
@@ -154,7 +233,40 @@ module dnt11_controller (
                         next = STOP;
                         //o_data_next [data_next] = 1'b1;
                     end
+>>>>>>> 2654ea6fb5fde984a5fccdd9b31d0c543b7a99fb
                 end
+                if (dht_io == 1) begin
+                    next = DATA_DC;
+                end
+            end
+            DATA_DC: begin
+                if (tick_gen_1us == 1) begin
+                    tick_count_next = tick_count_reg + 1;
+                end
+                if (dht_io == 0) begin
+                    if (tick_count_reg < 45) begin
+                        //o_data_next [data_next] = 1'b0;
+                        data_next = {data_reg[38:0], 1'b0};
+                        data_count_next = data_count_reg + 1;
+                        tick_count_next = 0;
+                        next = DATA_SYNC;
+                    end else begin
+                        data_next = {data_reg[38:0], 1'b1};
+                        data_count_next = data_count_reg + 1;
+                        tick_count_next = 0;
+                        next = DATA_SYNC;
+                        //o_data_next [data_next] = 1'b1;
+                    end
+                end
+            end
+            STOP: begin
+                if (data_reg[39:32] + data_reg[31:24] + data_reg[23:16] + data_reg[15:8] != data_reg[7:0]) begin
+                    led_next = 1;
+                end
+                    humi_next = data_reg[39:32];
+                    temp_next = data_reg[23:16];
+                    next = IDLE;
+
             end
             STOP: begin
             if (tick_count_reg == 10) begin

@@ -1,7 +1,12 @@
 <?xml version="1.0"?>
 <Runs Version="1" Minor="0">
+<<<<<<< HEAD
+	<Run Id="synth_1" LaunchDir="D:/test/250326_DHT11/250326_DHT11.runs/synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="impl_1" LaunchDir="D:/test/250326_DHT11/250326_DHT11.runs/impl_1" FlowId="Vivado_Implementation" FromStepId="init_design" ToStepId="write_bitstream">
+=======
 	<Run Id="synth_1" LaunchDir="C:/Users/user/Desktop/test/250326_DHT11/250326_DHT11.runs/synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
 	<Run Id="impl_1" LaunchDir="C:/Users/user/Desktop/test/250326_DHT11/250326_DHT11.runs/impl_1" FlowId="Vivado_Implementation" FromStepId="init_design" ToStepId="write_bitstream">
+>>>>>>> 2654ea6fb5fde984a5fccdd9b31d0c543b7a99fb
 		<Parent Id="synth_1"/>
 	</Run>
 	<Parameters>
