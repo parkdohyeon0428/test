@@ -27,10 +27,10 @@ module top_sensor (
     ); */
 
     IOBUF uIO (
-        .I (data_out),
-        .O (data_in),
+        .I (data_out),  // 출력 데이터가 입력으로
+        .O (data_in),   // 입력 데이터로 감
         .IO(data),
-        .T (data_t)
+        .T (data_t)      // 입출력 모드 전환 (여기선 1이 입력모드 0이 출력모드)
     );
 
     sensor_cu u_sen (
@@ -88,17 +88,17 @@ endmodule
 module sensor_cu (
     input clk,
     input reset,
-    input tick,
-    input start_trigger,
-    input data_in,
-    output data_out,
-    output data_t,
-    output start_tick,
-    output [39:0] o_data,
-    output finish_tick,
-    output led,
-    output [3:0] o_state,
-    output reg [5:0] data_count
+    input tick,   // 1us tick
+    input start_trigger,  // btn_start
+    input data_in,    // 센서 입력 데이터
+    output data_out,  // 센서 출력 데이터
+    output data_t,    // 데이터 방향 제어 (입력 or 출력 모드)
+    output start_tick,   // 미상
+    output [39:0] o_data,  // 수집된 센서 데이터
+    output finish_tick,   //데이터 수집 완료 신호
+    output led,            
+    output [3:0] o_state,    // 현재 상태 표시
+    output reg [5:0] data_count  // 데이터 카운트   
 
 );
 
@@ -106,7 +106,7 @@ module sensor_cu (
     parameter SYNC = 4'b0101, DATA = 4'b0110, PAR = 4'b0111, WAIT4 = 4'b1110,DATA2 = 4'b1111;
     reg [3:0] state, next;
     reg [15:0] tick_count, tick_count_next;
-    reg data_reg, data_next;
+    reg data_reg, data_next;    //출력 데이터
     reg [39:0] o_data_reg, o_data_next;
     reg start_tick_reg, start_tick_next;
     reg finish_tick_reg, finish_tick_next;
@@ -189,10 +189,10 @@ module sensor_cu (
                 if (tick_count_next == 15) begin
                     next = WAIT2;
                     tick_count_next = 0;
-                    io_state_next = 0;
+                    io_state_next = 0;  //입력 모드 전환
                 end
             end
-            WAIT2: begin
+            WAIT2: begin                   // sync low
                 if (tick == 1) begin
                     tick_count_next = tick_count + 1;
                     if (tick_count_next == 50) begin
@@ -204,7 +204,7 @@ module sensor_cu (
 
                 end
             end
-            WAIT3: begin
+            WAIT3: begin                 // sync high
                 if (data_in == 0) begin
                     next = SYNC;
                 end
@@ -250,19 +250,19 @@ module sensor_cu (
                     tick_count_next = 0;
                 end
             end
-            PAR: begin
-                io_state_next = 1;
+            PAR: begin                    //STOP
+                io_state_next = 1;       // 다시 출력모드
                 if (tick == 1) begin
                     tick_count_next = tick_count + 1;
                 end
                 if (tick_count_next == 50) begin
-                    data_next = 1;
+                    data_next = 1;    //???
                     if( o_data_reg[39:32] + o_data_reg[31:24] + o_data_reg[23:16] +o_data_reg[15:8] != o_data_reg[7:0])
                     begin
                         led_next = 1;
                     end else begin
                         led_next = 0;
-                        finish_tick_next = 1;
+                        finish_tick_next = 1;     //uart 로 감
                     end
                     tick_count_next = 0;
                     next = IDLE;

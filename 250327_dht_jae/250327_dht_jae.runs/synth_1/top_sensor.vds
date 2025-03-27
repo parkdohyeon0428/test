@@ -1,0 +1,450 @@
+#-----------------------------------------------------------
+# Vivado v2020.2 (64-bit)
+# SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
+# IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+# Start of session at: Thu Mar 27 22:30:03 2025
+# Process ID: 7772
+# Current directory: C:/Users/user/Desktop/test/250327_dht_jae/250327_dht_jae.runs/synth_1
+# Command line: vivado.exe -log top_sensor.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source top_sensor.tcl
+# Log file: C:/Users/user/Desktop/test/250327_dht_jae/250327_dht_jae.runs/synth_1/top_sensor.vds
+# Journal file: C:/Users/user/Desktop/test/250327_dht_jae/250327_dht_jae.runs/synth_1\vivado.jou
+#-----------------------------------------------------------
+source top_sensor.tcl -notrace
+Command: synth_design -top top_sensor -part xc7a35tcpg236-1
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7a35t'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a35t'
+INFO: [Device 21-403] Loading part xc7a35tcpg236-1
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 13776
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 1100.234 ; gain = 11.027
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6157] synthesizing module 'top_sensor' [C:/Users/user/Desktop/test/250327_dht_jae/250327_dht_jae.srcs/sources_1/imports/sources_1/new/top_sensor.v:3]
+INFO: [Synth 8-6157] synthesizing module 'IOBUF' [C:/Xilinx/Vivado/2020.2/scripts/rt/data/unisim_comp.v:36242]
+	Parameter DRIVE bound to: 12 - type: integer 
+	Parameter IBUF_LOW_PWR bound to: TRUE - type: string 
+	Parameter IOSTANDARD bound to: DEFAULT - type: string 
+	Parameter SLEW bound to: SLOW - type: string 
+INFO: [Synth 8-6155] done synthesizing module 'IOBUF' (1#1) [C:/Xilinx/Vivado/2020.2/scripts/rt/data/unisim_comp.v:36242]
+INFO: [Synth 8-6157] synthesizing module 'sensor_cu' [C:/Users/user/Desktop/test/250327_dht_jae/250327_dht_jae.srcs/sources_1/imports/sources_1/new/top_sensor.v:88]
+	Parameter IDLE bound to: 4'b0000 
+	Parameter START bound to: 4'b0001 
+	Parameter WAIT bound to: 4'b0010 
+	Parameter WAIT2 bound to: 4'b0011 
+	Parameter WAIT3 bound to: 4'b0100 
+	Parameter SYNC bound to: 4'b0101 
+	Parameter DATA bound to: 4'b0110 
+	Parameter PAR bound to: 4'b0111 
+	Parameter WAIT4 bound to: 4'b1110 
+	Parameter DATA2 bound to: 4'b1111 
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/user/Desktop/test/250327_dht_jae/250327_dht_jae.srcs/sources_1/imports/sources_1/new/top_sensor.v:164]
+INFO: [Synth 8-6155] done synthesizing module 'sensor_cu' (2#1) [C:/Users/user/Desktop/test/250327_dht_jae/250327_dht_jae.srcs/sources_1/imports/sources_1/new/top_sensor.v:88]
+WARNING: [Synth 8-689] width (6) of port connection 'o_state' does not match port width (4) of module 'sensor_cu' [C:/Users/user/Desktop/test/250327_dht_jae/250327_dht_jae.srcs/sources_1/imports/sources_1/new/top_sensor.v:44]
+WARNING: [Synth 8-7071] port 'start_tick' of module 'sensor_cu' is unconnected for instance 'u_sen' [C:/Users/user/Desktop/test/250327_dht_jae/250327_dht_jae.srcs/sources_1/imports/sources_1/new/top_sensor.v:36]
+WARNING: [Synth 8-7023] instance 'u_sen' of module 'sensor_cu' has 13 connections declared, but only 12 given [C:/Users/user/Desktop/test/250327_dht_jae/250327_dht_jae.srcs/sources_1/imports/sources_1/new/top_sensor.v:36]
+INFO: [Synth 8-6157] synthesizing module 'tick_1us' [C:/Users/user/Desktop/test/250327_dht_jae/250327_dht_jae.srcs/sources_1/imports/sources_1/new/top_sensor.v:278]
+	Parameter BAUD_RATE bound to: 9600 - type: integer 
+	Parameter BAUD_COUNT bound to: 100 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'tick_1us' (3#1) [C:/Users/user/Desktop/test/250327_dht_jae/250327_dht_jae.srcs/sources_1/imports/sources_1/new/top_sensor.v:278]
+INFO: [Synth 8-6157] synthesizing module 'tick_10sec' [C:/Users/user/Desktop/test/250327_dht_jae/250327_dht_jae.srcs/sources_1/imports/sources_1/new/top_sensor.v:318]
+	Parameter BAUD_RATE bound to: 9600 - type: integer 
+	Parameter BAUD_COUNT bound to: 1000000000 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'tick_10sec' (4#1) [C:/Users/user/Desktop/test/250327_dht_jae/250327_dht_jae.srcs/sources_1/imports/sources_1/new/top_sensor.v:318]
+INFO: [Synth 8-6157] synthesizing module 'btn_debounce' [C:/Users/user/Desktop/test/250327_dht_jae/250327_dht_jae.srcs/sources_1/imports/sources_1/imports/Source/btn_debounce.v:2]
+WARNING: [Synth 8-567] referenced signal 'q_reg' should be on the sensitivity list [C:/Users/user/Desktop/test/250327_dht_jae/250327_dht_jae.srcs/sources_1/imports/sources_1/imports/Source/btn_debounce.v:24]
+INFO: [Synth 8-6155] done synthesizing module 'btn_debounce' (5#1) [C:/Users/user/Desktop/test/250327_dht_jae/250327_dht_jae.srcs/sources_1/imports/sources_1/imports/Source/btn_debounce.v:2]
+INFO: [Synth 8-6157] synthesizing module 'fnd_controlloer' [C:/Users/user/Desktop/test/250327_dht_jae/250327_dht_jae.srcs/sources_1/imports/sources_1/new/fnd.v:93]
+INFO: [Synth 8-6157] synthesizing module 'clock_div' [C:/Users/user/Desktop/test/250327_dht_jae/250327_dht_jae.srcs/sources_1/imports/sources_1/new/fnd.v:20]
+	Parameter FCOUNT bound to: 100000 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'clock_div' (6#1) [C:/Users/user/Desktop/test/250327_dht_jae/250327_dht_jae.srcs/sources_1/imports/sources_1/new/fnd.v:20]
+INFO: [Synth 8-6157] synthesizing module 'counter_4' [C:/Users/user/Desktop/test/250327_dht_jae/250327_dht_jae.srcs/sources_1/imports/sources_1/new/fnd.v:3]
+INFO: [Synth 8-6155] done synthesizing module 'counter_4' (7#1) [C:/Users/user/Desktop/test/250327_dht_jae/250327_dht_jae.srcs/sources_1/imports/sources_1/new/fnd.v:3]
+INFO: [Synth 8-6157] synthesizing module 'decoder_2x4' [C:/Users/user/Desktop/test/250327_dht_jae/250327_dht_jae.srcs/sources_1/imports/sources_1/new/fnd.v:43]
+INFO: [Synth 8-226] default block is never used [C:/Users/user/Desktop/test/250327_dht_jae/250327_dht_jae.srcs/sources_1/imports/sources_1/new/fnd.v:48]
+INFO: [Synth 8-6155] done synthesizing module 'decoder_2x4' (8#1) [C:/Users/user/Desktop/test/250327_dht_jae/250327_dht_jae.srcs/sources_1/imports/sources_1/new/fnd.v:43]
+INFO: [Synth 8-6157] synthesizing module 'digit_splitter' [C:/Users/user/Desktop/test/250327_dht_jae/250327_dht_jae.srcs/sources_1/imports/sources_1/new/fnd.v:58]
+INFO: [Synth 8-6155] done synthesizing module 'digit_splitter' (9#1) [C:/Users/user/Desktop/test/250327_dht_jae/250327_dht_jae.srcs/sources_1/imports/sources_1/new/fnd.v:58]
+INFO: [Synth 8-6157] synthesizing module 'mux_4x1' [C:/Users/user/Desktop/test/250327_dht_jae/250327_dht_jae.srcs/sources_1/imports/sources_1/new/fnd.v:72]
+INFO: [Synth 8-6155] done synthesizing module 'mux_4x1' (10#1) [C:/Users/user/Desktop/test/250327_dht_jae/250327_dht_jae.srcs/sources_1/imports/sources_1/new/fnd.v:72]
+INFO: [Synth 8-6157] synthesizing module 'bcdtoseg' [C:/Users/user/Desktop/test/250327_dht_jae/250327_dht_jae.srcs/sources_1/imports/sources_1/new/fnd.v:146]
+INFO: [Synth 8-226] default block is never used [C:/Users/user/Desktop/test/250327_dht_jae/250327_dht_jae.srcs/sources_1/imports/sources_1/new/fnd.v:151]
+INFO: [Synth 8-6155] done synthesizing module 'bcdtoseg' (11#1) [C:/Users/user/Desktop/test/250327_dht_jae/250327_dht_jae.srcs/sources_1/imports/sources_1/new/fnd.v:146]
+INFO: [Synth 8-6155] done synthesizing module 'fnd_controlloer' (12#1) [C:/Users/user/Desktop/test/250327_dht_jae/250327_dht_jae.srcs/sources_1/imports/sources_1/new/fnd.v:93]
+INFO: [Synth 8-6157] synthesizing module 'uart_clock' [C:/Users/user/Desktop/test/250327_dht_jae/250327_dht_jae.srcs/sources_1/imports/sources_1/new/uart2.v:3]
+INFO: [Synth 8-6157] synthesizing module 'fifo' [C:/Users/user/Desktop/test/250327_dht_jae/250327_dht_jae.srcs/sources_1/imports/sources_1/new/uart2.v:359]
+INFO: [Synth 8-6157] synthesizing module 'register_file' [C:/Users/user/Desktop/test/250327_dht_jae/250327_dht_jae.srcs/sources_1/imports/sources_1/new/uart2.v:394]
+INFO: [Synth 8-6155] done synthesizing module 'register_file' (13#1) [C:/Users/user/Desktop/test/250327_dht_jae/250327_dht_jae.srcs/sources_1/imports/sources_1/new/uart2.v:394]
+INFO: [Synth 8-6157] synthesizing module 'fifo_cu' [C:/Users/user/Desktop/test/250327_dht_jae/250327_dht_jae.srcs/sources_1/imports/sources_1/new/uart2.v:413]
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/user/Desktop/test/250327_dht_jae/250327_dht_jae.srcs/sources_1/imports/sources_1/new/uart2.v:450]
+INFO: [Synth 8-6155] done synthesizing module 'fifo_cu' (14#1) [C:/Users/user/Desktop/test/250327_dht_jae/250327_dht_jae.srcs/sources_1/imports/sources_1/new/uart2.v:413]
+INFO: [Synth 8-6155] done synthesizing module 'fifo' (15#1) [C:/Users/user/Desktop/test/250327_dht_jae/250327_dht_jae.srcs/sources_1/imports/sources_1/new/uart2.v:359]
+INFO: [Synth 8-6157] synthesizing module 'tick_9600hz' [C:/Users/user/Desktop/test/250327_dht_jae/250327_dht_jae.srcs/sources_1/imports/sources_1/new/uart2.v:324]
+	Parameter BAUD_RATE bound to: 9600 - type: integer 
+	Parameter BAUD_COUNT bound to: 651 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'tick_9600hz' (16#1) [C:/Users/user/Desktop/test/250327_dht_jae/250327_dht_jae.srcs/sources_1/imports/sources_1/new/uart2.v:324]
+INFO: [Synth 8-6157] synthesizing module 'uart_tx' [C:/Users/user/Desktop/test/250327_dht_jae/250327_dht_jae.srcs/sources_1/imports/sources_1/new/uart2.v:515]
+	Parameter R_IDLE bound to: 4'b0000 
+	Parameter START bound to: 4'b0001 
+	Parameter DATA_STATE bound to: 4'b0010 
+	Parameter STOP bound to: 4'b0011 
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/user/Desktop/test/250327_dht_jae/250327_dht_jae.srcs/sources_1/imports/sources_1/new/uart2.v:557]
+INFO: [Synth 8-6155] done synthesizing module 'uart_tx' (17#1) [C:/Users/user/Desktop/test/250327_dht_jae/250327_dht_jae.srcs/sources_1/imports/sources_1/new/uart2.v:515]
+INFO: [Synth 8-6157] synthesizing module 'clock_tx_control' [C:/Users/user/Desktop/test/250327_dht_jae/250327_dht_jae.srcs/sources_1/imports/sources_1/new/uart2.v:102]
+	Parameter IDLE bound to: 5'b00000 
+	Parameter DATA bound to: 5'b00001 
+	Parameter DATA2 bound to: 5'b00010 
+	Parameter DATA3 bound to: 5'b00011 
+	Parameter DATA4 bound to: 5'b00100 
+	Parameter DATA5 bound to: 5'b00101 
+	Parameter DATA6 bound to: 5'b00110 
+	Parameter DATA7 bound to: 5'b00111 
+	Parameter DATA8 bound to: 5'b01000 
+	Parameter DATA9 bound to: 5'b01001 
+	Parameter DATA10 bound to: 5'b01010 
+	Parameter DATA11 bound to: 5'b01011 
+	Parameter DATA12 bound to: 5'b01100 
+	Parameter DATA13 bound to: 5'b01101 
+	Parameter DATA14 bound to: 5'b01110 
+	Parameter DATA15 bound to: 5'b01111 
+	Parameter DATA16 bound to: 5'b10000 
+	Parameter DATA17 bound to: 5'b10001 
+	Parameter DATA18 bound to: 5'b10010 
+	Parameter DATA19 bound to: 5'b10011 
+	Parameter DATA20 bound to: 5'b10100 
+	Parameter DATA21 bound to: 5'b10101 
+	Parameter DATA22 bound to: 5'b10110 
+	Parameter DATA23 bound to: 5'b10111 
+	Parameter DATA24 bound to: 5'b11000 
+	Parameter DATA25 bound to: 5'b11001 
+	Parameter SPACE bound to: 5'b11010 
+	Parameter WAIT bound to: 5'b11011 
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/user/Desktop/test/250327_dht_jae/250327_dht_jae.srcs/sources_1/imports/sources_1/new/uart2.v:168]
+INFO: [Synth 8-6155] done synthesizing module 'clock_tx_control' (18#1) [C:/Users/user/Desktop/test/250327_dht_jae/250327_dht_jae.srcs/sources_1/imports/sources_1/new/uart2.v:102]
+INFO: [Synth 8-6157] synthesizing module 'data_save' [C:/Users/user/Desktop/test/250327_dht_jae/250327_dht_jae.srcs/sources_1/imports/sources_1/new/uart2.v:490]
+INFO: [Synth 8-6155] done synthesizing module 'data_save' (19#1) [C:/Users/user/Desktop/test/250327_dht_jae/250327_dht_jae.srcs/sources_1/imports/sources_1/new/uart2.v:490]
+INFO: [Synth 8-6157] synthesizing module 'bit_asci' [C:/Users/user/Desktop/test/250327_dht_jae/250327_dht_jae.srcs/sources_1/imports/sources_1/new/uart2.v:256]
+INFO: [Synth 8-6155] done synthesizing module 'bit_asci' (20#1) [C:/Users/user/Desktop/test/250327_dht_jae/250327_dht_jae.srcs/sources_1/imports/sources_1/new/uart2.v:256]
+INFO: [Synth 8-6155] done synthesizing module 'uart_clock' (21#1) [C:/Users/user/Desktop/test/250327_dht_jae/250327_dht_jae.srcs/sources_1/imports/sources_1/new/uart2.v:3]
+WARNING: [Synth 8-7071] port 'rx' of module 'uart_clock' is unconnected for instance 'uuart_clock' [C:/Users/user/Desktop/test/250327_dht_jae/250327_dht_jae.srcs/sources_1/imports/sources_1/new/top_sensor.v:75]
+WARNING: [Synth 8-7023] instance 'uuart_clock' of module 'uart_clock' has 7 connections declared, but only 6 given [C:/Users/user/Desktop/test/250327_dht_jae/250327_dht_jae.srcs/sources_1/imports/sources_1/new/top_sensor.v:75]
+INFO: [Synth 8-6155] done synthesizing module 'top_sensor' (22#1) [C:/Users/user/Desktop/test/250327_dht_jae/250327_dht_jae.srcs/sources_1/imports/sources_1/new/top_sensor.v:3]
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 1156.324 ; gain = 67.117
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 1156.324 ; gain = 67.117
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 1156.324 ; gain = 67.117
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.010 . Memory (MB): peak = 1156.324 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 1 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [C:/Users/user/Desktop/test/250327_dht_jae/250327_dht_jae.srcs/constrs_1/imports/FPGA_Harman/Basys-3-Master.xdc]
+Finished Parsing XDC File [C:/Users/user/Desktop/test/250327_dht_jae/250327_dht_jae.srcs/constrs_1/imports/FPGA_Harman/Basys-3-Master.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/Users/user/Desktop/test/250327_dht_jae/250327_dht_jae.srcs/constrs_1/imports/FPGA_Harman/Basys-3-Master.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/top_sensor_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/top_sensor_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1268.363 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 1 instances were transformed.
+  IOBUF => IOBUF (IBUF, OBUFT): 1 instance 
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.006 . Memory (MB): peak = 1268.363 ; gain = 0.000
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:10 ; elapsed = 00:00:11 . Memory (MB): peak = 1268.363 ; gain = 179.156
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7a35tcpg236-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:10 ; elapsed = 00:00:11 . Memory (MB): peak = 1268.363 ; gain = 179.156
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:10 ; elapsed = 00:00:11 . Memory (MB): peak = 1268.363 ; gain = 179.156
+---------------------------------------------------------------------------------
+INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'sensor_cu'
+INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'uart_tx'
+INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'clock_tx_control'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                    IDLE |                             0000 |                             0000
+                   START |                             0001 |                             0001
+                    WAIT |                             0010 |                             0010
+                   WAIT2 |                             0011 |                             0011
+                   WAIT3 |                             0100 |                             0100
+                    SYNC |                             0101 |                             0101
+                     PAR |                             0110 |                             0111
+                    DATA |                             0111 |                             0110
+                   DATA2 |                             1000 |                             1111
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'sequential' in module 'sensor_cu'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                  R_IDLE |                               00 |                             0000
+                   START |                               01 |                             0001
+              DATA_STATE |                               10 |                             0010
+                    STOP |                               11 |                             0011
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'sequential' in module 'uart_tx'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                    IDLE |                             0000 |                            00000
+                    DATA |                             0001 |                            00001
+                   DATA2 |                             0010 |                            00010
+                   DATA3 |                             0011 |                            00011
+                   DATA4 |                             0100 |                            00100
+                   DATA5 |                             0101 |                            00101
+                   DATA6 |                             0110 |                            00110
+                   DATA7 |                             0111 |                            00111
+                   DATA8 |                             1000 |                            01000
+                   DATA9 |                             1001 |                            01001
+                  DATA10 |                             1010 |                            01010
+                  DATA11 |                             1011 |                            01011
+                  DATA12 |                             1100 |                            01100
+                  DATA13 |                             1101 |                            01101
+                   SPACE |                             1110 |                            11010
+                    WAIT |                             1111 |                            11011
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'sequential' in module 'clock_tx_control'
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:11 ; elapsed = 00:00:11 . Memory (MB): peak = 1268.363 ; gain = 179.156
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input   32 Bit       Adders := 1     
+	   2 Input   30 Bit       Adders := 1     
+	   2 Input   18 Bit       Adders := 1     
+	   2 Input   17 Bit       Adders := 1     
+	   2 Input   16 Bit       Adders := 1     
+	   2 Input   10 Bit       Adders := 1     
+	   2 Input    8 Bit       Adders := 1     
+	   4 Input    8 Bit       Adders := 1     
+	   2 Input    7 Bit       Adders := 1     
+	   2 Input    6 Bit       Adders := 1     
+	   2 Input    4 Bit       Adders := 6     
+	   2 Input    2 Bit       Adders := 1     
++---Registers : 
+	               40 Bit    Registers := 1     
+	               30 Bit    Registers := 1     
+	               18 Bit    Registers := 1     
+	               17 Bit    Registers := 1     
+	               16 Bit    Registers := 1     
+	               10 Bit    Registers := 1     
+	                8 Bit    Registers := 5     
+	                7 Bit    Registers := 1     
+	                6 Bit    Registers := 1     
+	                4 Bit    Registers := 4     
+	                2 Bit    Registers := 1     
+	                1 Bit    Registers := 15    
++---Muxes : 
+	   2 Input   40 Bit        Muxes := 1     
+	   9 Input   40 Bit        Muxes := 2     
+	   2 Input   30 Bit        Muxes := 1     
+	   2 Input   18 Bit        Muxes := 1     
+	   2 Input   17 Bit        Muxes := 1     
+	   2 Input   16 Bit        Muxes := 5     
+	   9 Input   16 Bit        Muxes := 1     
+	   2 Input    8 Bit        Muxes := 1     
+	   9 Input    8 Bit        Muxes := 1     
+	  16 Input    8 Bit        Muxes := 1     
+	   9 Input    6 Bit        Muxes := 1     
+	   9 Input    4 Bit        Muxes := 2     
+	   2 Input    4 Bit        Muxes := 3     
+	   4 Input    4 Bit        Muxes := 3     
+	   5 Input    4 Bit        Muxes := 1     
+	  16 Input    4 Bit        Muxes := 1     
+	   4 Input    2 Bit        Muxes := 1     
+	   2 Input    1 Bit        Muxes := 10    
+	   9 Input    1 Bit        Muxes := 10    
+	   4 Input    1 Bit        Muxes := 12    
+	  16 Input    1 Bit        Muxes := 2     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 90 (col length:60)
+BRAMs: 100 (col length: RAMB18 60 RAMB36 30)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:17 ; elapsed = 00:00:18 . Memory (MB): peak = 1268.363 ; gain = 179.156
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+
+Distributed RAM: Preliminary Mapping	Report (see note below)
++------------+------------------------------------+-----------+----------------------+-------------+
+|Module Name | RTL Object                         | Inference | Size (Depth x Width) | Primitives  | 
++------------+------------------------------------+-----------+----------------------+-------------+
+|top_sensor  | uuart_clock/utx2/uregister/ram_reg | Implied   | 16 x 8               | RAM32M x 2	 | 
++------------+------------------------------------+-----------+----------------------+-------------+
+
+Note: The table above is a preliminary report that shows the Distributed RAMs at the current stage of the synthesis flow. Some Distributed RAMs may be reimplemented as non Distributed RAM primitives later in the synthesis flow. Multiple instantiated RAMs are reported only once.
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:22 ; elapsed = 00:00:23 . Memory (MB): peak = 1268.363 ; gain = 179.156
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:24 ; elapsed = 00:00:25 . Memory (MB): peak = 1317.102 ; gain = 227.895
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+
+Distributed RAM: Final Mapping	Report
++------------+------------------------------------+-----------+----------------------+-------------+
+|Module Name | RTL Object                         | Inference | Size (Depth x Width) | Primitives  | 
++------------+------------------------------------+-----------+----------------------+-------------+
+|top_sensor  | uuart_clock/utx2/uregister/ram_reg | Implied   | 16 x 8               | RAM32M x 2	 | 
++------------+------------------------------------+-----------+----------------------+-------------+
+
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:24 ; elapsed = 00:00:25 . Memory (MB): peak = 1318.125 ; gain = 228.918
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:27 ; elapsed = 00:00:28 . Memory (MB): peak = 1318.125 ; gain = 228.918
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:27 ; elapsed = 00:00:28 . Memory (MB): peak = 1318.125 ; gain = 228.918
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:27 ; elapsed = 00:00:28 . Memory (MB): peak = 1318.125 ; gain = 228.918
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:27 ; elapsed = 00:00:28 . Memory (MB): peak = 1318.125 ; gain = 228.918
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:27 ; elapsed = 00:00:28 . Memory (MB): peak = 1318.125 ; gain = 228.918
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:27 ; elapsed = 00:00:28 . Memory (MB): peak = 1318.125 ; gain = 228.918
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+-------+------+
+|      |Cell   |Count |
++------+-------+------+
+|1     |BUFG   |     1|
+|2     |CARRY4 |    23|
+|3     |LUT1   |    11|
+|4     |LUT2   |    60|
+|5     |LUT3   |    40|
+|6     |LUT4   |    85|
+|7     |LUT5   |    56|
+|8     |LUT6   |   144|
+|9     |RAM32M |     2|
+|10    |FDCE   |   207|
+|11    |FDPE   |     3|
+|12    |FDRE   |     8|
+|13    |IBUF   |     3|
+|14    |IOBUF  |     1|
+|15    |OBUF   |    14|
+|16    |OBUFT  |     4|
++------+-------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:27 ; elapsed = 00:00:28 . Memory (MB): peak = 1318.125 ; gain = 228.918
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 0 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:20 ; elapsed = 00:00:26 . Memory (MB): peak = 1318.125 ; gain = 116.879
+Synthesis Optimization Complete : Time (s): cpu = 00:00:27 ; elapsed = 00:00:28 . Memory (MB): peak = 1318.125 ; gain = 228.918
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.005 . Memory (MB): peak = 1326.008 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 26 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1330.043 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 3 instances were transformed.
+  IOBUF => IOBUF (IBUF, OBUFT): 1 instance 
+  RAM32M => RAM32M (RAMD32(x6), RAMS32(x2)): 2 instances
+
+INFO: [Common 17-83] Releasing license: Synthesis
+73 Infos, 6 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:31 ; elapsed = 00:00:33 . Memory (MB): peak = 1330.043 ; gain = 240.836
+INFO: [Common 17-1381] The checkpoint 'C:/Users/user/Desktop/test/250327_dht_jae/250327_dht_jae.runs/synth_1/top_sensor.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file top_sensor_utilization_synth.rpt -pb top_sensor_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Thu Mar 27 22:30:43 2025...

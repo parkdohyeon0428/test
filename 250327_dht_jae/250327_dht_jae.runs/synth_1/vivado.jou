@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2020.2 (64-bit)
+# SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
+# IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+# Start of session at: Thu Mar 27 22:30:03 2025
+# Process ID: 7772
+# Current directory: C:/Users/user/Desktop/test/250327_dht_jae/250327_dht_jae.runs/synth_1
+# Command line: vivado.exe -log top_sensor.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source top_sensor.tcl
+# Log file: C:/Users/user/Desktop/test/250327_dht_jae/250327_dht_jae.runs/synth_1/top_sensor.vds
+# Journal file: C:/Users/user/Desktop/test/250327_dht_jae/250327_dht_jae.runs/synth_1\vivado.jou
+#-----------------------------------------------------------
+source top_sensor.tcl -notrace
