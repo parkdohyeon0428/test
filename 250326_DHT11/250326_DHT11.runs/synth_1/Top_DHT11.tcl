@@ -71,7 +71,7 @@ proc create_report { reportName command } {
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
 set_param chipscope.maxJobs 4
-set_param synth.incrementalSynthesisCache C:/Users/kccistc/AppData/Roaming/Xilinx/Vivado/.Xil/Vivado-4956-DESKTOP-7CFQ9ND/incrSyn
+set_param synth.incrementalSynthesisCache C:/Users/kccistc/AppData/Roaming/Xilinx/Vivado/.Xil/Vivado-9672-DESKTOP-7CFQ9ND/incrSyn
 set_param xicom.use_bs_reader 1
 set_msg_config -id {Synth 8-256} -limit 10000
 set_msg_config -id {Synth 8-638} -limit 10000
@@ -91,7 +91,11 @@ set_property ip_output_repo d:/test/250326_DHT11/250326_DHT11.cache/ip [current_
 set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
-read_verilog -library xil_defaultlib D:/test/250326_DHT11/250326_DHT11.srcs/sources_1/new/Top_DHT11.v
+read_verilog -library xil_defaultlib {
+  D:/test/250326_DHT11/250326_DHT11.srcs/sources_1/imports/250310_stopwatch_fsm/btn_debounce.v
+  D:/test/250326_DHT11/250326_DHT11.srcs/sources_1/new/fnd_ctrl.v
+  D:/test/250326_DHT11/250326_DHT11.srcs/sources_1/new/Top_DHT11.v
+}
 OPTRACE "Adding files" END { }
 # Mark all dcp files as not used in implementation to prevent them from being
 # stitched into the results of this synthesis run. Any black boxes in the
