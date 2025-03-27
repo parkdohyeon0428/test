@@ -1,8 +1,13 @@
 Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------
 | Tool Version              : Vivado v.2020.2 (win64) Build 3064766 Wed Nov 18 09:12:45 MST 2020
+<<<<<<< HEAD
 | Date                      : Thu Mar 27 15:24:01 2025
 | Host                      : DESKTOP-7CFQ9ND running 64-bit major release  (build 9200)
+=======
+| Date                      : Wed Mar 26 22:37:21 2025
+| Host                      : DESKTOP-5KDKKP9 running 64-bit major release  (build 9200)
+>>>>>>> 2654ea6fb5fde984a5fccdd9b31d0c543b7a99fb
 | Command                   : report_io -file Top_DHT11_io_placed.rpt
 | Design                    : Top_DHT11
 | Device                    : xc7a35t
@@ -25,7 +30,11 @@ Table of Contents
 +---------------+
 | Total User IO |
 +---------------+
+<<<<<<< HEAD
 |            21 |
+=======
+|            20 |
+>>>>>>> 2654ea6fb5fde984a5fccdd9b31d0c543b7a99fb
 +---------------+
 
 

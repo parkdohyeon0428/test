@@ -4,7 +4,7 @@
 
 set TIME_start [clock seconds] 
 namespace eval ::optrace {
-  variable script "D:/test/250326_DHT11/250326_DHT11.runs/synth_1/Top_DHT11.tcl"
+  variable script "C:/Users/user/Desktop/test/250326_DHT11/250326_DHT11.runs/synth_1/Top_DHT11.tcl"
   variable category "vivado_synth"
 }
 
@@ -70,9 +70,14 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
+<<<<<<< HEAD
 set_param chipscope.maxJobs 4
 set_param synth.incrementalSynthesisCache C:/Users/kccistc/AppData/Roaming/Xilinx/Vivado/.Xil/Vivado-9672-DESKTOP-7CFQ9ND/incrSyn
 set_param xicom.use_bs_reader 1
+=======
+set_param chipscope.maxJobs 2
+set_param synth.incrementalSynthesisCache C:/Users/user/AppData/Roaming/Xilinx/Vivado/.Xil/Vivado-9044-DESKTOP-5KDKKP9/incrSyn
+>>>>>>> 2654ea6fb5fde984a5fccdd9b31d0c543b7a99fb
 set_msg_config -id {Synth 8-256} -limit 10000
 set_msg_config -id {Synth 8-638} -limit 10000
 OPTRACE "Creating in-memory project" START { }
@@ -81,20 +86,26 @@ create_project -in_memory -part xc7a35tcpg236-1
 set_param project.singleFileAddWarning.threshold 0
 set_param project.compositeFile.enableAutoGeneration 0
 set_param synth.vivado.isSynthRun true
-set_property webtalk.parent_dir D:/test/250326_DHT11/250326_DHT11.cache/wt [current_project]
-set_property parent.project_path D:/test/250326_DHT11/250326_DHT11.xpr [current_project]
+set_property webtalk.parent_dir C:/Users/user/Desktop/test/250326_DHT11/250326_DHT11.cache/wt [current_project]
+set_property parent.project_path C:/Users/user/Desktop/test/250326_DHT11/250326_DHT11.xpr [current_project]
 set_property default_lib xil_defaultlib [current_project]
 set_property target_language Verilog [current_project]
-set_property board_part_repo_paths {C:/Users/kccistc/AppData/Roaming/Xilinx/Vivado/2020.2/xhub/board_store/xilinx_board_store} [current_project]
+set_property board_part_repo_paths {C:/Users/user/AppData/Roaming/Xilinx/Vivado/2020.2/xhub/board_store/xilinx_board_store} [current_project]
 set_property board_part digilentinc.com:basys3:part0:1.1 [current_project]
-set_property ip_output_repo d:/test/250326_DHT11/250326_DHT11.cache/ip [current_project]
+set_property ip_output_repo c:/Users/user/Desktop/test/250326_DHT11/250326_DHT11.cache/ip [current_project]
 set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
 read_verilog -library xil_defaultlib {
+<<<<<<< HEAD
   D:/test/250326_DHT11/250326_DHT11.srcs/sources_1/imports/250310_stopwatch_fsm/btn_debounce.v
   D:/test/250326_DHT11/250326_DHT11.srcs/sources_1/new/fnd_ctrl.v
   D:/test/250326_DHT11/250326_DHT11.srcs/sources_1/new/Top_DHT11.v
+=======
+  C:/Users/user/Desktop/test/250326_DHT11/250326_DHT11.srcs/sources_1/imports/250310_stopwatch_fsm/btn_debounce.v
+  C:/Users/user/Desktop/test/250326_DHT11/250326_DHT11.srcs/sources_1/imports/250310_stopwatch_fsm/fnd_controller.v
+  C:/Users/user/Desktop/test/250326_DHT11/250326_DHT11.srcs/sources_1/new/Top_DHT11.v
+>>>>>>> 2654ea6fb5fde984a5fccdd9b31d0c543b7a99fb
 }
 OPTRACE "Adding files" END { }
 # Mark all dcp files as not used in implementation to prevent them from being
@@ -105,8 +116,8 @@ OPTRACE "Adding files" END { }
 foreach dcp [get_files -quiet -all -filter file_type=="Design\ Checkpoint"] {
   set_property used_in_implementation false $dcp
 }
-read_xdc D:/test/250326_DHT11/250326_DHT11.srcs/constrs_1/imports/test/Basys-3-Master.xdc
-set_property used_in_implementation false [get_files D:/test/250326_DHT11/250326_DHT11.srcs/constrs_1/imports/test/Basys-3-Master.xdc]
+read_xdc C:/Users/user/Desktop/test/250326_DHT11/250326_DHT11.srcs/constrs_1/imports/test/Basys-3-Master.xdc
+set_property used_in_implementation false [get_files C:/Users/user/Desktop/test/250326_DHT11/250326_DHT11.srcs/constrs_1/imports/test/Basys-3-Master.xdc]
 
 set_param ips.enableIPCacheLiteLoad 1
 close [open __synthesis_is_running__ w]

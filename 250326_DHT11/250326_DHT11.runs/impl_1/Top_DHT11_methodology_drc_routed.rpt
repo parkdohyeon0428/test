@@ -1,8 +1,13 @@
 Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2020.2 (win64) Build 3064766 Wed Nov 18 09:12:45 MST 2020
+<<<<<<< HEAD
 | Date         : Thu Mar 27 15:24:13 2025
 | Host         : DESKTOP-7CFQ9ND running 64-bit major release  (build 9200)
+=======
+| Date         : Wed Mar 26 22:37:36 2025
+| Host         : DESKTOP-5KDKKP9 running 64-bit major release  (build 9200)
+>>>>>>> 2654ea6fb5fde984a5fccdd9b31d0c543b7a99fb
 | Command      : report_methodology -file Top_DHT11_methodology_drc_routed.rpt -pb Top_DHT11_methodology_drc_routed.pb -rpx Top_DHT11_methodology_drc_routed.rpx
 | Design       : Top_DHT11
 | Device       : xc7a35tcpg236-1
@@ -23,12 +28,20 @@ Table of Contents
           Floorplan: design_1
       Design limits: <entire design considered>
              Max violations: <unlimited>
+<<<<<<< HEAD
              Violations found: 25
+=======
+             Violations found: 16
+>>>>>>> 2654ea6fb5fde984a5fccdd9b31d0c543b7a99fb
 +-----------+------------------+-------------------------------+------------+
 | Rule      | Severity         | Description                   | Violations |
 +-----------+------------------+-------------------------------+------------+
 | TIMING-17 | Critical Warning | Non-clocked sequential cell   | 10         |
+<<<<<<< HEAD
 | TIMING-18 | Warning          | Missing input or output delay | 15         |
+=======
+| TIMING-18 | Warning          | Missing input or output delay | 6          |
+>>>>>>> 2654ea6fb5fde984a5fccdd9b31d0c543b7a99fb
 +-----------+------------------+-------------------------------+------------+
 
 2. REPORT DETAILS
@@ -106,14 +119,17 @@ Related violations: <none>
 TIMING-18#5 Warning
 Missing input or output delay  
 An output delay is missing on led[2] relative to clock(s) sys_clk_pin
+<<<<<<< HEAD
 Related violations: <none>
 
 TIMING-18#6 Warning
 Missing input or output delay  
 An output delay is missing on led[3] relative to clock(s) sys_clk_pin
+=======
+>>>>>>> 2654ea6fb5fde984a5fccdd9b31d0c543b7a99fb
 Related violations: <none>
 
-TIMING-18#7 Warning
+TIMING-18#6 Warning
 Missing input or output delay  
 An output delay is missing on led[4] relative to clock(s) sys_clk_pin
 Related violations: <none>

@@ -1,4 +1,4 @@
-set_property SRC_FILE_INFO {cfile:D:/test/250326_DHT11/250326_DHT11.srcs/constrs_1/imports/test/Basys-3-Master.xdc rfile:../../../250326_DHT11.srcs/constrs_1/imports/test/Basys-3-Master.xdc id:1} [current_design]
+set_property SRC_FILE_INFO {cfile:C:/Users/user/Desktop/test/250326_DHT11/250326_DHT11.srcs/constrs_1/imports/test/Basys-3-Master.xdc rfile:../../../250326_DHT11.srcs/constrs_1/imports/test/Basys-3-Master.xdc id:1} [current_design]
 set_property src_info {type:XDC file:1 line:7 export:INPUT save:INPUT read:READ} [current_design]
 set_property -dict { PACKAGE_PIN W5   IOSTANDARD LVCMOS33 } [get_ports clk]
 set_property src_info {type:XDC file:1 line:31 export:INPUT save:INPUT read:READ} [current_design]
@@ -9,8 +9,11 @@ set_property src_info {type:XDC file:1 line:33 export:INPUT save:INPUT read:READ
 set_property -dict { PACKAGE_PIN U19   IOSTANDARD LVCMOS33 } [get_ports {led[2]}]
 set_property src_info {type:XDC file:1 line:34 export:INPUT save:INPUT read:READ} [current_design]
 set_property -dict { PACKAGE_PIN V19   IOSTANDARD LVCMOS33 } [get_ports {led[3]}]
+<<<<<<< HEAD
 set_property src_info {type:XDC file:1 line:35 export:INPUT save:INPUT read:READ} [current_design]
 set_property -dict { PACKAGE_PIN W18   IOSTANDARD LVCMOS33 } [get_ports {led[4]}]
+=======
+>>>>>>> 2654ea6fb5fde984a5fccdd9b31d0c543b7a99fb
 set_property src_info {type:XDC file:1 line:50 export:INPUT save:INPUT read:READ} [current_design]
 set_property -dict { PACKAGE_PIN W7   IOSTANDARD LVCMOS33 } [get_ports {seg[0]}]
 set_property src_info {type:XDC file:1 line:51 export:INPUT save:INPUT read:READ} [current_design]

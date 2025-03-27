@@ -1,8 +1,13 @@
 Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2020.2 (win64) Build 3064766 Wed Nov 18 09:12:45 MST 2020
+<<<<<<< HEAD
 | Date         : Thu Mar 27 15:23:36 2025
 | Host         : DESKTOP-7CFQ9ND running 64-bit major release  (build 9200)
+=======
+| Date         : Wed Mar 26 22:36:49 2025
+| Host         : DESKTOP-5KDKKP9 running 64-bit major release  (build 9200)
+>>>>>>> 2654ea6fb5fde984a5fccdd9b31d0c543b7a99fb
 | Command      : report_utilization -file Top_DHT11_utilization_synth.rpt -pb Top_DHT11_utilization_synth.pb
 | Design       : Top_DHT11
 | Device       : 7a35tcpg236-1
@@ -30,11 +35,19 @@ Table of Contents
 +-------------------------+------+-------+-----------+-------+
 |        Site Type        | Used | Fixed | Available | Util% |
 +-------------------------+------+-------+-----------+-------+
+<<<<<<< HEAD
 | Slice LUTs*             |  139 |     0 |     20800 |  0.67 |
 |   LUT as Logic          |  139 |     0 |     20800 |  0.67 |
 |   LUT as Memory         |    0 |     0 |      9600 |  0.00 |
 | Slice Registers         |  143 |     0 |     41600 |  0.34 |
 |   Register as Flip Flop |  143 |     0 |     41600 |  0.34 |
+=======
+| Slice LUTs*             |   96 |     0 |     20800 |  0.46 |
+|   LUT as Logic          |   96 |     0 |     20800 |  0.46 |
+|   LUT as Memory         |    0 |     0 |      9600 |  0.00 |
+| Slice Registers         |   80 |     0 |     41600 |  0.19 |
+|   Register as Flip Flop |   80 |     0 |     41600 |  0.19 |
+>>>>>>> 2654ea6fb5fde984a5fccdd9b31d0c543b7a99fb
 |   Register as Latch     |    0 |     0 |     41600 |  0.00 |
 | F7 Muxes                |    0 |     0 |     16300 |  0.00 |
 | F8 Muxes                |    0 |     0 |      8150 |  0.00 |
@@ -55,7 +68,11 @@ Table of Contents
 | 0     |            _ |       Reset |            - |
 | 0     |          Yes |           - |            - |
 | 2     |          Yes |           - |          Set |
+<<<<<<< HEAD
 | 141   |          Yes |           - |        Reset |
+=======
+| 78    |          Yes |           - |        Reset |
+>>>>>>> 2654ea6fb5fde984a5fccdd9b31d0c543b7a99fb
 | 0     |          Yes |         Set |            - |
 | 0     |          Yes |       Reset |            - |
 +-------+--------------+-------------+--------------+
@@ -90,7 +107,11 @@ Table of Contents
 +-----------------------------+------+-------+-----------+-------+
 |          Site Type          | Used | Fixed | Available | Util% |
 +-----------------------------+------+-------+-----------+-------+
+<<<<<<< HEAD
 | Bonded IOB                  |   21 |     0 |       106 | 19.81 |
+=======
+| Bonded IOB                  |   20 |     0 |       106 | 18.87 |
+>>>>>>> 2654ea6fb5fde984a5fccdd9b31d0c543b7a99fb
 | Bonded IPADs                |    0 |     0 |        10 |  0.00 |
 | Bonded OPADs                |    0 |     0 |         4 |  0.00 |
 | PHY_CONTROL                 |    0 |     0 |         5 |  0.00 |
@@ -149,6 +170,7 @@ Table of Contents
 +----------+------+---------------------+
 | Ref Name | Used | Functional Category |
 +----------+------+---------------------+
+<<<<<<< HEAD
 | FDCE     |  141 |        Flop & Latch |
 | LUT2     |   66 |                 LUT |
 | LUT6     |   48 |                 LUT |
@@ -158,6 +180,17 @@ Table of Contents
 | LUT3     |   15 |                 LUT |
 | CARRY4   |   15 |          CarryLogic |
 | LUT1     |    9 |                 LUT |
+=======
+| FDCE     |   78 |        Flop & Latch |
+| LUT5     |   47 |                 LUT |
+| LUT4     |   24 |                 LUT |
+| LUT6     |   23 |                 LUT |
+| OBUF     |   16 |                  IO |
+| CARRY4   |   12 |          CarryLogic |
+| LUT2     |   10 |                 LUT |
+| LUT3     |    7 |                 LUT |
+| LUT1     |    6 |                 LUT |
+>>>>>>> 2654ea6fb5fde984a5fccdd9b31d0c543b7a99fb
 | IBUF     |    4 |                  IO |
 | FDPE     |    2 |        Flop & Latch |
 | OBUFT    |    1 |                  IO |
