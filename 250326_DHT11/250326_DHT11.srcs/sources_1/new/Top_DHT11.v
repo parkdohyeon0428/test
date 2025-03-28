@@ -11,6 +11,7 @@ module Top_DHT11 (
     //output [3:0] fsm_state,
     //output dht_response
 );
+
     wire w_tick_1us, w_btn_start;
     wire [7:0] w_humi, w_temp;
 

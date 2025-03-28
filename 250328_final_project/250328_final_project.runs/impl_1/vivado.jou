@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2020.2 (64-bit)
+# SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
+# IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+# Start of session at: Fri Mar 28 14:24:07 2025
+# Process ID: 18212
+# Current directory: D:/test/250328_final_project/250328_final_project.runs/impl_1
+# Command line: vivado.exe -log MAIN_Top.vdi -applog -product Vivado -messageDb vivado.pb -mode batch -source MAIN_Top.tcl -notrace
+# Log file: D:/test/250328_final_project/250328_final_project.runs/impl_1/MAIN_Top.vdi
+# Journal file: D:/test/250328_final_project/250328_final_project.runs/impl_1\vivado.jou
+#-----------------------------------------------------------
+source MAIN_Top.tcl -notrace
