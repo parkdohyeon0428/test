@@ -3,7 +3,11 @@
 <!--The data in this file is primarily intended for consumption by Xilinx tools.
 The structure and the elements are likely to change over the next few releases.
 This means code written to parse this file will need to be revisited each subsequent release.-->
+<<<<<<< HEAD
 <application name="pa" timeStamp="Sun Mar 30 02:30:54 2025">
+=======
+<application name="pa" timeStamp="Fri Mar 28 19:31:10 2025">
+>>>>>>> a69b13594b04159b0e82eef3a2ef6b78dc2bf0a6
 <section name="Project Information" visible="false">
 <property name="ProjectID" value="6a67bcafea484f39ae6241606a642e98" type="ProjectID"/>
 <property name="ProjectIteration" value="76" type="ProjectIteration"/>
@@ -23,11 +27,18 @@ This means code written to parse this file will need to be revisited each subseq
 <property name="CoreView" value="1" type="JavaHandler"/>
 <property name="CustomizeCore" value="1" type="JavaHandler"/>
 <property name="EditDelete" value="8" type="JavaHandler"/>
+<<<<<<< HEAD
 <property name="ExitApp" value="7" type="JavaHandler"/>
 <property name="LaunchProgramFpga" value="53" type="JavaHandler"/>
 <property name="NewProject" value="3" type="JavaHandler"/>
 <property name="OpenHardwareManager" value="40" type="JavaHandler"/>
 <property name="OpenProject" value="1" type="JavaHandler"/>
+=======
+<property name="ExitApp" value="6" type="JavaHandler"/>
+<property name="LaunchProgramFpga" value="53" type="JavaHandler"/>
+<property name="NewProject" value="3" type="JavaHandler"/>
+<property name="OpenHardwareManager" value="40" type="JavaHandler"/>
+>>>>>>> a69b13594b04159b0e82eef3a2ef6b78dc2bf0a6
 <property name="ProgramDevice" value="37" type="JavaHandler"/>
 <property name="RunBitgen" value="77" type="JavaHandler"/>
 <property name="RunImplementation" value="1" type="JavaHandler"/>
@@ -42,7 +53,11 @@ This means code written to parse this file will need to be revisited each subseq
 <property name="ToolsSettings" value="1" type="JavaHandler"/>
 <property name="ViewTaskImplementation" value="4" type="JavaHandler"/>
 <property name="ViewTaskProjectManager" value="8" type="JavaHandler"/>
+<<<<<<< HEAD
 <property name="ViewTaskRTLAnalysis" value="20" type="JavaHandler"/>
+=======
+<property name="ViewTaskRTLAnalysis" value="19" type="JavaHandler"/>
+>>>>>>> a69b13594b04159b0e82eef3a2ef6b78dc2bf0a6
 </item>
 <item name="Gui Handlers">
 <property name="AbstractCombinedPanel_REMOVE_SELECTED_ELEMENTS" value="1" type="GuiHandlerData"/>
@@ -50,18 +65,31 @@ This means code written to parse this file will need to be revisited each subseq
 <property name="AddSrcWizard_SPECIFY_OR_CREATE_CONSTRAINT_FILES" value="1" type="GuiHandlerData"/>
 <property name="AddSrcWizard_SPECIFY_SIMULATION_SPECIFIC_HDL_FILES" value="2" type="GuiHandlerData"/>
 <property name="BaseDialog_CANCEL" value="26" type="GuiHandlerData"/>
+<<<<<<< HEAD
 <property name="BaseDialog_OK" value="137" type="GuiHandlerData"/>
 <property name="BaseDialog_YES" value="18" type="GuiHandlerData"/>
 <property name="BoardChooser_BOARD_TABLE" value="3" type="GuiHandlerData"/>
 <property name="ClosePlanner_YES" value="4" type="GuiHandlerData"/>
 <property name="CmdMsgDialog_OK" value="56" type="GuiHandlerData"/>
+=======
+<property name="BaseDialog_OK" value="136" type="GuiHandlerData"/>
+<property name="BaseDialog_YES" value="18" type="GuiHandlerData"/>
+<property name="BoardChooser_BOARD_TABLE" value="3" type="GuiHandlerData"/>
+<property name="ClosePlanner_YES" value="4" type="GuiHandlerData"/>
+<property name="CmdMsgDialog_OK" value="55" type="GuiHandlerData"/>
+>>>>>>> a69b13594b04159b0e82eef3a2ef6b78dc2bf0a6
 <property name="CmdMsgDialog_OPEN_MESSAGES_VIEW" value="7" type="GuiHandlerData"/>
 <property name="ConstraintsChooserPanel_ADD_FILES" value="1" type="GuiHandlerData"/>
 <property name="CoreTreeTablePanel_CORE_TREE_TABLE" value="4" type="GuiHandlerData"/>
 <property name="CreateSrcFileDialog_FILE_NAME" value="8" type="GuiHandlerData"/>
+<<<<<<< HEAD
 <property name="FileSetPanel_FILE_SET_PANEL_TREE" value="606" type="GuiHandlerData"/>
 <property name="FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE" value="225" type="GuiHandlerData"/>
 <property name="GettingStartedView_OPEN_PROJECT" value="1" type="GuiHandlerData"/>
+=======
+<property name="FileSetPanel_FILE_SET_PANEL_TREE" value="603" type="GuiHandlerData"/>
+<property name="FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE" value="224" type="GuiHandlerData"/>
+>>>>>>> a69b13594b04159b0e82eef3a2ef6b78dc2bf0a6
 <property name="GraphicalView_ZOOM_FIT" value="32" type="GuiHandlerData"/>
 <property name="GraphicalView_ZOOM_IN" value="12" type="GuiHandlerData"/>
 <property name="HardwareTreePanel_HARDWARE_TREE_TABLE" value="1" type="GuiHandlerData"/>
@@ -127,9 +155,15 @@ This means code written to parse this file will need to be revisited each subseq
 <property name="WaveformView_PREVIOUS_TRANSITION" value="12" type="GuiHandlerData"/>
 </item>
 <item name="Other">
+<<<<<<< HEAD
 <property name="GuiMode" value="20" type="GuiMode"/>
 <property name="BatchMode" value="0" type="BatchMode"/>
 <property name="TclMode" value="18" type="TclMode"/>
+=======
+<property name="GuiMode" value="53" type="GuiMode"/>
+<property name="BatchMode" value="0" type="BatchMode"/>
+<property name="TclMode" value="19" type="TclMode"/>
+>>>>>>> a69b13594b04159b0e82eef3a2ef6b78dc2bf0a6
 </item>
 </section>
 </application>

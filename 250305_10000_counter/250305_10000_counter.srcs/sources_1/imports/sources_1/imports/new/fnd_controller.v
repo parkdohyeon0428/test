@@ -118,7 +118,6 @@ module clk_divider (
             end
         end
     end
-
 endmodule
 
 module counter_4 (

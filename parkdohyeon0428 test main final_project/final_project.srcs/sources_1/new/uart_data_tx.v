@@ -97,7 +97,11 @@ module uart_clock (
         .o_data100(w_o_data100),
         .o_data1000(w_o_data1000)
     );
+<<<<<<< HEAD
     bit_asci_dis u_bit5 (
+=======
+        bit_asci_dis u_bit5 (
+>>>>>>> a69b13594b04159b0e82eef3a2ef6b78dc2bf0a6
         .data(dis_data),
         .o_data(w_o_data_2),
         .o_data10(w_o_data10_2),
@@ -920,6 +924,7 @@ module uart_tx2 (
 endmodule
 
 
+<<<<<<< HEAD
 // module uart_fsm (
 //     input reset,
 //     input clk,
@@ -1084,3 +1089,5 @@ endmodule
 
 //     end
 // endmodule
+=======
+>>>>>>> a69b13594b04159b0e82eef3a2ef6b78dc2bf0a6
