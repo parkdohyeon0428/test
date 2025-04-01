@@ -2,15 +2,15 @@
 
 module tb_test();
     reg clk, reset, mode;
-    wire [3:0] seg_comm;
-    wire [7:0] seg_font;
+    wire [3:0] fndcom;
+    wire [7:0] fndfont;
 
     top_counter_up_down UUT(
         .clk(clk),
         .reset(reset),
         .mode(mode),
-        .seg_font(seg_font),
-        .seg_comm(seg_comm)
+        .fndfont(fndfont),
+        .fndcom(fndcom)
     );
 
     always #5 clk = ~clk;

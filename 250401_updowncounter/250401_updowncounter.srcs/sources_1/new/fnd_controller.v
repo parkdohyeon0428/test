@@ -75,14 +75,14 @@ module clk_div_1khz (
     output reg tick
 );
 
-    reg [$clog2(100_000)-1:0] div_counter;
+    reg [$clog2(1000)-1:0] div_counter;
 
     always @(posedge clk, posedge reset) begin
         if (reset) begin
             div_counter <= 0;
             tick <= 1'b0;
         end else begin
-            if (div_counter == 100_000 - 1) begin
+            if (div_counter == 1000 - 1) begin
                 div_counter <= 0;
                 tick <= 1'b1;
             end else begin

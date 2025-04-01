@@ -4,7 +4,7 @@ module top_counter_up_down(
     input clk,
     input reset,
     input mode,
-    output [3:0]fndcom,
+    output [3:0] fndcom,
     output [7:0] fndfont
 );
     wire [13:0] fndData;
@@ -57,14 +57,14 @@ module clk_div_10hz(
     output reg tick
 );
 
-    reg [$clog2(10_000_000)-1:0]div_counter;
+    reg [$clog2(10_00)-1:0]div_counter;
 
     always @(posedge clk, posedge reset) begin
         if(reset)begin
             div_counter <=0;
             tick <=1'b0;
         end else begin
-            if(div_counter == 10_000_000 - 1)begin
+            if(div_counter == 10_00 - 1)begin
                 div_counter <= 0;
                 tick <= 1'b1;
             end else begin

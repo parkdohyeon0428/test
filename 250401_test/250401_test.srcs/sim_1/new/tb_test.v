@@ -20,8 +20,11 @@ module tb_test();
         sw= 0;
     #1000
     reset = 0;
+    
     #10000000;
         sw =1;
+    //$monitor("time: %0t | bcd (from updowncount to fnd_ctrl): %d", $time, w_bcd);
+
         
         #1000;
     end

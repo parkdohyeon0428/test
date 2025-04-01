@@ -55,10 +55,6 @@ module HC_SR04_cu (
     reg start_tick_reg, start_tick_next;
     reg done_next;
 
-<<<<<<< HEAD
-=======
-    // Echo 신호의 High 레벨 시간을 이용해 거리(cm)로 환산 (Echo시간(us)/58)
->>>>>>> a69b13594b04159b0e82eef3a2ef6b78dc2bf0a6
     assign o_data = data_reg / 58;
     assign start_tick = start_tick_reg;
 
