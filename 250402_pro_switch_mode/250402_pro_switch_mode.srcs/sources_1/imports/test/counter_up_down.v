@@ -37,6 +37,12 @@ module top_counter_up_down (
         .tx_done(tx_done),
         .tx_busy(tx_busy),
         .rx_data(rx_data),
+        .rx_done(rx_done)
+    );
+    uart_cu U_Uart_CU (
+        .clk(clk),
+        .reset(reset),
+        .rx_data(rx_data),
         .rx_done(rx_done),
         .run(w_run),
         .stop(w_stop),
@@ -145,6 +151,16 @@ module control_unit (
         endcase
     end
 endmodule
+
+
+
+
+
+
+
+
+
+
 
 module counter_up_down (
     input         clk,
