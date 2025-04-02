@@ -67,7 +67,7 @@ module clk_div (
     reg tick_1clk;
     assign tick = tick_1clk;
 
-    reg [$clog2(1000)-1:0] count;
+    reg [$clog2(10_000_000)-1:0] count;
 
     always @(posedge clk, posedge reset) begin
         if (reset) begin
@@ -75,7 +75,7 @@ module clk_div (
             tick_1clk <= 0;
         end else begin
             //tick_1clk <= 0;
-            if (count == 1000-1) begin
+            if (count == 10_000_000-1) begin
                 count <= 0;
                 tick_1clk <= 1;
             end else begin
@@ -119,4 +119,3 @@ module updowncount (
         end
     end
 endmodule
-

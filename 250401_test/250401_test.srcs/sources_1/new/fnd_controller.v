@@ -55,7 +55,7 @@ module clk_divider (
 );
 
     // reg [19:0] r_counter;
-    parameter FCOUNT = 1000 ;
+    parameter FCOUNT = 100_000 ;
     reg [$clog2(FCOUNT)-1:0] r_counter;  //$clog2 : 수의 필요한 비트수 계산
     reg r_clk;
     assign o_clk = r_clk;
