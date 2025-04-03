@@ -125,11 +125,7 @@ module ASCII (
             endcase
         end
     end
-
-
-
 endmodule
-
 
 module comp_dot (
     input  [13:0] count,
@@ -138,32 +134,7 @@ module comp_dot (
     assign dot_data = count % 10 < 5 ? 4'b1101 : 4'b1111;
 endmodule
 
-module counter_up_down (
-    input         clk,
-    input         reset,
-    input         run,
-    input         clear,
-    input         mode,
-    output [13:0] count
-);
-    wire tick;
 
-    clk_div_10hz U_Clk_Div_10Hz (
-        .clk  (clk),
-        .reset(reset),
-        .tick (tick)
-    );
-
-    counter U_Counter_Up_Down (
-        .clk  (clk),
-        .reset(reset),
-        .tick (tick),
-        .mode (mode),
-        .run  (run),
-        .clear(clear),
-        .count(count)
-    );
-endmodule
 
 module control_unit (
     input run,
@@ -243,6 +214,34 @@ module control_unit (
         endcase
     end
 endmodule
+
+module counter_up_down (
+    input         clk,
+    input         reset,
+    input         run,
+    input         clear,
+    input         mode,
+    output [13:0] count
+);
+    wire tick;
+
+    clk_div_10hz U_Clk_Div_10Hz (
+        .clk  (clk),
+        .reset(reset),
+        .tick (tick)
+    );
+
+    counter U_Counter_Up_Down (
+        .clk  (clk),
+        .reset(reset),
+        .tick (tick),
+        .mode (mode),
+        .run  (run),
+        .clear(clear),
+        .count(count)
+    );
+endmodule
+
 
 module counter (
     input         clk,

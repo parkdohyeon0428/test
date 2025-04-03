@@ -13,9 +13,9 @@ module top_counter_up_down (
     input        rx
 );
     wire [13:0] fndData, w_count, w_stopwatch_count;
-    
     wire [ 3:0] fndDot, w_stopwatch_dot, w_count_dot;
-    wire en, clear, mode, main_mode;
+    wire uart_en, uart_clear, uart_mode, main_mode;
+    wire btn_en, btn_clear, btn_mode;
     wire [7:0] rx_data;
     wire rx_done;
     wire [7:0] tx_data;
@@ -23,6 +23,7 @@ module top_counter_up_down (
     wire tx_busy;
     wire tx_done;
     wire w_btnL, w_btnR, w_btnD, w_btnU;
+
 
     btn_debounce U_btnL(  // run stop
         .clk(clk),
@@ -62,14 +63,23 @@ module top_counter_up_down (
         .rx_data(rx_data),
         .rx_done(rx_done)
     );
-
+    btn_control_unit U_BTN_CU(
+        .clk(clk),
+        .reset(reset),
+        .run_stop(w_btnL),
+        .btn_clear(w_btnR),
+        .btnD(w_btnD),
+        .updown(w_btnU),
+        //data path
+        .en(btn_en),
+        .clear(btn_clear),
+        .mode(btn_mode),
+        .main_mode(main_mode)
+    );
     control_unit U_ControlUnit (
         .clk     (clk),
         .reset   (reset),
-        .btnL(w_btnL),
-        .btnR(w_btnR),
-        .btnD(w_btnD),
-        .btnU(w_btnU),
+        
         //tx
         .tx_data (tx_data),
         .tx_start(tx_start),
@@ -78,19 +88,18 @@ module top_counter_up_down (
         //rx
         .rx_data (rx_data),
         .rx_done (rx_done),
-        .en      (en),
-        .clear   (clear),
-        .mode    (mode),
-        .main_mode(main_mode)
+        .en      (uart_en),
+        .clear   (uart_clear),
+        .mode    (uart_mode)
+        
     );
 
     counter_up_down U_Counter_Up_Down (
         .clk     (clk),
         .reset   (reset),
-        .en      (en),
-        .clear   (clear),
-        .mode    (mode),
-        .main_mode(main_mode),
+        .en      ((uart_en || btn_en) && (main_mode == 1)),
+        .clear   ((uart_clear || btn_clear) && (main_mode == 1)),
+        .mode    ((uart_mode || btn_mode) && (main_mode == 1)),
         .count   (w_count),
         .dot_data(w_count_dot)
     );
@@ -98,9 +107,8 @@ module top_counter_up_down (
     counter_stopwatch U_STOPWATCH(
         .clk(clk),
         .reset(reset),
-        .en(en),
-        .clear(clear),
-        .main_mode(main_mode),
+        .en((uart_en || btn_en) && (main_mode == 0)),
+        .clear((uart_clear || btn_clear) && (main_mode == 0)),
         .count(w_stopwatch_count),
         .dot_data(w_stopwatch_dot)
     );
@@ -108,7 +116,6 @@ module top_counter_up_down (
         .clk    (clk),
         .reset  (reset),
         .fndData(fndData),
-        
         .fndDot (fndDot),
         .fndCom (fndCom),
         .fndFont(fndFont)
@@ -169,10 +176,7 @@ endmodule
 module control_unit (
     input            clk,
     input            reset,
-    input            btnL,
-    input            btnR,
-    input            btnD,
-    input            btnU,
+    //input            btnD,
     //tx
     output reg [7:0] tx_data,
     output reg       tx_start,
@@ -184,29 +188,29 @@ module control_unit (
     //data path
     output reg       en,
     output reg       clear,
-    output reg       mode,
-    output reg       main_mode
+    output reg       mode
+    //output reg       main_mode
 );
     localparam STOP = 0, RUN = 1, CLEAR = 2;
     localparam UP = 0, DOWN = 1;
-    localparam STOPWATCH = 0, COUNT = 1;
+    //localparam STOPWATCH = 0, COUNT = 1;
     localparam IDLE = 0, ECHO = 1;
     reg [1:0] state, state_next;
     reg mode_state, mode_state_next;
     reg echo_state, echo_state_next;
-    reg main_mode_state, main_mode_next;
+    //reg main_mode_state, main_mode_next;
 
     always @(posedge clk, posedge reset) begin
         if (reset) begin
             state <= STOP;
             mode_state <= UP;
             echo_state <= IDLE;
-            main_mode_state <= STOPWATCH;
+            //main_mode_state <= STOPWATCH;
         end else begin
             state <= state_next;
             mode_state <= mode_state_next;
             echo_state <= echo_state_next;
-            main_mode_state <= mode_state_next;
+            //main_mode_state <= mode_state_next;
         end
     end
 
@@ -227,25 +231,6 @@ module control_unit (
                 end else begin
                     tx_data = rx_data;
                     tx_start = 1'b1;
-                end
-            end
-        endcase
-    end
-
-    always @(*) begin
-        main_mode_next = main_mode_state;
-        main_mode = 1'b0;
-        case (main_mode_state)
-            STOPWATCH: begin
-                main_mode = 1'b0;
-                if (btnD) begin
-                    main_mode_next = COUNT;
-                end
-            end 
-            COUNT: begin
-                main_mode = 1'b1;
-                if (btnD) begin
-                    main_mode_next =STOPWATCH;
                 end
             end
         endcase
