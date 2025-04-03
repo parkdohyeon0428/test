@@ -163,8 +163,6 @@ module counter_up_down (
         .clear(clear),
         .count(count)
     );
-
-
 endmodule
 
 module control_unit (
@@ -236,22 +234,16 @@ module control_unit (
                     end
                 end
             end
-
-
             CLEAR: begin
                 o_clear_next = 1;
                 if (clear == 0) begin
                     next = STOP;
                 end
             end
-
         endcase
-
-
-
-
     end
 endmodule
+
 module counter (
     input         clk,
     input         reset,

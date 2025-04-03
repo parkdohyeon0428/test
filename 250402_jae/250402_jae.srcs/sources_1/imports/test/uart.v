@@ -3,9 +3,10 @@
 module uart (
     input clk,
     input reset,
+    input rx,
+    output tx,
     output [7:0] rx_data,
     output rx_done,
-    input rx,
     output tick
 );
 

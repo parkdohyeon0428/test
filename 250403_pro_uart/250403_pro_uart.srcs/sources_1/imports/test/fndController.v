@@ -141,11 +141,15 @@ module digitSplitter (
     output [ 3:0] digit_10,
     output [ 3:0] digit_100,
     output [ 3:0] digit_1000
+
+  
 );
+    
     assign digit_1    = fndData % 10;
     assign digit_10   = fndData / 10 % 10;
     assign digit_100  = fndData / 100 % 10;
     assign digit_1000 = fndData / 1000 % 10;
+
 endmodule
 
 module mux_4x1 (
