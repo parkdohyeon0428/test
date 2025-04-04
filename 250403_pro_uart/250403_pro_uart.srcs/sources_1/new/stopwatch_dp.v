@@ -12,14 +12,14 @@ module counter_stopwatch (
     wire tick;
     
 
-    clk_div_10hz U_Clk_Div_10Hz (
+    clk_div_10hz_1 U_Clk_Div_10Hz (
         .clk  (clk),
         .reset(reset),
         .tick (tick),
         .en   (en),
         .clear(clear)
     );
-    stopwatch_counter asas(
+    stopwatch_counter U_STOP(
         .clk  (clk),
         .reset(reset),
         .tick (tick),
@@ -29,7 +29,7 @@ module counter_stopwatch (
         .count(count)
     );
     
-    comp_dot U_Comp_Dot (
+    comp_dot1 U_Comp_Dot (
         .count(count),
         .dot_data(dot_data)
     );
@@ -123,7 +123,7 @@ endmodule
 
 
 
-module clk_div_10hz (
+module clk_div_10hz_1 (
     input  wire clk,
     input  wire reset,
     input  wire en,
@@ -154,7 +154,7 @@ module clk_div_10hz (
     end
 endmodule
 
-module comp_dot (
+module comp_dot1 (
     input  [13:0] count,
     output [ 3:0] dot_data
 );
