@@ -13,3 +13,55 @@ start_gui
 open_project D:/test/250403_pro_uart/250403_pro_uart.xpr
 update_compile_order -fileset sources_1
 synth_design -rtl -rtl_skip_mlo -name rtl_1
+close_project
+create_project 250404_SystemVerilog_Adder D:/test/250404_SystemVerilog_Adder -part xc7a35tcpg236-1
+set_property board_part digilentinc.com:basys3:part0:1.1 [current_project]
+file mkdir D:/test/250404_SystemVerilog_Adder/250404_SystemVerilog_Adder.srcs/sources_1/new
+close [ open D:/test/250404_SystemVerilog_Adder/250404_SystemVerilog_Adder.srcs/sources_1/new/adder.sv w ]
+add_files D:/test/250404_SystemVerilog_Adder/250404_SystemVerilog_Adder.srcs/sources_1/new/adder.sv
+update_compile_order -fileset sources_1
+file mkdir D:/test/250404_SystemVerilog_Adder/250404_SystemVerilog_Adder.srcs/sim_1/new
+set_property SOURCE_SET sources_1 [get_filesets sim_1]
+close [ open D:/test/250404_SystemVerilog_Adder/250404_SystemVerilog_Adder.srcs/sim_1/new/tb_adder.sv w ]
+add_files -fileset sim_1 D:/test/250404_SystemVerilog_Adder/250404_SystemVerilog_Adder.srcs/sim_1/new/tb_adder.sv
+update_compile_order -fileset sim_1
+# Disabling source management mode.  This is to allow the top design properties to be set without GUI intervention.
+set_property source_mgmt_mode None [current_project]
+set_property top tb_adder [get_filesets sim_1]
+set_property top_lib xil_defaultlib [get_filesets sim_1]
+# Re-enabling previously disabled source management mode.
+set_property source_mgmt_mode All [current_project]
+update_compile_order -fileset sim_1
+update_compile_order -fileset sim_1
+# Disabling source management mode.  This is to allow the top design properties to be set without GUI intervention.
+set_property source_mgmt_mode None [current_project]
+set_property top tb_adder [get_filesets sim_1]
+# Re-enabling previously disabled source management mode.
+set_property source_mgmt_mode All [current_project]
+update_compile_order -fileset sim_1
+launch_simulation
+launch_simulation
+source tb_adder.tcl
+relaunch_sim
+close_sim
+close_project
+create_project 250404_Dedicate_counter D:/test/250404_Dedicate_counter -part xc7a35tcpg236-1
+set_property board_part digilentinc.com:basys3:part0:1.1 [current_project]
+file mkdir D:/test/250404_Dedicate_counter/250404_Dedicate_counter.srcs/sources_1/new
+close [ open D:/test/250404_Dedicate_counter/250404_Dedicate_counter.srcs/sources_1/new/control_unit.sv w ]
+add_files D:/test/250404_Dedicate_counter/250404_Dedicate_counter.srcs/sources_1/new/control_unit.sv
+close [ open D:/test/250404_Dedicate_counter/250404_Dedicate_counter.srcs/sources_1/new/data_path.sv w ]
+add_files D:/test/250404_Dedicate_counter/250404_Dedicate_counter.srcs/sources_1/new/data_path.sv
+update_compile_order -fileset sources_1
+export_ip_user_files -of_objects  [get_files D:/test/250404_Dedicate_counter/250404_Dedicate_counter.srcs/sources_1/new/data_path.sv] -no_script -reset -force -quiet
+remove_files  D:/test/250404_Dedicate_counter/250404_Dedicate_counter.srcs/sources_1/new/data_path.sv
+close [ open D:/test/250404_Dedicate_counter/250404_Dedicate_counter.srcs/sources_1/new/Data_path.sv w ]
+add_files D:/test/250404_Dedicate_counter/250404_Dedicate_counter.srcs/sources_1/new/Data_path.sv
+update_compile_order -fileset sources_1
+close [ open D:/test/250404_Dedicate_counter/250404_Dedicate_counter.srcs/sources_1/new/Top_dedicate.sv w ]
+add_files D:/test/250404_Dedicate_counter/250404_Dedicate_counter.srcs/sources_1/new/Top_dedicate.sv
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
