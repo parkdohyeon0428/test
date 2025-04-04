@@ -1,0 +1,12 @@
+# compile verilog/system verilog design source files
+sv xil_defaultlib  \
+"../../../../250404_Dedicate_counter.srcs/sources_1/new/Data_path.sv" \
+"../../../../250404_Dedicate_counter.srcs/sources_1/new/Top_dedicate.sv" \
+"../../../../250404_Dedicate_counter.srcs/sources_1/new/control_unit.sv" \
+"../../../../250404_Dedicate_counter.srcs/sim_1/new/tb_counter.sv" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort
