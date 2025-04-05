@@ -11,3 +11,77 @@
 #-----------------------------------------------------------
 start_gui
 open_project C:/Users/user/Desktop/test/250404_Dedicate_counter/250404_Dedicate_counter.xpr
+update_compile_order -fileset sources_1
+update_compile_order -fileset sim_1
+close_project
+open_project C:/Users/user/Desktop/test/250404_Dedicate_counter/250404_Dedicate_counter.xpr
+update_compile_order -fileset sources_1
+close_project
+create_project 250405_SUM C:/Users/user/Desktop/test/250405_SUM -part xc7a35tcpg236-1
+set_property board_part digilentinc.com:basys3:part0:1.1 [current_project]
+file mkdir C:/Users/user/Desktop/test/250405_SUM/250405_SUM.srcs/sources_1/new
+close [ open C:/Users/user/Desktop/test/250405_SUM/250405_SUM.srcs/sources_1/new/control_unit.sv w ]
+add_files C:/Users/user/Desktop/test/250405_SUM/250405_SUM.srcs/sources_1/new/control_unit.sv
+update_compile_order -fileset sources_1
+close [ open C:/Users/user/Desktop/test/250405_SUM/250405_SUM.srcs/sources_1/new/Data_path.sv w ]
+add_files C:/Users/user/Desktop/test/250405_SUM/250405_SUM.srcs/sources_1/new/Data_path.sv
+update_compile_order -fileset sources_1
+close [ open C:/Users/user/Desktop/test/250405_SUM/250405_SUM.srcs/sources_1/new/Top_module.sv w ]
+add_files C:/Users/user/Desktop/test/250405_SUM/250405_SUM.srcs/sources_1/new/Top_module.sv
+update_compile_order -fileset sources_1
+close_project
+open_project C:/Users/user/Desktop/test/250404_Dedicate_counter/250404_Dedicate_counter.xpr
+update_compile_order -fileset sources_1
+file mkdir C:/Users/user/Desktop/test/250404_Dedicate_counter/250404_Dedicate_counter.srcs/sources_1/new
+close [ open C:/Users/user/Desktop/test/250404_Dedicate_counter/250404_Dedicate_counter.srcs/sources_1/new/Data_path.sv w ]
+add_files C:/Users/user/Desktop/test/250404_Dedicate_counter/250404_Dedicate_counter.srcs/sources_1/new/Data_path.sv
+update_compile_order -fileset sources_1
+close [ open C:/Users/user/Desktop/test/250404_Dedicate_counter/250404_Dedicate_counter.srcs/sources_1/new/Control_unit.sv w ]
+add_files C:/Users/user/Desktop/test/250404_Dedicate_counter/250404_Dedicate_counter.srcs/sources_1/new/Control_unit.sv
+close [ open C:/Users/user/Desktop/test/250404_Dedicate_counter/250404_Dedicate_counter.srcs/sources_1/new/Top_dedicate.sv w ]
+add_files C:/Users/user/Desktop/test/250404_Dedicate_counter/250404_Dedicate_counter.srcs/sources_1/new/Top_dedicate.sv
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+synth_design -rtl -rtl_skip_mlo -name rtl_1
+synth_design -rtl -rtl_skip_mlo -name rtl_1
+synth_design -rtl -rtl_skip_mlo -name rtl_1
+refresh_design
+close_project
+open_project C:/Users/user/Desktop/test/250405_SUM/250405_SUM.xpr
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+synth_design -rtl -rtl_skip_mlo -name rtl_1
+synth_design -rtl -rtl_skip_mlo -name rtl_1
+synth_design -rtl -rtl_skip_mlo -name rtl_1
+file mkdir C:/Users/user/Desktop/test/250405_SUM/250405_SUM.srcs/sim_1/new
+set_property SOURCE_SET sources_1 [get_filesets sim_1]
+close [ open C:/Users/user/Desktop/test/250405_SUM/250405_SUM.srcs/sim_1/new/tb_sum.sv w ]
+add_files -fileset sim_1 C:/Users/user/Desktop/test/250405_SUM/250405_SUM.srcs/sim_1/new/tb_sum.sv
+update_compile_order -fileset sim_1
+# Disabling source management mode.  This is to allow the top design properties to be set without GUI intervention.
+set_property source_mgmt_mode None [current_project]
+set_property top tb_sum [get_filesets sim_1]
+set_property top_lib xil_defaultlib [get_filesets sim_1]
+# Re-enabling previously disabled source management mode.
+set_property source_mgmt_mode All [current_project]
+update_compile_order -fileset sim_1
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+update_compile_order -fileset sim_1
+refresh_design
+update_compile_order -fileset sim_1
+refresh_design
+launch_simulation
+source tb_sum.tcl
+relaunch_sim
+relaunch_sim
