@@ -3,7 +3,7 @@
 module Top_dedicate(
     input clk,
     input reset,
-    output OutPort
+    output [7:0] OutPort
 );
 
     logic AsrcSel, en, alt10, outbuf;

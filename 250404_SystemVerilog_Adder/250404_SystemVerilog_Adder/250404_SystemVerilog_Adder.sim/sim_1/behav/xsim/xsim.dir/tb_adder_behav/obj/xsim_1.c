@@ -98,8 +98,8 @@ iki_register_root_pointers(1, 5808, 8,0,0) ;
 
 }
 #include "iki_bridge.h"
-void subprog_m_403d04d7_ba96533e_1() ;
-static char* ng00[] = {(void *)subprog_m_403d04d7_ba96533e_1};
+void subprog_m_bf86ca46_ba96533e_1() ;
+static char* ng00[] = {(void *)subprog_m_bf86ca46_ba96533e_1};
 void relocate(char *);
 
 void sensitize(char *);

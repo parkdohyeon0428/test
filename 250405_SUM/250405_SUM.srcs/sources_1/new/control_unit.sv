@@ -23,8 +23,8 @@ module control_unit (
 
     always_comb begin
         next = state;
-        en = 0;
         AsrcSel = 0;
+        en = 0;
         outbuf = 0;
     case (state)
         S0: begin
@@ -34,8 +34,8 @@ module control_unit (
             next =S1;
         end 
         S1: begin
-            AsrcSel = 1;
-            en = 1;
+            AsrcSel = 0;
+            en = 0;
             outbuf = 0;
             if(alt11) begin
                 next = S2;

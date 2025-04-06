@@ -10,7 +10,7 @@ module Data_path(
     output logic [7:0] OutPort
     );
 
-    logic [7:0] w_d, w_q, w_sum, w_a_d, w_a_q, w_a_sum, w_a;  
+    logic [7:0] w_d, w_q, w_sum, w_a_d, w_a_q, w_a_sum;  
 
     mux_sum_2x1 U_Mux_Sum(
         .a(0),
@@ -32,7 +32,7 @@ module Data_path(
     );
     mux_a_2x1 U_A_Mux(
         .zero(0),
-        .a(w_a),
+        .a(w_a_sum),
         .AsrcSel(AsrcSel),
         .a_d(w_a_d) 
     );
@@ -50,14 +50,14 @@ module Data_path(
     );
     comparator U_Compara(
         .a(w_a_q),
-        .b(11),
+        .b(10),
         .Alt11(Alt11)
     );
     OutBuf U_OUTBUF(
         .clk(clk),
         .reset(reset),
         .outBuf(outBuf),
-        .q(w_a_q),
+        .q(w_sum),
         .o_q(OutPort)
     );
 endmodule
@@ -127,10 +127,10 @@ module register_a (
 );
     always_ff @( posedge clk, posedge reset ) begin
         if (reset) begin
-            a_q = 0;
+            a_q <= 0;
         end else begin
             if (AEn) begin
-                a_q = a_d;
+                a_q <= a_d;
             end
         end
     end
@@ -149,7 +149,7 @@ module comparator (
     input logic [7:0] b,
     output logic Alt11
 );
-    assign Alt11 = a < b;
+    assign Alt11 = (a < b);
 endmodule
 
 module OutBuf (
