@@ -11,3 +11,25 @@
 #-----------------------------------------------------------
 start_gui
 open_project C:/Users/user/Desktop/test/250404_Dedicate_counter/250404_Dedicate_counter.xpr
+update_compile_order -fileset sources_1
+launch_simulation
+source tb_sum.tcl
+relaunch_sim
+relaunch_sim
+relaunch_sim
+close_sim
+close_project
+open_project C:/Users/user/Desktop/test/250405_SUM/250405_SUM.xpr
+update_compile_order -fileset sources_1
+launch_simulation
+source tb_sum.tcl
+run all
+relaunch_sim
+relaunch_sim
+relaunch_sim
+relaunch_sim
+relaunch_sim
+relaunch_sim
+relaunch_sim
+relaunch_sim
+relaunch_sim
