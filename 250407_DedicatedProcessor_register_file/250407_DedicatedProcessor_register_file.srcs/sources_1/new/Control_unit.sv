@@ -35,7 +35,7 @@ module Control_unit(
                 RFSrcMuxSel = 0;
                 readAddr1 = 0;
                 readAddr2 = 0;
-                writeAddr = 1;   //sum
+                writeAddr = 1;   // R1(sum)
                 writeEn = 1;
                 outBuf = 0;
                 next = S1;
@@ -44,23 +44,23 @@ module Control_unit(
                 RFSrcMuxSel = 0;
                 readAddr1 = 0;
                 readAddr2 = 0;
-                writeAddr = 2;    // i
+                writeAddr = 2;   // R2(i)
                 writeEn = 1;
                 outBuf = 0;
                 next = S2;
             end
-            S2: begin
+            S2: begin   
                 RFSrcMuxSel = 1;
                 readAddr1 = 0;
                 readAddr2 = 0;
-                writeAddr = 3;    // 1
+                writeAddr = 3;    // R3(1)
                 writeEn = 1;
                 outBuf = 0;
                 next = S3;
             end
-            S3: begin
+            S3: begin   // i <= 10 인지 확인
                 RFSrcMuxSel = 0;
-                readAddr1 = 2;
+                readAddr1 = 2;   // R2(i)를 읽음 
                 readAddr2 = 0;
                 writeAddr = 0;
                 writeEn = 0;
@@ -73,18 +73,18 @@ module Control_unit(
             end
             S4: begin
                 RFSrcMuxSel = 0;
-                readAddr1 = 1;
-                readAddr2 = 2;
-                writeAddr = 1;
+                readAddr1 = 1;  //R1(sum)
+                readAddr2 = 2;  //R2(i)
+                writeAddr = 1;  // R1(sum) 업데이트
                 writeEn = 1;
                 outBuf = 0;
                 next = S5;
             end
             S5: begin
                 RFSrcMuxSel = 0;
-                readAddr1 = 2;
-                readAddr2 = 3;
-                writeAddr = 2;
+                readAddr1 = 2;  //R2(i) 
+                readAddr2 = 3;  //R3(1)
+                writeAddr = 2;  //R2(i)
                 writeEn = 1;
                 outBuf = 0;
                 next = S6;

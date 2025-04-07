@@ -78,30 +78,30 @@ module Control_unit(
                 RFSrcMuxSel = 0;
                 readAddr1 = 4;
                 readAddr2 = 4;
-                writeAddr = 5;    //R5 sum
+                writeAddr = 5;    //R5 
                 writeEn = 1;
                 outBuf = 1;
-                aluOP = 0;
+                aluOP = 0;       //alu[0] (+)
                 next = S5;
             end
             S5: begin
                 RFSrcMuxSel = 0;
                 readAddr1 = 5;
                 readAddr2 = 1;
-                writeAddr = 6;    //R6 -
+                writeAddr = 6;    //R6 
                 writeEn = 1;
                 outBuf = 1;
-                aluOP = 1;
+                aluOP = 1;       //alu[1] (-)
                 next = S6;
             end
             S6: begin
                 RFSrcMuxSel = 0;
                 readAddr1 = 6;
                 readAddr2 = 4;
-                writeAddr = 2;   //R2
+                writeAddr = 2;   //R2 
                 writeEn = 1;
                 outBuf = 1;
-                aluOP = 2;
+                aluOP = 2;       //alu[1] (&)
                 next = S7;
             end
             S7: begin
@@ -111,7 +111,7 @@ module Control_unit(
                 writeAddr = 3;   //R3
                 writeEn = 1;
                 outBuf = 1;
-                aluOP = 3;
+                aluOP = 3;      //alu[1] (|)
                 next = S8;
             end
             S8: begin
@@ -121,24 +121,24 @@ module Control_unit(
                 writeAddr = 7;   //R7
                 writeEn = 1;
                 outBuf = 1;
-                aluOP = 4;
+                aluOP = 4;      //alu[1] (^)
                 next = S9;
             end
             S9: begin
                 RFSrcMuxSel = 0;
                 readAddr1 = 7;
                 readAddr2 = 0;
-                writeAddr = 4;    //not
+                writeAddr = 4;    
                 writeEn = 1;
                 outBuf = 1;
-                aluOP = 5;
+                aluOP = 5;       //alu[1] (~)
                 next = S10;
             end
             S10: begin
                 RFSrcMuxSel = 0;
                 readAddr1 = 7;
                 readAddr2 = 4;
-                writeAddr = 0;          //ip
+                writeAddr = 0;          
                 writeEn = 0;
                 outBuf = 0;
                 aluOP = 0;
