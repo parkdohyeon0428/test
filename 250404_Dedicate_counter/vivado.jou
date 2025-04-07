@@ -1,0 +1,36 @@
+#-----------------------------------------------------------
+# Vivado v2020.2 (64-bit)
+# SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
+# IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+# Start of session at: Sun Apr  6 12:29:25 2025
+# Process ID: 15556
+# Current directory: C:/Users/user/Desktop/test/250404_Dedicate_counter
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent16476 C:\Users\user\Desktop\test\250404_Dedicate_counter\250404_Dedicate_counter.xpr
+# Log file: C:/Users/user/Desktop/test/250404_Dedicate_counter/vivado.log
+# Journal file: C:/Users/user/Desktop/test/250404_Dedicate_counter\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project C:/Users/user/Desktop/test/250404_Dedicate_counter/250404_Dedicate_counter.xpr
+update_compile_order -fileset sources_1
+launch_simulation
+source tb_sum.tcl
+relaunch_sim
+relaunch_sim
+relaunch_sim
+close_sim
+close_project
+open_project C:/Users/user/Desktop/test/250405_SUM/250405_SUM.xpr
+update_compile_order -fileset sources_1
+launch_simulation
+source tb_sum.tcl
+run all
+relaunch_sim
+relaunch_sim
+relaunch_sim
+relaunch_sim
+relaunch_sim
+relaunch_sim
+relaunch_sim
+relaunch_sim
+relaunch_sim
+close_sim

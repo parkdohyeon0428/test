@@ -1,0 +1,12 @@
+# compile verilog/system verilog design source files
+sv xil_defaultlib  \
+"../../../../250405_SUM.srcs/sources_1/new/Data_path.sv" \
+"../../../../250405_SUM.srcs/sources_1/new/Top_module.sv" \
+"../../../../250405_SUM.srcs/sources_1/new/control_unit.sv" \
+"../../../../250405_SUM.srcs/sim_1/new/tb_sum.sv" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort
