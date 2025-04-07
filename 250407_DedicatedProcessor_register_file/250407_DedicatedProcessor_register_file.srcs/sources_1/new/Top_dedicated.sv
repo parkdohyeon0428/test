@@ -1,0 +1,23 @@
+`timescale 1ns / 1ps
+
+module Top_dedicated(
+    input logic clk,
+    input logic reset,
+    output logic [7:0] outPort
+    );
+
+    logic RFSrcMuxSel;
+    logic [2:0] readAddr1;
+    logic [2:0] readAddr2;
+    logic [2:0] writeAddr;
+    logic writeEn;
+    logic outBuf;
+    logic iLe10;
+
+    Control_unit U_CU(
+    .*);
+
+    Data_Path U_DP(
+    .*);
+
+endmodule

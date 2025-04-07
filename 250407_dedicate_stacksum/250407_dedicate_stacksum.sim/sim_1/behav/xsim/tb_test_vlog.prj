@@ -1,0 +1,12 @@
+# compile verilog/system verilog design source files
+sv xil_defaultlib  \
+"../../../../250407_dedicate_stacksum.srcs/sources_1/new/Control_Unit.sv" \
+"../../../../250407_dedicate_stacksum.srcs/sources_1/new/Data_Path.sv" \
+"../../../../250407_dedicate_stacksum.srcs/sources_1/new/Top_dedicate.sv" \
+"../../../../250407_dedicate_stacksum.srcs/sim_1/new/tb_test.sv" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort
