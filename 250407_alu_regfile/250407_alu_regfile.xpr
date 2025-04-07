@@ -3,10 +3,10 @@
 <!--                                                         -->
 <!-- Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.   -->
 
-<Project Version="7" Minor="54" Path="D:/test/250407_DedicatedProcessor_register_file/250407_DedicatedProcessor_register_file.xpr">
+<Project Version="7" Minor="54" Path="D:/test/250407_alu_regfile/250407_alu_regfile.xpr">
   <DefaultLaunch Dir="$PRUNDIR"/>
   <Configuration>
-    <Option Name="Id" Val="27799615025f4b55afa989da385b4e4c"/>
+    <Option Name="Id" Val="3db25bedc12e4c3ba9a1bce9975c974b"/>
     <Option Name="Part" Val="xc7a35tcpg236-1"/>
     <Option Name="CompiledLibDir" Val="$PCACHEDIR/compile_simlib"/>
     <Option Name="CompiledLibDirXSim" Val=""/>
@@ -46,7 +46,7 @@
     <Option Name="IPStaticSourceDir" Val="$PIPUSERFILESDIR/ipstatic"/>
     <Option Name="EnableBDX" Val="FALSE"/>
     <Option Name="DSABoardId" Val="basys3"/>
-    <Option Name="WTXSimLaunchSim" Val="24"/>
+    <Option Name="WTXSimLaunchSim" Val="23"/>
     <Option Name="WTModelSimLaunchSim" Val="0"/>
     <Option Name="WTQuestaLaunchSim" Val="0"/>
     <Option Name="WTIesLaunchSim" Val="0"/>
@@ -75,22 +75,28 @@
   <FileSets Version="1" Minor="31">
     <FileSet Name="sources_1" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1" RelGenDir="$PGENDIR/sources_1">
       <Filter Type="Srcs"/>
-      <File Path="$PSRCDIR/sources_1/new/Control_unit.sv">
+      <File Path="$PSRCDIR/sources_1/imports/new/Control_unit.sv">
         <FileInfo>
+          <Attr Name="ImportPath" Val="$PPRDIR/../250407_DedicatedProcessor_register_file/250407_DedicatedProcessor_register_file.srcs/sources_1/new/Control_unit.sv"/>
+          <Attr Name="ImportTime" Val="1744010691"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PSRCDIR/sources_1/new/Data_Path.sv">
+      <File Path="$PSRCDIR/sources_1/imports/new/Data_Path.sv">
         <FileInfo>
+          <Attr Name="ImportPath" Val="$PPRDIR/../250407_DedicatedProcessor_register_file/250407_DedicatedProcessor_register_file.srcs/sources_1/new/Data_Path.sv"/>
+          <Attr Name="ImportTime" Val="1744009292"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PSRCDIR/sources_1/new/Top_dedicated.sv">
+      <File Path="$PSRCDIR/sources_1/imports/new/Top_dedicated.sv">
         <FileInfo>
+          <Attr Name="ImportPath" Val="$PPRDIR/../250407_DedicatedProcessor_register_file/250407_DedicatedProcessor_register_file.srcs/sources_1/new/Top_dedicated.sv"/>
+          <Attr Name="ImportTime" Val="1744005599"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
@@ -112,8 +118,8 @@
       <Filter Type="Srcs"/>
       <File Path="$PSRCDIR/sim_1/imports/new/tb_test.sv">
         <FileInfo>
-          <Attr Name="ImportPath" Val="$PPRDIR/../250407_dedicate_stacksum/250407_dedicate_stacksum.srcs/sim_1/new/tb_test.sv"/>
-          <Attr Name="ImportTime" Val="1743994603"/>
+          <Attr Name="ImportPath" Val="$PPRDIR/../250407_DedicatedProcessor_register_file/250407_DedicatedProcessor_register_file.srcs/sim_1/imports/new/tb_test.sv"/>
+          <Attr Name="ImportTime" Val="1744005675"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>

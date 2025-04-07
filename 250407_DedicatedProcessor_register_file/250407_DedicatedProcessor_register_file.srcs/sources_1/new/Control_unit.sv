@@ -12,7 +12,7 @@ module Control_unit(
     input logic iLe10
 );
 
-    localparam S0 = 0, S1 = 1, S2 = 2, S3 = 3, S4 = 4, S5 = 5, S6 = 6;
+    localparam S0 = 0, S1 = 1, S2 = 2, S3 = 3, S4 = 4, S5 = 5, S6 = 6, S7 = 7;
     logic [2:0] state, next;
 
     always_ff @( posedge clk, posedge reset ) begin
@@ -60,52 +60,52 @@ module Control_unit(
             end
             S3: begin
                 RFSrcMuxSel = 0;
+                readAddr1 = 2;
+                readAddr2 = 0;
+                writeAddr = 0;
+                writeEn = 0;
+                outBuf = 0;
+                if (iLe10) begin
+                    next = S4;
+                end else begin
+                    next = S7;
+                end
+            end
+            S4: begin
+                RFSrcMuxSel = 0;
                 readAddr1 = 1;
                 readAddr2 = 2;
                 writeAddr = 1;
                 writeEn = 1;
                 outBuf = 0;
-                if (iLe10) begin
-                    next = S4;
-                end else begin
-                    next = S6;
-                end
+                next = S5;
             end
-            S4: begin
+            S5: begin
                 RFSrcMuxSel = 0;
                 readAddr1 = 2;
                 readAddr2 = 3;
                 writeAddr = 2;
                 writeEn = 1;
                 outBuf = 0;
-                next = S5;
+                next = S6;
             end
-            // S5: begin
-            //     RFSrcMuxSel = 0;
-            //     readAddr1 = 2;
-            //     readAddr2 = 1;
-            //     writeAddr = 2;
-            //     writeEn = 1;
-            //     outBuf = 0;
-            //     next = S6;
-            // end
-            S5: begin
-                RFSrcMuxSel = 1'bx;
-                readAddr1 = 2;
+            S6: begin
+                RFSrcMuxSel = 0;
+                readAddr1 = 1;
                 readAddr2 = 0;
                 writeAddr = 0;
                 writeEn = 0;
                 outBuf = 1;
                 next = S3;
             end
-            S6: begin
+            S7: begin
                 RFSrcMuxSel = 0;
                 readAddr1 = 0;
                 readAddr2 = 0;
                 writeAddr = 0;
                 writeEn = 0;
                 outBuf = 0;
-                next = S6;
+                next = S7;
             end
         endcase
     end
