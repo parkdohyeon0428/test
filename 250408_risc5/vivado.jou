@@ -1,0 +1,19 @@
+#-----------------------------------------------------------
+# Vivado v2020.2 (64-bit)
+# SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
+# IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+# Start of session at: Tue Apr  8 16:41:34 2025
+# Process ID: 9404
+# Current directory: D:/test/250408_risc5
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent9984 D:\test\250408_risc5\250408_risc5.xpr
+# Log file: D:/test/250408_risc5/vivado.log
+# Journal file: D:/test/250408_risc5\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project D:/test/250408_risc5/250408_risc5.xpr
+update_compile_order -fileset sources_1
+synth_design -rtl -rtl_skip_mlo -name rtl_1
+launch_simulation
+source tb_RV32I.tcl
+relaunch_sim
+relaunch_sim
