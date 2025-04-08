@@ -17,3 +17,4 @@ launch_simulation
 source tb_RV32I.tcl
 relaunch_sim
 relaunch_sim
+close_sim

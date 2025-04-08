@@ -8,7 +8,7 @@ module DataPath (
     input  logic        regFileWe,
     input  logic [ 3:0] aluControl
 );
-    logic [31:0] aluResult, RFData1, RFData2, PCOutData;
+    logic [31:0] aluResult, RFData1, RFData2, PCOutData, PCSrcData;
     assign instrMemAddr = PCOutData;
 
     RegisterFile U_RegFile(
@@ -36,7 +36,7 @@ module DataPath (
     adder U_PC_Adder(
         .a(32'd4),
         .b(PCOutData),
-        .y(PCOutData)
+        .y(PCSrcData)
     );
 endmodule
 
@@ -54,7 +54,7 @@ module alu (
             4'b0011:   result = a >> b;
             4'b0100:   result = a >>> b;
             4'b0101:   result = (a < b) ? 1 : 0;
-            4'b0110:   result = (a < b) ? 1 : 0;
+            4'b0110:   result = ({1'b0,a[30:0]} < {1'b0,b[30:0]}) ? 1 : 0;
             4'b0111:   result = a ^ b;
             4'b1000:   result = a | b;
             4'b1001:   result = a & b;
