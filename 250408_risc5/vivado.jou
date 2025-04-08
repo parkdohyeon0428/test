@@ -11,3 +11,11 @@
 #-----------------------------------------------------------
 start_gui
 open_project C:/Users/user/Desktop/test/250408_risc5/250408_risc5.xpr
+update_compile_order -fileset sources_1
+launch_simulation
+source tb_RV32I.tcl
+relaunch_sim
+relaunch_sim
+relaunch_sim
+relaunch_sim
+relaunch_sim
