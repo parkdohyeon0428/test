@@ -1,0 +1,55 @@
+#-----------------------------------------------------------
+# Vivado v2020.2 (64-bit)
+# SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
+# IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+# Start of session at: Tue Apr  8 09:17:59 2025
+# Process ID: 3396
+# Current directory: D:/test/250407_alu_regfile
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent8496 D:\test\250407_alu_regfile\250407_alu_regfile.xpr
+# Log file: D:/test/250407_alu_regfile/vivado.log
+# Journal file: D:/test/250407_alu_regfile\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project D:/test/250407_alu_regfile/250407_alu_regfile.xpr
+update_compile_order -fileset sources_1
+close_project
+create_project 250408_RAM D:/test/250408_RAM -part xc7a35tcpg236-1
+set_property board_part digilentinc.com:basys3:part0:1.1 [current_project]
+file mkdir D:/test/250408_RAM/250408_RAM.srcs/sources_1/new
+close [ open D:/test/250408_RAM/250408_RAM.srcs/sources_1/new/ram.sv w ]
+add_files D:/test/250408_RAM/250408_RAM.srcs/sources_1/new/ram.sv
+update_compile_order -fileset sources_1
+file mkdir D:/test/250408_RAM/250408_RAM.srcs/sim_1/new
+set_property SOURCE_SET sources_1 [get_filesets sim_1]
+close [ open D:/test/250408_RAM/250408_RAM.srcs/sim_1/new/tb_ram.sv w ]
+add_files -fileset sim_1 D:/test/250408_RAM/250408_RAM.srcs/sim_1/new/tb_ram.sv
+update_compile_order -fileset sim_1
+# Disabling source management mode.  This is to allow the top design properties to be set without GUI intervention.
+set_property source_mgmt_mode None [current_project]
+set_property top tb_ram [get_filesets sim_1]
+set_property top_lib xil_defaultlib [get_filesets sim_1]
+# Re-enabling previously disabled source management mode.
+set_property source_mgmt_mode All [current_project]
+update_compile_order -fileset sim_1
+update_compile_order -fileset sim_1
+# Disabling source management mode.  This is to allow the top design properties to be set without GUI intervention.
+set_property source_mgmt_mode None [current_project]
+set_property top tb_ram [get_filesets sim_1]
+# Re-enabling previously disabled source management mode.
+set_property source_mgmt_mode All [current_project]
+update_compile_order -fileset sim_1
+launch_simulation
+launch_simulation
+launch_simulation
+launch_simulation
+source tb_ram.tcl
+relaunch_sim
+relaunch_sim
+relaunch_sim
+relaunch_sim
+relaunch_sim
+relaunch_sim
+relaunch_sim
+relaunch_sim
+relaunch_sim
+close_sim
