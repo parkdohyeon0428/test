@@ -25,8 +25,8 @@ module ControlUnit (
                     4'b0001: aluControl = 4'b0010; // << 
                     4'b0101: aluControl = 4'b0011; // >>
                     4'b1101: aluControl = 4'b0100; // >>>
-                    4'b0010: aluControl = 4'b0101; // 삼항1
-                    4'b0011: aluControl = 4'b0110; // 삼항2
+                    4'b0010: aluControl = 4'b0101; // signed <
+                    4'b0011: aluControl = 4'b0110; // unsigned <
                     4'b0100: aluControl = 4'b0111; // ^
                     4'b0110: aluControl = 4'b1000; // or
                     4'b0111: aluControl = 4'b1001; // and
