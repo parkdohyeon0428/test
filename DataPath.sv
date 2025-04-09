@@ -1,122 +1,111 @@
 `timescale 1ns / 1ps
 
 module DataPath (
-    input  logic       clk,
-    input  logic       reset,
-    input  logic       RFSrcMuxSel,
-    input  logic [2:0] readAddr1,
-    input  logic [2:0] readAddr2,
-    input  logic [2:0] writeAddr,
-    input  logic       writeEn,
-    input  logic       outBuf,
-    output logic       iLe10,
-    output logic [7:0] outPort
+    input  logic        clk,
+    input  logic        reset,
+    input  logic [31:0] instrCode,
+    output logic [31:0] instrMemAddr,
+    input  logic        regFileWe,
+    input  logic [ 1:0] aluControl
 );
-    logic [7:0] adderResult, RFSrcMuxData, RFReadData1, RFReadData2;
+    logic [31:0] aluResult, RFData1, RFData2;
+    logic [31:0] PCSrcData, PCOutData;
 
-    mux_2x1 U_RFSrcMux (
-        .sel(RFSrcMuxSel),
-        .x0 (adderResult),
-        .x1 (8'b1),
-        .y  (RFSrcMuxData)
-    );
+    assign instrMemAddr = PCOutData;
 
-    RegFile U_RegFile (
+    RegisterFile U_RegFile (
         .clk(clk),
-        .readAddr1(readAddr1),
-        .readAddr2(readAddr2),
-        .writeAddr(writeAddr),
-        .writeEn(writeEn),
-        .wData(RFSrcMuxData),
-        .rData1(RFReadData1),
-        .rData2(RFReadData2)
+        .we(regFileWe),
+        .RAddr1(instrCode[19:15]),
+        .RAddr2(instrCode[24:20]),
+        .WAddr(instrCode[11:7]),
+        .WData(aluResult),
+        .RData1(RFData1),
+        .RData2(RFData2)
     );
 
-    comparator U_Comp_iLe10 (
-        .a (RFReadData1),
-        .b (8'd10),
-        .le(iLe10)
+    alu U_ALU (
+        .aluControl(aluControl),
+        .a(RFData1),
+        .b(RFData2),
+        .result(aluResult)
     );
 
-    adder U_Adder (
-        .a  (RFReadData1),
-        .b  (RFReadData2),
-        .sum(adderResult)
-    );
-
-    register U_OutReg (
+    register U_PC (
         .clk(clk),
         .reset(reset),
-        .en(outBuf),
-        .d(RFReadData1),
-        .q(outPort)
+        .d(PCSrcData),
+        .q(PCOutData)
     );
 
+    adder U_PC_Adder (
+        .a(32'd4),
+        .b(PCOutData),
+        .y(PCSrcData)
+    );
+
+
 endmodule
 
 
-module RegFile (
-    input  logic       clk,
-    input  logic [2:0] readAddr1,
-    input  logic [2:0] readAddr2,
-    input  logic [2:0] writeAddr,
-    input  logic       writeEn,
-    input  logic [7:0] wData,
-    output logic [7:0] rData1,
-    output logic [7:0] rData2
+module alu (
+    input  logic [ 1:0] aluControl,
+    input  logic [31:0] a,
+    input  logic [31:0] b,
+    output logic [31:0] result
 );
-    logic [7:0] mem[0:7];
-
-    always_ff @(posedge clk) begin : write
-        if (writeEn) mem[writeAddr] <= wData;
-    end
-
-    assign rData1 = (readAddr1 == 3'b0) ? 8'b0 : mem[readAddr1];
-    assign rData2 = (readAddr2 == 3'b0) ? 8'b0 : mem[readAddr2];
-endmodule
-
-module mux_2x1 (
-    input  logic       sel,
-    input  logic [7:0] x0,
-    input  logic [7:0] x1,
-    output logic [7:0] y
-);
-    always_comb begin : mux
-        y = 8'b0;
-        case (sel)
-            1'b0: y = x0;
-            1'b1: y = x1;
+    always_comb begin
+        case (aluControl)
+            2'b00:   result = a + b;
+            2'b01:   result = a - b;
+            2'b10:   result = a | b;
+            2'b11:   result = a & b;
+            default: result = 32'bx;
         endcase
     end
 endmodule
 
 module register (
-    input  logic       clk,
-    input  logic       reset,
-    input  logic       en,
-    input  logic [7:0] d,
-    output logic [7:0] q
+    input  logic        clk,
+    input  logic        reset,
+    input  logic [31:0] d,
+    output logic [31:0] q
 );
-    always_ff @(posedge clk, posedge reset) begin : register
+    always_ff @(posedge clk, posedge reset) begin
         if (reset) q <= 0;
-        else begin
-            if (en) q <= d;
-        end
+        else q <= d;
     end
 endmodule
 
-module comparator (
-    input  logic [7:0] a,
-    input  logic [7:0] b,
-    output logic       le
+module adder (
+    input  logic [31:0] a,
+    input  logic [31:0] b,
+    output logic [31:0] y
 );
-    assign le = (a <= b);
+    assign y = a + b;
 endmodule
 
-module adder (
-    input  logic [7:0] a,
-    input  logic [7:0] b,
-    output logic [7:0] sum
+module RegisterFile (
+    input  logic        clk,
+    input  logic        we,
+    input  logic [ 4:0] RAddr1,
+    input  logic [ 4:0] RAddr2,
+    input  logic [ 4:0] WAddr,
+    input  logic [31:0] WData,
+    output logic [31:0] RData1,
+    output logic [31:0] RData2
 );
-    assign sum = a + b;
+    logic [31:0] RegFile[0:2**5-1];
+    initial begin
+        for (int i=0; i<32; i++) begin
+            RegFile[i] = 10 + i;
+        end
+    end
+
+    always_ff @(posedge clk) begin
+        if (we) RegFile[WAddr] <= WData;
+    end
+
+    assign RData1 = (RAddr1 != 0) ? RegFile[RAddr1] : 32'b0;
+    assign RData2 = (RAddr2 != 0) ? RegFile[RAddr2] : 32'b0;
 endmodule
