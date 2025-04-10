@@ -9,7 +9,9 @@ module DataPath (
     input  logic        regFileWe,
     input  logic [ 3:0] aluControl,
     input  logic        aluSrcMuxSel,
-    input  logic        RFWDSrcMuxSel,
+    input  logic  [3:0] RFWDSrcMuxSel,
+    input  logic        branch,
+    input  logic        LUSrcMuxSel,
     // instr memory side port
     output logic [31:0] instrMemAddr,
     input  logic [31:0] instrCode,
@@ -20,8 +22,11 @@ module DataPath (
 );
     logic [31:0] aluResult, RFData1, RFData2;
     logic [31:0] PCSrcData, PCOutData;
-    logic [31:0] immExt, aluSrcMuxOut, RFWDSrcMuxOut;
+    logic [31:0] immExt, aluSrcMuxOut, RFWDSrcMuxOut, LUSrcMuxOut;
+    logic btaken, PCSrcMuxSel;
+    logic[31:0] PC_Imm_AdderResult,PC_4_AdderResult,PCSrcMuxOut;
 
+    assign PCSrcMuxSel = btaken & branch;
     assign instrMemAddr = PCOutData;
     assign dataAddr     = aluResult;
     assign dataWData    = RFData2;
@@ -44,17 +49,20 @@ module DataPath (
         .y  (aluSrcMuxOut)
     );
 
-    mux_2x1 U_RFWDSrcMux (
+    mux_4x1 U_RFWDSrcMux(
         .sel(RFWDSrcMuxSel),
-        .x0 (aluResult),
-        .x1 (dataRData),
-        .y  (RFWDSrcMuxOut)
+        .x0(aluResult),
+        .x1(dataRData),
+        .x2(LUSrcMuxOut),  //LU
+        .x3(PC_Imm_AdderResult),  //AU
+        .y(RFWDSrcMuxOut)
     );
 
     alu U_ALU (
         .aluControl(aluControl),
         .a(RFData1),
         .b(aluSrcMuxOut),
+        .btaken(btaken),
         .result(aluResult)
     );
 
@@ -63,17 +71,36 @@ module DataPath (
         .immExt(immExt)
     );
 
+     mux_2x1 U_ImmSrcMux (
+        .sel(LUSrcMuxSel),
+        .x0 (immExt),
+        .x1 (immExt << 12),
+        .y  (LUSrcMuxOut)
+    );
     register U_PC (
         .clk(clk),
         .reset(reset),
-        .d(PCSrcData),
+        .d(PCSrcMuxOut),
         .q(PCOutData)
     );
 
-    adder U_PC_Adder (
+    adder U_PC_Imm_Adder (
+        .a(LUSrcMuxOut),
+        .b(PCOutData),
+        .y(PC_Imm_AdderResult)
+    );
+
+    mux_2x1 U_PCSrcMux (
+        .sel(PCSrcMuxSel),
+        .x0 (PC_4_AdderResult),
+        .x1 (PC_Imm_AdderResult),
+        .y  (PCSrcMuxOut)
+    );
+
+    adder U_PC_4_Adder (
         .a(32'd4),
         .b(PCOutData),
-        .y(PCSrcData)
+        .y(PC_4_AdderResult)
     );
 
 
@@ -84,6 +111,7 @@ module alu (
     input  logic [ 3:0] aluControl,
     input  logic [31:0] a,
     input  logic [31:0] b,
+    output logic        btaken,
     output logic [31:0] result
 );
     always_comb begin
@@ -101,6 +129,20 @@ module alu (
             default: result = 32'bx;
         endcase
     end
+
+    always_comb begin : branch_processor
+        btaken = 1'b0;
+        case(aluControl[2:0])
+        `BEQ:  btaken = (a == b);
+        `BNE:  btaken = (a != b);
+        `BLT:  btaken = ($signed(a) < $signed(b));
+        `BGE:  btaken = ($signed(a) >= $signed(b));
+        `BLTU: btaken = (a < b);
+        `BGEU: btaken = (a >= b);
+        default: btaken = 1'b0;
+        endcase
+    end
+
 endmodule
 
 module register (
@@ -163,6 +205,25 @@ module mux_2x1 (
     end
 endmodule
 
+module mux_4x1 (
+    input  logic [3:0] sel,
+    input  logic [31:0] x0,
+    input  logic [31:0] x1,
+    input  logic [31:0] x2,
+    input  logic [31:0] x3,
+    output logic [31:0] y
+);
+    always_comb begin 
+        case (sel)
+            4'b0000: y = x0;
+            4'b0001: y = x1;
+            4'b0010: y = x2;
+            4'b0011: y = x3;
+            default: y = 32'bx;
+        endcase
+    end
+endmodule
+
 module extend (
     input  logic [31:0] instrCode,
     output logic [31:0] immExt
@@ -175,8 +236,7 @@ module extend (
         case (opcode)
             `OP_TYPE_R: immExt = 32'bx;
             `OP_TYPE_L: immExt = {{20{instrCode[31]}}, instrCode[31:20]};
-            `OP_TYPE_S:
-            immExt = {{20{instrCode[31]}}, instrCode[31:25], instrCode[11:7]};
+            `OP_TYPE_S: immExt = {{20{instrCode[31]}}, instrCode[31:25], instrCode[11:7]};
             `OP_TYPE_I:begin
                 case (func3)
                     3'b001: immExt = {27'b0, instrCode[24:20]};
@@ -185,7 +245,11 @@ module extend (
                     default: immExt = {{20{instrCode[31]}}, instrCode[31:20]};
                 endcase
             end
+            `OP_TYPE_B: immExt = {{20{instrCode[31]}}, instrCode[7], instrCode[30:25],instrCode[11:8],1'b0};
             default: immExt = 32'bx;
+            `OP_TYPE_LU: immExt = {{12{instrCode[31]}}, instrCode[31:12]};
+            `OP_TYPE_AU: immExt = {{12{instrCode[31]}}, instrCode[31:12]};     
+            
         endcase
     end
 endmodule

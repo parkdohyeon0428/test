@@ -10,6 +10,7 @@ module DataPath (
     input  logic [ 3:0] aluControl,
     input  logic        aluSrcMuxSel,
     input  logic        RFWDSrcMuxSel,
+    input  logic        branch,
     // instr memory side port
     output logic [31:0] instrMemAddr,
     input  logic [31:0] instrCode,
@@ -21,7 +22,10 @@ module DataPath (
     logic [31:0] aluResult, RFData1, RFData2;
     logic [31:0] PCSrcData, PCOutData;
     logic [31:0] immExt, aluSrcMuxOut, RFWDSrcMuxOut;
+    logic btaken, PCSrcMuxSel;
+    logic[31:0] PC_Imm_AdderResult,PC_4_AdderResult,PCSrcMuxOut;
 
+    assign PCSrcMuxSel = btaken & branch;
     assign instrMemAddr = PCOutData;
     assign dataAddr     = aluResult;
     assign dataWData    = RFData2;
@@ -55,6 +59,7 @@ module DataPath (
         .aluControl(aluControl),
         .a(RFData1),
         .b(aluSrcMuxOut),
+        .btaken(btaken),
         .result(aluResult)
     );
 
@@ -66,14 +71,27 @@ module DataPath (
     register U_PC (
         .clk(clk),
         .reset(reset),
-        .d(PCSrcData),
+        .d(PCSrcMuxOut),
         .q(PCOutData)
     );
 
-    adder U_PC_Adder (
+    adder U_PC_Imm_Adder (
+        .a(immExt),
+        .b(PCOutData),
+        .y(PC_Imm_AdderResult)
+    );
+
+    mux_2x1 U_PCSrcMux (
+        .sel(PCSrcMuxSel),
+        .x0 (PC_4_AdderResult),
+        .x1 (PC_Imm_AdderResult),
+        .y  (PCSrcMuxOut)
+    );
+
+    adder U_PC_4_Adder (
         .a(32'd4),
         .b(PCOutData),
-        .y(PCSrcData)
+        .y(PC_4_AdderResult)
     );
 
 
@@ -84,6 +102,7 @@ module alu (
     input  logic [ 3:0] aluControl,
     input  logic [31:0] a,
     input  logic [31:0] b,
+    output logic        btaken,
     output logic [31:0] result
 );
     always_comb begin
@@ -101,6 +120,20 @@ module alu (
             default: result = 32'bx;
         endcase
     end
+
+    always_comb begin : branch_processor
+        btaken = 1'b0;
+        case(aluControl[2:0])
+        `BEQ:  btaken = (a == b);
+        `BNE:  btaken = (a != b);
+        `BLT:  btaken = ($signed(a) < $signed(b));
+        `BGE:  btaken = ($signed(a) >= $signed(b));
+        `BLTU: btaken = (a < b);
+        `BGEU: btaken = (a >= b);
+        default: btaken = 1'b0;
+        endcase
+    end
+
 endmodule
 
 module register (
@@ -175,8 +208,7 @@ module extend (
         case (opcode)
             `OP_TYPE_R: immExt = 32'bx;
             `OP_TYPE_L: immExt = {{20{instrCode[31]}}, instrCode[31:20]};
-            `OP_TYPE_S:
-            immExt = {{20{instrCode[31]}}, instrCode[31:25], instrCode[11:7]};
+            `OP_TYPE_S: immExt = {{20{instrCode[31]}}, instrCode[31:25], instrCode[11:7]};
             `OP_TYPE_I:begin
                 case (func3)
                     3'b001: immExt = {27'b0, instrCode[24:20]};
@@ -185,6 +217,7 @@ module extend (
                     default: immExt = {{20{instrCode[31]}}, instrCode[31:20]};
                 endcase
             end
+            `OP_TYPE_B: immExt = {{20{instrCode[31]}}, instrCode[7], instrCode[30:25],instrCode[11:8],1'b0};
             default: immExt = 32'bx;
         endcase
     end

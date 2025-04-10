@@ -14,6 +14,7 @@ module ControlUnit (
     wire [3:0] operators = {
         instrCode[30], instrCode[14:12]
     };  // {func7[5], func3}
+    //wire [2:0] comparator = {instrCode[14:12]}; //func3
 
     logic [3:0] signals;
     assign {regFileWe, aluSrcMuxSel, dataWe, RFWDSrcMuxSel} = signals;
@@ -26,6 +27,7 @@ module ControlUnit (
             `OP_TYPE_S: signals = 4'b0_1_1_0;
             `OP_TYPE_L: signals = 4'b1_1_0_1;
             `OP_TYPE_I: signals = 4'b1_1_0_0;
+            `OP_TYPE_B: signals = 4'b1_0_0_0;
         endcase
     end
 
@@ -37,8 +39,9 @@ module ControlUnit (
             `OP_TYPE_L: aluControl = `ADD;
             `OP_TYPE_I: begin
                 if (operators == 4'b1101) aluControl = operators; // {1'b1, func3}
-                else aluControl = {1'b0, operators[2:0]};  // {1'b0, func3}
+                else aluControl = {1'b0, operators[2:0]}; //{1'b0, func3}
             end
+            `OP_TYPE_B: aluControl = {1'bx, operators[2:0]};
         endcase
     end
 endmodule
