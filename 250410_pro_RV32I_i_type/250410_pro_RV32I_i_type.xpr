@@ -3,10 +3,10 @@
 <!--                                                         -->
 <!-- Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.   -->
 
-<Project Version="7" Minor="54" Path="D:/test/250410_rv32i_stype/250410_rv32i_stype.xpr">
+<Project Version="7" Minor="54" Path="C:/Users/user/Desktop/test/250410_pro_RV32I_i_type/250410_pro_RV32I_i_type.xpr">
   <DefaultLaunch Dir="$PRUNDIR"/>
   <Configuration>
-    <Option Name="Id" Val="8e4db2e6661049b98c3e286bf463a113"/>
+    <Option Name="Id" Val="53c2252f7ec542a7b658360a78f26df8"/>
     <Option Name="Part" Val="xc7a35tcpg236-1"/>
     <Option Name="CompiledLibDir" Val="$PCACHEDIR/compile_simlib"/>
     <Option Name="CompiledLibDirXSim" Val=""/>
@@ -32,7 +32,7 @@
     <Option Name="SimulatorGccInstallDirRiviera" Val=""/>
     <Option Name="SimulatorGccInstallDirActiveHdl" Val=""/>
     <Option Name="BoardPart" Val="digilentinc.com:basys3:part0:1.1"/>
-    <Option Name="BoardPartRepoPaths" Val="C:/Users/kccistc/AppData/Roaming/Xilinx/Vivado/2020.2/xhub/board_store/xilinx_board_store"/>
+    <Option Name="BoardPartRepoPaths" Val="$PPRDIR/../../../AppData/Roaming/Xilinx/Vivado/2020.2/xhub/board_store/xilinx_board_store"/>
     <Option Name="ActiveSimSet" Val="sim_1"/>
     <Option Name="DefaultLib" Val="xil_defaultlib"/>
     <Option Name="ProjectType" Val="Default"/>
@@ -46,7 +46,7 @@
     <Option Name="IPStaticSourceDir" Val="$PIPUSERFILESDIR/ipstatic"/>
     <Option Name="EnableBDX" Val="FALSE"/>
     <Option Name="DSABoardId" Val="basys3"/>
-    <Option Name="WTXSimLaunchSim" Val="0"/>
+    <Option Name="WTXSimLaunchSim" Val="15"/>
     <Option Name="WTModelSimLaunchSim" Val="0"/>
     <Option Name="WTQuestaLaunchSim" Val="0"/>
     <Option Name="WTIesLaunchSim" Val="0"/>
@@ -78,7 +78,7 @@
       <File Path="$PSRCDIR/sources_1/imports/test/defines.sv">
         <FileInfo>
           <Attr Name="ImportPath" Val="$PPRDIR/../defines.sv"/>
-          <Attr Name="ImportTime" Val="1744266064"/>
+          <Attr Name="ImportTime" Val="1744282567"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
@@ -87,7 +87,7 @@
       <File Path="$PSRCDIR/sources_1/imports/test/ControlUnit.sv">
         <FileInfo>
           <Attr Name="ImportPath" Val="$PPRDIR/../ControlUnit.sv"/>
-          <Attr Name="ImportTime" Val="1744266064"/>
+          <Attr Name="ImportTime" Val="1744282567"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
@@ -96,7 +96,7 @@
       <File Path="$PSRCDIR/sources_1/imports/test/DataPath.sv">
         <FileInfo>
           <Attr Name="ImportPath" Val="$PPRDIR/../DataPath.sv"/>
-          <Attr Name="ImportTime" Val="1744266064"/>
+          <Attr Name="ImportTime" Val="1744282567"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
@@ -105,7 +105,7 @@
       <File Path="$PSRCDIR/sources_1/imports/test/RV32I_Core.sv">
         <FileInfo>
           <Attr Name="ImportPath" Val="$PPRDIR/../RV32I_Core.sv"/>
-          <Attr Name="ImportTime" Val="1744266064"/>
+          <Attr Name="ImportTime" Val="1744282567"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
@@ -114,7 +114,7 @@
       <File Path="$PSRCDIR/sources_1/imports/test/ram.sv">
         <FileInfo>
           <Attr Name="ImportPath" Val="$PPRDIR/../ram.sv"/>
-          <Attr Name="ImportTime" Val="1744266064"/>
+          <Attr Name="ImportTime" Val="1744282567"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
@@ -123,7 +123,7 @@
       <File Path="$PSRCDIR/sources_1/imports/test/rom.sv">
         <FileInfo>
           <Attr Name="ImportPath" Val="$PPRDIR/../rom.sv"/>
-          <Attr Name="ImportTime" Val="1744266064"/>
+          <Attr Name="ImportTime" Val="1744282567"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
@@ -132,7 +132,7 @@
       <File Path="$PSRCDIR/sources_1/imports/test/MCU.sv">
         <FileInfo>
           <Attr Name="ImportPath" Val="$PPRDIR/../MCU.sv"/>
-          <Attr Name="ImportTime" Val="1744266064"/>
+          <Attr Name="ImportTime" Val="1744282567"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
@@ -151,11 +151,19 @@
       </Config>
     </FileSet>
     <FileSet Name="sim_1" Type="SimulationSrcs" RelSrcDir="$PSRCDIR/sim_1" RelGenDir="$PGENDIR/sim_1">
+      <File Path="$PSRCDIR/sim_1/imports/test/tb_RV32I.sv">
+        <FileInfo>
+          <Attr Name="ImportPath" Val="$PPRDIR/../250410_pro_RV32I_BType/250410_pro_RV32I_iType.srcs/sim_1/imports/test/tb_RV32I.sv"/>
+          <Attr Name="ImportTime" Val="1744282567"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
       <Config>
         <Option Name="DesignMode" Val="RTL"/>
-        <Option Name="TopModule" Val="MCU"/>
+        <Option Name="TopModule" Val="tb_RV32I"/>
         <Option Name="TopLib" Val="xil_defaultlib"/>
-        <Option Name="TopAutoSet" Val="TRUE"/>
         <Option Name="TransportPathDelay" Val="0"/>
         <Option Name="TransportIntDelay" Val="0"/>
         <Option Name="SelectedSimModel" Val="rtl"/>
