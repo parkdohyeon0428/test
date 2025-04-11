@@ -9,8 +9,10 @@ module DataPath (
     input  logic        regFileWe,
     input  logic [ 3:0] aluControl,
     input  logic        aluSrcMuxSel,
-    input  logic        RFWDSrcMuxSel,
+    input  logic [ 2:0] RFWDSrcMuxSel,
     input  logic        branch,
+    input  logic        jal,
+    input  logic        jalr,
     // instr memory side port
     output logic [31:0] instrMemAddr,
     input  logic [31:0] instrCode,
@@ -21,14 +23,14 @@ module DataPath (
 );
     logic [31:0] aluResult, RFData1, RFData2;
     logic [31:0] PCSrcData, PCOutData;
-    logic [31:0] immExt, aluSrcMuxOut, RFWDSrcMuxOut;
+    logic [31:0] immExt, aluSrcMuxOut, RFWDSrcMuxOut, PC_Imm_Adder_SrcMuxOut;
     logic btaken, PCSrcMuxSel;
     logic [31:0] PC_Imm_AdderResult, PC_4_AdderResult, PCSrcMuxOut;
 
     assign instrMemAddr = PCOutData;
     assign dataAddr     = aluResult;
     assign dataWData    = RFData2;
-    assign PCSrcMuxSel = btaken & branch;
+    assign PCSrcMuxSel  = jal | (btaken & branch);
 
     RegisterFile U_RegFile (
         .clk(clk),
@@ -48,10 +50,13 @@ module DataPath (
         .y  (aluSrcMuxOut)
     );
 
-    mux_2x1 U_RFWDSrcMux (
+    mux_5x1 U_RFWDSrcMux (
         .sel(RFWDSrcMuxSel),
         .x0 (aluResult),
         .x1 (dataRData),
+        .x2 (immExt),
+        .x3 (PC_Imm_AdderResult),
+        .x4 (PC_4_AdderResult),
         .y  (RFWDSrcMuxOut)
     );
 
@@ -70,8 +75,15 @@ module DataPath (
 
     adder U_PC_Imm_Adder (
         .a(immExt),
-        .b(PCOutData),
+        .b(PC_Imm_Adder_SrcMuxOut),
         .y(PC_Imm_AdderResult)
+    );
+
+    mux_2x1 U_PC_Imm_Adder_SrcMux (
+        .sel(jalr),
+        .x0 (PCOutData),
+        .x1 (RFData1),
+        .y  (PC_Imm_Adder_SrcMuxOut)
     );
 
     adder U_PC_4_Adder (
@@ -196,6 +208,27 @@ module mux_2x1 (
     end
 endmodule
 
+module mux_5x1 (
+    input  logic [ 2:0] sel,
+    input  logic [31:0] x0,
+    input  logic [31:0] x1,
+    input  logic [31:0] x2,
+    input  logic [31:0] x3,
+    input  logic [31:0] x4,
+    output logic [31:0] y
+);
+    always_comb begin
+        y = 32'bx;
+        case (sel)
+            3'd0: y = x0;
+            3'd1: y = x1;
+            3'd2: y = x2;
+            3'd3: y = x3;
+            3'd4: y = x4;
+        endcase
+    end
+endmodule
+
 module extend (
     input  logic [31:0] instrCode,
     output logic [31:0] immExt
@@ -226,6 +259,20 @@ module extend (
                 instrCode[11:8],
                 1'b0
             };
+            `OP_TYPE_LU:
+            immExt = {instrCode[31:12], 12'b0};  //뒤에 0붙여 shift 수행
+            `OP_TYPE_AU:
+            immExt = {instrCode[31:12], 12'b0};  //뒤에 0붙여 shift 수행
+            `OP_TYPE_J:
+            immExt = {
+                {11{instrCode[31]}},
+                instrCode[31],
+                instrCode[19:12],
+                instrCode[20],
+                instrCode[30:21],
+                1'b0
+            };
+            `OP_TYPE_JL: immExt = {{20{instrCode[31]}}, instrCode[31:20]};
             default: immExt = 32'bx;
         endcase
     end

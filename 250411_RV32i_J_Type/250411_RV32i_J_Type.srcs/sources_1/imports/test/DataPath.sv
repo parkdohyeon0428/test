@@ -9,8 +9,11 @@ module DataPath (
     input  logic        regFileWe,
     input  logic [ 3:0] aluControl,
     input  logic        aluSrcMuxSel,
-    input  logic        RFWDSrcMuxSel,
+    input  logic  [2:0] RFWDSrcMuxSel,
     input  logic        branch,
+    input  logic        LUSrcMuxSel,
+    input  logic        JSrcMuxSel,
+    input  logic        PCSrcMuxSel,
     // instr memory side port
     output logic [31:0] instrMemAddr,
     input  logic [31:0] instrCode,
@@ -21,14 +24,16 @@ module DataPath (
 );
     logic [31:0] aluResult, RFData1, RFData2;
     logic [31:0] PCSrcData, PCOutData;
-    logic [31:0] immExt, aluSrcMuxOut, RFWDSrcMuxOut;
-    logic btaken, PCSrcMuxSel;
-    logic [31:0] PC_Imm_AdderResult, PC_4_AdderResult, PCSrcMuxOut;
+    logic [31:0] immExt, aluSrcMuxOut, RFWDSrcMuxOut, LUSrcMuxOut;
+    logic btaken, PC_IMM_SrcMuxSel;
+    logic [1:0] J_PC_SrcMuxSel;
+    logic[31:0] PC_Imm_AdderResult,PC_4_AdderResult,PC_IMM_SrcMuxOut, PCSrcMuxOut;
 
+    assign PC_IMM_SrcMuxSel = btaken & branch;
+    assign J_PC_SrcMuxSel = PC_IMM_SrcMuxSel | JSrcMuxSel;
     assign instrMemAddr = PCOutData;
     assign dataAddr     = aluResult;
     assign dataWData    = RFData2;
-    assign PCSrcMuxSel = btaken & branch;
 
     RegisterFile U_RegFile (
         .clk(clk),
@@ -48,11 +53,14 @@ module DataPath (
         .y  (aluSrcMuxOut)
     );
 
-    mux_2x1 U_RFWDSrcMux (
+    mux_5x1 U_RFWDSrcMux(
         .sel(RFWDSrcMuxSel),
-        .x0 (aluResult),
-        .x1 (dataRData),
-        .y  (RFWDSrcMuxOut)
+        .x0(aluResult),
+        .x1(dataRData),
+        .x2(LUSrcMuxOut),  //LU
+        .x3(PC_Imm_AdderResult), //AU
+        .x4(PC_4_AdderResult),  
+        .y(RFWDSrcMuxOut)
     );
 
     alu U_ALU (
@@ -68,31 +76,43 @@ module DataPath (
         .immExt(immExt)
     );
 
+    mux_2x1 U_ImmSrcMux (
+        .sel(LUSrcMuxSel),
+        .x0 (immExt),
+        .x1 (immExt << 12),
+        .y  (LUSrcMuxOut)
+    );
+    register U_PC (
+        .clk(clk),
+        .reset(reset),
+        .d(PCSrcMuxOut),
+        .q(PCOutData)
+    );
+
     adder U_PC_Imm_Adder (
-        .a(immExt),
+        .a(LUSrcMuxOut),
         .b(PCOutData),
         .y(PC_Imm_AdderResult)
+    );
+
+    mux_2x1 U_PCSrcMux (
+        .sel(PCSrcMuxSel),
+        .x0 (PC_IMM_SrcMuxOut),
+        .x1 (aluResult),
+        .y  (PCSrcMuxOut)
+    );
+
+    mux_2x1 U_PCSrc_IMM_Mux (
+        .sel(J_PC_SrcMuxSel),
+        .x0 (PC_4_AdderResult),
+        .x1 (PC_Imm_AdderResult),
+        .y  (PC_IMM_SrcMuxOut)
     );
 
     adder U_PC_4_Adder (
         .a(32'd4),
         .b(PCOutData),
         .y(PC_4_AdderResult)
-    );
-
-
-    mux_2x1 U_PCSrcMux (
-        .sel(PCSrcMuxSel),
-        .x0 (PC_4_AdderResult),
-        .x1 (PC_Imm_AdderResult),
-        .y  (PCSrcMuxOut)
-    );
-
-    register U_PC (
-        .clk(clk),
-        .reset(reset),
-        .d(PCSrcMuxOut),
-        .q(PCOutData)
     );
 
 
@@ -124,16 +144,17 @@ module alu (
 
     always_comb begin : branch_processor
         btaken = 1'b0;
-        case (aluControl[2:0])
-            `BEQ:    btaken = (a == b);
-            `BNE:    btaken = (a != b);
-            `BLT:    btaken = ($signed(a) < $signed(b));
-            `BGE:    btaken = ($signed(a) >= $signed(b));
-            `BLTU:   btaken = (a < b);
-            `BGEU:   btaken = (a >= b);
-            default: btaken = 1'b0;
+        case(aluControl[2:0])
+        `BEQ:  btaken = (a == b);
+        `BNE:  btaken = (a != b);
+        `BLT:  btaken = ($signed(a) < $signed(b));
+        `BGE:  btaken = ($signed(a) >= $signed(b));
+        `BLTU: btaken = (a < b);
+        `BGEU: btaken = (a >= b);
+        default: btaken = 1'b0;
         endcase
     end
+
 endmodule
 
 module register (
@@ -196,6 +217,28 @@ module mux_2x1 (
     end
 endmodule
 
+
+module mux_5x1 (
+    input  logic [2:0] sel,
+    input  logic [31:0] x0,
+    input  logic [31:0] x1,
+    input  logic [31:0] x2,
+    input  logic [31:0] x3,
+    input  logic [31:0] x4,
+    output logic [31:0] y
+);
+    always_comb begin 
+        case (sel)
+            3'b000: y = x0;
+            3'b001: y = x1;
+            3'b010: y = x2;
+            3'b011: y = x3;
+            3'b100: y = x4;
+            default: y = 32'bx;
+        endcase
+    end
+endmodule
+
 module extend (
     input  logic [31:0] instrCode,
     output logic [31:0] immExt
@@ -208,25 +251,21 @@ module extend (
         case (opcode)
             `OP_TYPE_R: immExt = 32'bx;
             `OP_TYPE_L: immExt = {{20{instrCode[31]}}, instrCode[31:20]};
-            `OP_TYPE_S:
-            immExt = {{20{instrCode[31]}}, instrCode[31:25], instrCode[11:7]};
-            `OP_TYPE_I: begin
+            `OP_TYPE_S: immExt = {{20{instrCode[31]}}, instrCode[31:25], instrCode[11:7]};
+            `OP_TYPE_I:begin
                 case (func3)
-                    3'b001:  immExt = {27'b0, instrCode[24:20]};
-                    3'b101:  immExt = {27'b0, instrCode[24:20]};
-                    3'b011:  immExt = {20'b0, instrCode[31:20]};
+                    3'b001: immExt = {27'b0, instrCode[24:20]};
+                    3'b101: immExt = {27'b0, instrCode[24:20]};
+                    3'b011: immExt = {20'b0, instrCode[31:20]};
                     default: immExt = {{20{instrCode[31]}}, instrCode[31:20]};
                 endcase
             end
-            `OP_TYPE_B:
-            immExt = {
-                {20{instrCode[31]}},
-                instrCode[7],
-                instrCode[30:25],
-                instrCode[11:8],
-                1'b0
-            };
+            `OP_TYPE_B: immExt = {{20{instrCode[31]}}, instrCode[7], instrCode[30:25],instrCode[11:8],1'b0};
             default: immExt = 32'bx;
+            `OP_TYPE_LU: immExt = {{12{instrCode[31]}}, instrCode[31:12]};
+            `OP_TYPE_AU: immExt = {{12{instrCode[31]}}, instrCode[31:12]};     
+            `OP_TYPE_J:  immExt = {{11{instrCode[31]}}, instrCode[31], instrCode[19:12], instrCode[20], instrCode[30:21], 1'b0};
+            `OP_TYPE_JL: immExt = {{20{instrCode[31]}}, instrCode[31:20]};
         endcase
     end
 endmodule
