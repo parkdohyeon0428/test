@@ -1,13 +1,14 @@
+
 `define ADD  4'b0000 // {func7[5], func3}
-`define SUB  4'b1000
-`define SLL  4'b0001
-`define SRL  4'b0101
-`define SRA  4'b1101
-`define SLT  4'b0010
-`define SLTU 4'b0011
-`define XOR  4'b0100
-`define OR   4'b0110
-`define AND  4'b0111
+`define SUB  4'b1000 // {func7[5], func3}
+`define SLL  4'b0001 // {func7[5], func3}
+`define SRL  4'b0101 // {func7[5], func3}
+`define SRA  4'b1101 // {func7[5], func3}
+`define SLT  4'b0010 // {func7[5], func3}
+`define SLTU 4'b0011 // {func7[5], func3}
+`define XOR  4'b0100 // {func7[5], func3}
+`define OR   4'b0110 // {func7[5], func3}
+`define AND  4'b0111 // {func7[5], func3}
 
 `define OP_TYPE_R  7'b0110011
 `define OP_TYPE_L  7'b0000011

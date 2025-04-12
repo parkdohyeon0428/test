@@ -13,11 +13,10 @@ module RV32I_Core (
     logic       regFileWe;
     logic [3:0] aluControl;
     logic       aluSrcMuxSel;
-    logic       LUSrcMuxSel;
     logic [2:0] RFWDSrcMuxSel;
     logic       branch;
-    logic       JSrcMuxSel;
-    logic       PCSrcMuxSel;
+    logic       jal;
+    logic       jalr;
 
     ControlUnit U_ControlUnit (.*);
     DataPath U_DataPath (.*);

@@ -1,0 +1,13 @@
+#-----------------------------------------------------------
+# Vivado v2020.2 (64-bit)
+# SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
+# IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+# Start of session at: Sat Apr 12 21:35:54 2025
+# Process ID: 10664
+# Current directory: C:/Users/user/Desktop/test/250411_RV32i_J_Type
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent6216 C:\Users\user\Desktop\test\250411_RV32i_J_Type\250411_RV32i_J_Type.xpr
+# Log file: C:/Users/user/Desktop/test/250411_RV32i_J_Type/vivado.log
+# Journal file: C:/Users/user/Desktop/test/250411_RV32i_J_Type\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project C:/Users/user/Desktop/test/250411_RV32i_J_Type/250411_RV32i_J_Type.xpr
