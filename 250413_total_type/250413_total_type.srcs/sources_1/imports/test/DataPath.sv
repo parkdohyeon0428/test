@@ -1,3 +1,5 @@
+// DataPath 모듈과 관련 서브모듈 통합 + Data Extend 추가 (LB, LH, SB, SH 지원)
+
 `timescale 1ns / 1ps
 
 `include "defines.sv"
@@ -13,6 +15,8 @@ module DataPath (
     input  logic        branch,
     input  logic        jal,
     input  logic        jalr,
+    input  logic  [2:0] loadFunc3,   // load 시 확장 방식 제어
+    input  logic  [1:0] storeFunc3,  // store 시 데이터 추출 방식 제어
     // instr memory side port
     output logic [31:0] instrMemAddr,
     input  logic [31:0] instrCode,
@@ -24,17 +28,16 @@ module DataPath (
     logic [31:0] aluResult, RFData1, RFData2;
     logic [31:0] PCSrcData, PCOutData;
     logic [31:0] immExt, aluSrcMuxOut, RFWDSrcMuxOut;
+    logic [31:0] dataRDataExt, dataWDataPacked;
     logic btaken, PC_IMM_SrcMuxSel;
     logic J_PC_SrcMuxSel;
-    logic[31:0] PC_Imm_AdderResult,PC_4_AdderResult,PC_IMM_SrcMuxOut, PCSrcMuxOut;
+    logic [31:0] PC_Imm_AdderResult, PC_4_AdderResult, PC_IMM_SrcMuxOut, PCSrcMuxOut;
 
     assign PC_IMM_SrcMuxSel = btaken & branch;
     assign J_PC_SrcMuxSel = PC_IMM_SrcMuxSel | jal;
     assign instrMemAddr = PCOutData;
     assign dataAddr     = aluResult;
-    assign dataWData    = RFData2;
-
-    
+    assign dataWData    = dataWDataPacked;
 
     RegisterFile U_RegFile (
         .clk(clk),
@@ -54,13 +57,25 @@ module DataPath (
         .y  (aluSrcMuxOut)
     );
 
+    DataExtend U_DataExtend (
+        .rawData(dataRData),
+        .func3(loadFunc3),
+        .extendedData(dataRDataExt)
+    );
+
+    StoreDataExtractor U_StoreData (
+        .src(RFData2),
+        .func3(storeFunc3),
+        .storeData(dataWDataPacked)
+    );
+
     mux_5x1 U_RFWDSrcMux(
         .sel(RFWDSrcMuxSel),
         .x0(aluResult),
-        .x1(dataRData),
-        .x2(immExt),  //LU
-        .x3(PC_Imm_AdderResult), //AU
-        .x4(PC_4_AdderResult),  
+        .x1(dataRDataExt),
+        .x2(immExt),
+        .x3(PC_Imm_AdderResult),
+        .x4(PC_4_AdderResult),
         .y(RFWDSrcMuxOut)
     );
 
@@ -110,8 +125,40 @@ module DataPath (
         .y(PC_4_AdderResult)
     );
 
-
 endmodule
+
+// 추가: DataExtend 모듈 (LB, LH 지원)
+module DataExtend(
+    input  logic [31:0] rawData,
+    input  logic [ 2:0] func3,
+    output logic [31:0] extendedData
+);
+    always_comb begin
+        case (func3)
+            3'b000: extendedData = {{24{rawData[7]}}, rawData[7:0]};   // LB
+            3'b001: extendedData = {{16{rawData[15]}}, rawData[15:0]}; // LH
+            3'b100: extendedData = {24'b0, rawData[7:0]};             // LBU
+            3'b101: extendedData = {16'b0, rawData[15:0]};            // LHU
+            default: extendedData = rawData;                          // LW or default
+        endcase
+    end
+endmodule
+
+// 추가: StoreDataExtractor 모듈 (SB, SH 지원)
+module StoreDataExtractor(
+    input  logic [31:0] src,
+    input  logic [ 1:0] func3,
+    output logic [31:0] storeData
+);
+    always_comb begin
+        case (func3)
+            2'b00: storeData = {24'b0, src[7:0]};    // SB
+            2'b01: storeData = {16'b0, src[15:0]};   // SH
+            default: storeData = src;                // SW or default
+        endcase
+    end
+endmodule
+
 
 
 module alu (
