@@ -7,10 +7,11 @@ module rom (
     logic [31:0] rom[0:15];
 
     initial begin
-        //rom[x]=32'b imm7  _ rs2 _ rs1 _f3 _ imm5_ opcode; // S-Type
-        rom[0] = 32'b0000000_00010_00000_010_01000_0100011; // sw x2, 8(x0)
-        //rom[x]=32'b imm12      _ rs1 _f3 _ rd  _ opcode; // L-Type
-        rom[1] = 32'b000000001000_00000_010_00001_0000011; // lw x3, 8(x0)
+        //R-Type     imm7  _ rs2 _ rs1 _ f3_ rd_   opcode; 
+        rom[0] = 32'b0000000_00010_00001_000_00000_0100011; // sw x2, 8(x0)
+        
+        rom[1] = 32'b0000000_01000_00000_010_00001_0000011;
+         // lw x3, 8(x0)
 
 
     end
