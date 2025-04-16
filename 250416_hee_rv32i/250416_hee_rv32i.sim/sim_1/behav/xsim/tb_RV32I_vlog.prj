@@ -1,0 +1,15 @@
+# compile verilog/system verilog design source files
+sv xil_defaultlib  \
+"../../../../250416_hee_rv32i.srcs/sources_1/imports/test/ControlUnit.sv" \
+"../../../../250416_hee_rv32i.srcs/sources_1/imports/test/DataPath.sv" \
+"../../../../250416_hee_rv32i.srcs/sources_1/imports/test/MCU.sv" \
+"../../../../250416_hee_rv32i.srcs/sources_1/imports/test/RV32I_Core.sv" \
+"../../../../250416_hee_rv32i.srcs/sources_1/imports/test/ram.sv" \
+"../../../../250416_hee_rv32i.srcs/sources_1/imports/test/rom.sv" \
+"../../../../250416_hee_rv32i.srcs/sim_1/imports/test/tb_RV32I.sv" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort

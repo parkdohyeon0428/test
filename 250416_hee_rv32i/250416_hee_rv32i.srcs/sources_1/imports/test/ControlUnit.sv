@@ -33,7 +33,7 @@ module ControlUnit (
             `OP_TYPE_LU: signals = 9'b1_0_0_010_0_0_0;
             `OP_TYPE_AU: signals = 9'b1_0_0_011_0_0_0;
             `OP_TYPE_J:  signals = 9'b1_0_0_100_0_1_0;
-            `OP_TYPE_JL: signals = 9'b1_1_0_100_0_1_1;
+            `OP_TYPE_JL: signals = 9'b1_0_0_100_0_1_1;
         endcase
     end
 
