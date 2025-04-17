@@ -7,6 +7,15 @@ module rom (
     logic [31:0] rom[0:127];
 
     initial begin
+<<<<<<< HEAD
+        //R-Type     imm7  _ rs2 _ rs1 _ f3_ rd_   opcode; 
+        rom[0] = 32'b0000000_00010_00001_000_00000_0100011; // sw x2, 8(x0)
+        
+        rom[1] = 32'b0000000_01000_00000_010_00001_0000011;
+         // lw x3, 8(x0)
+
+
+=======
         $readmemh("code.mem", rom);
         // rom[0] = 32'b0000000_00011_00010_000_00001_0110011; // R-type ADD
         // rom[1] = 32'b000000001010_00011_011_00010_0010011;  // I-type SLTIU
@@ -17,6 +26,7 @@ module rom (
         // rom[7] = 32'b00000000000000000001_00101_0010111;    // AU-type AUIPC
         // rom[8] = 32'b00000000100000000000_00110_1101111;    // J-type JAL 
         // rom[10] = 32'b000000010000_00110_000_00111_1100111; // JL-type JALR 
+>>>>>>> 99215d6e6cdfab2f41eb1cfc7cc2f99ab1778175
     end
     assign data = rom[addr[31:2]];
 endmodule
