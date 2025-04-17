@@ -13,6 +13,7 @@ module DataPath (
     input  logic        branch,
     input  logic        jal,
     input  logic        jalr,
+    input  logic        PCEn,
     // instr memory side port
     output logic [31:0] instrMemAddr,
     input  logic [31:0] instrCode,
@@ -26,10 +27,13 @@ module DataPath (
     logic [31:0] immExt, aluSrcMuxOut, RFWDSrcMuxOut;
     logic btaken, PCSrcMuxSel;
     logic [31:0] PC_Imm_AdderResult, PC_4_AdderResult, PCSrcMuxOut;
+    logic [31:0] RData1_ALU, RData2_Mux, imm_Mux;
+    logic [31:0] exe_WData, exe_Addr, exe_PC_Mux_Out;
+    logic [31:0] RData_Mux;
 
     assign instrMemAddr = PCOutData;
-    assign dataAddr     = aluResult;
-    assign dataWData    = RFData2;
+    assign dataAddr     = exe_Addr;
+    assign dataWData    = exe_WData;
     assign PCSrcMuxSel  = jal | (btaken & branch);
 
     RegisterFile U_RegFile (
@@ -43,29 +47,64 @@ module DataPath (
         .RData2(RFData2)
     );
 
+    register U_decode_RD1 (
+        .clk(clk),
+        .reset(reset),
+        .d(RFData1),
+        .q(RData1_ALU)
+    );
+
+    register U_decode_RD2 (
+        .clk(clk),
+        .reset(reset),
+        .d(RFData2),
+        .q(RData2_Mux)
+    );
+
     mux_2x1 U_ALUSrcMux (
         .sel(aluSrcMuxSel),
-        .x0 (RFData2),
-        .x1 (immExt),
+        .x0 (RData2_Mux),
+        .x1 (imm_Mux),
         .y  (aluSrcMuxOut)
     );
 
     mux_5x1 U_RFWDSrcMux (
         .sel(RFWDSrcMuxSel),
         .x0 (aluResult),
-        .x1 (dataRData),
-        .x2 (immExt),
+        .x1 (RData_Mux),
+        .x2 (imm_Mux),
         .x3 (PC_Imm_AdderResult),
         .x4 (PC_4_AdderResult),
         .y  (RFWDSrcMuxOut)
     );
 
+    register U_MemAcc_RData (
+        .clk(clk),
+        .reset(reset),
+        .d(dataRData),
+        .q(RData_Mux)
+    );
+
     alu U_ALU (
         .aluControl(aluControl),
-        .a(RFData1),
+        .a(RData1_ALU),
         .b(aluSrcMuxOut),
         .btaken(btaken),
         .result(aluResult)
+    );
+
+    register U_exe_alu_Addr (
+        .clk(clk),
+        .reset(reset),
+        .d(aluResult),
+        .q(exe_Addr)
+    );
+
+    register U_exe_alu_WData (
+        .clk(clk),
+        .reset(reset),
+        .d(RData2_Mux),
+        .q(exe_WData)
     );
 
     extend U_ImmExtend (
@@ -73,15 +112,22 @@ module DataPath (
         .immExt(immExt)
     );
 
+    register U_decode_imm (
+        .clk(clk),
+        .reset(reset),
+        .d(immExt),
+        .q(RData2_Mux)
+    );
+
     mux_2x1 U_PC_Imm_Adder_SrcMux (
         .sel(jalr),
         .x0 (PCOutData),
-        .x1 (RFData1),
+        .x1 (RData1_ALU),
         .y  (PC_Imm_Adder_SrcMuxOut)
     );
 
     adder U_PC_Imm_Adder (
-        .a(immExt),
+        .a(imm_Mux),
         .b(PC_Imm_Adder_SrcMuxOut),
         .y(PC_Imm_AdderResult)
     );
@@ -92,7 +138,6 @@ module DataPath (
         .y(PC_4_AdderResult)
     );
 
-
     mux_2x1 U_PCSrcMux (
         .sel(PCSrcMuxSel),
         .x0 (PC_4_AdderResult),
@@ -100,10 +145,18 @@ module DataPath (
         .y  (PCSrcMuxOut)
     );
 
-    register U_PC (
+    register U_exe_PC_Mux (
         .clk(clk),
         .reset(reset),
         .d(PCSrcMuxOut),
+        .q(exe_PC_Mux_Out)
+    );
+
+    PC_register U_PC (
+        .clk(clk),
+        .reset(reset),
+        .PCEn(PCEn),
+        .d(exe_PC_Mux_Out),
         .q(PCOutData)
     );
 
@@ -151,12 +204,26 @@ endmodule
 module register (
     input  logic        clk,
     input  logic        reset,
+    input  logic        PCEn,
     input  logic [31:0] d,
     output logic [31:0] q
 );
     always_ff @(posedge clk, posedge reset) begin
         if (reset) q <= 0;
         else q <= d;
+    end
+endmodule
+
+module PC_register (
+    input  logic        clk,
+    input  logic        reset,
+    input  logic        PCEn,
+    input  logic [31:0] d,
+    output logic [31:0] q
+);
+    always_ff @(posedge clk, posedge reset) begin
+        if (reset) q <= 0;
+        else if (PCEn) q <= d;
     end
 endmodule
 
@@ -179,13 +246,13 @@ module RegisterFile (
     output logic [31:0] RData2
 );
     logic [31:0] RegFile[0:2**5-1];
-    /*
-    initial begin
-        for (int i = 0; i < 32; i++) begin
-            RegFile[i] = 10 + i;
-        end
-    end
-*/
+    
+    // initial begin
+    //     for (int i = 0; i < 32; i++) begin
+    //         RegFile[i] = 10 + i;
+    //     end
+    // end
+
     always_ff @(posedge clk) begin
         if (we) RegFile[WAddr] <= WData;
     end
