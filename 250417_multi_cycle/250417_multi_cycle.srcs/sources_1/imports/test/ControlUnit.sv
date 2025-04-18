@@ -79,7 +79,7 @@ module ControlUnit (
                 aluControl = `ADD;
             end
             L_EXE: begin
-                signals = 10'b1_1_0_001_0_0_0_0;
+                signals = 10'b0_1_0_001_0_0_0_0;
                 next = L_MemAcc;
                 aluControl = `ADD;
             end
@@ -110,16 +110,16 @@ module ControlUnit (
             end
             //memAcc
             S_MemAcc: begin
-                signals = 10'b0_0_1_000_0_0_0_0;
+                signals = 10'b0_1_1_000_0_0_0_0;
                 next = Fetch;
             end
             L_MemAcc: begin
-                signals = 10'b0_0_0_000_0_0_0_0;
+                signals = 10'b0_1_0_001_0_0_0_0;
                 next = L_WBack;
             end
             //write back
             L_WBack: begin
-                signals = 10'b1_0_0_001_0_0_0_0;
+                signals = 10'b1_1_0_001_0_0_0_0;
                 next = Fetch;
             end
         endcase

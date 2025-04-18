@@ -68,6 +68,13 @@ module DataPath (
         .y  (aluSrcMuxOut)
     );
 
+    register U_decode_imm (
+        .clk(clk),
+        .reset(reset),
+        .d(immExt),
+        .q(imm_Mux)
+    );
+
     mux_5x1 U_RFWDSrcMux (
         .sel(RFWDSrcMuxSel),
         .x0 (aluResult),
@@ -100,7 +107,7 @@ module DataPath (
         .q(exe_Addr)
     );
 
-    register U_exe_alu_WData (
+    register U_exe_RD2_WData (
         .clk(clk),
         .reset(reset),
         .d(RData2_Mux),
@@ -112,12 +119,7 @@ module DataPath (
         .immExt(immExt)
     );
 
-    register U_decode_imm (
-        .clk(clk),
-        .reset(reset),
-        .d(immExt),
-        .q(RData2_Mux)
-    );
+   
 
     mux_2x1 U_PC_Imm_Adder_SrcMux (
         .sel(jalr),
