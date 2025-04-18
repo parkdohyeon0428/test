@@ -1,0 +1,11 @@
+# compile verilog/system verilog design source files
+sv xil_defaultlib  \
+"../../../../250418_RISC_V_AMBA_APB.srcs/sources_1/new/AFB_Slave.sv" \
+"../../../../250418_RISC_V_AMBA_APB.srcs/sources_1/new/APB_Master.sv" \
+"../../../../250418_RISC_V_AMBA_APB.srcs/sim_1/new/tb_APB.sv" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort
