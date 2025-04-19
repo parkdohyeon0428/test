@@ -91,10 +91,10 @@ module APB_Master (
                 decoder_en = 1'b1;
                 PENABLE    = 1'b0;
                 PADDR      = temp_addr_reg;
-                if (temp_write_reg) begin
+                if (temp_write_reg) begin   // write 일 경우
                     PWRITE = 1'b1;
                     PWDATA = temp_wdata_reg;
-                end else begin
+                end else begin              // read 일 경우
                     PWRITE = 1'b0;
                 end
                 state_next = ACCESS;
@@ -103,10 +103,10 @@ module APB_Master (
                 decoder_en = 1'b1;
                 PENABLE    = 1'b1;
                 PADDR      = temp_addr_reg;
-                if (temp_write_reg) begin
+                if (temp_write_reg) begin   // write 일 경우
                     PWRITE = 1'b1;
                     PWDATA = temp_wdata_reg;
-                end else begin
+                end else begin              // read 일 경우
                     PWRITE = 1'b0;
                 end
                 if (ready) begin
