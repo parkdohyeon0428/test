@@ -42,8 +42,8 @@ module APB_Slave_Intf (
 );
     logic [31:0] slv_reg0, slv_reg1, slv_reg2, slv_reg3;
 
-    assign moder = slv_reg0[7:0];
-    assign odr   = slv_reg1[7:0];
+    assign moder = slv_reg0[7:0];  // 출력 포트의 모드 (0: 입력, 1: 출력)
+    assign odr   = slv_reg1[7:0];  // 출력할 데이터
 
     always_ff @(posedge PCLK, posedge PRESET) begin
         if (PRESET) begin

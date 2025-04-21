@@ -37,12 +37,12 @@ module APB_Slave_Intf_GPI (
     output logic        PREADY,
     // internal signals
     output logic [ 7:0] moder,
-    input logic [ 7:0] idr
+    input  logic  [ 7:0] idr
 );
     logic [31:0] slv_reg0, slv_reg1, slv_reg2, slv_reg3;
 
-    assign moder = slv_reg0[7:0];
-    assign slv_reg1[7:0] = idr;
+    assign moder = slv_reg0[7:0];  // moder는 CPU가 write 가능
+    assign slv_reg1[7:0] = idr;    // idr은 외부 입력 반영해 CPU가 read만 가능
 
     always_ff @(posedge PCLK, posedge PRESET) begin
         if (PRESET) begin
@@ -55,8 +55,8 @@ module APB_Slave_Intf_GPI (
                 PREADY <= 1'b1;
                 if (PWRITE) begin
                     case (PADDR[3:2])
-                        2'd0: slv_reg0 <= PWDATA;
-                        // 2'd1: ; // write 불가가
+                        2'd0: slv_reg0 <= PWDATA;  // moder 저장소 (CPU가 write)
+                        2'd1: ; // idr이 들어오는 자리 (CPU가 read만 가능 write 불가)
                         // 2'd2: slv_reg2 <= PWDATA;
                         // 2'd3: slv_reg3 <= PWDATA;
                     endcase
