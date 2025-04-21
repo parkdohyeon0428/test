@@ -25,9 +25,9 @@ module APB_Slave(
             PREADY <= 1'b0;
             if (PSEL && PENABLE) begin
                 PREADY <= 1'b1;
-                if (PWRITE) begin
+                if (PWRITE) begin      //Write 일 경우
                     case (PADDR[3:2])
-                        2'd0: slv_reg0 <= PWDATA;
+                        2'd0: slv_reg0 <= PWDATA;  // 4byte 정렬
                         2'd1: slv_reg1 <= PWDATA;
                         2'd2: slv_reg2 <= PWDATA;
                         2'd3: slv_reg3 <= PWDATA;
