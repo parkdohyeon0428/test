@@ -44,9 +44,9 @@ module APB_SlaveIntf_FND (
 );
     logic [31:0] slv_reg0, slv_reg1, slv_reg2; //, slv_reg3;
 
-    assign fcr_en = slv_reg0[0];
-    assign fmr    = slv_reg1[3:0];
-    assign fdr    = slv_reg2[3:0];
+    assign fcr_en = slv_reg0[0];   // 출력 여부 사용 (1: 사용 , 0: 비활성화)
+    assign fmr    = slv_reg1[3:0]; // fndComm을 통해 어떤 자릿수 켤지 선택
+    assign fdr    = slv_reg2[3:0]; // fndFont를 통해 어떤 숫자를 표시할지 선택
 
     always_ff @(posedge PCLK, posedge PRESET) begin
         if (PRESET) begin

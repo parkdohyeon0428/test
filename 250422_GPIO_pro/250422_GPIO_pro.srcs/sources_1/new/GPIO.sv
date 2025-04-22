@@ -44,9 +44,9 @@ module APB_SlaveIntf_GPIO (
 );
     logic [31:0] slv_reg0, slv_reg1, slv_reg2;  //, slv_reg2, slv_reg3;
 
-    assign moder = slv_reg0[7:0];
-    assign slv_reg1[7:0] = idr;
-    assign odr = slv_reg2[7:0];
+    assign moder = slv_reg0[7:0]; // MODER 레지스터 (출력/입력 제어)
+    assign slv_reg1[7:0] = idr;   // 입력값 저장용 (읽기 전용)
+    assign odr = slv_reg2[7:0];   // 출력 데이터 저장
 
     always_ff @(posedge PCLK, posedge PRESET) begin
         if (PRESET) begin
@@ -92,7 +92,7 @@ module GPIO (
     generate
         for (i = 0; i < 8; i++) begin
             assign inoutPort[i] = moder[i] ? odr[i] : 1'bz;  // output mode
-            assign idr[i] = ~moder[i] ? inoutPort[i] : 1'bz;  // input  mode
+            assign idr[i] = ~moder[i] ? inoutPort[i] : 1'bz; // input  mode
         end
     endgenerate
 endmodule
