@@ -153,8 +153,8 @@ module tb_fndController_APB ();
     initial begin
         fnd_intf.PCLK = 0; fnd_intf.PRESET = 1;
         #10 fnd_intf.PRESET = 0;
-        fnd_env = new(fnd_intf);
-        fnd_env.run(10);
+        fnd_env = new(fnd_intf); // envirnment instance 생성
+        fnd_env.run(10);  // 10번 시도
         #30;
         $finish;
     end
