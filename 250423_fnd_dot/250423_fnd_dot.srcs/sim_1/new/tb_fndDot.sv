@@ -88,7 +88,7 @@ class driver;
         forever begin
             Gen2Drv_mbox.get(fnd_tr);
             fnd_tr.display("DRV");
-            @(posedge fnd_intf.PCLK);
+            @(posedge fnd_intf.PCLK);  // 클럭 동기화
             fnd_intf.PADDR <= fnd_tr.PADDR;
             fnd_intf.PWDATA <= fnd_tr.PWDATA;
             fnd_intf.PWRITE <= fnd_tr.PWRITE;
@@ -256,10 +256,7 @@ class scoreboard;
             end else begin
                 fail_cnt = fail_cnt + 1;
             end
-
             total_cnt = total_cnt + 1;
-
-
         end
     endtask  //run
 
@@ -335,7 +332,6 @@ module tb_fndDot ();
         .fndFont(fnd_intf.fndFont),
         .sel(fnd_intf.sel)
     );
-
     initial begin
         fnd_intf.PCLK   = 0;
         fnd_intf.PRESET = 1;

@@ -50,7 +50,7 @@ class generator; // 임의의 테스트 데이터 만들어 드라이버로 전�
     mailbox #(transaction) Gen2Drv_mbox;
     event gen_next_event;
 
-    function new(mailbox#(transaction) Gen2Drv_mbox, event gen_next_event);
+    function new(mailbox#(transaction) Gen2Drv_mbox, event gen_next_event);//*
         this.Gen2Drv_mbox   = Gen2Drv_mbox;
         this.gen_next_event = gen_next_event;
     endfunction  //new()
@@ -58,9 +58,9 @@ class generator; // 임의의 테스트 데이터 만들어 드라이버로 전�
     task run(int repeat_counter);
         transaction fnd_tr;
         repeat (repeat_counter) begin
-            fnd_tr = new();  // make instance
+            fnd_tr = new();  // make instance *
             if (!fnd_tr.randomize()) $error("Randomization fail"); // 랜덤값 생성
-            fnd_tr.display("GEN");    // 상태 출력
+            fnd_tr.display("GEN");    // 디버깅 상태 출력
             Gen2Drv_mbox.put(fnd_tr); // dirver로 전달
             @(gen_next_event);  // wait a event from driver, 다음 신호 대기
         end
