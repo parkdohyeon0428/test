@@ -14,7 +14,8 @@ module FND_Periph (
     output logic        PREADY,
     // export signals
     output logic [ 3:0] fndComm,
-    output logic [ 7:0] fndFont
+    output logic [ 7:0] fndFont,
+    output logic [1:0]  sel
 );
 
     logic       fcr_en;
@@ -51,8 +52,8 @@ module APB_SlaveIntf_FND (
     always_ff @(posedge PCLK, posedge PRESET) begin
         if (PRESET) begin
             slv_reg0 <= 0; //FCR
-            slv_reg1 <= 0; //FMR
-            slv_reg2 <= 0; //FDR
+            slv_reg1 <= 0; //FDR
+            slv_reg2 <= 0; //FPR
             // slv_reg3 <= 0;
         end else begin
             if (PSEL && PENABLE) begin
@@ -60,16 +61,16 @@ module APB_SlaveIntf_FND (
                 if (PWRITE) begin
                     case (PADDR[3:2])
                         2'd0: slv_reg0 <= PWDATA; //FCR
-                        2'd1: slv_reg1 <= PWDATA; //FMR
-                        2'd2: slv_reg2 <= PWDATA; //FDR
+                        2'd1: slv_reg1 <= PWDATA; //FDR
+                        2'd2: slv_reg2 <= PWDATA; //FPR
                         // 2'd3: slv_reg3 <= PWDATA;
                     endcase
                 end else begin
                     PRDATA <= 32'bx;
                     case (PADDR[3:2])
                         2'd0: PRDATA <= slv_reg0;  //FCR
-                        2'd1: PRDATA <= slv_reg1;  //FMR
-                        2'd2: PRDATA <= slv_reg2;  //FDR
+                        2'd1: PRDATA <= slv_reg1;  //FDR
+                        2'd2: PRDATA <= slv_reg2;  //FPR
                         // 2'd3: PRDATA <= slv_reg3;
                     endcase
                 end
@@ -89,16 +90,16 @@ module FND (
     input  logic [13:0]  fdr,
     input  logic [3:0] fpr,
     output logic [3:0] fndComm,
-    output logic [7:0] fndFont
+    output logic [7:0] fndFont,
+    output logic [1:0] sel
 );
-
+    
 
     logic [7:0] w_fndFont;
     logic [3:0] digit_1, digit_10, digit_100, digit_1000, bcd;
-    logic [1:0] sel;
     logic clk, dot;
 
-    assign fndFont = {dot, w_fndFont[6:0]};
+    assign fndFont = {~dot, w_fndFont[6:0]};
 
     docoder_2x4 U_decoder(
         .sel(sel),
@@ -207,7 +208,7 @@ module docoder_2x4 (
     output logic [3:0] fndComm
 );
     // 2x4 decoder
-    always @(sel) begin  // * : 모든 입력을 감시한다
+    always_comb begin  // * : 모든 입력을 감시한다
         fndComm = 4'b1111;
         if (fcr_en) begin
             case (sel)
@@ -218,6 +219,7 @@ module docoder_2x4 (
                 default: fndComm = 4'b1110;
             endcase
         end
+        else fndComm = 4'b1111;
     end
 
 endmodule
