@@ -31,7 +31,7 @@ module FIFO_Periph (
     logic       empty;
 
     assign FSR = {empty, full};
-    assign FWD = wdata;
+    assign wdata = FWD;
     assign FRD = rdata;
     
 

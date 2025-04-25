@@ -37,8 +37,9 @@ module tb_fifo();
         PCLK = 0;
         PRESET = 1;
         #10;
+        PRESET = 0;
         @(posedge PCLK);
-        PADDR = 8;
+        PADDR = 4;
         PWDATA = 3;
         PWRITE = 1;
         PSEL = 1;
@@ -46,6 +47,45 @@ module tb_fifo();
         @(posedge PCLK);
         PSEL = 0;
         PENABLE = 0;
+
+        wait(PREADY);
+        @(posedge PCLK);
+        @(posedge PCLK);
+        @(posedge PCLK);
+        
+        PADDR = 4;
+        PWDATA = 5;
+        PWRITE = 1;
+        PSEL = 1;
+        PENABLE = 1;
+        @(posedge PCLK);
+        PSEL = 0;
+        PENABLE = 0;
+        wait(PREADY);
+
+        @(posedge PCLK);
+        @(posedge PCLK);
+        @(posedge PCLK);
+        PADDR = 8;
+        PWRITE = 0;
+        PSEL = 1;
+        PENABLE = 1;
+        @(posedge PCLK);
+        PSEL = 0;
+        PENABLE = 0;
+
+        wait(PREADY);
+        @(posedge PCLK);
+        @(posedge PCLK);
+        @(posedge PCLK);
+        PADDR = 8;
+        PWRITE = 0;
+        PSEL = 1;
+        PENABLE = 1;
+        @(posedge PCLK);
+        PSEL = 0;
+        PENABLE = 0;
+       
     end
 
 endmodule

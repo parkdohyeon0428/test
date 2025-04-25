@@ -213,7 +213,7 @@ module APB_Mux (
             32'h1000_3xxx: rdata = d3;
             32'h1000_4xxx: rdata = d4;
             32'h1000_5xxx: rdata = d5;
-            32'h1000_5xxx: rdata = d6;
+            32'h1000_6xxx: rdata = d6;
         endcase
     end
 
@@ -226,7 +226,7 @@ module APB_Mux (
             32'h1000_3xxx: ready = r3;
             32'h1000_4xxx: ready = r4;
             32'h1000_5xxx: ready = r5;
-            32'h1000_5xxx: ready = r6;
+            32'h1000_6xxx: ready = r6;
         endcase
 
     end
