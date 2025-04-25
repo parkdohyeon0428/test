@@ -1,0 +1,21 @@
+# compile verilog/system verilog design source files
+sv xil_defaultlib  \
+"../../../../250425_apb_fifo.srcs/sources_1/imports/test/250422_hee_fnd/250422_hee_fnd.srcs/sources_1/imports/test/APB_Master.sv" \
+"../../../../250425_apb_fifo.srcs/sources_1/imports/test/250422_hee_fnd/250422_hee_fnd.srcs/sources_1/imports/test/APB_Slave.sv" \
+"../../../../250425_apb_fifo.srcs/sources_1/imports/test/250422_hee_fnd/250422_hee_fnd.srcs/sources_1/imports/test/ControlUnit.sv" \
+"../../../../250425_apb_fifo.srcs/sources_1/imports/test/250422_hee_fnd/250422_hee_fnd.srcs/sources_1/imports/test/DataPath.sv" \
+"../../../../250425_apb_fifo.srcs/sources_1/imports/test/250422_hee_fnd/250422_hee_fnd.srcs/sources_1/imports/test/FND.sv" \
+"../../../../250425_apb_fifo.srcs/sources_1/imports/test/250422_hee_fnd/250422_hee_fnd.srcs/sources_1/imports/test/GPIO.sv" \
+"../../../../250425_apb_fifo.srcs/sources_1/imports/test/250422_hee_fnd/250422_hee_fnd.srcs/sources_1/imports/test/RV32I_Core.sv" \
+"../../../../250425_apb_fifo.srcs/sources_1/imports/test/250425_UART_FIFO/250425_UART_FIFO.srcs/sources_1/new/fifo.sv" \
+"../../../../250425_apb_fifo.srcs/sources_1/new/fifo_periph.sv" \
+"../../../../250425_apb_fifo.srcs/sources_1/imports/test/250422_hee_fnd/250422_hee_fnd.srcs/sources_1/imports/test/gpi.sv" \
+"../../../../250425_apb_fifo.srcs/sources_1/imports/test/250422_hee_fnd/250422_hee_fnd.srcs/sources_1/imports/test/ram.sv" \
+"../../../../250425_apb_fifo.srcs/sources_1/imports/test/250422_hee_fnd/250422_hee_fnd.srcs/sources_1/imports/test/rom.sv" \
+"../../../../250425_apb_fifo.srcs/sources_1/imports/test/250422_hee_fnd/250422_hee_fnd.srcs/sources_1/imports/test/MCU.sv" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort

@@ -27,6 +27,8 @@ module MCU (
     logic        PSEL_GPIOC;
     logic        PSEL_GPIOD;
     logic        PSEL_GPOE;
+    logic        PSEL_FIFO;
+    
 
     logic [31:0] PRDATA_RAM;
     logic [31:0] PRDATA_GPO;
@@ -34,6 +36,7 @@ module MCU (
     logic [31:0] PRDATA_GPIOC;
     logic [31:0] PRDATA_GPIOD;
     logic [31:0] PRDATA_GPOE;
+    logic [31:0] PRDATA_FIFO;
     
     logic        PREADY_RAM;
     logic        PREADY_GPO;
@@ -41,6 +44,8 @@ module MCU (
     logic        PREADY_GPIOC;
     logic        PREADY_GPIOD;
     logic        PREADY_GPOE;
+    logic        PREADY_FIFO;
+    
 
     // CPU - APB_Master Signals
     // Internal Interface Signals
@@ -58,6 +63,8 @@ module MCU (
     // ROM Signals
     logic [31:0] instrCode;
     logic [31:0] instrMemAddr;
+
+    logic read_ready;
 
     assign PCLK = clk;
     assign PRESET = reset;
@@ -81,6 +88,8 @@ module MCU (
         .PSEL3  (PSEL_GPIOC),
         .PSEL4  (PSEL_GPIOD),
         .PSEL5  (PSEL_GPOE),
+        .PSEL6  (PSEL_FIFO),
+        
 
         .PRDATA0(PRDATA_RAM),
         .PRDATA1(PRDATA_GPO),
@@ -88,13 +97,15 @@ module MCU (
         .PRDATA3(PRDATA_GPIOC),
         .PRDATA4(PRDATA_GPIOD),
         .PRDATA5(PRDATA_GPOE),
+        .PRDATA6(PRDATA_FIFO),
 
         .PREADY0(PREADY_RAM),
         .PREADY1(PREADY_GPO),
         .PREADY2(PREADY_GPI),
         .PREADY3(PREADY_GPIOC),
         .PREADY4(PREADY_GPIOD),
-        .PREADY5(PREADY_GPOE)
+        .PREADY5(PREADY_GPOE),
+        .PREADY6(PREADY_FIFO)
         
     );
 
@@ -150,4 +161,13 @@ module MCU (
         .fndComm(fndComm),
         .fndFont(fndFont)
     );
+    FIFO_Periph U_FIFO_Peri(
+        .*,
+        .PSEL(PSEL_FIFO),
+        .PRDATA(PRDATA_FIFO),
+        .PREADY(),
+
+    // inport signals
+        .real_ready(PREADY_FIFO)
+);
 endmodule
