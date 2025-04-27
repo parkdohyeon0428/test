@@ -47,7 +47,7 @@ module APB_Master (
     logic [31:0] temp_wdata_next, temp_wdata_reg;
     logic temp_write_next, temp_write_reg;
     logic decoder_en;
-    logic [5:0] pselx;
+    logic [6:0] pselx;
 
     assign PSEL0 = pselx[0];
     assign PSEL1 = pselx[1];
