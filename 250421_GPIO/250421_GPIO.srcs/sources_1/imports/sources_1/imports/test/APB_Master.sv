@@ -7,27 +7,32 @@ module APB_Master (
     // APB Interface Signals
     output logic [31:0] PADDR,
     output logic [31:0] PWDATA,
+
     output logic        PWRITE,
+
     output logic        PENABLE,
+
     output logic        PSEL0,
     output logic        PSEL1,
     output logic        PSEL2,
     output logic        PSEL3,
+
     input  logic [31:0] PRDATA0,
     input  logic [31:0] PRDATA1,
     input  logic [31:0] PRDATA2,
     input  logic [31:0] PRDATA3,
+    
     input  logic        PREADY0,
     input  logic        PREADY1,
     input  logic        PREADY2,
     input  logic        PREADY3,
     // Internal Interface Signals
     input  logic        transfer,  // trigger signal
-    output logic        ready,
     input  logic [31:0] addr,
     input  logic [31:0] wdata,
-    output logic [31:0] rdata,
-    input  logic        write      // 1:write, 0:read
+    input  logic        write,      // 1:write, 0:read
+    output logic [31:0] rdata,     // 페리페럴 응답
+    output logic        ready     // 페리페럴 응답
 );
     logic [31:0] temp_addr_next, temp_addr_reg;
     logic [31:0] temp_wdata_next, temp_wdata_reg;

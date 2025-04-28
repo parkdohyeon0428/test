@@ -3,12 +3,12 @@
 module RV32I_Core (
     input  logic        clk,
     input  logic        reset,
-    input  logic [31:0] instrCode,
-    output logic [31:0] instrMemAddr,
-    output logic        dataWe,
-    output logic [31:0] dataAddr,
-    output logic [31:0] dataWData,
-    input  logic [31:0] dataRData,
+    input  logic [31:0] instrCode,     // ROM 에서 가져온 명령어
+    output logic [31:0] instrMemAddr,  // ROM 주소
+    output logic        dataWe,        // data 접근 요청 (read/write)
+    output logic [31:0] dataAddr,      // data 접근 요청 (read/write)
+    output logic [31:0] dataWData,     // data 접근 요청 (read/write)
+    input  logic [31:0] dataRData,     // APB에서 받은 응답 데이터
     output logic        transfer,
     input  logic        ready
 );

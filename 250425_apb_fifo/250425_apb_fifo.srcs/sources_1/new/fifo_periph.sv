@@ -22,6 +22,7 @@ module FIFO_Periph (
     logic [7:0] FRD;
 
     // fifo
+    // write side
     logic [7:0] wdata;
     logic       wr_en;
     logic       full;

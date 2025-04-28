@@ -64,7 +64,7 @@ module MCU (
     logic [31:0] instrCode;
     logic [31:0] instrMemAddr;
 
-    logic read_ready;
+    //logic real_ready;
 
     assign PCLK = clk;
     assign PRESET = reset;
