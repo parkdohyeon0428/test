@@ -1,0 +1,10 @@
+# compile verilog/system verilog design source files
+sv xil_defaultlib  \
+"../../../../250428_timer.srcs/sources_1/new/timer.sv" \
+"../../../../250428_timer.srcs/sim_1/new/tb_timer.sv" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort
