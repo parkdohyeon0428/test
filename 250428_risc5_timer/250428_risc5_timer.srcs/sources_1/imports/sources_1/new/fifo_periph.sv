@@ -11,10 +11,9 @@ module FIFO_Periph (
     input  logic        PENABLE,
     input  logic        PSEL,
     output logic [31:0] PRDATA,
-    output logic        PREADY,
+    output logic        PREADY
 
     // inport signals
-    output logic real_ready
 );
 
     logic [1:0] FSR;
@@ -154,7 +153,6 @@ module FIFO_Ctrl (
                 wr_en = 0;
                 rd_en = 1;
                 next = IDLE;
-
             end
         endcase
     end
