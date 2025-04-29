@@ -47,14 +47,14 @@ set_property -dict { PACKAGE_PIN L1    IOSTANDARD LVCMOS33 } [get_ports {GPIOC[7
 
 
 ##7 Segment Display
-set_property -dict { PACKAGE_PIN W7   IOSTANDARD LVCMOS33 } [get_ports {fndComm[0]}]
-set_property -dict { PACKAGE_PIN W6   IOSTANDARD LVCMOS33 } [get_ports {fndComm[1]}]
-set_property -dict { PACKAGE_PIN U8   IOSTANDARD LVCMOS33 } [get_ports {fndComm[2]}]
-set_property -dict { PACKAGE_PIN V8   IOSTANDARD LVCMOS33 } [get_ports {fndComm[3]}]
-set_property -dict { PACKAGE_PIN U5   IOSTANDARD LVCMOS33 } [get_ports {fndComm[4]}]
-set_property -dict { PACKAGE_PIN V5   IOSTANDARD LVCMOS33 } [get_ports {fndComm[5]}]
-set_property -dict { PACKAGE_PIN U7   IOSTANDARD LVCMOS33 } [get_ports {fndComm[6]}]
-set_property -dict { PACKAGE_PIN V7   IOSTANDARD LVCMOS33 } [get_ports {fndComm[7]}]
+set_property -dict { PACKAGE_PIN W7   IOSTANDARD LVCMOS33 } [get_ports {fndFont[0]}]
+set_property -dict { PACKAGE_PIN W6   IOSTANDARD LVCMOS33 } [get_ports {fndFont[1]}]
+set_property -dict { PACKAGE_PIN U8   IOSTANDARD LVCMOS33 } [get_ports {fndFont[2]}]
+set_property -dict { PACKAGE_PIN V8   IOSTANDARD LVCMOS33 } [get_ports {fndFont[3]}]
+set_property -dict { PACKAGE_PIN U5   IOSTANDARD LVCMOS33 } [get_ports {fndFont[4]}]
+set_property -dict { PACKAGE_PIN V5   IOSTANDARD LVCMOS33 } [get_ports {fndFont[5]}]
+set_property -dict { PACKAGE_PIN U7   IOSTANDARD LVCMOS33 } [get_ports {fndFont[6]}]
+set_property -dict { PACKAGE_PIN V7   IOSTANDARD LVCMOS33 } [get_ports {fndFont[7]}]
 
 set_property -dict { PACKAGE_PIN U2   IOSTANDARD LVCMOS33 } [get_ports {fndComm[0]}]
 set_property -dict { PACKAGE_PIN U4   IOSTANDARD LVCMOS33 } [get_ports {fndComm[1]}]
@@ -64,10 +64,10 @@ set_property -dict { PACKAGE_PIN W4   IOSTANDARD LVCMOS33 } [get_ports {fndComm[
 
 ##Buttons
 set_property -dict { PACKAGE_PIN U18   IOSTANDARD LVCMOS33 } [get_ports reset]
-set_property -dict { PACKAGE_PIN T18   IOSTANDARD LVCMOS33 } [get_ports GPIOD[4]]
-set_property -dict { PACKAGE_PIN W19   IOSTANDARD LVCMOS33 } [get_ports GPIOD[5]]
-set_property -dict { PACKAGE_PIN T17   IOSTANDARD LVCMOS33 } [get_ports GPIOD[6]]
-set_property -dict { PACKAGE_PIN U17   IOSTANDARD LVCMOS33 } [get_ports GPIOD[7]]
+set_property -dict { PACKAGE_PIN T18   IOSTANDARD LVCMOS33 } [get_ports {GPIOD[4]}]
+set_property -dict { PACKAGE_PIN W19   IOSTANDARD LVCMOS33 } [get_ports {GPIOD[5]}]
+set_property -dict { PACKAGE_PIN T17   IOSTANDARD LVCMOS33 } [get_ports {GPIOD[6]}]
+set_property -dict { PACKAGE_PIN U17   IOSTANDARD LVCMOS33 } [get_ports {GPIOD[7]}]
 
 
 ##Pmod Header JA

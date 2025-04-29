@@ -61,18 +61,18 @@ module APB_SlaveIntf_FIFO (
     // internal signals
     input  logic [ 1:0] FSR,
     output logic [ 7:0] FWD,
-    input  logic [ 7:0] FRD,
+    input  logic [ 7:0] FRD
     //fifo
-    output logic        wr_en,
-    output logic        rd_en
+    // output logic        wr_en,
+    // output logic        rd_en
 
 );
     logic [31:0] slv_reg0, slv_reg1, slv_reg2;  //, slv_reg2, slv_reg3;
 
 
-    assign slv_reg0[1:0] = FSR;
-    assign FWD = slv_reg1[7:0];
-    assign slv_reg2[7:0] = FRD;
+    assign slv_reg0[1:0] = FSR;   
+    assign FWD = slv_reg1[7:0];  // tx
+    assign slv_reg2[7:0] = FRD;  // rx
 
     always_ff @(posedge PCLK, posedge PRESET) begin
         if (PRESET) begin
@@ -104,6 +104,9 @@ module APB_SlaveIntf_FIFO (
             end
         end
     end
+
+    
+
 endmodule
 
 module FIFO_Ctrl (
@@ -113,8 +116,7 @@ module FIFO_Ctrl (
     input logic [3:0] PADDR,
     input logic PREADY,
     output logic wr_en,
-    output logic rd_en,
-    output logic real_ready
+    output logic rd_en
 );
     parameter IDLE = 0, WRITE = 1, READ = 2, WAIT = 3;
     logic [1:0] state, next;
@@ -131,7 +133,6 @@ module FIFO_Ctrl (
         next  = state;
         wr_en = 0;
         rd_en = 0;
-        real_ready = 0;
         case (state)
             IDLE: begin
                 wr_en = 0;
@@ -147,17 +148,13 @@ module FIFO_Ctrl (
             WRITE: begin
                 wr_en = 1;
                 rd_en = 0;
-                next = WAIT;
-                real_ready = 1;
+                next = IDLE;
             end
             READ: begin
                 wr_en = 0;
                 rd_en = 1;
-                next = WAIT;
-                real_ready = 1;
-            end
-            WAIT: begin
                 next = IDLE;
+
             end
         endcase
     end
