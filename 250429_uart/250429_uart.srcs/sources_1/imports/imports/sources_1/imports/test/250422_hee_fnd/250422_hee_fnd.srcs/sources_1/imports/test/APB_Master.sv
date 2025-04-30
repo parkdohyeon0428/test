@@ -1,5 +1,5 @@
 `timescale 1ns / 1ps
-       
+                  
 module APB_Master (
     // global signal
     input  logic        PCLK,

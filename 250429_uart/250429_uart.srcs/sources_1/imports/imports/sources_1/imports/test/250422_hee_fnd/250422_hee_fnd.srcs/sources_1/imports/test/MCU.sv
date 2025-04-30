@@ -8,8 +8,8 @@ module MCU (
     inout  logic [7:0] GPIOC,
     inout  logic [7:0] GPIOD,
     output logic [3:0] fndComm,  
-    output logic [7:0] fndFont
-    
+    output logic [7:0] fndFont,
+    input  logic       rx 
 );
     // global signals
     logic        PCLK;
@@ -93,8 +93,8 @@ module MCU (
         .PSEL5  (PSEL_GPOE),
         .PSEL6  (PSEL_FIFO),
         .PSEL7  (PSEL_TIMER),
+            
         
-
         .PRDATA0(PRDATA_RAM),
         .PRDATA1(PRDATA_GPO),
         .PRDATA2(PRDATA_GPI),
@@ -113,7 +113,7 @@ module MCU (
         .PREADY6(PREADY_FIFO),
         .PREADY7(PREADY_TIMER)
         
-    );
+    );     
 
     ram U_RAM (
         .*,
@@ -165,14 +165,15 @@ module MCU (
         .PREADY (PREADY_GPOE),
         // export signals
         .fndComm(fndComm),
-        .fndFont(fndFont)
+        .fndFont(fndFont),
+        .sel()
     );
-    FIFO_Periph U_FIFO_Peri(
+    UART_FIFO_RX_Periph U_FIFO_Peri(
         .*,
         .PSEL(PSEL_FIFO),
         .PRDATA(PRDATA_FIFO),
-        .PREADY(),
-        .real_ready(PREADY_FIFO)
+        .PREADY(PREADY_FIFO),
+        .rx(rx)
     );
     timer_Periph U_timer_Peri(
         .*,

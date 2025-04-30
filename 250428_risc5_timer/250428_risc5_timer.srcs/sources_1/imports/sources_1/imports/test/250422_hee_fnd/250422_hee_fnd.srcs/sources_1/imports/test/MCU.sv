@@ -8,7 +8,9 @@ module MCU (
     inout  logic [7:0] GPIOC,
     inout  logic [7:0] GPIOD,
     output logic [3:0] fndComm,  
-    output logic [7:0] fndFont
+    output logic [7:0] fndFont,
+    input  logic       tx,
+    output logic       rx
     
 );
     // global signals
@@ -167,12 +169,22 @@ module MCU (
         .fndComm(fndComm),
         .fndFont(fndFont)
     );
-    FIFO_Periph U_FIFO_Peri(
+    // FIFO_Periph U_FIFO_Peri(
+    //     .*,
+    //     .PSEL(),
+    //     .PRDATA(),
+    //     .PREADY()
+    // );
+
+    Uart_Periph U_uart_Peri(
         .*,
         .PSEL(PSEL_FIFO),
         .PRDATA(PRDATA_FIFO),
-        .PREADY(PREADY_FIFO)
+        .PREADY(PREADY_FIFO),
+        .TX(tx),
+        .RX(rx)
     );
+
     timer_Periph U_timer_Peri(
         .*,
         .PSEL(PSEL_TIMER),

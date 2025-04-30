@@ -13,9 +13,9 @@ module GPI_Periph (
     output logic [31:0] PRDATA,
     output logic        PREADY,
     // inport signals
-    input logic [ 7:0] inPort
+    input logic [ 7:0] inPort  
 );
-
+    
     logic [7:0] moder;
     logic [7:0] idr;
 

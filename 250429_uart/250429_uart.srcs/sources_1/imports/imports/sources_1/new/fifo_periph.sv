@@ -1,6 +1,7 @@
 `timescale 1ns / 1ps
 
-module FIFO_Periph (
+
+module UART_FIFO_RX_Periph (
     // global signal
     input  logic        PCLK,
     input  logic        PRESET,
@@ -12,15 +13,15 @@ module FIFO_Periph (
     input  logic        PSEL,
     output logic [31:0] PRDATA,
     output logic        PREADY,
-
     // inport signals
-    output logic real_ready
+    input logic         rx
 );
 
     logic [1:0] FSR;
-    logic [7:0] FWD;
+    // logic [7:0] FWD;
     logic [7:0] FRD;
 
+    
     // fifo
     // write side
     logic [7:0] wdata;
@@ -32,21 +33,28 @@ module FIFO_Periph (
     logic       empty;
 
     assign FSR = {empty, full};
-    assign wdata = FWD;
+    // assign wdata = FWD;
     assign FRD = rdata;
     
 
-    APB_SlaveIntf_FIFO U_APB_Intf_FIFO (.*);
-    FIFO_Ctrl U_FIFO_ctrl (.*);
-    fifo U_FIFO (
+    APB_SlaveIntf_FIFO_RX U_APB_Intf_FIFO_RX (.*);
+    FIFO_RX_Ctrl U_FIFO_ctrl_RX (.*);
+    fifo U_FIFO_RX (
         .clk  (PCLK),
         .reset(PRESET),
         .*
     );
+    uart_main_RX U_Uart_main_RX(
+        .clk(PCLK),         // 시스템 클럭 입력
+        .rst(PRESET),         // 비동기 리셋 신호
+        .rx(rx),
+        .rx_done(wr_en),     // UART 송신 신호 (시리얼 출력) 
+        .rx_data(wdata)
+    );
 
 endmodule
 
-module APB_SlaveIntf_FIFO (
+module APB_SlaveIntf_FIFO_RX (
     // global signal
     input  logic        PCLK,
     input  logic        PRESET,
@@ -60,24 +68,22 @@ module APB_SlaveIntf_FIFO (
     output logic        PREADY,
     // internal signals
     input  logic [ 1:0] FSR,
-    output logic [ 7:0] FWD,
-    input  logic [ 7:0] FRD,
+    input  logic [ 7:0] FRD
+    //output logic [ 7:0] FWD,
     //fifo
-    output logic        wr_en,
-    output logic        rd_en
 
 );
     logic [31:0] slv_reg0, slv_reg1, slv_reg2;  //, slv_reg2, slv_reg3;
 
 
-    assign slv_reg0[1:0] = FSR;
-    assign FWD = slv_reg1[7:0];
-    assign slv_reg2[7:0] = FRD;
+    assign slv_reg0[1:0] = FSR; // empty ,full,
+    assign slv_reg1[7:0] = FRD;  // read data
+    //assign FWD = slv_reg1[7:0];
 
     always_ff @(posedge PCLK, posedge PRESET) begin
         if (PRESET) begin
             //slv_reg0 <= 0;
-            slv_reg1 <= 0;
+            //slv_reg1 <= 0;
             //slv_reg2 <= 0;
             // slv_reg3 <= 0;
         end else begin
@@ -86,8 +92,8 @@ module APB_SlaveIntf_FIFO (
                 if (PWRITE) begin
                     case (PADDR[3:2])
                         2'd0: ;  //slv_reg0 <= PWDATA;
-                        2'd1: slv_reg1 <= PWDATA;
-                        2'd2: ;  //slv_reg2 <= PWDATA;
+                        2'd1: ; //slv_reg1 <= PWDATA;
+                        //2'd2: ;  //slv_reg2 <= PWDATA;
                         // 2'd3: slv_reg3 <= PWDATA;
                     endcase
                 end else begin
@@ -95,7 +101,7 @@ module APB_SlaveIntf_FIFO (
                     case (PADDR[3:2])
                         2'd0: PRDATA <= slv_reg0;
                         2'd1: PRDATA <= slv_reg1;
-                        2'd2: PRDATA <= slv_reg2;
+                        //2'd2: PRDATA <= slv_reg2;
                         // 2'd3: PRDATA <= slv_reg3;
                     endcase
                 end
@@ -106,17 +112,16 @@ module APB_SlaveIntf_FIFO (
     end
 endmodule
 
-module FIFO_Ctrl (
+module FIFO_RX_Ctrl (
     input logic PCLK,
     input logic PRESET,
     input logic PWRITE,
     input logic [3:0] PADDR,
     input logic PREADY,
-    output logic wr_en,
-    output logic rd_en,
-    output logic real_ready
+    //output logic wr_en,
+    output logic rd_en
 );
-    parameter IDLE = 0, WRITE = 1, READ = 2, WAIT = 3;
+    parameter IDLE = 0, WRITE = 1, READ = 2;
     logic [1:0] state, next;
 
     always_ff @(posedge PCLK, posedge PRESET) begin
@@ -129,12 +134,11 @@ module FIFO_Ctrl (
 
     always_comb begin
         next  = state;
-        wr_en = 0;
+        //wr_en = 0;
         rd_en = 0;
-        real_ready = 0;
         case (state)
             IDLE: begin
-                wr_en = 0;
+                //wr_en = 0;
                 rd_en = 0;
                 if (PREADY && ~(PADDR[3:2] == 2'd0)) begin
                     if (PWRITE) begin
@@ -145,20 +149,16 @@ module FIFO_Ctrl (
                 end
             end
             WRITE: begin
-                wr_en = 1;
+                //wr_en = 1;
                 rd_en = 0;
-                next = WAIT;
-                real_ready = 1;
-            end
-            READ: begin
-                wr_en = 0;
-                rd_en = 1;
-                next = WAIT;
-                real_ready = 1;
-            end
-            WAIT: begin
                 next = IDLE;
             end
+            READ: begin
+                //wr_en = 0;
+                rd_en = 1;
+                next = IDLE;
+            end
+           
         endcase
     end
 endmodule
