@@ -171,8 +171,7 @@ module MCU (
         .*,
         .PSEL(PSEL_FIFO),
         .PRDATA(PRDATA_FIFO),
-        .PREADY(),
-        .real_ready(PREADY_FIFO)
+        .PREADY(PREADY_FIFO)
     );
     timer_Periph U_timer_Peri(
         .*,

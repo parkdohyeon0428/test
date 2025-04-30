@@ -1,0 +1,71 @@
+#-----------------------------------------------------------
+# Vivado v2020.2 (64-bit)
+# SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
+# IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+# Start of session at: Tue Apr 29 21:06:23 2025
+# Process ID: 22476
+# Current directory: C:/Users/user/Desktop/test/250428_risc5_timer
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent20888 C:\Users\user\Desktop\test\250428_risc5_timer\250428_risc5_timer.xpr
+# Log file: C:/Users/user/Desktop/test/250428_risc5_timer/vivado.log
+# Journal file: C:/Users/user/Desktop/test/250428_risc5_timer\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project C:/Users/user/Desktop/test/250428_risc5_timer/250428_risc5_timer.xpr
+update_compile_order -fileset sources_1
+synth_design -rtl -rtl_skip_mlo -name rtl_1
+close_project
+open_project C:/Users/user/Desktop/test/250321_fifo_uart/250321_fifo_uart.xpr
+update_compile_order -fileset sources_1
+synth_design -rtl -rtl_skip_mlo -name rtl_1
+close_project
+open_project C:/Users/user/Desktop/test/250320_fifo_tx_rx/250320_fifo_tx_rx.xpr
+update_compile_order -fileset sources_1
+synth_design -rtl -rtl_skip_mlo -name rtl_1
+close_project
+open_project C:/Users/user/Desktop/test/250321_fifo_uart/250321_fifo_uart.xpr
+update_compile_order -fileset sources_1
+synth_design -rtl -rtl_skip_mlo -name rtl_1
+close_project
+open_project C:/Users/user/Desktop/test/250428_risc5_timer/250428_risc5_timer.xpr
+update_compile_order -fileset sources_1
+synth_design -rtl -rtl_skip_mlo -name rtl_1
+synth_design -rtl -rtl_skip_mlo -name rtl_1
+synth_design -rtl -rtl_skip_mlo -name rtl_1
+close_project
+open_project C:/Users/user/Desktop/test/250321_fifo_uart/250321_fifo_uart.xpr
+update_compile_order -fileset sources_1
+synth_design -rtl -rtl_skip_mlo -name rtl_1
+close_project
+open_project C:/Users/user/Desktop/test/250321_stopwatch/250321_stopwatch.xpr
+update_compile_order -fileset sources_1
+synth_design -rtl -rtl_skip_mlo -name rtl_1
+close_project
+open_project C:/Users/user/Desktop/test/250326_uart_fifo_HC/250326_uart_fifo_HC.xpr
+update_compile_order -fileset sources_1
+synth_design -rtl -rtl_skip_mlo -name rtl_1
+close_project
+open_project C:/Users/user/Desktop/test/250328_final_project/250328_final_project.xpr
+update_compile_order -fileset sources_1
+synth_design -rtl -rtl_skip_mlo -name rtl_1
+close_project
+open_project C:/Users/user/Desktop/test/250428_risc5_timer/250428_risc5_timer.xpr
+synth_design -rtl -rtl_skip_mlo -name rtl_1
+update_compile_order -fileset sources_1
+file mkdir C:/Users/user/Desktop/test/250428_risc5_timer/250428_risc5_timer.srcs/sources_1/new
+close [ open C:/Users/user/Desktop/test/250428_risc5_timer/250428_risc5_timer.srcs/sources_1/new/Uart.sv w ]
+add_files C:/Users/user/Desktop/test/250428_risc5_timer/250428_risc5_timer.srcs/sources_1/new/Uart.sv
+update_compile_order -fileset sources_1
+# Disabling source management mode.  This is to allow the top design properties to be set without GUI intervention.
+set_property source_mgmt_mode None [current_project]
+set_property top Uart_Periph [current_fileset]
+# Re-enabling previously disabled source management mode.
+set_property source_mgmt_mode All [current_project]
+update_compile_order -fileset sources_1
+refresh_design
+close [ open C:/Users/user/Desktop/test/250428_risc5_timer/250428_risc5_timer.srcs/sources_1/new/uart_fifo.sv w ]
+add_files C:/Users/user/Desktop/test/250428_risc5_timer/250428_risc5_timer.srcs/sources_1/new/uart_fifo.sv
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+refresh_design
+refresh_design
