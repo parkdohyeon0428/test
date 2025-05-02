@@ -2,8 +2,8 @@
 # Vivado v2020.2 (64-bit)
 # SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
 # IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
-# Start of session at: Wed Apr 30 16:16:37 2025
-# Process ID: 10940
+# Start of session at: Thu May  1 16:01:53 2025
+# Process ID: 14416
 # Current directory: D:/test/250429_uart/250429_uart.runs/synth_1
 # Command line: vivado.exe -log MCU.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source MCU.tcl
 # Log file: D:/test/250429_uart/250429_uart.runs/synth_1/MCU.vds
@@ -17,9 +17,9 @@ INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a35t
 INFO: [Device 21-403] Loading part xc7a35tcpg236-1
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 8104
+INFO: [Synth 8-7075] Helper process launched with PID 3484
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 1104.012 ; gain = 0.000
+Starting RTL Elaboration : Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 1106.813 ; gain = 0.000
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-6157] synthesizing module 'MCU' [D:/test/250429_uart/250429_uart.srcs/sources_1/imports/imports/sources_1/imports/test/250422_hee_fnd/250422_hee_fnd.srcs/sources_1/imports/test/MCU.sv:3]
 INFO: [Synth 8-6157] synthesizing module 'rom' [D:/test/250429_uart/250429_uart.srcs/sources_1/imports/imports/sources_1/imports/test/250422_hee_fnd/250422_hee_fnd.srcs/sources_1/imports/test/rom.sv:3]
@@ -64,7 +64,7 @@ INFO: [Synth 8-6155] done synthesizing module 'APB_Mux' (14#1) [D:/test/250429_u
 INFO: [Synth 8-6155] done synthesizing module 'APB_Master' (15#1) [D:/test/250429_uart/250429_uart.srcs/sources_1/imports/imports/sources_1/imports/test/250422_hee_fnd/250422_hee_fnd.srcs/sources_1/imports/test/APB_Master.sv:3]
 INFO: [Synth 8-6157] synthesizing module 'ram' [D:/test/250429_uart/250429_uart.srcs/sources_1/imports/imports/sources_1/imports/test/250422_hee_fnd/250422_hee_fnd.srcs/sources_1/imports/test/ram.sv:3]
 INFO: [Synth 8-6155] done synthesizing module 'ram' (16#1) [D:/test/250429_uart/250429_uart.srcs/sources_1/imports/imports/sources_1/imports/test/250422_hee_fnd/250422_hee_fnd.srcs/sources_1/imports/test/ram.sv:3]
-WARNING: [Synth 8-689] width (32) of port connection 'PADDR' does not match port width (12) of module 'ram' [D:/test/250429_uart/250429_uart.srcs/sources_1/imports/imports/sources_1/imports/test/250422_hee_fnd/250422_hee_fnd.srcs/sources_1/imports/test/MCU.sv:118]
+WARNING: [Synth 8-689] width (32) of port connection 'PADDR' does not match port width (12) of module 'ram' [D:/test/250429_uart/250429_uart.srcs/sources_1/imports/imports/sources_1/imports/test/250422_hee_fnd/250422_hee_fnd.srcs/sources_1/imports/test/MCU.sv:119]
 INFO: [Synth 8-6157] synthesizing module 'GPO_Periph' [D:/test/250429_uart/250429_uart.srcs/sources_1/imports/imports/sources_1/imports/test/250422_hee_fnd/250422_hee_fnd.srcs/sources_1/imports/test/APB_Slave.sv:3]
 INFO: [Synth 8-6157] synthesizing module 'APB_SlaveIntf' [D:/test/250429_uart/250429_uart.srcs/sources_1/imports/imports/sources_1/imports/test/250422_hee_fnd/250422_hee_fnd.srcs/sources_1/imports/test/APB_Slave.sv:26]
 INFO: [Synth 8-155] case statement is not full and has no default [D:/test/250429_uart/250429_uart.srcs/sources_1/imports/imports/sources_1/imports/test/250422_hee_fnd/250422_hee_fnd.srcs/sources_1/imports/test/APB_Slave.sv:57]
@@ -73,7 +73,7 @@ INFO: [Synth 8-6155] done synthesizing module 'APB_SlaveIntf' (17#1) [D:/test/25
 INFO: [Synth 8-6157] synthesizing module 'GPO' [D:/test/250429_uart/250429_uart.srcs/sources_1/imports/imports/sources_1/imports/test/250422_hee_fnd/250422_hee_fnd.srcs/sources_1/imports/test/APB_Slave.sv:80]
 INFO: [Synth 8-6155] done synthesizing module 'GPO' (18#1) [D:/test/250429_uart/250429_uart.srcs/sources_1/imports/imports/sources_1/imports/test/250422_hee_fnd/250422_hee_fnd.srcs/sources_1/imports/test/APB_Slave.sv:80]
 INFO: [Synth 8-6155] done synthesizing module 'GPO_Periph' (19#1) [D:/test/250429_uart/250429_uart.srcs/sources_1/imports/imports/sources_1/imports/test/250422_hee_fnd/250422_hee_fnd.srcs/sources_1/imports/test/APB_Slave.sv:3]
-WARNING: [Synth 8-689] width (32) of port connection 'PADDR' does not match port width (4) of module 'GPO_Periph' [D:/test/250429_uart/250429_uart.srcs/sources_1/imports/imports/sources_1/imports/test/250422_hee_fnd/250422_hee_fnd.srcs/sources_1/imports/test/MCU.sv:125]
+WARNING: [Synth 8-689] width (32) of port connection 'PADDR' does not match port width (4) of module 'GPO_Periph' [D:/test/250429_uart/250429_uart.srcs/sources_1/imports/imports/sources_1/imports/test/250422_hee_fnd/250422_hee_fnd.srcs/sources_1/imports/test/MCU.sv:126]
 INFO: [Synth 8-6157] synthesizing module 'GPI_Periph' [D:/test/250429_uart/250429_uart.srcs/sources_1/imports/imports/sources_1/imports/test/250422_hee_fnd/250422_hee_fnd.srcs/sources_1/imports/test/gpi.sv:3]
 INFO: [Synth 8-6157] synthesizing module 'APB_SlaveIntf_GPI' [D:/test/250429_uart/250429_uart.srcs/sources_1/imports/imports/sources_1/imports/test/250422_hee_fnd/250422_hee_fnd.srcs/sources_1/imports/test/gpi.sv:26]
 INFO: [Synth 8-155] case statement is not full and has no default [D:/test/250429_uart/250429_uart.srcs/sources_1/imports/imports/sources_1/imports/test/250422_hee_fnd/250422_hee_fnd.srcs/sources_1/imports/test/gpi.sv:57]
@@ -82,7 +82,7 @@ INFO: [Synth 8-6155] done synthesizing module 'APB_SlaveIntf_GPI' (20#1) [D:/tes
 INFO: [Synth 8-6157] synthesizing module 'GPI' [D:/test/250429_uart/250429_uart.srcs/sources_1/imports/imports/sources_1/imports/test/250422_hee_fnd/250422_hee_fnd.srcs/sources_1/imports/test/gpi.sv:80]
 INFO: [Synth 8-6155] done synthesizing module 'GPI' (21#1) [D:/test/250429_uart/250429_uart.srcs/sources_1/imports/imports/sources_1/imports/test/250422_hee_fnd/250422_hee_fnd.srcs/sources_1/imports/test/gpi.sv:80]
 INFO: [Synth 8-6155] done synthesizing module 'GPI_Periph' (22#1) [D:/test/250429_uart/250429_uart.srcs/sources_1/imports/imports/sources_1/imports/test/250422_hee_fnd/250422_hee_fnd.srcs/sources_1/imports/test/gpi.sv:3]
-WARNING: [Synth 8-689] width (32) of port connection 'PADDR' does not match port width (4) of module 'GPI_Periph' [D:/test/250429_uart/250429_uart.srcs/sources_1/imports/imports/sources_1/imports/test/250422_hee_fnd/250422_hee_fnd.srcs/sources_1/imports/test/MCU.sv:134]
+WARNING: [Synth 8-689] width (32) of port connection 'PADDR' does not match port width (4) of module 'GPI_Periph' [D:/test/250429_uart/250429_uart.srcs/sources_1/imports/imports/sources_1/imports/test/250422_hee_fnd/250422_hee_fnd.srcs/sources_1/imports/test/MCU.sv:135]
 INFO: [Synth 8-6157] synthesizing module 'GPIO_Periph' [D:/test/250429_uart/250429_uart.srcs/sources_1/imports/imports/sources_1/imports/test/250422_hee_fnd/250422_hee_fnd.srcs/sources_1/imports/test/GPIO.sv:3]
 INFO: [Synth 8-6157] synthesizing module 'APB_SlaveIntf_GPIO' [D:/test/250429_uart/250429_uart.srcs/sources_1/imports/imports/sources_1/imports/test/250422_hee_fnd/250422_hee_fnd.srcs/sources_1/imports/test/GPIO.sv:28]
 INFO: [Synth 8-155] case statement is not full and has no default [D:/test/250429_uart/250429_uart.srcs/sources_1/imports/imports/sources_1/imports/test/250422_hee_fnd/250422_hee_fnd.srcs/sources_1/imports/test/GPIO.sv:61]
@@ -91,8 +91,8 @@ INFO: [Synth 8-6155] done synthesizing module 'APB_SlaveIntf_GPIO' (23#1) [D:/te
 INFO: [Synth 8-6157] synthesizing module 'GPIO' [D:/test/250429_uart/250429_uart.srcs/sources_1/imports/imports/sources_1/imports/test/250422_hee_fnd/250422_hee_fnd.srcs/sources_1/imports/test/GPIO.sv:84]
 INFO: [Synth 8-6155] done synthesizing module 'GPIO' (24#1) [D:/test/250429_uart/250429_uart.srcs/sources_1/imports/imports/sources_1/imports/test/250422_hee_fnd/250422_hee_fnd.srcs/sources_1/imports/test/GPIO.sv:84]
 INFO: [Synth 8-6155] done synthesizing module 'GPIO_Periph' (25#1) [D:/test/250429_uart/250429_uart.srcs/sources_1/imports/imports/sources_1/imports/test/250422_hee_fnd/250422_hee_fnd.srcs/sources_1/imports/test/GPIO.sv:3]
-WARNING: [Synth 8-689] width (32) of port connection 'PADDR' does not match port width (4) of module 'GPIO_Periph' [D:/test/250429_uart/250429_uart.srcs/sources_1/imports/imports/sources_1/imports/test/250422_hee_fnd/250422_hee_fnd.srcs/sources_1/imports/test/MCU.sv:143]
-WARNING: [Synth 8-689] width (32) of port connection 'PADDR' does not match port width (4) of module 'GPIO_Periph' [D:/test/250429_uart/250429_uart.srcs/sources_1/imports/imports/sources_1/imports/test/250422_hee_fnd/250422_hee_fnd.srcs/sources_1/imports/test/MCU.sv:152]
+WARNING: [Synth 8-689] width (32) of port connection 'PADDR' does not match port width (4) of module 'GPIO_Periph' [D:/test/250429_uart/250429_uart.srcs/sources_1/imports/imports/sources_1/imports/test/250422_hee_fnd/250422_hee_fnd.srcs/sources_1/imports/test/MCU.sv:144]
+WARNING: [Synth 8-689] width (32) of port connection 'PADDR' does not match port width (4) of module 'GPIO_Periph' [D:/test/250429_uart/250429_uart.srcs/sources_1/imports/imports/sources_1/imports/test/250422_hee_fnd/250422_hee_fnd.srcs/sources_1/imports/test/MCU.sv:153]
 INFO: [Synth 8-6157] synthesizing module 'FND_Periph' [D:/test/250429_uart/250429_uart.srcs/sources_1/imports/imports/sources_1/imports/test/250422_hee_fnd/250422_hee_fnd.srcs/sources_1/imports/test/FND.sv:3]
 INFO: [Synth 8-6157] synthesizing module 'APB_SlaveIntf_FND' [D:/test/250429_uart/250429_uart.srcs/sources_1/imports/imports/sources_1/imports/test/250422_hee_fnd/250422_hee_fnd.srcs/sources_1/imports/test/FND.sv:29]
 INFO: [Synth 8-155] case statement is not full and has no default [D:/test/250429_uart/250429_uart.srcs/sources_1/imports/imports/sources_1/imports/test/250422_hee_fnd/250422_hee_fnd.srcs/sources_1/imports/test/FND.sv:62]
@@ -118,69 +118,79 @@ INFO: [Synth 8-6157] synthesizing module 'dot' [D:/test/250429_uart/250429_uart.
 INFO: [Synth 8-6155] done synthesizing module 'dot' (33#1) [D:/test/250429_uart/250429_uart.srcs/sources_1/imports/imports/sources_1/imports/test/250422_hee_fnd/250422_hee_fnd.srcs/sources_1/imports/test/FND.sv:271]
 INFO: [Synth 8-6155] done synthesizing module 'FND' (34#1) [D:/test/250429_uart/250429_uart.srcs/sources_1/imports/imports/sources_1/imports/test/250422_hee_fnd/250422_hee_fnd.srcs/sources_1/imports/test/FND.sv:85]
 INFO: [Synth 8-6155] done synthesizing module 'FND_Periph' (35#1) [D:/test/250429_uart/250429_uart.srcs/sources_1/imports/imports/sources_1/imports/test/250422_hee_fnd/250422_hee_fnd.srcs/sources_1/imports/test/FND.sv:3]
-WARNING: [Synth 8-689] width (32) of port connection 'PADDR' does not match port width (4) of module 'FND_Periph' [D:/test/250429_uart/250429_uart.srcs/sources_1/imports/imports/sources_1/imports/test/250422_hee_fnd/250422_hee_fnd.srcs/sources_1/imports/test/MCU.sv:161]
-INFO: [Synth 8-6157] synthesizing module 'UART_FIFO_RX_Periph' [D:/test/250429_uart/250429_uart.srcs/sources_1/imports/imports/sources_1/new/fifo_periph.sv:4]
-INFO: [Synth 8-6157] synthesizing module 'APB_SlaveIntf_FIFO_RX' [D:/test/250429_uart/250429_uart.srcs/sources_1/imports/imports/sources_1/new/fifo_periph.sv:57]
-INFO: [Synth 8-155] case statement is not full and has no default [D:/test/250429_uart/250429_uart.srcs/sources_1/imports/imports/sources_1/new/fifo_periph.sv:93]
-INFO: [Synth 8-155] case statement is not full and has no default [D:/test/250429_uart/250429_uart.srcs/sources_1/imports/imports/sources_1/new/fifo_periph.sv:101]
-INFO: [Synth 8-6155] done synthesizing module 'APB_SlaveIntf_FIFO_RX' (36#1) [D:/test/250429_uart/250429_uart.srcs/sources_1/imports/imports/sources_1/new/fifo_periph.sv:57]
-INFO: [Synth 8-6157] synthesizing module 'FIFO_RX_Ctrl' [D:/test/250429_uart/250429_uart.srcs/sources_1/imports/imports/sources_1/new/fifo_periph.sv:115]
+WARNING: [Synth 8-689] width (32) of port connection 'PADDR' does not match port width (4) of module 'FND_Periph' [D:/test/250429_uart/250429_uart.srcs/sources_1/imports/imports/sources_1/imports/test/250422_hee_fnd/250422_hee_fnd.srcs/sources_1/imports/test/MCU.sv:162]
+INFO: [Synth 8-6157] synthesizing module 'uart_Periph' [D:/test/250429_uart/250429_uart.srcs/sources_1/new/uart_tx.sv:2]
+INFO: [Synth 8-6157] synthesizing module 'APB_SlaveIntf_uart_fifo' [D:/test/250429_uart/250429_uart.srcs/sources_1/new/uart_tx.sv:67]
+INFO: [Synth 8-155] case statement is not full and has no default [D:/test/250429_uart/250429_uart.srcs/sources_1/new/uart_tx.sv:108]
+INFO: [Synth 8-155] case statement is not full and has no default [D:/test/250429_uart/250429_uart.srcs/sources_1/new/uart_tx.sv:116]
+INFO: [Synth 8-6155] done synthesizing module 'APB_SlaveIntf_uart_fifo' (36#1) [D:/test/250429_uart/250429_uart.srcs/sources_1/new/uart_tx.sv:67]
+INFO: [Synth 8-6157] synthesizing module 'uart_fifo_ctrl' [D:/test/250429_uart/250429_uart.srcs/sources_1/new/uart_tx.sv:130]
 	Parameter IDLE bound to: 0 - type: integer 
 	Parameter WRITE bound to: 1 - type: integer 
 	Parameter READ bound to: 2 - type: integer 
-INFO: [Synth 8-155] case statement is not full and has no default [D:/test/250429_uart/250429_uart.srcs/sources_1/imports/imports/sources_1/new/fifo_periph.sv:139]
-INFO: [Synth 8-6155] done synthesizing module 'FIFO_RX_Ctrl' (37#1) [D:/test/250429_uart/250429_uart.srcs/sources_1/imports/imports/sources_1/new/fifo_periph.sv:115]
+INFO: [Synth 8-155] case statement is not full and has no default [D:/test/250429_uart/250429_uart.srcs/sources_1/new/uart_tx.sv:155]
+INFO: [Synth 8-6155] done synthesizing module 'uart_fifo_ctrl' (37#1) [D:/test/250429_uart/250429_uart.srcs/sources_1/new/uart_tx.sv:130]
+INFO: [Synth 8-6157] synthesizing module 'uart_fifo' [D:/test/250429_uart/250429_uart.srcs/sources_1/new/uart_tx.sv:183]
+INFO: [Synth 8-6157] synthesizing module 'uart' [D:/test/250429_uart/250429_uart.srcs/sources_1/new/uart_tx.sv:252]
+INFO: [Synth 8-6157] synthesizing module 'baud_tick_gen' [D:/test/250429_uart/250429_uart.srcs/sources_1/new/uart_tx.sv:512]
+	Parameter BAUD_RATE bound to: 9600 - type: integer 
+	Parameter BAUD_COUNT bound to: 651 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'baud_tick_gen' (38#1) [D:/test/250429_uart/250429_uart.srcs/sources_1/new/uart_tx.sv:512]
+INFO: [Synth 8-6157] synthesizing module 'uart_tx' [D:/test/250429_uart/250429_uart.srcs/sources_1/new/uart_tx.sv:298]
+	Parameter IDLE bound to: 4'b0000 
+	Parameter SEND bound to: 4'b0001 
+	Parameter START bound to: 4'b0010 
+	Parameter DATA bound to: 4'b0011 
+	Parameter STOP bound to: 4'b0100 
+INFO: [Synth 8-155] case statement is not full and has no default [D:/test/250429_uart/250429_uart.srcs/sources_1/new/uart_tx.sv:355]
+INFO: [Synth 8-6155] done synthesizing module 'uart_tx' (39#1) [D:/test/250429_uart/250429_uart.srcs/sources_1/new/uart_tx.sv:298]
+INFO: [Synth 8-6157] synthesizing module 'uart_rx' [D:/test/250429_uart/250429_uart.srcs/sources_1/new/uart_tx.sv:416]
+	Parameter IDLE bound to: 0 - type: integer 
+	Parameter START bound to: 1 - type: integer 
+	Parameter DATA bound to: 2 - type: integer 
+	Parameter STOP bound to: 3 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'uart_rx' (40#1) [D:/test/250429_uart/250429_uart.srcs/sources_1/new/uart_tx.sv:416]
+INFO: [Synth 8-6155] done synthesizing module 'uart' (41#1) [D:/test/250429_uart/250429_uart.srcs/sources_1/new/uart_tx.sv:252]
 INFO: [Synth 8-6157] synthesizing module 'fifo' [D:/test/250429_uart/250429_uart.srcs/sources_1/imports/imports/sources_1/imports/test/250425_UART_FIFO/250425_UART_FIFO.srcs/sources_1/new/fifo.sv:3]
 INFO: [Synth 8-6157] synthesizing module 'ram_fifo' [D:/test/250429_uart/250429_uart.srcs/sources_1/imports/imports/sources_1/imports/test/250425_UART_FIFO/250425_UART_FIFO.srcs/sources_1/new/fifo.sv:29]
-INFO: [Synth 8-6155] done synthesizing module 'ram_fifo' (38#1) [D:/test/250429_uart/250429_uart.srcs/sources_1/imports/imports/sources_1/imports/test/250425_UART_FIFO/250425_UART_FIFO.srcs/sources_1/new/fifo.sv:29]
+INFO: [Synth 8-6155] done synthesizing module 'ram_fifo' (42#1) [D:/test/250429_uart/250429_uart.srcs/sources_1/imports/imports/sources_1/imports/test/250425_UART_FIFO/250425_UART_FIFO.srcs/sources_1/new/fifo.sv:29]
 INFO: [Synth 8-6157] synthesizing module 'fifo_control_unit' [D:/test/250429_uart/250429_uart.srcs/sources_1/imports/imports/sources_1/imports/test/250425_UART_FIFO/250425_UART_FIFO.srcs/sources_1/new/fifo.sv:47]
 	Parameter READ bound to: 2'b01 
 	Parameter WRITE bound to: 2'b10 
 	Parameter READ_WRITE bound to: 2'b11 
 INFO: [Synth 8-155] case statement is not full and has no default [D:/test/250429_uart/250429_uart.srcs/sources_1/imports/imports/sources_1/imports/test/250425_UART_FIFO/250425_UART_FIFO.srcs/sources_1/new/fifo.sv:91]
-INFO: [Synth 8-6155] done synthesizing module 'fifo_control_unit' (39#1) [D:/test/250429_uart/250429_uart.srcs/sources_1/imports/imports/sources_1/imports/test/250425_UART_FIFO/250425_UART_FIFO.srcs/sources_1/new/fifo.sv:47]
-INFO: [Synth 8-6155] done synthesizing module 'fifo' (40#1) [D:/test/250429_uart/250429_uart.srcs/sources_1/imports/imports/sources_1/imports/test/250425_UART_FIFO/250425_UART_FIFO.srcs/sources_1/new/fifo.sv:3]
-INFO: [Synth 8-6157] synthesizing module 'uart_main_RX' [D:/test/250429_uart/250429_uart.srcs/sources_1/new/uart.sv:3]
-INFO: [Synth 8-6157] synthesizing module 'uart_rx' [D:/test/250429_uart/250429_uart.srcs/sources_1/new/uart.sv:32]
-	Parameter IDLE bound to: 0 - type: integer 
-	Parameter START bound to: 1 - type: integer 
-	Parameter DATA bound to: 2 - type: integer 
-	Parameter STOP bound to: 3 - type: integer 
-INFO: [Synth 8-6155] done synthesizing module 'uart_rx' (41#1) [D:/test/250429_uart/250429_uart.srcs/sources_1/new/uart.sv:32]
-INFO: [Synth 8-6157] synthesizing module 'baud_tick_gen' [D:/test/250429_uart/250429_uart.srcs/sources_1/new/uart.sv:132]
-	Parameter BAUD_RATE bound to: 9600 - type: integer 
-	Parameter BAUD_COUNT bound to: 651 - type: integer 
-INFO: [Synth 8-6155] done synthesizing module 'baud_tick_gen' (42#1) [D:/test/250429_uart/250429_uart.srcs/sources_1/new/uart.sv:132]
-INFO: [Synth 8-6155] done synthesizing module 'uart_main_RX' (43#1) [D:/test/250429_uart/250429_uart.srcs/sources_1/new/uart.sv:3]
-INFO: [Synth 8-6155] done synthesizing module 'UART_FIFO_RX_Periph' (44#1) [D:/test/250429_uart/250429_uart.srcs/sources_1/imports/imports/sources_1/new/fifo_periph.sv:4]
-WARNING: [Synth 8-689] width (32) of port connection 'PADDR' does not match port width (4) of module 'UART_FIFO_RX_Periph' [D:/test/250429_uart/250429_uart.srcs/sources_1/imports/imports/sources_1/imports/test/250422_hee_fnd/250422_hee_fnd.srcs/sources_1/imports/test/MCU.sv:171]
+INFO: [Synth 8-6155] done synthesizing module 'fifo_control_unit' (43#1) [D:/test/250429_uart/250429_uart.srcs/sources_1/imports/imports/sources_1/imports/test/250425_UART_FIFO/250425_UART_FIFO.srcs/sources_1/new/fifo.sv:47]
+INFO: [Synth 8-6155] done synthesizing module 'fifo' (44#1) [D:/test/250429_uart/250429_uart.srcs/sources_1/imports/imports/sources_1/imports/test/250425_UART_FIFO/250425_UART_FIFO.srcs/sources_1/new/fifo.sv:3]
+INFO: [Synth 8-6155] done synthesizing module 'uart_fifo' (45#1) [D:/test/250429_uart/250429_uart.srcs/sources_1/new/uart_tx.sv:183]
+INFO: [Synth 8-6155] done synthesizing module 'uart_Periph' (46#1) [D:/test/250429_uart/250429_uart.srcs/sources_1/new/uart_tx.sv:2]
+WARNING: [Synth 8-689] width (32) of port connection 'PADDR' does not match port width (4) of module 'uart_Periph' [D:/test/250429_uart/250429_uart.srcs/sources_1/imports/imports/sources_1/imports/test/250422_hee_fnd/250422_hee_fnd.srcs/sources_1/imports/test/MCU.sv:180]
 INFO: [Synth 8-6157] synthesizing module 'timer_Periph' [D:/test/250429_uart/250429_uart.srcs/sources_1/imports/imports/new/timer.sv:3]
 INFO: [Synth 8-6157] synthesizing module 'APB_SlaveIntf_timer' [D:/test/250429_uart/250429_uart.srcs/sources_1/imports/imports/new/timer.sv:30]
 INFO: [Synth 8-155] case statement is not full and has no default [D:/test/250429_uart/250429_uart.srcs/sources_1/imports/imports/new/timer.sv:69]
-INFO: [Synth 8-6155] done synthesizing module 'APB_SlaveIntf_timer' (45#1) [D:/test/250429_uart/250429_uart.srcs/sources_1/imports/imports/new/timer.sv:30]
+INFO: [Synth 8-6155] done synthesizing module 'APB_SlaveIntf_timer' (47#1) [D:/test/250429_uart/250429_uart.srcs/sources_1/imports/imports/new/timer.sv:30]
 INFO: [Synth 8-6157] synthesizing module 'timer' [D:/test/250429_uart/250429_uart.srcs/sources_1/imports/imports/new/timer.sv:92]
 INFO: [Synth 8-6157] synthesizing module 'prescaler' [D:/test/250429_uart/250429_uart.srcs/sources_1/imports/imports/new/timer.sv:107]
-INFO: [Synth 8-6155] done synthesizing module 'prescaler' (46#1) [D:/test/250429_uart/250429_uart.srcs/sources_1/imports/imports/new/timer.sv:107]
+INFO: [Synth 8-6155] done synthesizing module 'prescaler' (48#1) [D:/test/250429_uart/250429_uart.srcs/sources_1/imports/imports/new/timer.sv:107]
 INFO: [Synth 8-6157] synthesizing module 'counter' [D:/test/250429_uart/250429_uart.srcs/sources_1/imports/imports/new/timer.sv:139]
 WARNING: [Synth 8-6090] variable 'TCNT' is written by both blocking and non-blocking assignments, entire logic could be removed [D:/test/250429_uart/250429_uart.srcs/sources_1/imports/imports/new/timer.sv:158]
-INFO: [Synth 8-6155] done synthesizing module 'counter' (47#1) [D:/test/250429_uart/250429_uart.srcs/sources_1/imports/imports/new/timer.sv:139]
-INFO: [Synth 8-6155] done synthesizing module 'timer' (48#1) [D:/test/250429_uart/250429_uart.srcs/sources_1/imports/imports/new/timer.sv:92]
-INFO: [Synth 8-6155] done synthesizing module 'timer_Periph' (49#1) [D:/test/250429_uart/250429_uart.srcs/sources_1/imports/imports/new/timer.sv:3]
-WARNING: [Synth 8-689] width (32) of port connection 'PADDR' does not match port width (4) of module 'timer_Periph' [D:/test/250429_uart/250429_uart.srcs/sources_1/imports/imports/sources_1/imports/test/250422_hee_fnd/250422_hee_fnd.srcs/sources_1/imports/test/MCU.sv:178]
-INFO: [Synth 8-6155] done synthesizing module 'MCU' (50#1) [D:/test/250429_uart/250429_uart.srcs/sources_1/imports/imports/sources_1/imports/test/250422_hee_fnd/250422_hee_fnd.srcs/sources_1/imports/test/MCU.sv:3]
+INFO: [Synth 8-6155] done synthesizing module 'counter' (49#1) [D:/test/250429_uart/250429_uart.srcs/sources_1/imports/imports/new/timer.sv:139]
+INFO: [Synth 8-6155] done synthesizing module 'timer' (50#1) [D:/test/250429_uart/250429_uart.srcs/sources_1/imports/imports/new/timer.sv:92]
+INFO: [Synth 8-6155] done synthesizing module 'timer_Periph' (51#1) [D:/test/250429_uart/250429_uart.srcs/sources_1/imports/imports/new/timer.sv:3]
+WARNING: [Synth 8-689] width (32) of port connection 'PADDR' does not match port width (4) of module 'timer_Periph' [D:/test/250429_uart/250429_uart.srcs/sources_1/imports/imports/sources_1/imports/test/250422_hee_fnd/250422_hee_fnd.srcs/sources_1/imports/test/MCU.sv:189]
+INFO: [Synth 8-6155] done synthesizing module 'MCU' (52#1) [D:/test/250429_uart/250429_uart.srcs/sources_1/imports/imports/sources_1/imports/test/250422_hee_fnd/250422_hee_fnd.srcs/sources_1/imports/test/MCU.sv:3]
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 1104.012 ; gain = 0.000
+Finished RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 1106.813 ; gain = 0.000
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 1104.012 ; gain = 0.000
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 1106.813 ; gain = 0.000
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 1104.012 ; gain = 0.000
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 1106.813 ; gain = 0.000
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.029 . Memory (MB): peak = 1104.012 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.028 . Memory (MB): peak = 1106.813 ; gain = 0.000
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
@@ -191,30 +201,31 @@ INFO: [Project 1-236] Implementation specific constraints were found while readi
 Resolution: To avoid this warning, move constraints listed in [.Xil/MCU_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1187.426 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1201.445 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.004 . Memory (MB): peak = 1187.426 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.006 . Memory (MB): peak = 1201.445 ; gain = 0.000
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 1187.426 ; gain = 83.414
+Finished Constraint Validation : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 1201.445 ; gain = 94.633
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a35tcpg236-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 1187.426 ; gain = 83.414
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 1201.445 ; gain = 94.633
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 1187.426 ; gain = 83.414
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 1201.445 ; gain = 94.633
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'ControlUnit'
 INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'APB_Master'
-INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'FIFO_RX_Ctrl'
+INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'uart_fifo_ctrl'
+INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'uart_tx'
 INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'uart_rx'
 ---------------------------------------------------------------------------------------------------
                    State |                     New Encoding |                Previous Encoding 
@@ -246,11 +257,21 @@ INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 
 ---------------------------------------------------------------------------------------------------
                    State |                     New Encoding |                Previous Encoding 
 ---------------------------------------------------------------------------------------------------
-                    IDLE |                               00 |                               00
-                   WRITE |                               01 |                               01
-                    READ |                               10 |                               10
+                    IDLE |                              001 |                               00
+                   WRITE |                              010 |                               01
+                    READ |                              100 |                               10
 ---------------------------------------------------------------------------------------------------
-INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'sequential' in module 'FIFO_RX_Ctrl'
+INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'one-hot' in module 'uart_fifo_ctrl'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                    IDLE |                              000 |                             0000
+                    SEND |                              001 |                             0001
+                   START |                              010 |                             0010
+                    DATA |                              011 |                             0011
+                    STOP |                              100 |                             0100
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'sequential' in module 'uart_tx'
 ---------------------------------------------------------------------------------------------------
                    State |                     New Encoding |                Previous Encoding 
 ---------------------------------------------------------------------------------------------------
@@ -261,7 +282,7 @@ INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 
 ---------------------------------------------------------------------------------------------------
 INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'sequential' in module 'uart_rx'
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 1187.426 ; gain = 83.414
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 1201.445 ; gain = 94.633
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
@@ -273,25 +294,27 @@ Detailed RTL Component Info :
 	   2 Input   17 Bit       Adders := 1     
 	   2 Input   10 Bit       Adders := 1     
 	   2 Input    5 Bit       Adders := 1     
-	   2 Input    3 Bit       Adders := 1     
-	   2 Input    2 Bit       Adders := 3     
+	   2 Input    4 Bit       Adders := 1     
+	   2 Input    3 Bit       Adders := 2     
+	   2 Input    2 Bit       Adders := 5     
 +---XORs : 
 	   2 Input     32 Bit         XORs := 1     
 +---Registers : 
-	               32 Bit    Registers := 33    
+	               32 Bit    Registers := 34    
 	               17 Bit    Registers := 1     
 	               10 Bit    Registers := 1     
-	                8 Bit    Registers := 1     
+	                8 Bit    Registers := 2     
 	                5 Bit    Registers := 1     
-	                3 Bit    Registers := 1     
-	                2 Bit    Registers := 3     
-	                1 Bit    Registers := 15    
+	                4 Bit    Registers := 1     
+	                3 Bit    Registers := 2     
+	                2 Bit    Registers := 5     
+	                1 Bit    Registers := 19    
 +---RAMs : 
 	              32K Bit	(1024 X 32 bit)          RAMs := 1     
 +---Muxes : 
 	 296 Input   32 Bit        Muxes := 1     
-	   2 Input   32 Bit        Muxes := 17    
-	   4 Input   32 Bit        Muxes := 5     
+	   2 Input   32 Bit        Muxes := 15    
+	   4 Input   32 Bit        Muxes := 6     
 	  10 Input   32 Bit        Muxes := 1     
 	   9 Input   32 Bit        Muxes := 1     
 	   2 Input   17 Bit        Muxes := 1     
@@ -301,20 +324,24 @@ Detailed RTL Component Info :
 	   4 Input    8 Bit        Muxes := 1     
 	   2 Input    5 Bit        Muxes := 2     
 	   4 Input    5 Bit        Muxes := 1     
-	   2 Input    4 Bit        Muxes := 2     
+	   2 Input    4 Bit        Muxes := 3     
 	  14 Input    4 Bit        Muxes := 2     
 	  10 Input    4 Bit        Muxes := 1     
 	   4 Input    4 Bit        Muxes := 2     
+	   5 Input    4 Bit        Muxes := 1     
+	   3 Input    3 Bit        Muxes := 1     
+	   2 Input    3 Bit        Muxes := 3     
+	   5 Input    3 Bit        Muxes := 1     
 	   4 Input    3 Bit        Muxes := 1     
-	   3 Input    2 Bit        Muxes := 1     
-	   2 Input    2 Bit        Muxes := 2     
 	   4 Input    2 Bit        Muxes := 1     
+	   2 Input    2 Bit        Muxes := 1     
 	  10 Input    1 Bit        Muxes := 1     
 	  14 Input    1 Bit        Muxes := 1     
 	   9 Input    1 Bit        Muxes := 1     
-	   3 Input    1 Bit        Muxes := 8     
-	   2 Input    1 Bit        Muxes := 16    
-	   4 Input    1 Bit        Muxes := 21    
+	   3 Input    1 Bit        Muxes := 7     
+	   2 Input    1 Bit        Muxes := 19    
+	   4 Input    1 Bit        Muxes := 28    
+	   5 Input    1 Bit        Muxes := 8     
 ---------------------------------------------------------------------------------
 Finished RTL Component Statistics 
 ---------------------------------------------------------------------------------
@@ -331,7 +358,7 @@ Finished Part Resource Summary
 Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:22 ; elapsed = 00:00:23 . Memory (MB): peak = 1187.426 ; gain = 83.414
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:23 ; elapsed = 00:00:23 . Memory (MB): peak = 1201.445 ; gain = 94.633
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP, Shift Register and Retiming Reporting
@@ -347,12 +374,13 @@ Block RAM: Preliminary Mapping	Report (see note below)
 Note: The table above is a preliminary report that shows the Block RAMs at the current stage of the synthesis flow. Some Block RAMs may be reimplemented as non Block RAM primitives later in the synthesis flow. Multiple instantiated Block RAMs are reported only once. 
 
 Distributed RAM: Preliminary Mapping	Report (see note below)
-+------------+----------------------------------+-----------+----------------------+--------------+
-|Module Name | RTL Object                       | Inference | Size (Depth x Width) | Primitives   | 
-+------------+----------------------------------+-----------+----------------------+--------------+
-|U_Core      | U_DataPath/U_RegFile/RegFile_reg | Implied   | 32 x 32              | RAM32M x 12	 | 
-|U_FIFO_Peri | U_FIFO_RX/U_RAM_FIFO/mem_reg     | Implied   | 4 x 8                | RAM32M x 2	  | 
-+------------+----------------------------------+-----------+----------------------+--------------+
++------------+-------------------------------------------+-----------+----------------------+--------------+
+|Module Name | RTL Object                                | Inference | Size (Depth x Width) | Primitives   | 
++------------+-------------------------------------------+-----------+----------------------+--------------+
+|U_Core      | U_DataPath/U_RegFile/RegFile_reg          | Implied   | 32 x 32              | RAM32M x 12	 | 
+|U_Uart      | U_uart_fifo_IP/FIFO_RX/U_RAM_FIFO/mem_reg | Implied   | 4 x 8                | RAM32M x 2	  | 
+|U_Uart      | U_uart_fifo_IP/FIFO_TX/U_RAM_FIFO/mem_reg | Implied   | 4 x 8                | RAM32M x 2	  | 
++------------+-------------------------------------------+-----------+----------------------+--------------+
 
 Note: The table above is a preliminary report that shows the Distributed RAMs at the current stage of the synthesis flow. Some Distributed RAMs may be reimplemented as non Distributed RAM primitives later in the synthesis flow. Multiple instantiated RAMs are reported only once.
 ---------------------------------------------------------------------------------
@@ -362,13 +390,13 @@ Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:26 ; elapsed = 00:00:27 . Memory (MB): peak = 1187.492 ; gain = 83.480
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:26 ; elapsed = 00:00:27 . Memory (MB): peak = 1201.445 ; gain = 94.633
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:29 ; elapsed = 00:00:31 . Memory (MB): peak = 1314.297 ; gain = 210.285
+Finished Timing Optimization : Time (s): cpu = 00:00:30 ; elapsed = 00:00:31 . Memory (MB): peak = 1320.652 ; gain = 213.840
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP, Shift Register and Retiming Reporting
@@ -383,12 +411,13 @@ Block RAM: Final Mapping	Report
 
 
 Distributed RAM: Final Mapping	Report
-+------------+----------------------------------+-----------+----------------------+--------------+
-|Module Name | RTL Object                       | Inference | Size (Depth x Width) | Primitives   | 
-+------------+----------------------------------+-----------+----------------------+--------------+
-|U_Core      | U_DataPath/U_RegFile/RegFile_reg | Implied   | 32 x 32              | RAM32M x 12	 | 
-|U_FIFO_Peri | U_FIFO_RX/U_RAM_FIFO/mem_reg     | Implied   | 4 x 8                | RAM32M x 2	  | 
-+------------+----------------------------------+-----------+----------------------+--------------+
++------------+-------------------------------------------+-----------+----------------------+--------------+
+|Module Name | RTL Object                                | Inference | Size (Depth x Width) | Primitives   | 
++------------+-------------------------------------------+-----------+----------------------+--------------+
+|U_Core      | U_DataPath/U_RegFile/RegFile_reg          | Implied   | 32 x 32              | RAM32M x 12	 | 
+|U_Uart      | U_uart_fifo_IP/FIFO_RX/U_RAM_FIFO/mem_reg | Implied   | 4 x 8                | RAM32M x 2	  | 
+|U_Uart      | U_uart_fifo_IP/FIFO_TX/U_RAM_FIFO/mem_reg | Implied   | 4 x 8                | RAM32M x 2	  | 
++------------+-------------------------------------------+-----------+----------------------+--------------+
 
 ---------------------------------------------------------------------------------
 Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
@@ -398,7 +427,7 @@ Start Technology Mapping
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-7052] The timing for the instance U_RAM/mem_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:30 ; elapsed = 00:00:32 . Memory (MB): peak = 1324.383 ; gain = 220.371
+Finished Technology Mapping : Time (s): cpu = 00:00:31 ; elapsed = 00:00:32 . Memory (MB): peak = 1330.703 ; gain = 223.891
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -416,37 +445,37 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:32 ; elapsed = 00:00:33 . Memory (MB): peak = 1324.383 ; gain = 220.371
+Finished IO Insertion : Time (s): cpu = 00:00:33 ; elapsed = 00:00:33 . Memory (MB): peak = 1330.703 ; gain = 223.891
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:32 ; elapsed = 00:00:33 . Memory (MB): peak = 1324.383 ; gain = 220.371
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:33 ; elapsed = 00:00:33 . Memory (MB): peak = 1330.703 ; gain = 223.891
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:32 ; elapsed = 00:00:34 . Memory (MB): peak = 1324.383 ; gain = 220.371
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:33 ; elapsed = 00:00:34 . Memory (MB): peak = 1330.703 ; gain = 223.891
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:32 ; elapsed = 00:00:34 . Memory (MB): peak = 1324.383 ; gain = 220.371
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:33 ; elapsed = 00:00:34 . Memory (MB): peak = 1330.703 ; gain = 223.891
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:32 ; elapsed = 00:00:34 . Memory (MB): peak = 1324.383 ; gain = 220.371
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:33 ; elapsed = 00:00:34 . Memory (MB): peak = 1330.703 ; gain = 223.891
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:32 ; elapsed = 00:00:34 . Memory (MB): peak = 1324.383 ; gain = 220.371
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:33 ; elapsed = 00:00:34 . Memory (MB): peak = 1330.703 ; gain = 223.891
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -465,45 +494,44 @@ Report Cell Usage:
 |1     |BUFG     |     1|
 |2     |CARRY4   |    96|
 |3     |LUT1     |    62|
-|4     |LUT2     |   150|
-|5     |LUT3     |   257|
-|6     |LUT4     |   243|
-|7     |LUT5     |   380|
-|8     |LUT6     |   808|
-|9     |MUXF7    |   137|
-|10    |MUXF8    |     1|
-|11    |RAM32M   |    14|
-|12    |RAMB36E1 |     1|
-|13    |FDCE     |   838|
-|14    |FDPE     |    26|
-|15    |FDRE     |   208|
-|16    |IBUF     |    11|
-|17    |IOBUF    |    16|
-|18    |OBUF     |    12|
-|19    |OBUFT    |     8|
+|4     |LUT2     |   145|
+|5     |LUT3     |   266|
+|6     |LUT4     |   247|
+|7     |LUT5     |   316|
+|8     |LUT6     |   866|
+|9     |MUXF7    |   117|
+|10    |RAM32M   |    16|
+|11    |RAMB36E1 |     1|
+|12    |FDCE     |   860|
+|13    |FDPE     |    28|
+|14    |FDRE     |   208|
+|15    |IBUF     |    11|
+|16    |IOBUF    |    16|
+|17    |OBUF     |    13|
+|18    |OBUFT    |     8|
 +------+---------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:32 ; elapsed = 00:00:34 . Memory (MB): peak = 1324.383 ; gain = 220.371
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:33 ; elapsed = 00:00:34 . Memory (MB): peak = 1330.703 ; gain = 223.891
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 0 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:27 ; elapsed = 00:00:32 . Memory (MB): peak = 1324.383 ; gain = 136.957
-Synthesis Optimization Complete : Time (s): cpu = 00:00:32 ; elapsed = 00:00:34 . Memory (MB): peak = 1324.383 ; gain = 220.371
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:28 ; elapsed = 00:00:32 . Memory (MB): peak = 1330.703 ; gain = 129.258
+Synthesis Optimization Complete : Time (s): cpu = 00:00:33 ; elapsed = 00:00:34 . Memory (MB): peak = 1330.703 ; gain = 223.891
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.035 . Memory (MB): peak = 1327.250 ; gain = 0.000
-INFO: [Netlist 29-17] Analyzing 265 Unisim elements for replacement
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.035 . Memory (MB): peak = 1333.602 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 246 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1327.250 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1333.602 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
-  A total of 30 instances were transformed.
+  A total of 32 instances were transformed.
   IOBUF => IOBUF (IBUF, OBUFT): 16 instances
-  RAM32M => RAM32M (RAMD32(x6), RAMS32(x2)): 14 instances
+  RAM32M => RAM32M (RAMD32(x6), RAMS32(x2)): 16 instances
 
 INFO: [Common 17-83] Releasing license: Synthesis
-149 Infos, 9 Warnings, 0 Critical Warnings and 0 Errors encountered.
+156 Infos, 9 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:36 ; elapsed = 00:00:38 . Memory (MB): peak = 1327.250 ; gain = 223.238
+synth_design: Time (s): cpu = 00:00:36 ; elapsed = 00:00:38 . Memory (MB): peak = 1333.602 ; gain = 226.789
 INFO: [Common 17-1381] The checkpoint 'D:/test/250429_uart/250429_uart.runs/synth_1/MCU.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file MCU_utilization_synth.rpt -pb MCU_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Wed Apr 30 16:17:18 2025...
+INFO: [Common 17-206] Exiting Vivado at Thu May  1 16:02:34 2025...

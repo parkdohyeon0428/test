@@ -71,7 +71,7 @@ proc create_report { reportName command } {
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
 set_param chipscope.maxJobs 4
-set_param synth.incrementalSynthesisCache C:/Users/kccistc/AppData/Roaming/Xilinx/Vivado/.Xil/Vivado-11460-DESKTOP-7CFQ9ND/incrSyn
+set_param synth.incrementalSynthesisCache C:/Users/kccistc/AppData/Roaming/Xilinx/Vivado/.Xil/Vivado-18004-DESKTOP-7CFQ9ND/incrSyn
 set_param xicom.use_bs_reader 1
 set_msg_config -id {Synth 8-256} -limit 10000
 set_msg_config -id {Synth 8-638} -limit 10000
@@ -102,12 +102,11 @@ read_verilog -library xil_defaultlib -sv {
   D:/test/250429_uart/250429_uart.srcs/sources_1/imports/imports/sources_1/imports/test/250422_hee_fnd/250422_hee_fnd.srcs/sources_1/imports/test/GPIO.sv
   D:/test/250429_uart/250429_uart.srcs/sources_1/imports/imports/sources_1/imports/test/250422_hee_fnd/250422_hee_fnd.srcs/sources_1/imports/test/RV32I_Core.sv
   D:/test/250429_uart/250429_uart.srcs/sources_1/imports/imports/sources_1/imports/test/250425_UART_FIFO/250425_UART_FIFO.srcs/sources_1/new/fifo.sv
-  D:/test/250429_uart/250429_uart.srcs/sources_1/imports/imports/sources_1/new/fifo_periph.sv
   D:/test/250429_uart/250429_uart.srcs/sources_1/imports/imports/sources_1/imports/test/250422_hee_fnd/250422_hee_fnd.srcs/sources_1/imports/test/gpi.sv
   D:/test/250429_uart/250429_uart.srcs/sources_1/imports/imports/sources_1/imports/test/250422_hee_fnd/250422_hee_fnd.srcs/sources_1/imports/test/ram.sv
   D:/test/250429_uart/250429_uart.srcs/sources_1/imports/imports/sources_1/imports/test/250422_hee_fnd/250422_hee_fnd.srcs/sources_1/imports/test/rom.sv
   D:/test/250429_uart/250429_uart.srcs/sources_1/imports/imports/new/timer.sv
-  D:/test/250429_uart/250429_uart.srcs/sources_1/new/uart.sv
+  D:/test/250429_uart/250429_uart.srcs/sources_1/new/uart_tx.sv
   D:/test/250429_uart/250429_uart.srcs/sources_1/imports/imports/sources_1/imports/test/250422_hee_fnd/250422_hee_fnd.srcs/sources_1/imports/test/MCU.sv
 }
 OPTRACE "Adding files" END { }
