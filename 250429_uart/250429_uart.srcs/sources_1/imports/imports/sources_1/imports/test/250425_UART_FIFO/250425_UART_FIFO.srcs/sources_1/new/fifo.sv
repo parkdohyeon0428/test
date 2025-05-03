@@ -99,7 +99,7 @@ module fifo_control_unit (
                 end
             end
             WRITE: begin
-                if (full == 1'b0) begin
+                if (full_reg == 1'b0) begin
                     empty_next  = 1'b0;
                     wr_ptr_next = wr_ptr_reg + 1;
                     if (wr_ptr_next == rd_ptr_reg) begin
