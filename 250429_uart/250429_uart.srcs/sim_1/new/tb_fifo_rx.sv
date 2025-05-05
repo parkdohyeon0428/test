@@ -153,7 +153,6 @@ class monitor;
             uart_tr.PWRITE  = uart_if.PWRITE;
             uart_tr.PENABLE = uart_if.PENABLE;
             uart_tr.PSEL    = uart_if.PSEL;
-            //uart_tr.PRDATA  = uart_if.PRDATA;
             if (!uart_if.PWRITE) begin
                 uart_tr.PRDATA = uart_if.PRDATA;
             end else begin
