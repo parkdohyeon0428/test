@@ -34,13 +34,12 @@ class transaction;
     logic             tx;
     logic             rx;
 
-    // constraint operator_ctrl { operator dist{1:/80, 0:/20};}
     constraint c_padder {
         PADDR inside {4'h0, 4'h4, 4'hC};
-    }  // 안의 값 중 하나만 사용
+    } 
     constraint c_padder_4 {
         if (PADDR == 4'b0100) PWDATA < 10;
-    }  // 안의 값 중 하나만 사용
+    } 
     constraint c_padder_0 {  // rx
         if (PADDR == 0)
         PWDATA inside {2'b01, 2'b00};
@@ -71,7 +70,8 @@ class generator;
     task run(int repeat_counter);
         repeat (repeat_counter) begin
             tx_tr = new();
-            if (!tx_tr.randomize()) $error("Randomization failed!!!");
+            if (!tx_tr.randomize()) 
+            $error("Randomization failed!!!");
             tx_tr.display("GEN");
             tx_tr.PADDR  = 4'h4;
             tx_tr.PWRITE = 1;
@@ -79,8 +79,6 @@ class generator;
             @(gen_next_event);
             #(104170 * 10);
             rx_tr = new();
-            // if (!uart_tr.randomize()) $error("Randomization failed!!!");
-            // uart_tr.display("GEN");
             rx_tr.PADDR = 4'h8;
             rx_tr.PWRITE = 0;
             rx_tr.display("GEN");
@@ -147,7 +145,6 @@ class monitor;
     task run();
         forever begin
             uart_tr = new();
-            // wait (uart_if.PREADY == 1'b1);
             @(mon_next_event);
             @(posedge uart_if.PCLK);
             #1;
@@ -156,18 +153,17 @@ class monitor;
             uart_tr.PWRITE  = uart_if.PWRITE;
             uart_tr.PENABLE = uart_if.PENABLE;
             uart_tr.PSEL    = uart_if.PSEL;
-            uart_tr.PRDATA  = uart_if.PRDATA;
+            //uart_tr.PRDATA  = uart_if.PRDATA;
+            if (!uart_if.PWRITE) begin
+                uart_tr.PRDATA = uart_if.PRDATA;
+            end else begin
+                uart_tr.PRDATA = 'x; 
+            end
             uart_tr.PREADY  = uart_if.PREADY;
-            //uart_if.tx = uart_tr.tx;
-
-            //uart_if.rx = uart_tr.rx;
             uart_tr.display("MON");
             Mon2SCB_mbox.put(uart_tr);
             #(104170 * 10);
             @(posedge uart_if.PCLK);
-            // @(posedge uart_if.PCLK);
-            // @(posedge uart_if.PCLK);
-            // @(posedge uart_if.PCLK);
         end
     endtask  //
 endclass  //monitor
@@ -199,12 +195,6 @@ class scoreboard;
             MonToSCB_mbox.get(uart_tr);
             uart_tr.display("SCB");
             if (uart_tr.PWRITE == 1) begin
-                //     if (uart_tr.PWDATA == uart_tr.PRDATA) begin
-                //         $display("[SCB] pass TX : %h, RX : %h", uart_tr.PWDATA, uart_tr.PRDATA);
-                //     end else begin
-                //         $display("[SCB] fail TX : %h, RX : %h", uart_tr.PWDATA, uart_tr.PRDATA);
-                //     end
-                // end
                 scb_wdata.push_back(uart_tr.PWDATA[7:0]);
                 $display("[SCB] : DATA Stored in queue : %h, %h",
                          uart_tr.PWDATA, scb_wdata[0]);
