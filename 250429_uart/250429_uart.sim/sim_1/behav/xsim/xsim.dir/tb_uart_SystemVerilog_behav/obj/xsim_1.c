@@ -146,13 +146,13 @@ iki_register_root_pointers(1, 10608, 11,0,0) ;
 
 }
 #include "iki_bridge.h"
-void subprog_m_8103252a_ee25838a_7() ;
-void subprog_m_8103252a_ee25838a_6() ;
-void subprog_m_8103252a_ee25838a_5() ;
-void subprog_m_8103252a_ee25838a_4() ;
-void subprog_m_8103252a_ee25838a_3() ;
-void subprog_m_8103252a_ee25838a_2() ;
-static char* ng00[] = {(void *)subprog_m_8103252a_ee25838a_7, (void *)subprog_m_8103252a_ee25838a_6, (void *)subprog_m_8103252a_ee25838a_5, (void *)subprog_m_8103252a_ee25838a_4, (void *)subprog_m_8103252a_ee25838a_3, (void *)subprog_m_8103252a_ee25838a_2};
+void subprog_m_f8a37068_ee25838a_7() ;
+void subprog_m_f8a37068_ee25838a_6() ;
+void subprog_m_f8a37068_ee25838a_5() ;
+void subprog_m_f8a37068_ee25838a_4() ;
+void subprog_m_f8a37068_ee25838a_3() ;
+void subprog_m_f8a37068_ee25838a_2() ;
+static char* ng00[] = {(void *)subprog_m_f8a37068_ee25838a_7, (void *)subprog_m_f8a37068_ee25838a_6, (void *)subprog_m_f8a37068_ee25838a_5, (void *)subprog_m_f8a37068_ee25838a_4, (void *)subprog_m_f8a37068_ee25838a_3, (void *)subprog_m_f8a37068_ee25838a_2};
 void relocate(char *);
 
 void sensitize(char *);

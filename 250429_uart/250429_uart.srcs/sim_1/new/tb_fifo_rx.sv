@@ -61,7 +61,7 @@ endclass  //transaction
 class generator;
     mailbox #(transaction) GenToDrv_mbox;
     event gen_next_event;
-    transaction tx_tr, rx_tr;
+    transaction uart_tr;
 
     function new(mailbox#(transaction) GenToDrv_mbox, event gen_next_event);
         this.GenToDrv_mbox  = GenToDrv_mbox;
@@ -70,23 +70,20 @@ class generator;
 
     task run(int repeat_counter);
         repeat (repeat_counter) begin
-            tx_tr = new();
-            if (!tx_tr.randomize()) $error("Randomization failed!!!");
-            tx_tr.display("GEN");
-            tx_tr.PADDR  = 4'h4;
-            tx_tr.PWRITE = 1;
-            GenToDrv_mbox.put(tx_tr);
+            uart_tr = new();
+            if (!uart_tr.randomize()) 
+            $error("Randomization failed!!!");
+            uart_tr.display("GEN");
+            uart_tr.PADDR  = 4'h4; // tx
+            uart_tr.PWRITE = 1;
+            GenToDrv_mbox.put(uart_tr);
             @(gen_next_event);
-            #(104170 * 10);
-            rx_tr = new();
-            // if (!uart_tr.randomize()) $error("Randomization failed!!!");
-            // uart_tr.display("GEN");
-            rx_tr.PADDR = 4'h8;
-            rx_tr.PWRITE = 0;
-            rx_tr.display("GEN");
-            GenToDrv_mbox.put(rx_tr);
+            #(104170 * 10);// tx 전송 완료까지 대기
+            uart_tr.PADDR = 4'h8;  // rx
+            uart_tr.PWRITE = 0;
+            uart_tr.display("GEN");
+            GenToDrv_mbox.put(uart_tr);
             @(gen_next_event);
-            //#20;
         end
     endtask
 endclass  //generator
