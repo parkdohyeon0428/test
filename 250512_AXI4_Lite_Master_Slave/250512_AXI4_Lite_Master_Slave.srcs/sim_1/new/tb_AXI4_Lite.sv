@@ -56,18 +56,6 @@ module tb_AXI4_Lite ();
         @(posedge ACLK);
         #1; transfer = 0;
         wait(ready == 1);
-
-        @(posedge ACLK);
-        #1; addr = 8; wdata = 12; write = 1; transfer = 1; 
-        @(posedge ACLK);
-        #1; transfer = 0;
-        wait(ready == 1);
-
-        @(posedge ACLK);
-        #1; addr = 12; wdata = 13; write = 1; transfer = 1; 
-        @(posedge ACLK);
-        #1; transfer = 0;
-        wait(ready == 1);
     
         #100; $finish;
     end

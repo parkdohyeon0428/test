@@ -199,7 +199,6 @@ module AXI4_Lite_Slave (
 
     always_comb begin
         r_state_next = r_state;
-        RDATA = 0;
         RVALID = 1'b0;
         case (r_state)
             R_IDLE_S: begin
@@ -209,6 +208,7 @@ module AXI4_Lite_Slave (
             R_VALID_S: begin
                 if (RREADY) begin
                     RVALID = 1'b1;
+                    RDATA = 0;
                     case (ar_addr_reg[3:2])
                         2'd0: RDATA = slv_reg0;
                         2'd1: RDATA = slv_reg1;

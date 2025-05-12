@@ -129,17 +129,17 @@ module AXI4_Lite_Master (
     always_comb begin
         b_state_next = b_state;
         BREADY       = 1'b0;
-        w_ready        = 1'b0;
+        w_ready      = 1'b0;
         case (b_state)
             B_IDLE_S: begin
-                BREADY = 1'b0;
-                w_ready  = 1'b0;
+                BREADY  = 1'b0;
+                w_ready = 1'b0;
                 if (WVALID) b_state_next = B_READY_S;
             end
             B_READY_S: begin
                 BREADY = 1'b1;
                 if (BVALID) begin
-                    w_ready        = 1'b1;
+                    w_ready      = 1'b1;
                     b_state_next = B_IDLE_S;
                 end
             end
@@ -203,10 +203,10 @@ module AXI4_Lite_Master (
         r_state_next = r_state;
         RREADY       = 1'b0;
         rdata        = 0;
-        r_ready        = 0;
+        r_ready      = 0;
         case (r_state)
             R_IDLE_S: begin
-                RREADY = 1'b0;
+                RREADY  = 1'b0;
                 r_ready = 1'b0;
                 if (WVALID) r_state_next = R_READY_S;
             end
