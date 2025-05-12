@@ -66,7 +66,7 @@ module AXI4_Lite_Master (
             AW_VALID_S: begin
                 AWADDR  = addr;
                 AWVALID = 1'b1;
-                if (AWVALID && AWREADY) begin
+                if (AWVALID && AWREADY) begin // hand shake
                     aw_state_next = AW_IDLE_S;
                 end
             end
@@ -169,7 +169,7 @@ module AXI4_Lite_Master (
         case (ar_state)
             AR_IDLE_S: begin
                 ARVALID = 1'b0;
-                if (transfer && write) begin
+                if (transfer && !write) begin
                     ar_state_next = AR_VALID_S;
                 end
             end
@@ -208,11 +208,11 @@ module AXI4_Lite_Master (
             R_IDLE_S: begin
                 RREADY  = 1'b0;
                 r_ready = 1'b0;
-                if (WVALID) r_state_next = R_READY_S;
+                if (ARVALID && ARREADY) r_state_next = R_READY_S;
             end
             R_READY_S: begin
                 RREADY = 1'b1;
-                if (RVALID) begin
+                if (RVALID && RREADY) begin
                     rdata = RDATA;
                     r_ready = 1'b1;
                     r_state_next = R_IDLE_S;
