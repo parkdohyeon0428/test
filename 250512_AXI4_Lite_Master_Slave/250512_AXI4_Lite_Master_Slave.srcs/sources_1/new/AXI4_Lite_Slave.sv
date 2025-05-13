@@ -206,9 +206,9 @@ module AXI4_Lite_Slave (
                 if (ARVALID && ARREADY) r_state_next = R_VALID_S;
             end
             R_VALID_S: begin
+                RDATA = 0;
                 if (RREADY) begin
                     RVALID = 1'b1;
-                    RDATA = 0;
                     case (ar_addr_reg[3:2])
                         2'd0: RDATA = slv_reg0;
                         2'd1: RDATA = slv_reg1;
