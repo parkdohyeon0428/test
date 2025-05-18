@@ -2,8 +2,8 @@
 # Vivado v2020.2 (64-bit)
 # SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
 # IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
-# Start of session at: Sat May 17 23:20:29 2025
-# Process ID: 2340
+# Start of session at: Sun May 18 19:31:08 2025
+# Process ID: 7724
 # Current directory: C:/Users/user/Desktop/test/250516_SPI_Slave_Master/250516_SPI_Slave_Master.runs/impl_1
 # Command line: vivado.exe -log SPI.vdi -applog -product Vivado -messageDb vivado.pb -mode batch -source SPI.tcl -notrace
 # Log file: C:/Users/user/Desktop/test/250516_SPI_Slave_Master/250516_SPI_Slave_Master.runs/impl_1/SPI.vdi

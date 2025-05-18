@@ -8,12 +8,12 @@ module SPI(
     output [3:0] fndcom,
     output [7:0] fndfont
 );
-    //wire w_btn;
+    wire w_btn;
 
     TOP_SPI_Master U_Top_master(
         .clk(clk),
         .reset(reset),
-        .btn(btn),
+        .btn(w_btn),
         .sw(sw),
         .SCLK(SCLK),
         .MOSI(MOSI),
@@ -30,12 +30,12 @@ module SPI(
         .fndcom(fndcom),
         .fndfont(fndfont)
     );
-    // btn_debounce U_btn_de(
-    //     .clk(clk),
-    //     .reset(reset),
-    //     .i_btn(btn),
-    //     .o_btn(w_btn)
-    // );
+    btn_debounce U_btn_de(
+        .clk(clk),
+        .reset(reset),
+        .i_btn(btn),
+        .o_btn(w_btn)
+    );
 endmodule
 
 module btn_debounce(

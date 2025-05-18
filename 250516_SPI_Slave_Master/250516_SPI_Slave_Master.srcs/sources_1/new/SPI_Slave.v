@@ -14,7 +14,7 @@ module Top_SPI_Slave (
 );
     wire [7:0] w_data;
     wire w_done;
-    wire [13:0] fndData;
+    wire [15:0] fndData;
 
     SPI_Slave U_spi_slave(
         .SCLK(SCLK),
@@ -27,6 +27,7 @@ module Top_SPI_Slave (
     );
     Slave_fsm U_slave_fsm(
         .clk(clk),
+         .SCLK(SCLK),
         .reset(reset),
         .data(w_data),
         .done(w_done),
@@ -54,7 +55,7 @@ module SPI_Slave(
 );
     reg [2:0] data_count;
 
-    always @(negedge SCLK, posedge reset) begin
+    always @(posedge SCLK, posedge reset) begin
         if (reset) begin
             data_count <= 0;
             data <= 0;
@@ -81,15 +82,15 @@ endmodule
 module Slave_fsm (
     input clk,
     input reset,
-
+    input SCLK,
     input [7:0] data,
     input done,
     input CS,
     output reg [15:0] fnd_data
 );
-    parameter IDLE = 0, L_BYTE = 1, H_BYTE = 2;
+    parameter IDLE = 0, L_BYTE = 1, H_BYTE = 2, WAIT = 3;
 
-    reg [1:0] state , next;
+    reg [2:0] state , next;
     reg [15:0] fnd_data_next;
 
     always @(posedge clk, posedge reset) begin
@@ -107,13 +108,13 @@ module Slave_fsm (
         fnd_data_next = fnd_data;
         case (state)
             IDLE: begin
+                if (CS == 0 && done == 0) begin
                 fnd_data_next = 0;
-                if (CS == 0) begin
                     next = L_BYTE;
                 end
             end
             L_BYTE: begin
-                if (CS == 0 && done == 1) begin
+                if (CS == 0 && done == 1 && !SCLK) begin
                     fnd_data_next[7:0] = data;
                     next = H_BYTE;
                 end else begin
@@ -121,11 +122,17 @@ module Slave_fsm (
                 end
             end
             H_BYTE: begin
-                if (CS == 0 && done == 1) begin
+                if (CS == 0 && done == 1 && SCLK) begin
                     fnd_data_next[15:8] = data;
-                    next = IDLE;
+                    next = WAIT;
                 end else begin
                     next = H_BYTE;
+                end
+            end
+            WAIT: begin
+                if (CS == 1) begin
+                
+                    next = IDLE;
                 end
             end
         endcase
@@ -135,7 +142,7 @@ endmodule
 module fnd_controller (
     input clk,
     input reset,
-    input [13:0] fndData,
+    input [15:0] fndData,
     output [3:0] fndcom,
     output [7:0] fndfont
 );
@@ -238,7 +245,7 @@ module decoder_2x4 (
 endmodule
 
 module digitsplitter (
-    input  [13:0] fndData,
+    input  [15:0] fndData,
     output [ 3:0] digit_1,
     output [ 3:0] digit_10,
     output [ 3:0] digit_100,

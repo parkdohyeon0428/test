@@ -52,7 +52,7 @@ module SPI_Master (
     output reg ready,
     // SPI
     output reg SCLK,
-    output MOSI,
+    output reg MOSI,
     input MISO,
     output reg CS
 );
@@ -63,11 +63,11 @@ module SPI_Master (
     reg [7:0] temp_tx_data, temp_tx_data_next;
     //reg [5:0] sclk_counter;
     reg [2:0] bit_counter_reg, bit_counter_next;
-    reg done_next, ready_next, CS_next;
+    reg done_next, ready_next, CS_next, MOSI_next;
     reg rx_data_next;
     reg [6:0] sclk_counter, sclk_counter_next;
 
-    assign MOSI = temp_tx_data[7];
+    //assign MOSI = temp_tx_data[7];
 
     always @(posedge clk, posedge reset) begin
         if (reset) begin
@@ -78,9 +78,10 @@ module SPI_Master (
             bit_counter_reg <= 0;
             ready <= 0;
             done <= 0;
-            CS <= 1;
+            CS <= 0;
             rx_data <= 0;
             sclk_counter <= 0;
+            MOSI <= 0;
         end else begin
             state <= next;
             temp_tx_data <= temp_tx_data_next;
@@ -90,6 +91,7 @@ module SPI_Master (
             CS <= CS_next;
             rx_data <= rx_data_next;
             sclk_counter <= sclk_counter_next;
+            MOSI <= MOSI_next;
         end
     end
 
@@ -103,20 +105,24 @@ module SPI_Master (
             bit_counter_next = bit_counter_reg;
             rx_data_next = rx_data;
             sclk_counter_next = sclk_counter;
+            MOSI_next = MOSI;
             case (state)
                 IDLE: begin
                     temp_tx_data_next = 8'hz;
                     done_next = 0;
                     CS_next = 1;
+                    MOSI_next = 0;
                     if (start) begin
                         temp_tx_data_next = tx_data;
                         ready_next = 0;
+                        CS_next = 0;
                         next = CP0;
                     end
                 end
                 CP0: begin
                     CS_next = 0;
                     SCLK = 0;
+                    MOSI_next = temp_tx_data[7];
                     if (sclk_counter == 49) begin
                         rx_data_next = {rx_data[6:0], MISO};
                         next = CP1;
@@ -137,6 +143,7 @@ module SPI_Master (
                             //CS_next =1;
                             next = IDLE;
                             sclk_counter_next = 0;
+                            bit_counter_next = 0;
                         end else begin
                             bit_counter_next = bit_counter_reg + 1;
                             temp_tx_data_next = {temp_tx_data[6:0], 1'b0};
@@ -162,11 +169,11 @@ module SPI_Master_FSM (
     input done,
     input ready
 );
-    parameter IDLE = 0, DOWN = 1, UP = 2;
+    parameter IDLE = 0, DOWN = 1, DOWN_WAIT = 2, UP = 3, UP_WAIT = 4;
 
-    reg [1:0] state, next;
+    reg [2:0] state, next;
     reg start_next;
-    reg tx_data_next;
+    reg [7:0] tx_data_next;
 
     always @(posedge clk, posedge reset) begin
         if (reset) begin
@@ -180,25 +187,32 @@ module SPI_Master_FSM (
         end
     end  
 
+
     always @(*) begin
         next = state;
-        start_next = start;
+        start_next = 0;
         tx_data_next = tx_data;
         case (state)
             IDLE: begin
+                    tx_data_next = sw[7:0];
                 if (btn) begin
                     next = DOWN;
+                    start_next = 1;
+                end else begin
+                    next = IDLE;
                 end
             end
             DOWN: begin
-                tx_data = sw[7:0];
-                start_next = 1;
-                next = UP;
+                    tx_data_next = sw[15:8];
+                if (done == 1) begin
+                    next = UP;
+                    start_next = 1;
+                end else begin
+                    next = DOWN;
+                end
             end
             UP: begin
                 if (done == 1) begin
-                    tx_data = sw[15:8];
-                    start_next = 1;
                     next = IDLE;
                 end else begin
                     next = UP;

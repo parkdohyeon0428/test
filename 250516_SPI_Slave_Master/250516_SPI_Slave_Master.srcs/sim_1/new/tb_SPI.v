@@ -19,6 +19,7 @@ module tb_SPI();
     );
     
     always #5 clk = ~clk;
+    
 
     initial begin
         clk = 0;
@@ -27,10 +28,10 @@ module tb_SPI();
         sw = 0;
         #10;
         reset = 0;
+        sw = 16'hff11;
         #10;
         btn = 1;
-        sw = 16'hff11;
-        #100;
+        #10;
         btn = 0;
     end
 
