@@ -194,7 +194,7 @@ module SPI_Master_FSM (
         tx_data_next = tx_data;
         case (state)
             IDLE: begin
-                    tx_data_next = sw[7:0];
+                tx_data_next = sw[7:0];
                 if (btn) begin
                     next = DOWN;
                     start_next = 1;
@@ -203,7 +203,7 @@ module SPI_Master_FSM (
                 end
             end
             DOWN: begin
-                    tx_data_next = sw[15:8];
+                tx_data_next = sw[15:8];
                 if (done == 1) begin
                     next = UP;
                     start_next = 1;

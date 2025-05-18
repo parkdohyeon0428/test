@@ -28,11 +28,12 @@ module tb_SPI();
         sw = 0;
         #10;
         reset = 0;
-        sw = 16'hff11;
+        sw = 16'h1234;
         #10;
         btn = 1;
         #10;
         btn = 0;
+
     end
 
 endmodule

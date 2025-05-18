@@ -131,7 +131,6 @@ module Slave_fsm (
             end
             WAIT: begin
                 if (CS == 1) begin
-                
                     next = IDLE;
                 end
             end
