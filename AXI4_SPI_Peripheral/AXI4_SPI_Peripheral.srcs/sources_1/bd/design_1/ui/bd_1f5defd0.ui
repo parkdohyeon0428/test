@@ -1,0 +1,40 @@
+{
+   "ActiveEmotionalView":"Default View",
+   "Default View_ScaleFactor":"1.0",
+   "Default View_TopLeft":"-174,-758",
+   "ExpandedHierarchyInLayout":"",
+   "guistr":"# # String gsaved with Nlview 7.0r6  2020-01-29 bk=1.5227 VDI=41 GEI=36 GUI=JA:10.0 non-TLS-threadsafe
+#  -string -flagsOSRD
+preplace port usb_uart -pg 1 -lvl 5 -x 1510 -y -600 -defaultsOSRD
+preplace port sys_clock -pg 1 -lvl 0 -x 0 -y -130 -defaultsOSRD
+preplace port reset -pg 1 -lvl 0 -x 0 -y -360 -defaultsOSRD
+preplace inst microblaze_0 -pg 1 -lvl 2 -x 530 -y -280 -defaultsOSRD
+preplace inst microblaze_0_local_memory -pg 1 -lvl 3 -x 990 -y -290 -defaultsOSRD
+preplace inst mdm_1 -pg 1 -lvl 2 -x 530 -y 20 -defaultsOSRD
+preplace inst clk_wiz_1 -pg 1 -lvl 2 -x 530 -y -140 -defaultsOSRD
+preplace inst rst_clk_wiz_1_100M -pg 1 -lvl 3 -x 990 -y -130 -defaultsOSRD
+preplace inst axi_uartlite_0 -pg 1 -lvl 1 -x 150 -y -590 -defaultsOSRD
+preplace inst microblaze_0_axi_periph -pg 1 -lvl 4 -x 1340 -y -340 -defaultsOSRD
+preplace netloc microblaze_0_Clk 1 0 4 20 -380 270 -380 800 -380 1190
+preplace netloc clk_wiz_1_locked 1 2 1 790 -130n
+preplace netloc rst_clk_wiz_1_100M_mb_reset 1 1 3 280 -410 NJ -410 1170
+preplace netloc rst_clk_wiz_1_100M_bus_struct_reset 1 2 2 820 -390 1160J
+preplace netloc mdm_1_debug_sys_rst 1 2 1 820 -110n
+preplace netloc sys_clock_1 1 0 2 NJ -130 N
+preplace netloc reset_1 1 0 3 N -360 260 -70 810
+preplace netloc rst_clk_wiz_1_100M_peripheral_aresetn 1 0 4 40 -420 NJ -420 NJ -420 1180
+preplace netloc microblaze_0_dlmb_1 1 2 1 780 -320n
+preplace netloc microblaze_0_ilmb_1 1 2 1 790 -300n
+preplace netloc microblaze_0_debug 1 1 2 290 -370 770J
+preplace netloc microblaze_0_M_AXI_DP 1 2 2 810J -400 N
+preplace netloc microblaze_0_axi_periph_M00_AXI 1 0 5 30 -460 NJ -460 NJ -460 NJ -460 1490
+preplace netloc axi_uartlite_0_UART 1 1 4 NJ -600 NJ -600 NJ -600 NJ
+levelinfo -pg 1 0 150 530 990 1340 1510
+pagesize -pg 1 -db -bbox -sgen -120 -670 1620 180
+"
+}
+{
+   "da_axi4_cnt":"1",
+   "da_board_cnt":"4",
+   "da_mb_cnt":"1"
+}
