@@ -83,7 +83,7 @@
 	SPI_Master U_spi_master(
     // global signals
     	.clk(s00_axi_aclk),
-    	.reset(s00_axi_aresetn),
+    	.reset(!s00_axi_aresetn),
     // internal signals
     	.CPOL(CR[0]),
     	.CPHA(CR[1]),
@@ -95,7 +95,7 @@
     // external port
     	.SCLK(SCLK),
     	.MOSI(MOSI),
-    	.MISO(MISO)
+    	.MISO(MOSI)
     //output           SS
 	);
 	// Add user logic here
