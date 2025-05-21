@@ -16,7 +16,7 @@ module SPI_Master (
     output           SCLK,
     output           MOSI,
     input            MISO,
-    output           SS
+    output  reg      SS
 );
 
     localparam IDLE = 0, CP_DELAY = 1, CP0= 2, CP1 = 3;
@@ -63,20 +63,24 @@ module SPI_Master (
         temp_tx_data_next = temp_tx_data_reg;
         sclk_counter_next = sclk_counter_reg;
         bit_counter_next  = bit_counter_reg;
+        SS = 0;
         case (state)
             IDLE: begin
                 temp_tx_data_next = 0;
                 done              = 1'b0;
                 ready             = 1'b1;
+                SS = 1;
                 if (start) begin
                     state_next        = cpha ? CP_DELAY : CP0;  // cpha = 1 이면 CP_DELAY, cpha = 0 이면 CP0 
                     temp_tx_data_next = tx_data;
                     ready             = 1'b0;
                     sclk_counter_next = 1'b0;
                     bit_counter_next  = 1'b0;
+                    SS = 0;
                 end
             end
             CP_DELAY: begin
+                SS = 0;
                 if (sclk_counter_reg == 49) begin
                     sclk_counter_next = 1'b0;
                     state_next        = CP0;
@@ -86,6 +90,7 @@ module SPI_Master (
             end
             CP0: begin
                // r_sclk = 1'b0;
+               SS = 0;
                 if (sclk_counter_reg == 49) begin
                     temp_rx_data_next = {temp_rx_data_reg[6:0], MISO};
                     sclk_counter_next = 1'b0;
@@ -96,6 +101,7 @@ module SPI_Master (
             end
             CP1: begin
                 // r_sclk = 1'b1;
+                SS = 0;
                 if (sclk_counter_reg == 49) begin
                     if (bit_counter_reg == 7) begin
                         done       = 1'b1;

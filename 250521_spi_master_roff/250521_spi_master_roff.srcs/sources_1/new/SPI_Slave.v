@@ -9,7 +9,10 @@ module SPI_Slave (
     input             SCLK,
     input             MOSI,
     output            MISO,
-    input             SS
+    input             SS,
+    output [7:0] led,
+    output [7:0] led1
+    
 
 );
     //internal signals
@@ -44,7 +47,9 @@ module SPI_Slave (
         .si_done(si_done),
         .so_data(so_data),
         .so_start(so_start),
-        .so_done(so_done)
+        .so_done(so_done),
+        .LED(led),
+        .LED1(led1)
     );
 
 endmodule
@@ -217,7 +222,11 @@ module SPI_Slave_Reg (
     //input            so_ready,
     output reg [7:0] so_data,
     output           so_start,
-    input            so_done
+    input            so_done,
+
+    output [7:0] LED,
+    output [7:0] LED1
+    
 );
 
     localparam IDLE = 0, ADDR_PHASE = 1, WRITE_PHASE = 2, READ_PHASE = 3, READ_DELAY_PHASE=4;
@@ -235,6 +244,12 @@ module SPI_Slave_Reg (
     assign so_start = so_start_reg;
 
     assign sclk_falling = prev_SCLK & ~SCLK;
+
+    assign LED = slv_reg0;
+    //assign LED = slv_reg2;
+    assign LED1 = slv_reg1;
+    //assign LED1 = slv_reg3;
+    
 
     always @(posedge clk, posedge reset) begin
         if (reset) begin
