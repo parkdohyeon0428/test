@@ -1,8 +1,8 @@
 Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 ------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2020.2 (win64) Build 3064766 Wed Nov 18 09:12:45 MST 2020
-| Date         : Wed May 21 23:01:44 2025
-| Host         : DESKTOP-5KDKKP9 running 64-bit major release  (build 9200)
+| Date         : Thu May 22 16:55:12 2025
+| Host         : DESKTOP-7CFQ9ND running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file spi_control_sets_placed.rpt
 | Design       : spi
 | Device       : xc7a35t
@@ -75,8 +75,8 @@ Table of Contents
 +--------------------------------+--------------------------------------------------+------------------+------------------+----------------+--------------+
 |  clk_IBUF_BUFG                 | dutt/U_SPI_Slave_Reg/FSM_onehot_state[4]_i_1_n_0 | reset_IBUF       |                1 |              5 |         5.00 |
 |  clk_IBUF_BUFG                 | dut/sclk_counter_next                            | reset_IBUF       |                2 |              6 |         3.00 |
-|  dutt/U_SPI_Slave_Reg/slv_reg1 |                                                  |                  |                3 |              8 |         2.67 |
 |  dutt/U_SPI_Slave_Reg/slv_reg0 |                                                  |                  |                4 |              8 |         2.00 |
+|  dutt/U_SPI_Slave_Reg/slv_reg1 |                                                  |                  |                3 |              8 |         2.67 |
 |  U_btn/r_1khz                  |                                                  | reset_IBUF       |                2 |              8 |         4.00 |
 |  clk_IBUF_BUFG                 | dutt/U_SPI_Slave_Intf/si_data_reg[7]_i_1_n_0     | reset_IBUF       |                1 |              8 |         8.00 |
 |  clk_IBUF_BUFG                 | dut/temp_tx_data_next_0                          | reset_IBUF       |                2 |              8 |         4.00 |

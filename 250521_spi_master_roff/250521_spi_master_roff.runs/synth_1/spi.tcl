@@ -4,7 +4,7 @@
 
 set TIME_start [clock seconds] 
 namespace eval ::optrace {
-  variable script "C:/Users/user/Desktop/test/250521_spi_master_roff/250521_spi_master_roff.runs/synth_1/spi.tcl"
+  variable script "D:/test/250521_spi_master_roff/250521_spi_master_roff.runs/synth_1/spi.tcl"
   variable category "vivado_synth"
 }
 
@@ -70,9 +70,7 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
-set_param chipscope.maxJobs 2
-set_param synth.incrementalSynthesisCache C:/Users/user/AppData/Roaming/Xilinx/Vivado/.Xil/Vivado-2360-DESKTOP-5KDKKP9/incrSyn
-set_param xicom.use_bs_reader 1
+set_msg_config -id {HDL-1065} -limit 10000
 set_msg_config -id {Synth 8-256} -limit 10000
 set_msg_config -id {Synth 8-638} -limit 10000
 OPTRACE "Creating in-memory project" START { }
@@ -81,20 +79,20 @@ create_project -in_memory -part xc7a35tcpg236-1
 set_param project.singleFileAddWarning.threshold 0
 set_param project.compositeFile.enableAutoGeneration 0
 set_param synth.vivado.isSynthRun true
-set_property webtalk.parent_dir C:/Users/user/Desktop/test/250521_spi_master_roff/250521_spi_master_roff.cache/wt [current_project]
-set_property parent.project_path C:/Users/user/Desktop/test/250521_spi_master_roff/250521_spi_master_roff.xpr [current_project]
+set_property webtalk.parent_dir D:/test/250521_spi_master_roff/250521_spi_master_roff.cache/wt [current_project]
+set_property parent.project_path D:/test/250521_spi_master_roff/250521_spi_master_roff.xpr [current_project]
 set_property default_lib xil_defaultlib [current_project]
 set_property target_language Verilog [current_project]
-set_property board_part_repo_paths {C:/Users/user/AppData/Roaming/Xilinx/Vivado/2020.2/xhub/board_store/xilinx_board_store} [current_project]
+set_property board_part_repo_paths {C:/Users/kccistc/AppData/Roaming/Xilinx/Vivado/2020.2/xhub/board_store/xilinx_board_store} [current_project]
 set_property board_part digilentinc.com:basys3:part0:1.1 [current_project]
-set_property ip_output_repo c:/Users/user/Desktop/test/250521_spi_master_roff/250521_spi_master_roff.cache/ip [current_project]
+set_property ip_output_repo d:/test/250521_spi_master_roff/250521_spi_master_roff.cache/ip [current_project]
 set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
 read_verilog -library xil_defaultlib {
-  C:/Users/user/Desktop/test/250521_spi_master_roff/250521_spi_master_roff.srcs/sources_1/imports/new/SPI_Master.v
-  C:/Users/user/Desktop/test/250521_spi_master_roff/250521_spi_master_roff.srcs/sources_1/new/SPI_Slave.v
-  C:/Users/user/Desktop/test/250521_spi_master_roff/250521_spi_master_roff.srcs/sources_1/new/spi.v
+  D:/test/250521_spi_master_roff/250521_spi_master_roff.srcs/sources_1/imports/new/SPI_Master.v
+  D:/test/250521_spi_master_roff/250521_spi_master_roff.srcs/sources_1/new/SPI_Slave.v
+  D:/test/250521_spi_master_roff/250521_spi_master_roff.srcs/sources_1/new/spi.v
 }
 OPTRACE "Adding files" END { }
 # Mark all dcp files as not used in implementation to prevent them from being
@@ -105,8 +103,8 @@ OPTRACE "Adding files" END { }
 foreach dcp [get_files -quiet -all -filter file_type=="Design\ Checkpoint"] {
   set_property used_in_implementation false $dcp
 }
-read_xdc C:/Users/user/Desktop/test/250521_spi_master_roff/250521_spi_master_roff.srcs/constrs_1/imports/test/Basys-3-Master.xdc
-set_property used_in_implementation false [get_files C:/Users/user/Desktop/test/250521_spi_master_roff/250521_spi_master_roff.srcs/constrs_1/imports/test/Basys-3-Master.xdc]
+read_xdc D:/test/250521_spi_master_roff/250521_spi_master_roff.srcs/constrs_1/imports/test/Basys-3-Master.xdc
+set_property used_in_implementation false [get_files D:/test/250521_spi_master_roff/250521_spi_master_roff.srcs/constrs_1/imports/test/Basys-3-Master.xdc]
 
 set_param ips.enableIPCacheLiteLoad 1
 close [open __synthesis_is_running__ w]
