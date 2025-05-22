@@ -10,8 +10,8 @@ module spi(
     // output           done,
     // output           ready
     // SPI signals
-    output [7:0] led,
-    output [7:0] led1
+    output [3:0] fndcom,
+    output [7:0] fndfont
 );
     wire SCLK, MOSI, MISO, SS, start;
 
@@ -51,8 +51,8 @@ module spi(
         .MOSI(MOSI),
         .MISO(MISO),
         .SS(SS),
-        .led(led),
-        .led1(led1)
+        .fndcom(fndcom),
+        .fndfont(fndfont)
     );
 endmodule
 
