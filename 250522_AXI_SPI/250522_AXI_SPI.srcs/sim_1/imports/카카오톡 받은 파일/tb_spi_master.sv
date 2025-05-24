@@ -31,14 +31,15 @@ module tb_SPI_Master ();
         #10 reset = 0;
 
         repeat (3) @(posedge clk);
+
         // address byte
-        //SS = 1;
+       // SS = 1;
         @(posedge clk);
-        tx_data = 8'b10000000;
+        tx_data = 8'b10000000;  // write first
         start = 1;
         cpol = 0;
         cpha = 0;
-        //SS = 0;
+       // SS = 0;
         @(posedge clk);
         start = 0;
         wait (done == 1);
@@ -95,10 +96,10 @@ module tb_SPI_Master ();
 
         //SS = 1;
 
-        repeat (5) @(posedge clk);
+        @(posedge clk);
         //SS = 0;
         @(posedge clk);
-        tx_data = 8'b0;
+        tx_data = 8'b0; // read & address 0x00
         start = 1;
         cpol = 0;
         cpha = 0;  // msb =0, read
@@ -111,6 +112,7 @@ module tb_SPI_Master ();
         start = 0;
         wait (done == 1);
         @(posedge clk);
+        
         start = 1;
         @(posedge clk);
         start = 0;
@@ -137,3 +139,5 @@ module tb_SPI_Master ();
     end
 
 endmodule
+
+

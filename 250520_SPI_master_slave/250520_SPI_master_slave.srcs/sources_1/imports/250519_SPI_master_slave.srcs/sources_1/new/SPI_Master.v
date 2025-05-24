@@ -8,6 +8,7 @@ module SPI_Master (
     input            CPOL,
     input            CPHA,
     input            start,
+    input            SS,
     input      [7:0] tx_data,
     output     [7:0] rx_data,
     output reg       done,
@@ -16,7 +17,7 @@ module SPI_Master (
     output           SCLK,
     output           MOSI,
     input            MISO,
-    output           SS
+    output           ss
 );
     localparam IDLE = 0, CP_DELAY = 1, CP0 = 2, CP1 = 3;
 
@@ -30,6 +31,8 @@ module SPI_Master (
     //assign tx_data = temp_tx_data_reg;
     assign MOSI = temp_tx_data_reg[7];
     assign rx_data = temp_rx_data_reg;
+
+    assign ss = SS;
 
     assign r_sclk = ((next == CP1) && ~CPHA) || 
                     ((next == CP0) && CPHA);
@@ -108,3 +111,7 @@ module SPI_Master (
         endcase
     end
 endmodule
+
+
+
+ 
