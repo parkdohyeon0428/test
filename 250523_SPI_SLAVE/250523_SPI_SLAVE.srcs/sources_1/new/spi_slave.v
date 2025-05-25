@@ -3,68 +3,70 @@
 module SPI_Slave (
 
     //global signals
-    input             clk,
-    input             reset,
+    input        clk,
+    input        reset,
     //SPI signals
-    input             SCLK,
-    input             MOSI,
-    output            MISO,
-    input             SS,
-    output [3:0] fndcom,
+    input        SCLK,
+    input        MOSI,
+    output       MISO,
+    input        SS,
+    output [3:0] fndcomm,
     output [7:0] fndfont
-    
+
 
 );
+    wire [7:0] fnddata0, fnddata1, fnddata2, fnddata3;
+    
+    
     //internal signals
-           wire [7:0] si_data;
-           wire       si_done;
-           wire [7:0] so_data;
-           wire       so_start;
-           wire       so_done;
+    wire [7:0] si_data;
+    wire       si_done;
+    wire [7:0] so_data;
+    wire       so_start;
+    wire       so_done;
 
-           wire [7:0] fnddata0, fnddata1, fnddata2, fnddata3;
 
     SPI_Slave_Intf U_SPI_Slave_Intf (
         //global signals
-        .clk(clk),
-        .reset(reset),
-        .SCLK(SCLK),
-        .MOSI(MOSI),
-        .MISO(MISO),
-        .SS(SS),
-        .si_data(si_data),
-        .si_done(si_done),
-        .so_data(so_data),
+        .clk     (clk),
+        .reset   (reset),
+        .SCLK    (SCLK),
+        .MOSI    (MOSI),
+        .MISO    (MISO),
+        .SS      (SS),
+        .si_data (si_data),
+        .si_done (si_done),
+        .so_data (so_data),
         .so_start(so_start),
-        .so_done(so_done)
+        .so_done (so_done)
     );
 
     SPI_Slave_Reg U_SPI_Slave_Reg (
         //global signals
-        .clk(clk),
-        .reset(reset),
-        .SCLK(SCLK),
-        .ss_n(SS),
-        .si_data(si_data),
-        .si_done(si_done),
-        .so_data(so_data),
+        .clk     (clk),
+        .reset   (reset),
+        .SCLK    (SCLK),
+        .ss_n    (SS),
+        .si_data (si_data),
+        .si_done (si_done),
+        .so_data (so_data),
         .so_start(so_start),
-        .so_done(so_done),
+        .so_done (so_done),
         .fnddata0(fnddata0),
         .fnddata1(fnddata1),
         .fnddata2(fnddata2),
         .fnddata3(fnddata3)
     );
 
-    fnd_controller U_fnd(
-        .clk(clk),
-        .reset(reset),
+    fnd_controller U_fnd (
+        .clk     (clk),
+        .reset   (reset),
         .fnddata0(fnddata0),
         .fnddata1(fnddata1),
         .fnddata2(fnddata2),
         .fnddata3(fnddata3),
-        .fndcom(fndcom),
-        .fndfont(fndfont)
+        .fndcom  (fndcomm),
+        .fndfont (fndfont)
     );
 endmodule
 
@@ -215,10 +217,10 @@ module SPI_Slave_Intf (
                 end
             end
 
-            SO_DELAY : begin
-               
+            SO_DELAY: begin
+
                 so_state_next = SO_IDLE;
-                so_done_next = 1'b0;
+                so_done_next  = 1'b0;
             end
         endcase
     end
@@ -229,7 +231,7 @@ module SPI_Slave_Reg (
     input            clk,
     input            reset,
     // internal signals
-    input SCLK,
+    input            SCLK,
     input            ss_n,
     input      [7:0] si_data,
     input            si_done,
@@ -242,7 +244,7 @@ module SPI_Slave_Reg (
     output [7:0] fnddata1,
     output [7:0] fnddata2,
     output [7:0] fnddata3
-    
+
 );
 
     localparam IDLE = 0, ADDR_PHASE = 1, WRITE_PHASE = 2, READ_PHASE = 3, READ_DELAY_PHASE=4;
@@ -265,21 +267,21 @@ module SPI_Slave_Reg (
     assign fnddata1 = slv_reg1;
     assign fnddata2 = slv_reg2;
     assign fnddata3 = slv_reg3;
-    
+
 
     always @(posedge clk, posedge reset) begin
         if (reset) begin
             state        <= IDLE;
             addr_reg     <= 0;
             so_start_reg <= 1'b0;
-            prev_so_done <=0;
-            prev_SCLK<=0;
+            prev_so_done <= 0;
+            prev_SCLK    <= 0;
         end else begin
             state        <= state_next;
             addr_reg     <= addr_next;
             so_start_reg <= so_start_next;
             prev_so_done <= so_done;
-            prev_SCLK <= SCLK;
+            prev_SCLK    <= SCLK;
         end
     end
 
@@ -304,14 +306,14 @@ module SPI_Slave_Reg (
                         end else begin  // read operation
                             state_next = READ_DELAY_PHASE;
                             // so_start_next = 1'b1;
-                           
+
                         end
                     end
                 end else begin
                     state_next = IDLE;
                 end
             end
-            READ_DELAY_PHASE : begin
+            READ_DELAY_PHASE: begin
                 if (sclk_falling) begin
                     state_next = READ_PHASE;
                 end
