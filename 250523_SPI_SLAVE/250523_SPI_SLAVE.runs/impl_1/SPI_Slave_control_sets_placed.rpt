@@ -1,7 +1,7 @@
 Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 --------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2020.2 (win64) Build 3064766 Wed Nov 18 09:12:45 MST 2020
-| Date         : Fri May 23 11:35:17 2025
+| Date         : Mon May 26 11:22:03 2025
 | Host         : DESKTOP-7CFQ9ND running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file SPI_Slave_control_sets_placed.rpt
 | Design       : SPI_Slave
@@ -27,7 +27,7 @@ Table of Contents
 |    Minimum number of control sets                        |     8 |
 |    Addition due to synthesis replication                 |     0 |
 |    Addition due to physical synthesis replication        |     0 |
-| Unused register locations in slices containing registers |    13 |
+| Unused register locations in slices containing registers |    12 |
 +----------------------------------------------------------+-------+
 * Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
 ** Run report_qor_suggestions for automated merging and remapping suggestions
@@ -58,11 +58,11 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
-| No           | No                    | No                     |              32 |           12 |
-| No           | No                    | Yes                    |              27 |            8 |
+| No           | No                    | No                     |              32 |            9 |
+| No           | No                    | Yes                    |              28 |            9 |
 | No           | Yes                   | No                     |               0 |            0 |
 | Yes          | No                    | No                     |               0 |            0 |
-| Yes          | No                    | Yes                    |              24 |            5 |
+| Yes          | No                    | Yes                    |              24 |            7 |
 | Yes          | Yes                   | No                     |               0 |            0 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 
@@ -74,13 +74,13 @@ Table of Contents
 |        Clock Signal       |                 Enable Signal                | Set/Reset Signal | Slice Load Count | Bel Load Count | Bels / Slice |
 +---------------------------+----------------------------------------------+------------------+------------------+----------------+--------------+
 |  clk_IBUF_BUFG            | U_SPI_Slave_Reg/FSM_onehot_state[4]_i_1_n_0  | reset_IBUF       |                1 |              5 |         5.00 |
-|  U_SPI_Slave_Reg/slv_reg2 |                                              |                  |                3 |              8 |         2.67 |
+|  U_SPI_Slave_Reg/slv_reg1 |                                              |                  |                2 |              8 |         4.00 |
 |  U_SPI_Slave_Reg/slv_reg0 |                                              |                  |                3 |              8 |         2.67 |
-|  U_SPI_Slave_Reg/slv_reg1 |                                              |                  |                3 |              8 |         2.67 |
-|  U_SPI_Slave_Reg/slv_reg3 |                                              |                  |                3 |              8 |         2.67 |
-|  clk_IBUF_BUFG            | U_SPI_Slave_Intf/si_data_reg[7]_i_1_n_0      | reset_IBUF       |                1 |              8 |         8.00 |
-|  clk_IBUF_BUFG            | U_SPI_Slave_Intf/so_bit_count_reg[2]_i_1_n_0 | reset_IBUF       |                3 |             11 |         3.67 |
-|  clk_IBUF_BUFG            |                                              | reset_IBUF       |                8 |             27 |         3.38 |
+|  U_SPI_Slave_Reg/slv_reg2 |                                              |                  |                2 |              8 |         4.00 |
+|  U_SPI_Slave_Reg/slv_reg3 |                                              |                  |                2 |              8 |         4.00 |
+|  clk_IBUF_BUFG            | U_SPI_Slave_Intf/si_data_reg[7]_i_1_n_0      | reset_IBUF       |                2 |              8 |         4.00 |
+|  clk_IBUF_BUFG            | U_SPI_Slave_Intf/so_bit_count_reg[2]_i_1_n_0 | reset_IBUF       |                4 |             11 |         2.75 |
+|  clk_IBUF_BUFG            |                                              | reset_IBUF       |                9 |             28 |         3.11 |
 +---------------------------+----------------------------------------------+------------------+------------------+----------------+--------------+
 
 

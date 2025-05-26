@@ -11,8 +11,8 @@ module SPI_Slave (
     output       MISO,
     input        SS,
     output [3:0] fndcomm,
-    output [7:0] fndfont
-
+    output [7:0] fndfont,
+    output slv_ready
 
 );
     wire [7:0] fnddata0, fnddata1, fnddata2, fnddata3;
@@ -38,7 +38,8 @@ module SPI_Slave (
         .si_done (si_done),
         .so_data (so_data),
         .so_start(so_start),
-        .so_done (so_done)
+        .so_done (so_done),
+        .slv_ready(slv_ready)
     );
 
     SPI_Slave_Reg U_SPI_Slave_Reg (
@@ -84,8 +85,8 @@ module SPI_Slave_Intf (
     output       si_done,
     input  [7:0] so_data,
     input        so_start,
-    output       so_done
-    //output       so_ready
+    output       so_done,
+    output       slv_ready
 );
     reg sclk_sync0, sclk_sync1;
 
@@ -108,9 +109,11 @@ module SPI_Slave_Intf (
     reg [7:0] si_data_reg, si_data_next;
     reg [2:0] si_bit_count_reg, si_bit_count_next;
     reg si_done_reg, si_done_next;
+    reg si_ready, so_ready;
 
     assign si_data = si_data_reg;
     assign si_done = si_done_reg;
+    assign slv_ready = sclk_rising ? si_ready : so_ready;
 
 
     always @(posedge clk, posedge reset) begin
@@ -132,6 +135,7 @@ module SPI_Slave_Intf (
         si_data_next      = si_data_reg;
         si_bit_count_next = si_bit_count_reg;
         si_done_next      = si_done_reg;
+        si_ready = 1'b0;
         case (si_state)
             SI_IDLE: begin
                 si_done_next = 0;
@@ -148,6 +152,7 @@ module SPI_Slave_Intf (
                             si_bit_count_next = 0;
                             si_done_next      = 1'b1;
                             si_state_next     = SI_IDLE;
+                            si_ready = 1'b1;
                         end else begin
                             si_bit_count_next = si_bit_count_reg + 1;
                         end
@@ -190,6 +195,7 @@ module SPI_Slave_Intf (
         so_bit_count_next = so_bit_count_reg;
         so_done_next      = so_done_reg;
         so_data_next      = so_data_reg;
+        so_ready = 1'b0;
         case (so_state)
             SO_IDLE: begin
                 so_done_next = 1'b0;
@@ -218,7 +224,7 @@ module SPI_Slave_Intf (
             end
 
             SO_DELAY: begin
-
+                so_ready = 1'b1;
                 so_state_next = SO_IDLE;
                 so_done_next  = 1'b0;
             end
