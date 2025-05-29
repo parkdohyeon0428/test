@@ -2,56 +2,100 @@
 
 module tb_SPI_Master ();
 
+
     // global signals
-    logic clk;
-    logic reset;
-    logic CPOL;
-    logic CPHA;
-    // internal signals
-    logic start;
+    logic       clk;
+    logic       reset;
+
+    logic       cpol;
+    logic       cpha;
+    logic       start;
     logic [7:0] tx_data;
     logic [7:0] rx_data;
-    logic done;
-    logic ready;
-    // external port
-    logic SCLK;
-    logic MOSI;
-    logic MISO;
+    logic       done;
+    logic       ready;
 
-    SPI_Master dut (.*);
+    logic       SCLK;
+    logic       MOSI;
+    logic       MISO;
+    logic       SS;
+    logic       [2:0]read_count;
+    logic       [2:0]write_count;
 
-    assign MISO = MOSI;
+
+    SPI_Master U_DUT (.*);
+    
+    SPI_Slave slave_DUT (.*);
+
     always #5 clk = ~clk;
 
     initial begin
-        clk = 0;
+        clk   = 0;
         reset = 1;
         #10 reset = 0;
-
-        // address byte
+       
         repeat (3) @(posedge clk);
-        tx_data = 8'h01; start = 1; CPOL = 0; CPHA = 0; CS = 0;
+        // address byte
+        // SS = 1;
+        @(posedge clk);
+        tx_data = 8'b10000000; start = 1; cpol = 0; cpha = 0; read_count = 0; write_count = 4;
+        // SS = 0;
         @(posedge clk);
         start = 0;
         wait (done == 1);
+    
+
+        // write data byte on 0x00 address
         @(posedge clk);
+        tx_data = 8'h10;  cpol = 0; cpha = 0;  // msb =1, write
+        // SS = 0;
+        @(posedge clk);
+        start = 0;
+        wait (done == 1);
+      
 
         // write data byte on 0x01 address
         @(posedge clk);
-        tx_data = 8'h55; start = 1; CPOL = 0; CPHA = 0; CS = 0;
+        tx_data = 8'h20;  cpol = 0; cpha = 0;
+        // SS = 0;
+        @(posedge clk);
+        start = 0;
+        wait (done == 1);
+      
+
+        // write data byte on 0x02 address
+        @(posedge clk);
+        tx_data = 8'h30; cpol = 0; cpha = 0;
+        // SS = 0;
+        @(posedge clk);
+        start = 0;
+        wait (done == 1);
+        
+        tx_data = 8'h40;  cpol = 0; cpha = 0;
+        // SS = 0;
         @(posedge clk);
         start = 0;
         wait (done == 1);
         @(posedge clk);
 
-        // write data byte on 0x02 address
+        // SS = 1;
+         wait (done == 1);
+
+        repeat(5) @(posedge clk);
+        // SS = 0;
         @(posedge clk);
-        tx_data = 8'haa; start = 1; CPOL = 0; CPHA = 0; CS = 0;
+        tx_data = 8'b0; start = 1; cpol = 0; cpha = 0; read_count=4;   // msb =0, read
         @(posedge clk);
         start = 0;
-        wait (done == 1);
-        @(posedge clk);
-        CS = 1;
-        #50 $finish;
+       
+
+
+
+   
+
+
+        #300;
+        $finish;
     end
+
 endmodule

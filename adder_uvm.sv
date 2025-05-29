@@ -1,200 +1,287 @@
-interface adder_if();
+interface spi_if();
+    // global signals
     logic clk;
-    logic [7:0] a;
-    logic [7:0] b;
-    logic [8:0] y;
-endinterface //adder_if()
+    logic reset;
+    // internal signals
+    logic CPOL;
+    logic CPHA;
+    logic start;
+    logic SS;
+    logic [7:0] tx_data;
+    logic [7:0] rx_data;
+    logic done;
+    logic ready;
+endinterface //spi_if()
 
 `include "uvm_macros.svh"
 import uvm_pkg::*;
 
-class adder_seq_item extends uvm_sequence_item;
-    rand bit [7:0] a;
-    rand bit [7:0] b;
-         bit [8:0] y;
+class spi_seq_item extends uvm_sequence_item;
+    rand bit [7:0] tx_data;
+         bit [7:0] rx_data;
+         bit       done;
+
+    `uvm_object_utils_begin(spi_seq_item)
+    `uvm_field_int(tx_data, UVM_DEFAULT)
+    `uvm_field_int(rx_data, UVM_DEFAULT)
+    `uvm_field_int(done, UVM_DEFAULT)
+    `uvm_object_utils_end
+
+    // function void do_pack();
+    //     tx_data = {wr, data, addr};
+    // endfunction
+
     function new(string name = "ITEM");
         super.new(name);
     endfunction
 
-    `uvm_object_utils_begin(adder_seq_item)
-        `uvm_field_int(a, UVM_DEFAULT)
-        `uvm_field_int(b, UVM_DEFAULT)
-        `uvm_field_int(y, UVM_DEFAULT)
-    `uvm_object_utils_end
-
 endclass
 
-class adder_sequence extends uvm_sequence #(adder_seq_item);
-    `uvm_object_utils(adder_sequence) // 왜 object util이냐면 uvm_sequence는 uvm_component에서 받아오는게 아님
+class spi_sequence extends uvm_sequence #(spi_seq_item);
+    `uvm_object_utils(spi_sequence) // 왜 object util이냐면 uvm_sequence는 uvm_component에서 받아오는게 아님
     // uvm 클래스 구성도 보면 나와 있음
     function new(string name = "SEQ"); // component 상속이 아니니까 인스턴스도 name만 적으면 됨
         super.new(name);
     endfunction
 
-    adder_seq_item adder_item;
+    spi_seq_item spi_item;
 
     virtual task body();
-        adder_item = adder_seq_item::type_id::create("ADDER_ITEM");
-        
-        for (int i=0;i<10;i++) begin
-            start_item(adder_item); // 등록록
-
-            adder_item.randomize();
-            `uvm_info("SEQ", $sformatf("adder item to driver a:%0d, b:%0d", adder_item.a, adder_item.b), UVM_NONE)
-            //adder_item.print(uvm_default_line_printer);
-            finish_item(adder_item);
+        // write 
+        spi_item = spi_seq_item::type_id::create("write");
+        repeat (100)  begin       
+            `uvm_info(get_type_name(), 
+            "Starting SPI sequence", UVM_MEDIUM)
+            start_item(spi_item);
+            if (!spi_item.randomize()) begin
+                `uvm_error(get_type_name(), "Randomization failed")
+            end
+            `uvm_info(get_type_name(), 
+            $sformatf("Sent tx_data = %0d", spi_item.tx_data), UVM_MEDIUM)
+            finish_item(spi_item);
         end
     endtask
+endclass       
 
-endclass
-
-class adder_driver extends uvm_driver #(adder_seq_item);
-    `uvm_component_utils(adder_driver)
+class spi_driver extends uvm_driver #(spi_seq_item);
+    `uvm_component_utils(spi_driver)
 
     function new(string name = "DRV", uvm_component parent);
         super.new(name, parent);
     endfunction
 
-    adder_seq_item adder_item;
-    virtual adder_if a_if;
+    spi_seq_item spi_item;
+    virtual spi_if a_if;
 
     virtual function void build_phase(uvm_phase phase);
         super.build_phase(phase);
-        adder_item = adder_seq_item::type_id::create("ADDER_ITEM");
+        spi_item = spi_seq_item::type_id::create("spi_ITEM");
 
-        if(!uvm_config_db#(virtual adder_if)::get(this, "", "a_if", a_if))
-            `uvm_fatal("DRV", "adder_if not found in uvm_config_db");
+        if(!uvm_config_db#(virtual spi_if)::get(this, "*", "a_if", a_if))
+            `uvm_fatal("DRV", "spi_if not found in uvm_config_db");
     endfunction
 
     virtual task run_phase(uvm_phase phase);
         forever begin
-            seq_item_port.get_next_item(adder_item); // 대기
+            seq_item_port.get_next_item(spi_item); // 대기
+            // 초기
+            //  @(posedge a_if.clk);
+            //  @(posedge a_if.clk);
+             
+            // `uvm_info("DRV", "Waiting for a_if.reset to become 1", UVM_MEDIUM)
+            // wait (a_if.reset == 0);  // write 주소 전송
+            // `uvm_info("DRV", "Detected reset == 1", UVM_MEDIUM)
+            a_if.CPOL <= 1'b0;
+            a_if.CPHA <= 1'b0;
+            a_if.start <= 1'b0;
+            a_if.tx_data <= {1'b1,spi_item.tx_data[6:0]}; // write 주소 전송
+            //@(posedge a_if.clk);
+            a_if.SS <= 1'b1;
             @(posedge a_if.clk);
+            // spi start addr 
+            a_if.SS <= 1'b0;
+            //@(posedge a_if.clk);
+            a_if.start <= 1'b1;
+            @(posedge a_if.clk);
+            a_if.start <= 1'b0;
+            // wait
+            //`uvm_info("DRV", "Waiting for first done to become 1", UVM_MEDIUM)
+            wait (a_if.done == 1);  // write 주소 전송 끝
+            //`uvm_info("DRV", "Detected first done == 1", UVM_MEDIUM)
+            @(posedge a_if.clk);
+            a_if.tx_data <= spi_item.tx_data;
+            `uvm_info("DRV", $sformatf("Drive DUT addr:%0d, data:%0d", spi_item.tx_data[1:0], spi_item.tx_data), UVM_LOW)
+            // spi data start
+            //@(posedge a_if.clk);
+            a_if.start <= 1'b1;
+            @(posedge a_if.clk);
+            a_if.start <= 1'b0;
+            // wait
 
-            a_if.a = adder_item.a;
-            a_if.b = adder_item.b;
-            `uvm_info("DRV", $sformatf("Drive DUT a:%0d, b:%0d", adder_item.a, adder_item.b), UVM_LOW)
-            //adder_item.print(uvm_default_line_printer);
 
+            wait (a_if.done == 1);  // write 끝 
+            @(posedge a_if.clk); 
+            a_if.tx_data <= {1'b0,spi_item.tx_data[6:0]}; // read 주소 전송
+            //@(posedge a_if.clk);
+            a_if.SS <= 1'b1; 
+            @(posedge a_if.clk);
+            // spi start addr 
+            a_if.SS <= 1'b0;
+           // @(posedge a_if.clk);
+            a_if.start <= 1'b1;
+            @(posedge a_if.clk);
+            a_if.start <= 1'b0;
+            // wait
+            wait (a_if.done == 1);  
+            @(posedge a_if.clk);
+            a_if.tx_data <= 8'b10101010;  // dummy data 전송
+            // spi data start
+            //@(posedge a_if.clk);
+            a_if.start <= 1'b1;
+            @(posedge a_if.clk);
+            a_if.start <= 1'b0;
+            // wait
+            wait (a_if.done == 1);
+            `uvm_info("DRV", "read data send done ", UVM_MEDIUM)
+            @(posedge a_if.clk);
+            a_if.SS <= 1'b1; // read 끝
+
+            //spi_item.print(uvm_default_line_printer);
+            @(posedge a_if.clk);
+            #1;
             seq_item_port.item_done(); // 다 받았다고 event 던지기 sqr에
            // #10;
         end
     endtask
-
 endclass
 
-class adder_monitor extends uvm_monitor;
-    `uvm_component_utils(adder_monitor)
+class spi_monitor extends uvm_monitor;
+    `uvm_component_utils(spi_monitor)
     
-    uvm_analysis_port #(adder_seq_item) send; // item을 tr이라고 생각하고 mbox에 send한다고 생각하면 됨
-    
+    uvm_analysis_port #(spi_seq_item) send; // item을 tr이라고 생각하고 mbox에 send한다고 생각하면 됨
+    spi_seq_item spi_item; // handler
+    virtual spi_if a_if;
+
     function new(string name = "MON", uvm_component parent);
         super.new(name, parent);
         send = new("WRITE", this);
     endfunction
 
-    adder_seq_item adder_item; // handler
-    virtual adder_if a_if;
-
     virtual function void build_phase(uvm_phase phase);
         super.build_phase(phase);
-        adder_item = adder_seq_item::type_id::create("ADDER_ITEM");
-        if(!uvm_config_db#(virtual adder_if)::get(this, "", "a_if", a_if))
-            `uvm_fatal("MON", "adder_if not found in uvm_config_db");
+        spi_item = spi_seq_item::type_id::create("SPI_ITEM");
+        if(!uvm_config_db#(virtual spi_if)::get(this, "", "a_if", a_if))
+            `uvm_fatal("MON", "spi_if not found in uvm_config_db");
     endfunction
 
     virtual task run_phase(uvm_phase phase);
         forever begin
             //#10;
-            @(posedge a_if.clk);
-            #1;
-            adder_item.a = a_if.a;
-            adder_item.b = a_if.b;
-            adder_item.y = a_if.y;
+            @(posedge a_if.done);
+            @(posedge a_if.done);
+            spi_item.tx_data = a_if.tx_data; // write 한 data scoreboard에 전송
+
+            @(posedge a_if.done);
+            @(posedge a_if.done);
+            spi_item.rx_data = a_if.rx_data; // read한 data scoreboard에 전송
 
             `uvm_info("MON", 
-                $sformatf("sampled a:%0d, b:%0d, y:%0d", adder_item.a, adder_item.b, adder_item.y), UVM_LOW)
+                $sformatf("sampled tx_data:%0d, rx_data:%0d", spi_item.tx_data, spi_item.rx_data), UVM_LOW)
             //adder_item.print(uvm_default_line_printer);
 
-            send.write(adder_item); // send to scoreboard
+            send.write(spi_item); // send to scoreboard
         end
     endtask
-
 endclass
 
-class adder_scoreboard extends uvm_scoreboard;
-    `uvm_component_utils(adder_scoreboard)
-    // mbox
-    uvm_analysis_imp #(adder_seq_item, adder_scoreboard) recv;
+class spi_scoreboard extends uvm_scoreboard;
+    `uvm_component_utils(spi_scoreboard)
 
-    adder_seq_item adder_item;
+    uvm_analysis_imp #(spi_seq_item, spi_scoreboard) recv;
+    spi_seq_item spi_item;
+
+    int total_cnt = 0;
+    int pass_cnt  = 0;
+    int fail_cnt  = 0;
 
     function new(string name = "SCO", uvm_component parent);
         super.new(name, parent);
         recv = new("READ", this);
-    endfunction //new()
+    endfunction
 
     virtual function void build_phase(uvm_phase phase);
         super.build_phase(phase);
-        adder_item = adder_seq_item::type_id::create("ADDER_ITEM");
+        spi_item = spi_seq_item::type_id::create("spi_ITEM");
     endfunction
 
-    virtual function void write(adder_seq_item item);
-        adder_item = item;
-        `uvm_info("SCO", $sformatf("Received a:%0d, b:%0d, y:%0d", item.a, item.b, item.y), UVM_LOW)
-        //adder_item.print(uvm_default_line_printer);
+    virtual function void write(spi_seq_item item);
+        spi_item = item;
+        total_cnt++;
+        if (spi_item.rx_data === spi_item.tx_data) begin
+            pass_cnt++;
+            `uvm_info("SCOREBOARD", $sformatf("PASS  tx_data=%0d == rx_data=%0d",
+                                               spi_item.tx_data, spi_item.rx_data), UVM_LOW)
+        end else begin
+            fail_cnt++;
+            `uvm_error("SCOREBOARD", $sformatf("FAIL  tx_data=%0d != rx_data=%0d",
+                                                spi_item.tx_data, spi_item.rx_data))
+        end
+    endfunction
 
-        if(adder_item.y == adder_item.a + adder_item.b)
-            `uvm_info("SCO", "*** TEST PASSED ***", UVM_NONE)
-        else
-            `uvm_error("SCO", "*** TEST FAILED ***");
+    virtual function void final_phase(uvm_phase phase);
+        super.final_phase(phase);
+        `uvm_info("SCOREBOARD", "================== SPI TEST REPORT ==================", UVM_NONE)
+        `uvm_info("SCOREBOARD", $sformatf("TOTAL: %0d | PASS: %0d | FAIL: %0d",
+                                           total_cnt, pass_cnt, fail_cnt), UVM_NONE)
+        `uvm_info("SCOREBOARD", "======================================================", UVM_NONE)
     endfunction
 
 endclass
 
-class adder_agent extends uvm_agent;
-    `uvm_component_utils(adder_agent)
+class spi_agent extends uvm_agent;
+    `uvm_component_utils(spi_agent)
     function new(string name = "AGT", uvm_component parent);
         super.new(name, parent);
     endfunction
 
-    adder_monitor adder_mon; // handler 생성
-    adder_driver adder_drv;
-    uvm_sequencer #(adder_seq_item) adder_sqr;
+    spi_monitor spi_mon; // handler 생성
+    spi_driver spi_drv;
+    uvm_sequencer #(spi_seq_item) spi_sqr;
 
     virtual function void build_phase(uvm_phase phase); // 핸들러 만든거에 인스턴스 한 값을 넣어주기
         super.build_phase(phase);
-        adder_mon = adder_monitor::type_id::create("MON", this);
-        adder_drv = adder_driver::type_id::create("DRV", this);
-        adder_sqr = uvm_sequencer#(adder_seq_item)::type_id::create("SQR", this);
+        spi_mon = spi_monitor::type_id::create("MON", this);
+        spi_drv = spi_driver::type_id::create("DRV", this);
+        spi_sqr = uvm_sequencer#(spi_seq_item)::type_id::create("SQR", this);
     endfunction
 
     virtual function void connect_phase(uvm_phase phase);
         super.connect_phase(phase);
-        adder_drv.seq_item_port.connect(adder_sqr.seq_item_export);
+        spi_drv.seq_item_port.connect(spi_sqr.seq_item_export);
+        //spi_mon.send.connect(env.scoreboard.recv);
     endfunction
 
 endclass
 
-class adder_envirenment extends uvm_env;
-    `uvm_component_utils(adder_envirenment) // Factory에 등록
+class spi_environment extends uvm_env;
+    `uvm_component_utils(spi_environment) // Factory에 등록
 
     function new(string name = "ENV", uvm_component parent);
         super.new(name, parent);
     endfunction
 
-    adder_scoreboard adder_sco;
-    adder_agent adder_agt;
-
+    spi_scoreboard spi_sco;
+    spi_agent spi_agt;
+    
     virtual function void build_phase(uvm_phase phase);
         super.build_phase(phase);
-        adder_sco = adder_scoreboard::type_id::create("SCO", this);
-        adder_agt = adder_agent::type_id::create("AGT", this);
+        spi_sco = spi_scoreboard::type_id::create("SCO", this);
+        spi_agt = spi_agent::type_id::create("AGT", this);
     endfunction
 
     virtual function void connect_phase(uvm_phase phase); // agt안의 mon과 scb 사이 연결 통로를 만들어줘야 함
         super.connect_phase(phase);
-        adder_agt.adder_mon.send.connect(adder_sco.recv); // TLM Port 연결 transaction level modeling
+        spi_agt.spi_mon.send.connect(spi_sco.recv); // TLM Port 연결 transaction level modeling
     endfunction
 
 endclass
@@ -206,42 +293,60 @@ class test extends uvm_test; // uvm_test 라이브러리 상속 받기
         super.new(name, parent);
     endfunction
 
-    adder_sequence adder_seq;
-    adder_envirenment adder_env;
+    spi_sequence spi_seq;
+    spi_environment spi_env;
 
     virtual function void build_phase(uvm_phase phase); // overriding -> 부모 클래스가 함수 이름만 가지고
         super.build_phase(phase);
-        adder_seq = adder_sequence::type_id::create("SEQ", this); // adder_seq = new(); 이거랑 비슷한 거임
-        adder_env = adder_envirenment::type_id::create("ENV", this); // -> "Factory에서 실행됐다"
+        spi_seq = spi_sequence::type_id::create("SEQ", this); // spi_seq = new(); 이거랑 비슷한 거임
+        spi_env = spi_environment::type_id::create("ENV", this); // -> "Factory에서 실행됐다"
+    endfunction
+
+    virtual function void start_of_simulation_phase(uvm_phase phase);
+        super.start_of_simulation_phase(phase);
+        uvm_root::get().print_topology();
     endfunction
 
     virtual task run_phase(uvm_phase phase); // overriding 자식이 그 함수 구현을 하는 것
-        phase.raise_objection(phase); // drop 전까지 시뮬 멈추지 않게
-        adder_seq.start(adder_env.adder_agt.adder_sqr); // seq -> sequence / sqr -> sequnecer 둘이 다른 거임
-        phase.drop_objection(phase); // objection 해제, run phase 종료
+        phase.raise_objection(this); // drop 전까지 시뮬 멈추지 않게
+        spi_seq.start(spi_env.spi_agt.spi_sqr); // seq -> sequence / sqr -> sequnecer 둘이 다른 거임
+        phase.drop_objection(this);  // objection 해제, run phase 종료
     endtask
-
 endclass
 
-module tb_adder;
-    test adder_test;
-    adder_if a_if();
+module tb_spi;
+    //test spi_test;
+    spi_if a_if();
 
-    adder dut(
-        .a(a_if.a),
-        .b(a_if.b),
-        .y(a_if.y)
+    spi dut(
+        .clk(a_if.clk),
+        .reset(a_if.reset),
+        .CPOL(a_if.CPOL),
+        .CPHA(a_if.CPHA),
+        .start(a_if.start),
+        .wr_cnt(a_if.wr_cnt)
+        .rd_cnt(a_if.rd_cnt),
+        .tx_data(a_if.tx_data),
+        .rx_data(a_if.rx_data),
+        .done(a_if.done),
+        .ready(a_if.ready)
     );
-
     always #5 a_if.clk = ~a_if.clk;
 
-    initial begin
+    initial begin       
+        uvm_config_db#(virtual spi_if)::set(null, "*", "a_if", a_if);
         a_if.clk = 0;
+        run_test(); 
+       
+    end
 
-        adder_test = new("TEST", null); // test class 생성
-        uvm_config_db #(virtual adder_if)::set(null, "*", "a_if", a_if); // interface 연결
-
-        run_test();
+    initial begin
+        a_if.reset = 1;
+        #5;
+        a_if.reset = 0;
     end
 
 endmodule
+
+
+
