@@ -1,0 +1,19 @@
+#-----------------------------------------------------------
+# Vivado v2020.2 (64-bit)
+# SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
+# IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+# Start of session at: Sun Jun  8 22:11:03 2025
+# Process ID: 14732
+# Current directory: C:/Users/user/Desktop/test/250608_VGA_warning
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent5024 C:\Users\user\Desktop\test\250608_VGA_warning\250606_VGA_LED.xpr
+# Log file: C:/Users/user/Desktop/test/250608_VGA_warning/vivado.log
+# Journal file: C:/Users/user/Desktop/test/250608_VGA_warning\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project C:/Users/user/Desktop/test/250608_VGA_warning/250606_VGA_LED.xpr
+update_compile_order -fileset sources_1
+close [ open C:/Users/user/Desktop/test/250608_VGA_warning/250606_VGA_LED.srcs/sources_1/new/rom.sv w ]
+add_files C:/Users/user/Desktop/test/250608_VGA_warning/250606_VGA_LED.srcs/sources_1/new/rom.sv
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+synth_design -rtl -rtl_skip_mlo -name rtl_1

@@ -9,11 +9,11 @@ module VGA_Controller (
     output logic v_sync,      // VGA VSync
     output logic [9:0] x_pixel, // 현재 유효 픽셀의 x 좌표
     output logic [9:0] y_pixel, // 현재 유효 픽셀의 y 좌표
-    output logic DE           // Display Enable (유효 픽셀 출력 여부)
+    output logic DE,
+    output logic pclk          // Display Enable (유효 픽셀 출력 여부)
 );
 
     // 내부 신호
-    logic        pclk;
     logic [9:0]  h_counter;
     logic [9:0]  v_counter;
 
@@ -44,7 +44,13 @@ module VGA_Controller (
         .y_pixel   (y_pixel),
         .DE        (DE)
     );
+
 endmodule
+
+
+
+
+
 
 module pixel_clk_gen (
     input logic clk,
@@ -68,7 +74,11 @@ module pixel_clk_gen (
             end
         end
     end
+
+
+    
 endmodule
+
 
 module pixel_counter (
     input logic pclk,
@@ -107,7 +117,11 @@ module pixel_counter (
             end
         end
     end
+
+
 endmodule
+
+
 
 module vga_decoder (
     input logic [9:0] h_counter,

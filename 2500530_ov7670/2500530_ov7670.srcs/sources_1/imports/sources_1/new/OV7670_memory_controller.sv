@@ -1,6 +1,5 @@
 `timescale 1ns / 1ps
 
-
 module OV7670_memory_controller(
     input logic pclk,
     input logic reset,
@@ -10,9 +9,7 @@ module OV7670_memory_controller(
     output logic we,
     output logic [16:0] wAddr,
     output logic [15:0] wData
-
-    );
-
+);
     
     logic [9:0] h_counter; // 320 
     logic [7:0] v_counter; // 240
@@ -21,7 +18,6 @@ module OV7670_memory_controller(
     // assign wAddr = v_counter * 320 + h_counter[9:1];
     assign wAddr = (v_counter << 8) + (v_counter << 6) + h_counter[9:1];
     assign wData = pix_data;
-
 
     always_ff @( posedge pclk or posedge reset ) begin : h_sequence
         if (reset) begin
@@ -59,9 +55,5 @@ module OV7670_memory_controller(
             end
         end
     end
-
-
-
-
 
 endmodule

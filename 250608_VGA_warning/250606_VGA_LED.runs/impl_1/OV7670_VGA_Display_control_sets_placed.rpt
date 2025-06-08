@@ -1,0 +1,1037 @@
+Copyright 1986-2021 Xilinx, Inc. All Rights Reserved.
+-----------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2020.2.2 (win64) Build 3118627 Tue Feb  9 05:14:06 MST 2021
+| Date         : Sun Jun  8 22:06:04 2025
+| Host         : jaehoon running 64-bit major release  (build 9200)
+| Command      : report_control_sets -verbose -file OV7670_VGA_Display_control_sets_placed.rpt
+| Design       : OV7670_VGA_Display
+| Device       : xc7a35t
+-----------------------------------------------------------------------------------------------
+
+Control Set Information
+
+Table of Contents
+-----------------
+1. Summary
+2. Histogram
+3. Flip-Flop Distribution
+4. Detailed Control Set Information
+
+1. Summary
+----------
+
++----------------------------------------------------------+-------+
+|                          Status                          | Count |
++----------------------------------------------------------+-------+
+| Total control sets                                       |   959 |
+|    Minimum number of control sets                        |   959 |
+|    Addition due to synthesis replication                 |     0 |
+|    Addition due to physical synthesis replication        |     0 |
+| Unused register locations in slices containing registers |  3157 |
++----------------------------------------------------------+-------+
+* Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
+** Run report_qor_suggestions for automated merging and remapping suggestions
+
+
+2. Histogram
+------------
+
++--------------------+-------+
+|       Fanout       | Count |
++--------------------+-------+
+| Total control sets |   959 |
+| >= 0 to < 4        |     3 |
+| >= 4 to < 6        |   645 |
+| >= 6 to < 8        |   264 |
+| >= 8 to < 10       |    13 |
+| >= 10 to < 12      |     3 |
+| >= 12 to < 14      |     2 |
+| >= 14 to < 16      |     0 |
+| >= 16              |    29 |
++--------------------+-------+
+* Control sets can be remapped at either synth_design or opt_design
+
+
+3. Flip-Flop Distribution
+-------------------------
+
++--------------+-----------------------+------------------------+-----------------+--------------+
+| Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
++--------------+-----------------------+------------------------+-----------------+--------------+
+| No           | No                    | No                     |               5 |            4 |
+| No           | No                    | Yes                    |             323 |          156 |
+| No           | Yes                   | No                     |               0 |            0 |
+| Yes          | No                    | No                     |            2564 |         1289 |
+| Yes          | No                    | Yes                    |            1761 |          513 |
+| Yes          | Yes                   | No                     |             118 |           55 |
++--------------+-----------------------+------------------------+-----------------+--------------+
+
+
+4. Detailed Control Set Information
+-----------------------------------
+
++-------------------------+-----------------------------------------------------------+------------------+------------------+----------------+--------------+
+|       Clock Signal      |                       Enable Signal                       | Set/Reset Signal | Slice Load Count | Bel Load Count | Bels / Slice |
++-------------------------+-----------------------------------------------------------+------------------+------------------+----------------+--------------+
+|  clk_IBUF_BUFG          |                                                           |                  |                1 |              1 |         1.00 |
+|  i_reg_reg[2]_i_2_n_0   |                                                           | reset_IBUF       |                1 |              3 |         3.00 |
+|  tick_BUFG              |                                                           | reset_IBUF       |                1 |              3 |         3.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__4_20[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__4_11[0]  |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__4_21[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__4_22[0]  |                  |                2 |              4 |         2.00 |
+|  i_reg_reg[2]_i_2_n_0   | u_top_SCCB2/U_SCCBa/state[3]_i_1__0_n_0                   | reset_IBUF       |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__3_80[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__4_14[0]  |                  |                1 |              4 |         4.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/FSM_sequential_state[1]_i_1_n_0     | reset_IBUF       |                3 |              4 |         1.33 |
+|  clk_IBUF_BUFG          | u_VGA_Controller/u_counter/v_counter_reg[9]_0             |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              |                                                           |                  |                3 |              4 |         1.33 |
+|  tick_BUFG              | u_top_SCCB/U_SCCB/state[3]_i_1_n_0                        | reset_IBUF       |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[3]_rep__5_3[0]   |                  |                4 |              4 |         1.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__9_30[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[3]_rep__5_4[0]   |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[3]_rep__5_7[0]   |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__9_4[0]   |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[3]_rep__0_8[0]   |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__9_27[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[3]_rep__0_15[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__9_3[0]   |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[3]_rep__0_13[0]  |                  |                4 |              4 |         1.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__9_44[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[3]_rep__5_6[0]   |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__9_36[0]  |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__9_26[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__9_7[0]   |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__9_43[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__9_34[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[3]_rep__0_3[0]   |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__9_6[0]   |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__9_9[0]   |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[3]_rep__5_5[0]   |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[3]_rep__0_4[0]   |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[3]_rep__0_5[0]   |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__9_31[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[3]_rep__0_2[0]   |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[3]_rep__5_8[0]   |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__9_28[0]  |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__9_32[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__9_38[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[3]_rep__0_10[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__9_5[0]   |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[3]_rep__0_12[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__9_29[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__9_39[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__9_40[0]  |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__9_41[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__9_33[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[3]_rep__0_9[0]   |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[3]_rep__0_14[0]  |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[3]_rep__0_7[0]   |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[3]_rep__0_11[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[3]_rep__0_16[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[3]_rep__5_1[0]   |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[3]_rep__0_1[0]   |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__9_42[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[3]_rep__5_2[0]   |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__9_35[0]  |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__9_37[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[3]_rep__0_6[0]   |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__9_8[0]   |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__4_74[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__4_75[0]  |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__4_8[0]   |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__4_35[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__4_40[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__4_43[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__4_42[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__4_46[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__4_62[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__4_68[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__4_71[0]  |                  |                4 |              4 |         1.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__4_23[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__4_5[0]   |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__4_9[0]   |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__5_0[0]   |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__4_39[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__5_1[0]   |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__4_41[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__4_49[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__4_70[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__5_10[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__5_100[0] |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__4_37[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__4_67[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__4_24[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__4_44[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__4_51[0]  |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__4_64[0]  |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__4_66[0]  |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__4_27[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__4_25[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__4_52[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__4_54[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__4_7[0]   |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__4_3[0]   |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__4_32[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__4_29[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__4_45[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__4_56[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__4_57[0]  |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__4_6[0]   |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__4_30[0]  |                  |                4 |              4 |         1.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__4_31[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__4_47[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__4_50[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__4_58[0]  |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__4_59[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__4_69[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__4_72[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__4_73[0]  |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__4_33[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__4_38[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__4_60[0]  |                  |                4 |              4 |         1.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__4_65[0]  |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__4_34[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__4_28[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__4_26[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__4_48[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__4_53[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__4_55[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__4_36[0]  |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__4_4[0]   |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__4_61[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__4_63[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__5_60[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__5_63[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__5_3[0]   |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__5_103[0] |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__5_16[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__5_44[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__5_102[0] |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__5_106[0] |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__5_24[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__5_26[0]  |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__5_29[0]  |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__5_13[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__5_31[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__5_17[0]  |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__5_2[0]   |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__5_34[0]  |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__5_15[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__5_101[0] |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__5_18[0]  |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__5_19[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__5_21[0]  |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__5_36[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__5_39[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__5_41[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__5_104[0] |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__5_33[0]  |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__5_35[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__5_37[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__5_43[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__5_45[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__5_46[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__5_47[0]  |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__5_48[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__5_49[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__5_51[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__5_105[0] |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__5_27[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__5_38[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__5_23[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__5_25[0]  |                  |                4 |              4 |         1.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__5_52[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__5_28[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__5_53[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__5_11[0]  |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__5_14[0]  |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__5_30[0]  |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__5_4[0]   |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__5_42[0]  |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__5_54[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__5_5[0]   |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__5_50[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__5_55[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__5_56[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__5_57[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__5_58[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__5_59[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__5_6[0]   |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__5_61[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__5_20[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__5_12[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__5_40[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__5_62[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__5_32[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__5_22[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__6_14[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__5_69[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__6_11[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__0_0[0]   |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__5_68[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__6_6[0]   |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__5_75[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__6_13[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__5_79[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__5_72[0]  |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__5_73[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__5_87[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__5_89[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__6_15[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__0_2[0]   |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__0_3[0]   |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__5_96[0]  |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__6_5[0]   |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__5_70[0]  |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__0_4[0]   |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__6_4[0]   |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__0_5[0]   |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__5_67[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__5_71[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__5_81[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__6_8[0]   |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__5_74[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__5_8[0]   |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__5_86[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__0_6[0]   |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__6_0[0]   |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__6_10[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__5_82[0]  |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__5_80[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__5_88[0]  |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__6_3[0]   |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__5_90[0]  |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__5_91[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__6_2[0]   |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__0_7[0]   |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__5_85[0]  |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__5_64[0]  |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__5_7[0]   |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__5_92[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__5_66[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__5_93[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__5_99[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__6_7[0]   |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__5_84[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__5_83[0]  |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__6_9[0]   |                  |                4 |              4 |         1.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__5_97[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__0_1[0]   |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__5_77[0]  |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__5_78[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__5_9[0]   |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__5_94[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__5_76[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__5_95[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__5_98[0]  |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__6_12[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__5_65[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__0_8[0]   |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__10_0[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__10_2[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__1_0[0]   |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__1_1[0]   |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__1_10[0]  |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__1_11[0]  |                  |                4 |              4 |         1.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__1_12[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__1_13[0]  |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__1_14[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__1_33[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__1_30[0]  |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__1_20[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__1_28[0]  |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__1_7[0]   |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__2_11[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__2_13[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__2_17[0]  |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__2_12[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__1_23[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__1_32[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__1_3[0]   |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__2_16[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__1_16[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__1_31[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__2_10[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__2_18[0]  |                  |                4 |              4 |         1.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__1_24[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__1_25[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__1_9[0]   |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__2_1[0]   |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__2_19[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__2_20[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__2_21[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__2_22[0]  |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__2_23[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__1_19[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__2_14[0]  |                  |                4 |              4 |         1.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__1_4[0]   |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__2_2[0]   |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__1_29[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__1_6[0]   |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__1_5[0]   |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__1_2[0]   |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__1_17[0]  |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__1_21[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__1_18[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__1_22[0]  |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__1_27[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__1_8[0]   |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__1_15[0]  |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__1_26[0]  |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__2_0[0]   |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__2_15[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__8_2[0]   |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__9_24[0]  |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__9_25[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__8_19[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__8_7[0]   |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__2_3[0]   |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__2_30[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__8_10[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__2_7[0]   |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__2_9[0]   |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__8_16[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__8_22[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__8_11[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__8_1[0]   |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__8_5[0]   |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__9_1[0]   |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__9_11[0]  |                  |                4 |              4 |         1.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__9_19[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__9_14[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__2_28[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__8_25[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__2_26[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__8_23[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__2_29[0]  |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__8_28[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__8_17[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__8_29[0]  |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__2_4[0]   |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__8_12[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__8_3[0]   |                  |                4 |              4 |         1.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__8_14[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__8_6[0]   |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__8_4[0]   |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__8_8[0]   |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__9_10[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__8_15[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__8_9[0]   |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__2_31[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__9_0[0]   |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__8_0[0]   |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__2_6[0]   |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__9_12[0]  |                  |                4 |              4 |         1.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__8_21[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__9_15[0]  |                  |                4 |              4 |         1.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__8_27[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__8_13[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__2_25[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__9_17[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__2_5[0]   |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__8_26[0]  |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__2_24[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__9_18[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__9_2[0]   |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__9_20[0]  |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__9_22[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__8_24[0]  |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__9_13[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__2_27[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__9_21[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__8_20[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__9_23[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__9_16[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__2_8[0]   |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[2]_rep__8_18[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__1_1[0]   |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__1_10[0]  |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__1_100[0] |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__1_101[0] |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/E[0]                           |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__1_35[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__1_52[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__1_30[0]  |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__1_55[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__1_57[0]  |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__1_41[0]  |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__1_60[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__1_62[0]  |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__1_54[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__1_2[0]   |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__1_25[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__1_45[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__1_64[0]  |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__1_58[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__1_34[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__1_61[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__1_56[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__1_39[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__1_40[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__1_32[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__1_59[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__1_13[0]  |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__1_17[0]  |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__1_3[0]   |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__1_4[0]   |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__1_21[0]  |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__1_11[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__1_31[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__1_47[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__1_20[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__1_16[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__1_50[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__1_6[0]   |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__1_43[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__1_65[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__1_66[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__1_18[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__1_5[0]   |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__1_102[0] |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__1_63[0]  |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__1_67[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__1_23[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__1_68[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__1_14[0]  |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__1_27[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__1_36[0]  |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__1_12[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__1_28[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__1_42[0]  |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__1_44[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__1_46[0]  |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__1_51[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__1_15[0]  |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__1_48[0]  |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__1_53[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__1_19[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__1_24[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__1_37[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__1_38[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__1_49[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__1_26[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__1_29[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__1_22[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__1_33[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__1_87[0]  |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__2_11[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__2_13[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__1_86[0]  |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__2_12[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__2_19[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__1_71[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__1_73[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__1_9[0]   |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__2_1[0]   |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__1_93[0]  |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__1_77[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__1_94[0]  |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__2_20[0]  |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__2_21[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__2_24[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__2_26[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__1_69[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__1_76[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__2_14[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__2_27[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__1_90[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__2_16[0]  |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__2_17[0]  |                  |                4 |              4 |         1.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__1_78[0]  |                  |                4 |              4 |         1.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__1_95[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__2_10[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__2_2[0]   |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__2_28[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__1_83[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__1_79[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__1_96[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__1_99[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__2_29[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__2_3[0]   |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__1_74[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__1_75[0]  |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__1_80[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__1_70[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__1_72[0]  |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__1_82[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__1_84[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__1_89[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__2_0[0]   |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__1_92[0]  |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__2_15[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__1_91[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__2_18[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__2_22[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__2_25[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__2_30[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__2_31[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__2_32[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__2_33[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__2_34[0]  |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__1_81[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__1_8[0]   |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__1_97[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__2_35[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__1_88[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__1_98[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__2_23[0]  |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__1_85[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__1_7[0]   |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__2_76[0]  |                  |                4 |              4 |         1.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__3_12[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__3_14[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__3_18[0]  |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__3_2[0]   |                  |                4 |              4 |         1.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__2_55[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__2_36[0]  |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__2_75[0]  |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__3_21[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__2_41[0]  |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__2_43[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__2_60[0]  |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__2_56[0]  |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__2_54[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__2_42[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__2_48[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__2_63[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__2_72[0]  |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__2_73[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__2_46[0]  |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__2_45[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__2_51[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__2_40[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__2_70[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__2_71[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__2_61[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__2_38[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__2_4[0]   |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__2_52[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__2_57[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__2_59[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__2_74[0]  |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__2_8[0]   |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__2_9[0]   |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__3_0[0]   |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__2_53[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__2_5[0]   |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__2_6[0]   |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__2_77[0]  |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__3_1[0]   |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__2_65[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__2_68[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__3_10[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__3_13[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__2_67[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__2_7[0]   |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__3_15[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__2_62[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__2_66[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__2_44[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__2_39[0]  |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__2_69[0]  |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__3_16[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__3_19[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__3_20[0]  |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__3_17[0]  |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__2_78[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__2_50[0]  |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__3_11[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__2_37[0]  |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__2_47[0]  |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__2_49[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__2_58[0]  |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__2_64[0]  |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__3_45[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__3_6[0]   |                  |                4 |              4 |         1.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__3_61[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__3_30[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__3_33[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__3_41[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__3_32[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__3_36[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__3_52[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__3_23[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__3_25[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__3_50[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__3_53[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__3_51[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__3_24[0]  |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__3_58[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__3_60[0]  |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__3_31[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__3_39[0]  |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__3_28[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__3_27[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__3_49[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__3_22[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__3_43[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__3_34[0]  |                  |                4 |              4 |         1.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__3_5[0]   |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__3_29[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__3_54[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__3_59[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__3_62[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__3_56[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__3_64[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__3_63[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__3_65[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__3_66[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__3_35[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__3_57[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__3_67[0]  |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__3_40[0]  |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__3_68[0]  |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__3_46[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__3_69[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__3_7[0]   |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__3_37[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__3_48[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__3_70[0]  |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__3_71[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__3_72[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__3_47[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__3_26[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__3_44[0]  |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__3_73[0]  |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__3_74[0]  |                  |                4 |              4 |         1.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__3_75[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__3_76[0]  |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__3_77[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__3_78[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__3_38[0]  |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__3_79[0]  |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__3_8[0]   |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__3_3[0]   |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__3_42[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__3_55[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__3_4[0]   |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__3_81[0]  |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__3_9[0]   |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__4_12[0]  |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__3_83[0]  |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__4_10[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__4_19[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__3_82[0]  |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__4_16[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__4_13[0]  |                  |                3 |              4 |         1.33 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__4_0[0]   |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__4_15[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__4_17[0]  |                  |                1 |              4 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__4_18[0]  |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__4_1[0]   |                  |                2 |              4 |         2.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/h_counter_reg[1]_rep__4_2[0]   |                  |                2 |              4 |         2.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[11]0              | reset_IBUF       |                1 |              6 |         6.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[87]0              | reset_IBUF       |                2 |              6 |         3.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[42]0              | reset_IBUF       |                1 |              6 |         6.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[49]0              | reset_IBUF       |                1 |              6 |         6.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[60]0              | reset_IBUF       |                1 |              6 |         6.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[72]0              | reset_IBUF       |                1 |              6 |         6.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[55]0              | reset_IBUF       |                1 |              6 |         6.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[8]0               | reset_IBUF       |                1 |              6 |         6.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[79]0              | reset_IBUF       |                3 |              6 |         2.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[56]0              | reset_IBUF       |                2 |              6 |         3.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[53]0              | reset_IBUF       |                1 |              6 |         6.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[63]0              | reset_IBUF       |                3 |              6 |         2.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[68]0              | reset_IBUF       |                2 |              6 |         3.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[61]0              | reset_IBUF       |                4 |              6 |         1.50 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[70]0              | reset_IBUF       |                1 |              6 |         6.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[43]0              | reset_IBUF       |                1 |              6 |         6.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[4]0               | reset_IBUF       |                1 |              6 |         6.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[5]0               | reset_IBUF       |                1 |              6 |         6.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[58]0              | reset_IBUF       |                1 |              6 |         6.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[73]0              | reset_IBUF       |                1 |              6 |         6.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[74]0              | reset_IBUF       |                2 |              6 |         3.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[81]0              | reset_IBUF       |                1 |              6 |         6.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[83]0              | reset_IBUF       |                2 |              6 |         3.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[39]0              | reset_IBUF       |                2 |              6 |         3.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[76]0              | reset_IBUF       |                2 |              6 |         3.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[45]0              | reset_IBUF       |                2 |              6 |         3.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[52]0              | reset_IBUF       |                2 |              6 |         3.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[85]0              | reset_IBUF       |                1 |              6 |         6.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[44]0              | reset_IBUF       |                1 |              6 |         6.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[51]0              | reset_IBUF       |                2 |              6 |         3.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[86]0              | reset_IBUF       |                2 |              6 |         3.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[89]0              | reset_IBUF       |                1 |              6 |         6.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[80]0              | reset_IBUF       |                2 |              6 |         3.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[54]0              | reset_IBUF       |                1 |              6 |         6.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[71]0              | reset_IBUF       |                2 |              6 |         3.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[77]0              | reset_IBUF       |                1 |              6 |         6.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[78]0              | reset_IBUF       |                3 |              6 |         2.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[99]0              | reset_IBUF       |                2 |              6 |         3.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[189]0             | reset_IBUF       |                1 |              6 |         6.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/best_score[5]_i_1_n_0               | reset_IBUF       |                5 |              6 |         1.20 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer[12][5]_i_1_n_0        | reset_IBUF       |                1 |              6 |         6.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer[10][5]_i_1_n_0        | reset_IBUF       |                1 |              6 |         6.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/disparity[5]_i_1_n_0                | reset_IBUF       |                3 |              6 |         2.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer[122][5]_i_1_n_0       | reset_IBUF       |                1 |              6 |         6.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer[124][5]_i_1_n_0       | reset_IBUF       |                1 |              6 |         6.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer[47][5]_i_1_n_0        | reset_IBUF       |                2 |              6 |         3.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer[26][5]_i_1_n_0        | reset_IBUF       |                2 |              6 |         3.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer[50][5]_i_1_n_0        | reset_IBUF       |                1 |              6 |         6.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer[28][5]_i_1_n_0        | reset_IBUF       |                1 |              6 |         6.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[129]0             | reset_IBUF       |                1 |              6 |         6.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[105]0             | reset_IBUF       |                1 |              6 |         6.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[107]0             | reset_IBUF       |                2 |              6 |         3.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[112]0             | reset_IBUF       |                2 |              6 |         3.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[103]0             | reset_IBUF       |                2 |              6 |         3.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[121]0             | reset_IBUF       |                2 |              6 |         3.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[137]0             | reset_IBUF       |                1 |              6 |         6.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[141]0             | reset_IBUF       |                2 |              6 |         3.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[142]0             | reset_IBUF       |                1 |              6 |         6.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[145]0             | reset_IBUF       |                2 |              6 |         3.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[0]0               | reset_IBUF       |                2 |              6 |         3.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[108]0             | reset_IBUF       |                1 |              6 |         6.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[132]0             | reset_IBUF       |                1 |              6 |         6.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[134]0             | reset_IBUF       |                3 |              6 |         2.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[138]0             | reset_IBUF       |                2 |              6 |         3.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[13]0              | reset_IBUF       |                1 |              6 |         6.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[143]0             | reset_IBUF       |                2 |              6 |         3.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[144]0             | reset_IBUF       |                1 |              6 |         6.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[147]0             | reset_IBUF       |                3 |              6 |         2.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[148]0             | reset_IBUF       |                1 |              6 |         6.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[149]0             | reset_IBUF       |                1 |              6 |         6.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[14]0              | reset_IBUF       |                1 |              6 |         6.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[102]0             | reset_IBUF       |                2 |              6 |         3.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[111]0             | reset_IBUF       |                2 |              6 |         3.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[146]0             | reset_IBUF       |                2 |              6 |         3.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[150]0             | reset_IBUF       |                1 |              6 |         6.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[151]0             | reset_IBUF       |                2 |              6 |         3.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[9]0               | reset_IBUF       |                3 |              6 |         2.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[125]0             | reset_IBUF       |                1 |              6 |         6.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[104]0             | reset_IBUF       |                1 |              6 |         6.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[118]0             | reset_IBUF       |                2 |              6 |         3.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[113]0             | reset_IBUF       |                1 |              6 |         6.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[120]0             | reset_IBUF       |                3 |              6 |         2.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[100]0             | reset_IBUF       |                2 |              6 |         3.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[106]0             | reset_IBUF       |                1 |              6 |         6.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[109]0             | reset_IBUF       |                1 |              6 |         6.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[115]0             | reset_IBUF       |                2 |              6 |         3.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[123]0             | reset_IBUF       |                2 |              6 |         3.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[131]0             | reset_IBUF       |                1 |              6 |         6.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[101]0             | reset_IBUF       |                3 |              6 |         2.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[110]0             | reset_IBUF       |                1 |              6 |         6.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[133]0             | reset_IBUF       |                2 |              6 |         3.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[135]0             | reset_IBUF       |                2 |              6 |         3.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[117]0             | reset_IBUF       |                1 |              6 |         6.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[139]0             | reset_IBUF       |                3 |              6 |         2.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[140]0             | reset_IBUF       |                2 |              6 |         3.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[116]0             | reset_IBUF       |                2 |              6 |         3.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[114]0             | reset_IBUF       |                1 |              6 |         6.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[126]0             | reset_IBUF       |                2 |              6 |         3.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[127]0             | reset_IBUF       |                1 |              6 |         6.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[130]0             | reset_IBUF       |                1 |              6 |         6.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[119]0             | reset_IBUF       |                2 |              6 |         3.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[128]0             | reset_IBUF       |                2 |              6 |         3.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[136]0             | reset_IBUF       |                1 |              6 |         6.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[205]0             | reset_IBUF       |                3 |              6 |         2.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[175]0             | reset_IBUF       |                2 |              6 |         3.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[171]0             | reset_IBUF       |                2 |              6 |         3.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[173]0             | reset_IBUF       |                1 |              6 |         6.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[184]0             | reset_IBUF       |                1 |              6 |         6.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[204]0             | reset_IBUF       |                1 |              6 |         6.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[206]0             | reset_IBUF       |                1 |              6 |         6.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[181]0             | reset_IBUF       |                1 |              6 |         6.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[183]0             | reset_IBUF       |                2 |              6 |         3.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[207]0             | reset_IBUF       |                2 |              6 |         3.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[208]0             | reset_IBUF       |                2 |              6 |         3.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[209]0             | reset_IBUF       |                1 |              6 |         6.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[154]0             | reset_IBUF       |                2 |              6 |         3.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[160]0             | reset_IBUF       |                2 |              6 |         3.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[177]0             | reset_IBUF       |                1 |              6 |         6.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[194]0             | reset_IBUF       |                3 |              6 |         2.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[166]0             | reset_IBUF       |                1 |              6 |         6.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[170]0             | reset_IBUF       |                3 |              6 |         2.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[188]0             | reset_IBUF       |                1 |              6 |         6.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[180]0             | reset_IBUF       |                1 |              6 |         6.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[155]0             | reset_IBUF       |                2 |              6 |         3.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[161]0             | reset_IBUF       |                2 |              6 |         3.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[195]0             | reset_IBUF       |                3 |              6 |         2.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[167]0             | reset_IBUF       |                2 |              6 |         3.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[176]0             | reset_IBUF       |                1 |              6 |         6.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[182]0             | reset_IBUF       |                1 |              6 |         6.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[193]0             | reset_IBUF       |                2 |              6 |         3.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[197]0             | reset_IBUF       |                1 |              6 |         6.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[179]0             | reset_IBUF       |                2 |              6 |         3.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[198]0             | reset_IBUF       |                1 |              6 |         6.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[1]0               | reset_IBUF       |                1 |              6 |         6.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[200]0             | reset_IBUF       |                2 |              6 |         3.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[153]0             | reset_IBUF       |                1 |              6 |         6.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[15]0              | reset_IBUF       |                3 |              6 |         2.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[156]0             | reset_IBUF       |                2 |              6 |         3.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[162]0             | reset_IBUF       |                1 |              6 |         6.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[185]0             | reset_IBUF       |                2 |              6 |         3.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[186]0             | reset_IBUF       |                2 |              6 |         3.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[174]0             | reset_IBUF       |                3 |              6 |         2.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[18]0              | reset_IBUF       |                1 |              6 |         6.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[168]0             | reset_IBUF       |                2 |              6 |         3.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[17]0              | reset_IBUF       |                1 |              6 |         6.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[190]0             | reset_IBUF       |                1 |              6 |         6.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[191]0             | reset_IBUF       |                2 |              6 |         3.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[192]0             | reset_IBUF       |                2 |              6 |         3.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[169]0             | reset_IBUF       |                1 |              6 |         6.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[187]0             | reset_IBUF       |                2 |              6 |         3.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[196]0             | reset_IBUF       |                2 |              6 |         3.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[159]0             | reset_IBUF       |                3 |              6 |         2.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[165]0             | reset_IBUF       |                1 |              6 |         6.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[16]0              | reset_IBUF       |                3 |              6 |         2.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[178]0             | reset_IBUF       |                1 |              6 |         6.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[3]0               | reset_IBUF       |                2 |              6 |         3.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[199]0             | reset_IBUF       |                3 |              6 |         2.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[19]0              | reset_IBUF       |                2 |              6 |         3.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[201]0             | reset_IBUF       |                2 |              6 |         3.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[202]0             | reset_IBUF       |                3 |              6 |         2.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[203]0             | reset_IBUF       |                2 |              6 |         3.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[158]0             | reset_IBUF       |                2 |              6 |         3.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[164]0             | reset_IBUF       |                1 |              6 |         6.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[157]0             | reset_IBUF       |                1 |              6 |         6.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[163]0             | reset_IBUF       |                2 |              6 |         3.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[172]0             | reset_IBUF       |                1 |              6 |         6.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[152]0             | reset_IBUF       |                1 |              6 |         6.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[228]0             | reset_IBUF       |                3 |              6 |         2.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[36]0              | reset_IBUF       |                1 |              6 |         6.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[37]0              | reset_IBUF       |                1 |              6 |         6.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[240]0             | reset_IBUF       |                2 |              6 |         3.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[218]0             | reset_IBUF       |                2 |              6 |         3.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[246]0             | reset_IBUF       |                1 |              6 |         6.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[241]0             | reset_IBUF       |                2 |              6 |         3.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[243]0             | reset_IBUF       |                2 |              6 |         3.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[223]0             | reset_IBUF       |                2 |              6 |         3.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[245]0             | reset_IBUF       |                2 |              6 |         3.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[34]0              | reset_IBUF       |                2 |              6 |         3.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[219]0             | reset_IBUF       |                2 |              6 |         3.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[38]0              | reset_IBUF       |                1 |              6 |         6.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[221]0             | reset_IBUF       |                1 |              6 |         6.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[214]0             | reset_IBUF       |                2 |              6 |         3.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[232]0             | reset_IBUF       |                3 |              6 |         2.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[230]0             | reset_IBUF       |                4 |              6 |         1.50 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[234]0             | reset_IBUF       |                1 |              6 |         6.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[239]0             | reset_IBUF       |                3 |              6 |         2.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[24]0              | reset_IBUF       |                1 |              6 |         6.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[253]0             | reset_IBUF       |                2 |              6 |         3.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[29]0              | reset_IBUF       |                1 |              6 |         6.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[2]0               | reset_IBUF       |                1 |              6 |         6.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[217]0             | reset_IBUF       |                1 |              6 |         6.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[220]0             | reset_IBUF       |                2 |              6 |         3.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[244]0             | reset_IBUF       |                1 |              6 |         6.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[215]0             | reset_IBUF       |                2 |              6 |         3.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[238]0             | reset_IBUF       |                1 |              6 |         6.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[31]0              | reset_IBUF       |                2 |              6 |         3.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[237]0             | reset_IBUF       |                2 |              6 |         3.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[32]0              | reset_IBUF       |                2 |              6 |         3.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[235]0             | reset_IBUF       |                1 |              6 |         6.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[23]0              | reset_IBUF       |                2 |              6 |         3.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[212]0             | reset_IBUF       |                1 |              6 |         6.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[216]0             | reset_IBUF       |                1 |              6 |         6.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[21]0              | reset_IBUF       |                1 |              6 |         6.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[213]0             | reset_IBUF       |                2 |              6 |         3.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[222]0             | reset_IBUF       |                2 |              6 |         3.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[20]0              | reset_IBUF       |                2 |              6 |         3.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[225]0             | reset_IBUF       |                2 |              6 |         3.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[233]0             | reset_IBUF       |                2 |              6 |         3.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[22]0              | reset_IBUF       |                1 |              6 |         6.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[236]0             | reset_IBUF       |                1 |              6 |         6.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[242]0             | reset_IBUF       |                1 |              6 |         6.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[247]0             | reset_IBUF       |                3 |              6 |         2.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[224]0             | reset_IBUF       |                3 |              6 |         2.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[248]0             | reset_IBUF       |                2 |              6 |         3.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[211]0             | reset_IBUF       |                2 |              6 |         3.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[231]0             | reset_IBUF       |                4 |              6 |         1.50 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[249]0             | reset_IBUF       |                2 |              6 |         3.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[251]0             | reset_IBUF       |                3 |              6 |         2.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[252]0             | reset_IBUF       |                1 |              6 |         6.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[250]0             | reset_IBUF       |                2 |              6 |         3.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[254]0             | reset_IBUF       |                1 |              6 |         6.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[255]0             | reset_IBUF       |                2 |              6 |         3.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[226]0             | reset_IBUF       |                3 |              6 |         2.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[25]0              | reset_IBUF       |                1 |              6 |         6.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[27]0              | reset_IBUF       |                2 |              6 |         3.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[30]0              | reset_IBUF       |                2 |              6 |         3.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[229]0             | reset_IBUF       |                3 |              6 |         2.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[33]0              | reset_IBUF       |                1 |              6 |         6.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[210]0             | reset_IBUF       |                1 |              6 |         6.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[227]0             | reset_IBUF       |                3 |              6 |         2.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[35]0              | reset_IBUF       |                2 |              6 |         3.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[7]0               | reset_IBUF       |                2 |              6 |         3.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[90]0              | reset_IBUF       |                1 |              6 |         6.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[91]0              | reset_IBUF       |                2 |              6 |         3.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[62]0              | reset_IBUF       |                2 |              6 |         3.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[67]0              | reset_IBUF       |                2 |              6 |         3.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[6]0               | reset_IBUF       |                3 |              6 |         2.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[64]0              | reset_IBUF       |                3 |              6 |         2.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[92]0              | reset_IBUF       |                2 |              6 |         3.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[41]0              | reset_IBUF       |                2 |              6 |         3.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[48]0              | reset_IBUF       |                1 |              6 |         6.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[57]0              | reset_IBUF       |                1 |              6 |         6.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[40]0              | reset_IBUF       |                2 |              6 |         3.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[46]0              | reset_IBUF       |                3 |              6 |         2.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[88]0              | reset_IBUF       |                1 |              6 |         6.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[93]0              | reset_IBUF       |                1 |              6 |         6.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[84]0              | reset_IBUF       |                1 |              6 |         6.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[82]0              | reset_IBUF       |                1 |              6 |         6.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[94]0              | reset_IBUF       |                1 |              6 |         6.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[95]0              | reset_IBUF       |                2 |              6 |         3.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[75]0              | reset_IBUF       |                1 |              6 |         6.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[96]0              | reset_IBUF       |                2 |              6 |         3.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[97]0              | reset_IBUF       |                1 |              6 |         6.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[98]0              | reset_IBUF       |                1 |              6 |         6.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[66]0              | reset_IBUF       |                1 |              6 |         6.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[59]0              | reset_IBUF       |                3 |              6 |         2.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[69]0              | reset_IBUF       |                1 |              6 |         6.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/displayBuffer_reg[65]0              | reset_IBUF       |                1 |              6 |         6.00 |
+|  i_reg_reg[2]_i_2_n_0   | u_top_SCCB2/U_SCCBa/ip_addr_reg[7]_i_1__0_n_0             | reset_IBUF       |                1 |              7 |         7.00 |
+|  tick_BUFG              | u_top_SCCB/U_SCCB/ip_addr_reg[7]_i_1_n_0                  | reset_IBUF       |                2 |              7 |         3.50 |
+|  clk_IBUF_BUFG          | u_top_SCCB2/U_SCCBa/stop_counter_reg[6]_i_1__0_n_0        | reset_IBUF       |                2 |              7 |         3.50 |
+|  clk_IBUF_BUFG          | u_top_SCCB2/U_SCCBa/counter_reg[6]_i_1__0_n_0             | reset_IBUF       |                3 |              7 |         2.33 |
+|  clk_IBUF_BUFG          | u_top_SCCB/U_SCCB/stop_counter_reg[6]_i_1_n_0             | reset_IBUF       |                2 |              7 |         3.50 |
+|  clk_IBUF_BUFG          | u_top_SCCB/U_SCCB/counter_reg[6]_i_1_n_0                  | reset_IBUF       |                3 |              7 |         2.33 |
+|  i_reg_reg[2]_i_2_n_0   | u_top_SCCB2/U_SCCBa/reg_addr_reg[7]_i_1__0_n_0            | reset_IBUF       |                2 |              8 |         4.00 |
+|  i_reg_reg[2]_i_2_n_0   | u_top_SCCB2/U_SCCBa/rom_addr_reg[0]_i_1__0_n_0            | reset_IBUF       |                2 |              8 |         4.00 |
+|  ov7670_pclk1_IBUF_BUFG | U_OV7670_Memcotroller1/v_counter0                         | reset_IBUF       |                2 |              8 |         4.00 |
+|  ov7670_pclk2_IBUF_BUFG | U_OV7670_Memcotroller2/pix_data[15]_i_1__0_n_0            | reset_IBUF       |                3 |              8 |         2.67 |
+|  ov7670_pclk2_IBUF_BUFG | U_OV7670_Memcotroller2/v_counter[7]_i_1__0_n_0            | reset_IBUF       |                2 |              8 |         4.00 |
+|  ov7670_pclk2_IBUF_BUFG | U_OV7670_Memcotroller2/we_i_1__0_n_0                      | reset_IBUF       |                3 |              8 |         2.67 |
+|  ov7670_pclk1_IBUF_BUFG | U_OV7670_Memcotroller1/pix_data[10]                       | reset_IBUF       |                3 |              8 |         2.67 |
+|  i_reg_reg[2]_i_2_n_0   | u_top_SCCB2/U_SCCBa/data_reg[7]_i_1__0_n_0                | reset_IBUF       |                2 |              8 |         4.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/rAddr1[7]_i_1_n_0                   | reset_IBUF       |                2 |              8 |         4.00 |
+|  tick_BUFG              | u_top_SCCB/U_SCCB/data_reg[7]_i_1_n_0                     | reset_IBUF       |                2 |              8 |         4.00 |
+|  tick_BUFG              | u_top_SCCB/U_SCCB/reg_addr_reg[7]_i_1_n_0                 | reset_IBUF       |                1 |              8 |         8.00 |
+|  ov7670_pclk1_IBUF_BUFG | U_OV7670_Memcotroller1/pix_data[7]                        | reset_IBUF       |                3 |              8 |         2.67 |
+|  tick_BUFG              | u_top_SCCB/U_SCCB/rom_addr_reg[0]_i_1_n_0                 | reset_IBUF       |                2 |              8 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/v_counter                      | reset_IBUF       |                5 |             10 |         2.00 |
+|  ov7670_pclk2_IBUF_BUFG |                                                           | reset_IBUF       |                4 |             11 |         2.75 |
+|  ov7670_pclk1_IBUF_BUFG |                                                           | reset_IBUF       |                6 |             11 |         1.83 |
+|  clk_IBUF_BUFG          | u_top_SCCB/U_SCCB/o_clk                                   | reset_IBUF       |                5 |             12 |         2.40 |
+|  clk_IBUF_BUFG          | u_top_SCCB2/U_SCCBa/o_clk                                 | reset_IBUF       |                4 |             12 |         3.00 |
+|  clk_IBUF_BUFG          | u_disparity_generator/best_disp_next                      | reset_IBUF       |                7 |             21 |         3.00 |
+|  pclk_BUFG              |                                                           | reset_IBUF       |               26 |             60 |         2.31 |
+|  pclk_BUFG              | u_QQVGA_memory_controller/line_index_reg[0]_16            |                  |               28 |            112 |         4.00 |
+|  pclk_BUFG              | u_QQVGA_memory_controller/line_index_reg[0]_18            |                  |               28 |            112 |         4.00 |
+|  pclk_BUFG              | u_QQVGA_memory_controller/line_index_reg[0]_4             |                  |               28 |            112 |         4.00 |
+|  pclk_BUFG              | u_QQVGA_memory_controller/line_index_reg[0]_14            |                  |               28 |            112 |         4.00 |
+|  pclk_BUFG              | u_QQVGA_memory_controller/line_index_reg[0]_15            |                  |               28 |            112 |         4.00 |
+|  pclk_BUFG              | u_QQVGA_memory_controller/line_index_reg[0]_17            |                  |               28 |            112 |         4.00 |
+|  pclk_BUFG              | u_QQVGA_memory_controller/line_index_reg[0]_8             |                  |               28 |            112 |         4.00 |
+|  pclk_BUFG              | u_QQVGA_memory_controller/line_index_reg[0]_7             |                  |               28 |            112 |         4.00 |
+|  pclk_BUFG              | u_QQVGA_memory_controller/line_index_reg[0]_5             |                  |               28 |            112 |         4.00 |
+|  pclk_BUFG              | u_QQVGA_memory_controller/line_index_reg[0]_6             |                  |               28 |            112 |         4.00 |
+|  pclk_BUFG              | u_VGA_Controller/u_counter/v_counter_reg[9]_0             | reset_IBUF       |               55 |            118 |         2.15 |
+|  pclk_BUFG              | u_QQVGA_memory_controller/line_index_reg[0]_12            |                  |               30 |            120 |         4.00 |
+|  pclk_BUFG              | u_QQVGA_memory_controller/line_index_reg[0]_0             |                  |               30 |            120 |         4.00 |
+|  pclk_BUFG              | u_QQVGA_memory_controller/line_index_reg[0]_10            |                  |               30 |            120 |         4.00 |
+|  pclk_BUFG              | u_QQVGA_memory_controller/line_index_reg[0]_11            |                  |               30 |            120 |         4.00 |
+|  pclk_BUFG              | u_QQVGA_memory_controller/line_index_reg[0]_13            |                  |               30 |            120 |         4.00 |
+|  pclk_BUFG              | u_QQVGA_memory_controller/line_index_reg[0]               |                  |               30 |            120 |         4.00 |
+|  pclk_BUFG              | u_QQVGA_memory_controller/line_index_reg[0]_2             |                  |               30 |            120 |         4.00 |
+|  pclk_BUFG              | u_QQVGA_memory_controller/line_index_reg[0]_1             |                  |               30 |            120 |         4.00 |
+|  pclk_BUFG              | u_QQVGA_memory_controller/line_index_reg[0]_3             |                  |               30 |            120 |         4.00 |
+|  pclk_BUFG              | u_QQVGA_memory_controller/line_index_reg[0]_9             |                  |               30 |            120 |         4.00 |
+|  clk_IBUF_BUFG          |                                                           | reset_IBUF       |              118 |            235 |         1.99 |
+|  pclk_BUFG              | u_QQVGA_memory_controller/h_counter_reg[4]_rep__5_2       |                  |               75 |            300 |         4.00 |
+|  pclk_BUFG              | u_QQVGA_memory_controller/v_counter_reg[9]_1              |                  |               75 |            300 |         4.00 |
+|  pclk_BUFG              | u_QQVGA_memory_controller/v_counter_reg[9]_0              |                  |               75 |            300 |         4.00 |
+|  pclk_BUFG              | u_QQVGA_memory_controller/h_counter_reg[4]_rep__5_3       |                  |               75 |            300 |         4.00 |
+|  pclk_BUFG              | u_QQVGA_memory_controller/h_counter_reg[4]_rep__5_1       |                  |               75 |            300 |         4.00 |
++-------------------------+-----------------------------------------------------------+------------------+------------------+----------------+--------------+
+
+
